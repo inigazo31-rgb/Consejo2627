@@ -383,7 +383,8 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-const firebaseConfig = {
+import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, addDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  const firebaseConfig = {
   apiKey: "AIzaSyAgtvRtoQ2_HrfnHFWZ2fZbXDZuECisy3M",
   authDomain: "consejo-2627.firebaseapp.com",
   projectId: "consejo-2627",
