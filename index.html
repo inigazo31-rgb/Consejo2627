@@ -5,498 +5,1633 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 <title>27MEX Seniors — Consejo Estudiantil</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#8E0201">
+<meta name="theme-color" content="#830201">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="27MEX Seniors">
 <link rel="apple-touch-icon" href="icon-180.png">
+
+<!-- Fuentes modernas y de alto rendimiento -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --wine:#8E0201; --wine-deep:#650000; --wine-soft:#B23A2E;
-    --cream:#F5EDDD; --cream-deep:#EADCC0; --card:#FFFDF8;
-    --ink:#2A1A12; --muted:#8A776A; --line:#E3D6C0;
-    --green:#3C7A4F; --green-bg:#E6F0E8;
-    --red:#B3382C; --red-bg:#FBEAE7;
-    --amber-bg:#FBF0D6;
-    --antro:#6B4E9E; --antro-bg:#EFE9F7;
-    --casa:#B5731E; --casa-bg:#FBEEDA;
-    --ventas:#2E7D6B; --ventas-bg:#E3F1EC;
-    --radius:16px;
-    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
-  }
-  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
-  html,body{
-    margin:0; background:var(--cream); color:var(--ink); -webkit-font-smoothing:antialiased;
-    -webkit-text-size-adjust:100%;
-    min-height:100%;
-    -webkit-overflow-scrolling:touch;
-  }
-  button, .rail-btn, .tab-chip, .del-btn, .add-btn, .month-head{ touch-action:manipulation; }
-  h1,h2,h3{font-family:"Space Grotesk","Inter",system-ui,sans-serif; margin:0;}
-  input, select, textarea{ font-size:16px; } /* evita zoom automático de iOS al enfocar */
+  :root {
+    --wine: #830201;
+    --wine-dark: #5C0000;
+    --wine-light: #A31818;
+    --wine-subtle: rgba(131, 2, 1, 0.06);
+    --wine-glow: rgba(131, 2, 1, 0.12);
 
-  /* ===== App shell ===== */
-  .app-shell{display:flex; min-height:100vh;}
-  .rail{
-    width:78px; flex-shrink:0; background:linear-gradient(180deg,var(--wine) 0%,var(--wine-deep) 100%);
-    display:flex; flex-direction:column; align-items:center; padding:16px 0; gap:4px;
-    position:sticky; top:0; height:100vh; z-index:30;
-  }
-  .rail-logo{width:38px; height:38px; border-radius:10px; overflow:hidden; margin-bottom:10px; border:2px solid rgba(255,255,255,0.35); flex-shrink:0;}
-  .rail-logo img{width:100%; height:100%; object-fit:cover; display:block;}
-  .rail-btn{
-    width:60px; padding:8px 4px 7px; border-radius:12px; background:transparent; border:none;
-    color:#F0DCC8; display:flex; flex-direction:column; align-items:center; gap:3px; cursor:pointer;
-    font-family:inherit; font-size:9px; font-weight:600; letter-spacing:.01em; text-align:center; line-height:1.15;
-  }
-  .rail-btn svg{width:19px; height:19px; stroke:#F0DCC8; fill:none; stroke-width:1.8;}
-  .rail-btn.active{background:rgba(255,255,255,0.18); color:#fff;}
-  .rail-btn.active svg{stroke:#fff;}
-  .rail-btn:active{background:rgba(255,255,255,0.12);}
+    --bg-app: #F8F6F0;
+    --surface: #FFFFFF;
+    --surface-glass: rgba(255, 255, 255, 0.85);
+    --surface-secondary: #F3EFE6;
+    --border: #E6DFD3;
+    --border-light: #EFE9DF;
 
-  .content{flex:1; min-width:0; overflow-x:hidden;}
-  .wrap{
-    max-width:1120px;
-    margin:0 auto;
-    padding: calc(24px + env(safe-area-inset-top, 0px)) 18px calc(90px + env(safe-area-inset-bottom, 0px));
+    --ink-primary: #18100C;
+    --ink-secondary: #574B43;
+    --ink-tertiary: #8E8278;
+    --ink-inverse: #FFFFFF;
+
+    --green: #15803D;
+    --green-bg: #EAF8EE;
+    --green-border: #BBF7D0;
+
+    --red: #BE123C;
+    --red-bg: #FFF1F2;
+    --red-border: #FECDD3;
+
+    --antro: #6D28D9;
+    --antro-bg: #F5F3FF;
+    --antro-border: #DDD6FE;
+
+    --casa: #B45309;
+    --casa-bg: #FFFBEB;
+    --casa-border: #FDE68A;
+
+    --ventas: #0F766E;
+    --ventas-bg: #F0FDFA;
+    --ventas-border: #99F6E4;
+
+    --escolar: #8A6A11;
+    --escolar-bg: #FEF9C3;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    --shadow-sm: 0 1px 2px rgba(24, 16, 12, 0.04);
+    --shadow-md: 0 4px 14px -2px rgba(24, 16, 12, 0.06), 0 2px 4px rgba(24, 16, 12, 0.02);
+    --shadow-lg: 0 12px 30px -4px rgba(24, 16, 12, 0.08), 0 4px 10px rgba(24, 16, 12, 0.03);
+    --shadow-float: 0 20px 40px -8px rgba(131, 2, 1, 0.16);
+
+    --font-main: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-heading: "Space Grotesk", var(--font-main);
   }
 
-  @media(max-width:680px){
-    .rail{
-      width:100%; height:auto; flex-direction:row; justify-content:space-around;
-      position:fixed; bottom:0; top:auto; left:0;
-      padding:6px 2px calc(6px + env(safe-area-inset-bottom, 0px));
-      box-shadow:0 -2px 12px rgba(0,0,0,0.18); z-index:40;
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body {
+    background-color: var(--bg-app);
+    color: var(--ink-primary);
+    font-family: var(--font-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  button, input, select, textarea {
+    font-family: inherit;
+    font-size: 14px;
+    color: inherit;
+  }
+
+  input, select, textarea {
+    font-size: 16px; /* Evita zoom molesto en Safari iOS */
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    touch-action: manipulation;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  button:active {
+    transform: scale(0.97);
+  }
+
+  /* ===== APP LAYOUT ===== */
+  .app-layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR (Desktop / Tablet) */
+  .sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 20px 14px;
+    z-index: 40;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 10px 20px;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 16px;
+  }
+
+  .brand-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(131, 2, 1, 0.2);
+    border: 1.5px solid rgba(131, 2, 1, 0.15);
+    background: var(--wine);
+  }
+
+  .brand-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .brand-text h2 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--wine);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .brand-text span {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--ink-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 9px 12px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-secondary);
+    text-align: left;
+    width: 100%;
+    position: relative;
+  }
+
+  .nav-item svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.9;
+    flex-shrink: 0;
+  }
+
+  .nav-item:hover {
+    background: var(--surface-secondary);
+    color: var(--ink-primary);
+  }
+
+  .nav-item.active {
+    background: var(--wine);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px -2px rgba(131, 2, 1, 0.35);
+  }
+
+  .nav-item.active svg {
+    stroke: #FFFFFF;
+  }
+
+  .nav-badge {
+    margin-left: auto;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: var(--radius-full);
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--ink-secondary);
+  }
+
+  .nav-item.active .nav-badge {
+    background: rgba(255, 255, 255, 0.22);
+    color: #FFFFFF;
+  }
+
+  /* Live Sync Pill in Sidebar */
+  .sync-indicator {
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    background: var(--surface-secondary);
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--ink-secondary);
+    margin-top: auto;
+  }
+
+  .sync-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.2);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 0 5px rgba(21, 128, 61, 0.25); }
+    100% { transform: scale(0.95); opacity: 0.8; }
+  }
+
+  /* MAIN CONTENT AREA */
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: calc(20px + env(safe-area-inset-top, 0px)) 20px calc(100px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* TOP ACTION BAR (Mobile & Desktop) */
+  .top-action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+
+  .mobile-brand {
+    display: none;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .search-trigger-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: var(--radius-full);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-tertiary);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .search-trigger-btn kbd {
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--surface-secondary);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: var(--ink-secondary);
+  }
+
+  /* VIEWS */
+  .view {
+    display: none;
+  }
+
+  .view.active {
+    display: block;
+    animation: fadeInView 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes fadeInView {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== CARDS & SURFACES ===== */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    gap: 10px;
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* HERO HEADER BANNER */
+  .hero-banner {
+    background: linear-gradient(145deg, var(--wine) 0%, #4D0000 100%);
+    border-radius: var(--radius-xl);
+    padding: 26px 24px;
+    color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .hero-banner::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hero-banner h1 {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  .hero-banner p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 620px;
+  }
+
+  /* METRICS GRID (KPIs) */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-tertiary);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .stat-val {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink-primary);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-card.highlight {
+    border-color: rgba(131, 2, 1, 0.25);
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(131, 2, 1, 0.03) 100%);
+  }
+
+  .stat-val.positive { color: var(--green); }
+  .stat-val.negative { color: var(--red); }
+
+  /* TOOLBARS & FILTERS */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .pill-group {
+    display: inline-flex;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    padding: 3px;
+    gap: 2px;
+    box-shadow: var(--shadow-sm);
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  .pill-btn {
+    border-radius: var(--radius-full);
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-secondary);
+    white-space: nowrap;
+  }
+
+  .pill-btn.active {
+    background: var(--wine);
+    color: #FFFFFF;
+    box-shadow: 0 2px 6px rgba(131, 2, 1, 0.25);
+  }
+
+  .btn-primary {
+    background: var(--wine);
+    color: #FFFFFF;
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    font-size: 12.5px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 3px 10px rgba(131, 2, 1, 0.25);
+  }
+
+  .btn-primary svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.4;
+  }
+
+  .btn-primary:hover {
+    background: var(--wine-dark);
+  }
+
+  /* ===== MONTH ACCORDIONS ===== */
+  .month-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.15s ease;
+  }
+
+  .month-header {
+    width: 100%;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border-bottom: 1px solid transparent;
+  }
+
+  .month-group.open .month-header {
+    border-bottom-color: var(--border-light);
+    background: var(--surface-secondary);
+  }
+
+  .month-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .month-title {
+    font-family: var(--font-heading);
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--wine);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .month-counter {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-secondary);
+    background: rgba(0, 0, 0, 0.06);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+  }
+
+  .month-financial-preview {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--green);
+    margin-left: auto;
+    margin-right: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .chevron-icon {
+    width: 16px;
+    height: 16px;
+    stroke: var(--ink-tertiary);
+    fill: none;
+    stroke-width: 2.2;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .month-group.open .chevron-icon {
+    transform: rotate(180deg);
+    stroke: var(--wine);
+  }
+
+  .month-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .month-group.open .month-content {
+    max-height: 8000px;
+  }
+
+  .month-inner-list {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* EVENT ITEM CARD */
+  .item-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    position: relative;
+    border-left: 4px solid var(--ink-tertiary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  }
+
+  .item-card.antro { border-left-color: var(--antro); }
+  .item-card.casa { border-left-color: var(--casa); }
+  .item-card.escolar { border-left-color: var(--wine); }
+  .item-card.ventas { border-left-color: var(--ventas); }
+
+  .item-header-grid {
+    display: grid;
+    grid-template-columns: 88px 1fr auto;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .date-picker-box {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .date-picker-box select,
+  .date-picker-box input {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 11.5px;
+    font-weight: 600;
+    background: var(--surface-secondary);
+    color: var(--ink-primary);
+  }
+
+  .item-title-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: var(--font-heading);
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink-primary);
+    padding: 2px 0;
+    margin-bottom: 6px;
+  }
+
+  .item-title-input:focus {
+    outline: none;
+    background: var(--surface-secondary);
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+
+  .item-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .tag-badge.antro { background: var(--antro-bg); color: var(--antro); border: 1px solid var(--antro-border); }
+  .tag-badge.casa { background: var(--casa-bg); color: var(--casa); border: 1px solid var(--casa-border); }
+  .tag-badge.escolar { background: var(--escolar-bg); color: var(--escolar); }
+  .tag-badge.ventas { background: var(--ventas-bg); color: var(--ventas); border: 1px solid var(--ventas-border); }
+  .tag-badge.confirmada { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); cursor: pointer; }
+  .tag-badge.estimada { background: var(--casa-bg); color: var(--casa); border: 1px solid var(--casa-border); cursor: pointer; }
+
+  .meta-select {
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 10.5px;
+    font-weight: 600;
+    background: var(--surface-secondary);
+    color: var(--ink-secondary);
+  }
+
+  .item-notes-input {
+    width: 100%;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    font-size: 11.5px;
+    color: var(--ink-secondary);
+    background: var(--surface-secondary);
+    margin-top: 8px;
+  }
+
+  .btn-icon-del {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--red-bg);
+    color: var(--red);
+    font-size: 15px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .btn-icon-del:hover {
+    background: var(--red);
+    color: #FFFFFF;
+  }
+
+  /* ITEM FINANCIAL GRID */
+  .item-fin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding-top: 12px;
+    margin-top: 12px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .fin-col h4 {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-tertiary);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .fin-field-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--ink-secondary);
+  }
+
+  .fin-field-row input {
+    width: 90px;
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+    background: var(--surface-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .fin-subtotal-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    padding-top: 6px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border-light);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .fin-subtotal-row.income { color: var(--green); }
+  .fin-subtotal-row.expense { color: var(--red); }
+
+  .item-bottom-balance {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    margin-top: 6px;
+    border-top: 1.5px solid var(--border);
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .item-bottom-balance .bal-value {
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .bal-value.pos { color: var(--green); }
+  .bal-value.neg { color: var(--red); }
+
+  /* ===== RESPONSIVE TABLE (Finanzas) ===== */
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+  }
+
+  .fin-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    min-width: 440px;
+  }
+
+  .fin-data-table th {
+    background: var(--surface-secondary);
+    padding: 10px 12px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-tertiary);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+    text-align: right;
+  }
+
+  .fin-data-table th:first-child {
+    text-align: left;
+  }
+
+  .fin-data-table td {
+    padding: 12px 12px;
+    border-bottom: 1px solid var(--border-light);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    background: var(--surface);
+  }
+
+  .fin-data-table td:first-child {
+    text-align: left;
+    white-space: normal;
+    font-weight: 600;
+    color: var(--ink-primary);
+  }
+
+  .fin-data-table tbody tr:hover td {
+    background: var(--surface-secondary);
+  }
+
+  .fin-data-table tfoot td {
+    background: var(--surface-secondary);
+    font-weight: 800;
+    border-top: 2px solid var(--wine);
+    font-family: var(--font-heading);
+    font-size: 13.5px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .fin-data-table tfoot td:first-child {
+    color: var(--wine);
+  }
+
+  /* ===== PHOTO GALLERY ===== */
+  .upload-dropzone {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-lg);
+    padding: 30px 20px;
+    text-align: center;
+    background: var(--surface);
+    cursor: pointer;
+    display: block;
+    margin-bottom: 18px;
+    transition: all 0.2s ease;
+  }
+
+  .upload-dropzone:hover {
+    border-color: var(--wine);
+    background: var(--wine-subtle);
+  }
+
+  .upload-dropzone svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--wine);
+    fill: none;
+    stroke-width: 1.8;
+    margin-bottom: 8px;
+  }
+
+  .upload-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--wine);
+  }
+
+  .upload-sub {
+    font-size: 11.5px;
+    color: var(--ink-tertiary);
+    margin-top: 4px;
+  }
+
+  .photo-masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+  }
+
+  .photo-card {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--surface-secondary);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+  }
+
+  .photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s ease;
+  }
+
+  .photo-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .photo-del-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    color: #FFFFFF;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+  }
+
+  /* PHOTO LIGHTBOX MODAL */
+  .lightbox-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .lightbox-modal.active {
+    display: flex;
+    animation: fadeInView 0.2s ease;
+  }
+
+  .lightbox-img {
+    max-width: 92vw;
+    max-height: 85vh;
+    border-radius: var(--radius-md);
+    object-fit: contain;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFF;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  /* SPOTLIGHT QUICK SEARCH MODAL */
+  .spotlight-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(24, 16, 12, 0.45);
+    backdrop-filter: blur(8px);
+    z-index: 90;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: calc(60px + env(safe-area-inset-top, 0px)) 16px 20px;
+  }
+
+  .spotlight-overlay.active {
+    display: flex;
+  }
+
+  .spotlight-box {
+    width: 100%;
+    max-width: 560px;
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-float);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .spotlight-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .spotlight-input-wrap svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--wine);
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .spotlight-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink-primary);
+  }
+
+  .spotlight-input:focus {
+    outline: none;
+  }
+
+  .spotlight-results {
+    max-height: 380px;
+    overflow-y: auto;
+    padding: 8px;
+  }
+
+  .spotlight-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+
+  .spotlight-item:hover {
+    background: var(--surface-secondary);
+  }
+
+  .spotlight-item-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-primary);
+  }
+
+  .spotlight-item-sub {
+    font-size: 11px;
+    color: var(--ink-tertiary);
+  }
+
+  /* TOAST NOTIFICATION */
+  .toast-banner {
+    position: fixed;
+    bottom: calc(85px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%) translateY(30px);
+    opacity: 0;
+    background: var(--ink-primary);
+    color: #FFFFFF;
+    padding: 10px 18px;
+    border-radius: var(--radius-full);
+    font-size: 12.5px;
+    font-weight: 600;
+    box-shadow: var(--shadow-float);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 120;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .toast-banner.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* EMPTY STATES */
+  .empty-state-box {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--ink-tertiary);
+    font-size: 13px;
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  /* ===== MOBILE ADAPTATIONS ===== */
+  @media(max-width: 768px) {
+    .sidebar {
+      display: none;
     }
-    .rail-logo{display:none;}
-    .rail-btn{width:auto; flex:1; padding:6px 2px;}
-    .app-shell{flex-direction:column;}
-    .content{padding-bottom:0;}
-    .wrap{
-      padding-top: calc(28px + env(safe-area-inset-top, 24px));
-      padding-bottom: calc(88px + env(safe-area-inset-bottom, 16px));
-      padding-left: calc(16px + env(safe-area-inset-left, 0px));
-      padding-right: calc(16px + env(safe-area-inset-right, 0px));
+
+    .mobile-brand {
+      display: flex;
+    }
+
+    .container {
+      padding-top: calc(16px + env(safe-area-inset-top, 20px));
+      padding-bottom: calc(96px + env(safe-area-inset-bottom, 16px));
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .stat-card {
+      padding: 12px 13px;
+    }
+
+    .stat-val {
+      font-size: 17px;
+    }
+
+    .hero-banner {
+      padding: 20px 18px;
+    }
+
+    .hero-banner h1 {
+      font-size: 19px;
+    }
+
+    .item-header-grid {
+      grid-template-columns: 1fr auto;
+    }
+
+    .date-picker-box {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    .item-fin-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* BOTTOM NAVIGATION BAR FOR MOBILE (iOS style) */
+    .bottom-nav-bar {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 10px));
+      z-index: 50;
+      justify-content: space-around;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.04);
+    }
+
+    .b-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding: 5px 2px;
+      border-radius: var(--radius-md);
+      color: var(--ink-tertiary);
+      font-size: 10px;
+      font-weight: 700;
+      flex: 1;
+    }
+
+    .b-nav-item svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+    }
+
+    .b-nav-item.active {
+      color: var(--wine);
     }
   }
 
-  .view{display:none;}
-  .view.active{display:block; animation:fade .22s ease;}
-  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
-
-  /* ===== Shared components ===== */
-  .header{
-    background:linear-gradient(135deg,var(--wine) 0%,var(--wine-deep) 100%);
-    color:#fff; border-radius:var(--radius); padding:22px 24px; margin-bottom:16px;
-    position:relative; overflow:hidden;
-  }
-  .header::after{content:""; position:absolute; right:-40px; top:-40px; width:180px;height:180px;border-radius:50%;
-    background:radial-gradient(circle, rgba(245,237,221,0.22), transparent 70%);}
-  .eyebrow{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:#F0DCC8; font-weight:600; margin-bottom:6px;}
-  .header h1{font-size:21px; font-weight:600; letter-spacing:-0.01em;}
-  .header p{margin:6px 0 0; color:#EDD9C4; font-size:13px; max-width:680px; line-height:1.5;}
-
-  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(101,0,0,0.04);}
-
-  .summary-bar{display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-bottom:16px;}
-  @media(max-width:560px){.summary-bar{grid-template-columns:repeat(2,1fr);}}
-  .stat{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; box-shadow:0 1px 2px rgba(101,0,0,0.05);}
-  .stat .label{font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:600;}
-  .stat .value{font-size:18px; font-weight:700; margin-top:3px; font-family:"Space Grotesk",sans-serif;}
-  .stat.balance{border-color:var(--wine);}
-  .stat.balance .value.pos{color:var(--green);}
-  .stat.balance .value.neg{color:var(--red);}
-
-  .toolbar{display:flex; flex-wrap:wrap; gap:9px; align-items:center; margin-bottom:14px;}
-  .tab-chips{display:flex; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px; gap:2px; overflow-x:auto;}
-  .tab-chip{border:none; background:transparent; padding:7px 14px; border-radius:999px; font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; font-family:inherit; white-space:nowrap;}
-  .tab-chip.active{background:var(--wine); color:#fff;}
-  .add-btn{margin-left:auto; background:var(--wine); color:#fff; border:none; border-radius:10px; padding:9px 15px; font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit; white-space:nowrap;}
-  .add-btn:active{background:var(--wine-deep);}
-
-  .legend{display:flex; gap:14px; flex-wrap:wrap; font-size:11px; color:var(--muted); margin-bottom:14px;}
-  .legend span{display:inline-flex; align-items:center; gap:5px;}
-  .dot{width:8px;height:8px;border-radius:3px; display:inline-block;}
-  .dot.antro{background:var(--antro-bg); border:1px solid var(--antro);}
-  .dot.casa{background:var(--casa-bg); border:1px solid var(--casa);}
-  .dot.ventas{background:var(--ventas-bg); border:1px solid var(--ventas);}
-
-  /* ===== Accordion month groups ===== */
-  .month-acc{background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:10px; overflow:hidden;}
-  .month-head{
-    width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px;
-    padding:13px 16px; background:transparent; border:none; cursor:pointer; font-family:"Space Grotesk",sans-serif;
-  }
-  .month-head .mh-left{display:flex; align-items:center; gap:10px;}
-  .month-head .mh-title{font-size:13px; font-weight:700; color:var(--wine); text-transform:uppercase; letter-spacing:.05em;}
-  .month-head .mh-count{font-size:10.5px; font-weight:700; color:var(--muted); background:var(--cream-deep); padding:2px 8px; border-radius:999px;}
-  .chevron{width:16px; height:16px; stroke:var(--wine); fill:none; stroke-width:2.2; transition:transform .2s;}
-  .month-acc.open .chevron{transform:rotate(180deg);}
-  .month-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
-  .month-acc.open .month-body{max-height:6000px;}
-  .month-body-inner{padding:0 12px 12px;}
-
-  .event-card{background:#fff; border:1px solid var(--line); border-left:4px solid var(--muted); border-radius:12px; padding:14px 15px; margin-bottom:9px;}
-  .event-card.antro{border-left-color:var(--antro);}
-  .event-card.casa{border-left-color:var(--casa);}
-  .event-card.escolar{border-left-color:var(--wine);}
-  .event-card.ventas{border-left-color:var(--ventas);}
-
-  .ev-top{display:grid; grid-template-columns:92px 1fr auto; gap:12px; align-items:start;}
-  @media(max-width:480px){.ev-top{grid-template-columns:1fr auto; } .date-box{grid-column:1/-1; flex-direction:row; gap:8px;}}
-  .date-box{display:flex; flex-direction:column; gap:4px;}
-  .date-box select{padding:6px 6px; border:1px solid var(--line); border-radius:7px; font-size:12px; font-family:inherit; color:var(--wine); background:#FCFAF3;}
-  .day-row input{width:100%; padding:6px 7px; border:1px solid var(--line); border-radius:7px; font-size:12px; font-family:inherit;}
-
-  .event-body input[type=text].ev-name{width:100%; border:none; background:transparent; font-size:14.5px; font-weight:700; color:var(--wine); padding:2px 0; margin-bottom:5px; font-family:inherit;}
-  .event-body input[type=text].ev-name:focus{outline:1px solid var(--wine); background:#fff; border-radius:4px; padding:2px 4px;}
-  .meta-row{display:flex; gap:7px; flex-wrap:wrap; align-items:center;}
-  .meta-row select{padding:5px 7px; border:1px solid var(--line); border-radius:7px; font-size:11px; color:var(--wine); background:#FCFAF3; font-family:inherit;}
-  .badge{font-size:9.5px; font-weight:700; padding:2px 8px; border-radius:999px; text-transform:uppercase; letter-spacing:.02em; cursor:pointer;}
-  .badge.antro{background:var(--antro-bg); color:var(--antro);}
-  .badge.casa{background:var(--casa-bg); color:var(--casa);}
-  .badge.escolar{background:var(--amber-bg); color:#8A6A11;}
-  .badge.confirmada{background:var(--green-bg); color:var(--green);}
-  .badge.estimada{background:var(--amber-bg); color:#8A6A11;}
-
-  .notas-input{width:100%; border:1px dashed var(--line); border-radius:7px; padding:6px 8px; font-size:11px; font-style:italic; color:var(--muted); font-family:inherit; background:#FCFAF3; margin-top:7px;}
-  .del-btn{background:var(--red-bg); color:var(--red); border:none; border-radius:8px; width:26px; height:26px; font-size:14px; font-weight:700; cursor:pointer; line-height:1; flex-shrink:0;}
-
-  .fin-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; padding-top:11px; margin-top:11px; border-top:1px dashed var(--line);}
-  @media(max-width:520px){.fin-grid{grid-template-columns:1fr;}}
-  .fin-col h4{font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); font-weight:700; margin-bottom:7px;}
-  .fin-row{display:grid; grid-template-columns:1fr auto; gap:8px; align-items:center; margin-bottom:6px; font-size:12px;}
-  .fin-row input[type=number]{width:92px; padding:6px 7px; border:1px solid var(--line); border-radius:7px; font-size:12px; font-family:inherit; text-align:right; background:#FCFAF3; color:var(--wine);}
-  .fin-row .readout{font-weight:700; color:var(--wine); text-align:right;}
-  .fin-total{display:flex; justify-content:space-between; font-size:12.5px; font-weight:700; padding-top:7px; margin-top:3px; border-top:1px solid var(--line);}
-  .fin-total.ing{color:var(--green);}
-  .fin-total.gas{color:var(--red);}
-  .ev-balance{grid-column:1/-1; display:flex; justify-content:space-between; align-items:center; margin-top:9px; padding-top:9px; border-top:1.5px solid var(--wine); font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:13.5px;}
-  .ev-balance .val.pos{color:var(--green);}
-  .ev-balance .val.neg{color:var(--red);}
-
-  /* ===== Tabla de Finanzas ===== */
-  .table-responsive{
-    width:100%;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    margin-top:6px;
-    border-radius:10px;
-  }
-  .fin-table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:12.5px;
-    min-width:320px;
-  }
-  .fin-table th{
-    padding:9px 8px;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.06em;
-    color:var(--muted);
-    font-weight:700;
-    border-bottom:1.5px solid var(--line);
-    text-align:right;
-  }
-  .fin-table th:first-child{
-    text-align:left;
-    padding-left:4px;
-  }
-  .fin-table td{
-    padding:11px 8px;
-    border-bottom:1px solid var(--line);
-    text-align:right;
-    font-variant-numeric:tabular-nums;
-    white-space:nowrap;
-  }
-  .fin-table td:first-child{
-    text-align:left;
-    white-space:normal;
-    font-weight:600;
-    padding-left:4px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .fin-table .td-dot{
-    width:8px;
-    height:8px;
-    border-radius:3px;
-    flex-shrink:0;
-    display:inline-block;
-  }
-  .fin-table tbody tr:last-child td{
-    border-bottom:none;
-  }
-  .fin-table tfoot td{
-    font-weight:700;
-    border-top:2px solid var(--wine);
-    font-family:"Space Grotesk",sans-serif;
-    font-size:13px;
-    padding-top:12px;
-    padding-bottom:12px;
-  }
-  .fin-table tfoot td:first-child{
-    color:var(--wine);
-  }
-
-  .empty-state{text-align:center; padding:36px 20px; color:var(--muted); font-size:12.5px; background:var(--card); border:1px dashed var(--line); border-radius:var(--radius);}
-  footer{text-align:center; font-size:11px; color:var(--muted); margin-top:26px;}
-
-  .howto{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:13px 16px; margin-bottom:14px; font-size:12px; color:var(--muted); line-height:1.55;}
-  .howto strong{color:var(--wine);}
-  .howto button{background:none; border:none; color:var(--wine); font-weight:700; font-size:11.5px; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;}
-
-  /* ===== Inicio ===== */
-  .hero{
-    background:linear-gradient(160deg, var(--wine) 0%, var(--wine-deep) 70%);
-    border-radius:20px; padding:34px 26px; color:#fff; position:relative; overflow:hidden; margin-bottom:16px;
-    text-align:center;
-  }
-  .hero::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10), transparent 55%);}
-  .hero-logo{width:64px; height:64px; border-radius:16px; overflow:hidden; margin:0 auto 14px; border:2px solid rgba(255,255,255,0.4); position:relative;}
-  .hero-logo img{width:100%; height:100%; object-fit:cover; display:block;}
-  .hero h1{font-size:24px; font-weight:700; letter-spacing:-0.01em; position:relative;}
-  .hero p{margin:8px 0 0; color:#F0DCC8; font-size:13.5px; max-width:420px; margin-left:auto; margin-right:auto; line-height:1.6; position:relative;}
-  .quick-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:16px;}
-  @media(max-width:560px){.quick-grid{grid-template-columns:1fr;}}
-  .quick-card{
-    background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; cursor:pointer;
-    display:flex; align-items:center; gap:12px; transition:transform .12s;
-  }
-  .quick-card:active{transform:scale(0.98);}
-  .quick-ic{width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
-  .quick-ic svg{width:19px; height:19px; stroke-width:2;}
-  .quick-title{font-size:13.5px; font-weight:700; color:var(--wine);}
-  .quick-sub{font-size:11px; color:var(--muted); margin-top:1px;}
-
-  /* ===== Fotos ===== */
-  .photo-upload{
-    border:2px dashed var(--line); border-radius:16px; padding:28px 16px; text-align:center; margin-bottom:16px;
-    background:var(--card); cursor:pointer; display:block;
-  }
-  .photo-upload svg{width:30px; height:30px; stroke:var(--wine); fill:none; stroke-width:1.6; margin-bottom:8px;}
-  .photo-upload .pu-title{font-size:13.5px; font-weight:700; color:var(--wine);}
-  .photo-upload .pu-sub{font-size:11.5px; color:var(--muted); margin-top:3px;}
-  #photoInput{display:none;}
-  .photo-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:8px;}
-  .photo-item{position:relative; aspect-ratio:1; border-radius:12px; overflow:hidden; background:var(--line);}
-  .photo-item img{width:100%; height:100%; object-fit:cover; display:block;}
-  .photo-item .ph-del{
-    position:absolute; top:5px; right:5px; width:24px; height:24px; border-radius:8px; border:none;
-    background:rgba(0,0,0,0.55); color:#fff; font-size:13px; font-weight:700; cursor:pointer; line-height:1;
-  }
-  .photo-item .ph-uploading{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    background:rgba(0,0,0,0.35); color:#fff; font-size:10.5px; font-weight:600;
+  @media(min-width: 769px) {
+    .bottom-nav-bar {
+      display: none;
+    }
   }
 </style>
 </head>
 <body>
-<div class="app-shell">
 
-  <nav class="rail" id="rail">
-    <div class="rail-logo"><img src="icon-192.png" alt="27MEX"></div>
-    <button class="rail-btn active" data-view="inicio">
-      <svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
-      Inicio
-    </button>
-    <button class="rail-btn" data-view="extracurricular">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v5"/></svg>
-      Extra
-    </button>
-    <button class="rail-btn" data-view="escolar">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>
-      Escolar
-    </button>
-    <button class="rail-btn" data-view="ventas">
-      <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
-      Ventas
-    </button>
-    <button class="rail-btn" data-view="fotos">
-      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-4 4-3-3-4 4"/></svg>
-      Fotos
-    </button>
-    <button class="rail-btn" data-view="finanzas">
-      <svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-      Finanzas
-    </button>
-  </nav>
+<div class="app-layout">
 
-  <div class="content">
-    <div class="wrap">
+  <!-- ==================== DESKTOP SIDEBAR ==================== -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-avatar">
+        <img src="icon-192.png" alt="27MEX">
+      </div>
+      <div class="brand-text">
+        <h2>27MEX Seniors</h2>
+        <span>IMEX 2026–2027</span>
+      </div>
+    </div>
 
-      <!-- ===================== INICIO ===================== -->
+    <nav class="nav-group" id="desktopNav">
+      <button class="nav-item active" data-view="inicio">
+        <svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+        <span>Inicio</span>
+      </button>
+      <button class="nav-item" data-view="extracurricular">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v5"/></svg>
+        <span>Fiestas</span>
+        <span class="nav-badge" id="badgeExtra">10</span>
+      </button>
+      <button class="nav-item" data-view="escolar">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>
+        <span>Escolar</span>
+        <span class="nav-badge" id="badgeEscolar">74</span>
+      </button>
+      <button class="nav-item" data-view="ventas">
+        <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+        <span>Ventas</span>
+        <span class="nav-badge" id="badgeVentas">2</span>
+      </button>
+      <button class="nav-item" data-view="fotos">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-4 4-3-3-4 4"/></svg>
+        <span>Fotos</span>
+        <span class="nav-badge" id="badgeFotos">0</span>
+      </button>
+      <button class="nav-item" data-view="finanzas">
+        <svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        <span>Finanzas</span>
+      </button>
+    </nav>
+
+    <div class="sync-indicator">
+      <span class="sync-dot"></span>
+      <span id="syncText">Sincronizado en vivo</span>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTAINER ==================== -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- TOP ACTION BAR -->
+      <div class="top-action-bar">
+        <div class="mobile-brand">
+          <div class="brand-avatar" style="width:32px; height:32px; border-radius:8px;">
+            <img src="icon-192.png" alt="27MEX">
+          </div>
+          <div class="brand-text">
+            <h2 style="font-size:13.5px;">27MEX Seniors</h2>
+          </div>
+        </div>
+
+        <button class="search-trigger-btn" id="openSearchBtn">
+          <svg viewBox="0 0 24 24" style="width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <span>Buscar evento o actividad…</span>
+          <kbd>⌘K</kbd>
+        </button>
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- VIEW: INICIO (COMMAND CENTER) -->
+      <!-- ======================================================= -->
       <div class="view active" id="view-inicio">
-        <div class="hero">
-          <div class="hero-logo"><img src="icon-192.png" alt="27MEX Seniors"></div>
-          <h1>Nuestro último año 💛</h1>
-          <p>Un ciclo entero por delante para dejar huella — fiestas, tradiciones, recaudación y muchos recuerdos. Esta es la app del Consejo Estudiantil 27MEX Seniors 26/27.</p>
-        </div>
-        <div class="quick-grid">
-          <div class="quick-card" data-goto="extracurricular">
-            <div class="quick-ic" style="background:var(--antro-bg);"><svg viewBox="0 0 24 24" stroke="var(--antro)"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg></div>
-            <div><div class="quick-title">Fiestas extracurriculares</div><div class="quick-sub">Calendario y finanzas de antros y casas</div></div>
+        <div class="hero-banner">
+          <div class="hero-eyebrow">
+            <span>✨</span> CONSEJO ESTUDIANTIL IMEX 2026–2027
           </div>
-          <div class="quick-card" data-goto="escolar">
-            <div class="quick-ic" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" stroke="#8A6A11"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg></div>
-            <div><div class="quick-title">Calendario escolar</div><div class="quick-sub">Todo lo que organizamos dentro del IMEX</div></div>
-          </div>
-          <div class="quick-card" data-goto="ventas">
-            <div class="quick-ic" style="background:var(--ventas-bg);"><svg viewBox="0 0 24 24" stroke="var(--ventas)"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
-            <div><div class="quick-title">Ventas escolares</div><div class="quick-sub">Donas, calaveritas y más recaudación</div></div>
-          </div>
-          <div class="quick-card" data-goto="fotos">
-            <div class="quick-ic" style="background:var(--casa-bg);"><svg viewBox="0 0 24 24" stroke="var(--casa)"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/></svg></div>
-            <div><div class="quick-title">Álbum de fotos</div><div class="quick-sub">Los recuerdos del año, todos juntos</div></div>
-          </div>
-        </div>
-        <div class="card" style="text-align:center; color:var(--muted); font-size:12px;">
-          27MEX Seniors · Consejo Estudiantil IMEX 26/27 — hecho por y para la generación.
-        </div>
-      </div>
-
-      <!-- ===================== EXTRACURRICULAR ===================== -->
-      <div class="view" id="view-extracurricular">
-        <div class="header">
-          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
-          <h1>Calendario financiero extracurricular</h1>
-          <p>Fiestas en antro y fiestas en casa para seniors. Toca un mes para ver sus actividades.</p>
-        </div>
-        <div class="howto">
-          <strong>¿Cómo lo uso?</strong> Todos editan el mismo documento en tiempo real. <button onclick="toggleHowto('extra')">Ver más</button>
-          <div id="howtoMore-extra" style="display:none; margin-top:7px;">
-            Boletos × Precio = ingreso bruto. En antro se suma comisión sobre boletos. En casa el gasto cubre todo. El balance se recalcula solo.
-          </div>
-        </div>
-        <div class="summary-bar">
-          <div class="stat"><div class="label">Ingresos</div><div class="value" id="statIngresos">$0</div></div>
-          <div class="stat"><div class="label">Gastos</div><div class="value" id="statGastos">$0</div></div>
-          <div class="stat balance"><div class="label">Balance</div><div class="value" id="statBalance">$0</div></div>
-          <div class="stat"><div class="label">Actividades</div><div class="value" id="statCount">0</div></div>
-        </div>
-        <div class="legend">
-          <span><span class="dot antro"></span> Antro</span>
-          <span><span class="dot casa"></span> Casa seniors</span>
-        </div>
-        <div class="toolbar">
-          <div class="tab-chips" id="filterSegExtra">
-            <button data-f="all" class="tab-chip active">Todas</button>
-            <button data-f="antro" class="tab-chip">Antro</button>
-            <button data-f="casa" class="tab-chip">Casa</button>
-          </div>
-          <button class="add-btn" id="addEventBtn">+ Agregar</button>
-        </div>
-        <div id="timelineExtra"></div>
-        <div class="empty-state" id="emptyExtra" style="display:none;">No hay actividades en este filtro todavía.</div>
-        <footer>Calendario financiero extracurricular — 27MEX Seniors</footer>
-      </div>
-
-      <!-- ===================== ESCOLAR ===================== -->
-      <div class="view" id="view-escolar">
-        <div class="header">
-          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
-          <h1>Calendario escolar</h1>
-          <p>Todo lo que organizamos dentro del IMEX en el ciclo 2026–2027. Toca un mes para desplegarlo.</p>
-        </div>
-        <div class="howto">
-          <strong>¿Cómo lo uso?</strong> Igual, todos ven y editan lo mismo en tiempo real. <button onclick="toggleHowto('esc')">Ver más</button>
-          <div id="howtoMore-esc" style="display:none; margin-top:7px;">
-            Cada tarjeta tiene mes, día y notas editables. Usa + Agregar para meter cualquier evento nuevo.
-          </div>
-        </div>
-        <div class="toolbar">
-          <span class="tab-chip active" id="statCountEscPill" style="background:var(--wine); cursor:default;">0 actividades</span>
-          <button class="add-btn" id="addSchoolEventBtn">+ Agregar</button>
-        </div>
-        <div id="timelineEscolar"></div>
-        <div class="empty-state" id="emptyEscolar" style="display:none;">No hay actividades todavía.</div>
-        <footer>Calendario escolar — 27MEX Seniors</footer>
-      </div>
-
-      <!-- ===================== VENTAS ===================== -->
-      <div class="view" id="view-ventas">
-        <div class="header">
-          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
-          <h1>Ventas escolares</h1>
-          <p>Donas, calaveritas de azúcar y cualquier venta dentro de la escuela — ingresos, gastos y balance de cada una.</p>
-        </div>
-        <div class="howto">
-          <strong>¿Cómo lo uso?</strong> Cantidad × Precio = ingreso. Anota el gasto de producir/comprar lo que vendan. <button onclick="toggleHowto('ventas')">Ver más</button>
-          <div id="howtoMore-ventas-more" style="display:none; margin-top:7px;">
-            Usa + Agregar venta para cualquier producto nuevo (dulces, boletos de rifa, lo que sea). El balance de cada una y el total se calculan solos.
-          </div>
-        </div>
-        <div class="summary-bar">
-          <div class="stat"><div class="label">Ingresos</div><div class="value" id="statIngresosVentas">$0</div></div>
-          <div class="stat"><div class="label">Gastos</div><div class="value" id="statGastosVentas">$0</div></div>
-          <div class="stat balance"><div class="label">Balance</div><div class="value" id="statBalanceVentas">$0</div></div>
-          <div class="stat"><div class="label">Ventas</div><div class="value" id="statCountVentas">0</div></div>
-        </div>
-        <div class="toolbar">
-          <span class="tab-chip active" style="background:var(--ventas); cursor:default;">Ventas dentro de la escuela</span>
-          <button class="add-btn" id="addVentaBtn">+ Agregar venta</button>
-        </div>
-        <div id="timelineVentas"></div>
-        <div class="empty-state" id="emptyVentas" style="display:none;">No hay ventas registradas todavía.</div>
-        <footer>Ventas escolares — 27MEX Seniors</footer>
-      </div>
-
-      <!-- ===================== FOTOS ===================== -->
-      <div class="view" id="view-fotos">
-        <div class="header">
-          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
-          <h1>Álbum de fotos</h1>
-          <p>Los recuerdos del año, todos juntos. Cualquiera puede subir fotos aquí.</p>
-        </div>
-        <label class="photo-upload" for="photoInput">
-          <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><rect x="3" y="16" width="18" height="5" rx="1.5"/></svg>
-          <div class="pu-title">Toca para subir una foto</div>
-          <div class="pu-sub">Se comprime automáticamente para que cargue rápido</div>
-        </label>
-        <input type="file" id="photoInput" accept="image/*" multiple>
-        <div class="photo-grid" id="photoGrid"></div>
-        <div class="empty-state" id="emptyFotos" style="display:none; margin-top:14px;">Aún no hay fotos. ¡Sube la primera!</div>
-        <footer>Álbum de fotos — 27MEX Seniors</footer>
-      </div>
-
-      <!-- ===================== FINANZAS ===================== -->
-      <div class="view" id="view-finanzas">
-        <div class="header">
-          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
-          <h1>Finanzas generales</h1>
-          <p>La suma de todo: fiestas, ventas escolares, actividades del calendario y cualquier ingreso o gasto extra.</p>
+          <h1>Nuestro último año juntos</h1>
+          <p>Un ciclo entero para dejar huella. Aquí gestionamos todas las fiestas, ventas escolares, logística interna y recuerdos de la generación 27MEX.</p>
         </div>
 
-        <div class="summary-bar">
-          <div class="stat"><div class="label">Ingresos totales</div><div class="value" id="finTotalIngresos">$0</div></div>
-          <div class="stat"><div class="label">Gastos totales</div><div class="value" id="finTotalGastos">$0</div></div>
-          <div class="stat balance"><div class="label">Balance neto</div><div class="value" id="finTotalBalance">$0</div></div>
-          <div class="stat"><div class="label">Fuentes registradas</div><div class="value" id="finTotalFuentes">0</div></div>
+        <!-- Dashboard KPIs -->
+        <div class="stats-grid">
+          <div class="stat-card highlight">
+            <div class="stat-label">Balance General</div>
+            <div class="stat-val positive" id="dashTotalBalance">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Fiestas Extracurr.</div>
+            <div class="stat-val" id="dashFiestasBal">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Ventas Escolares</div>
+            <div class="stat-val" id="dashVentasBal">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Eventos IMEX</div>
+            <div class="stat-val" id="dashTotalEventos">74</div>
+          </div>
         </div>
 
+        <!-- Próximos Eventos Destacados -->
         <div class="card">
-          <div class="card-head" style="display:flex; justify-content:space-between; margin-bottom:10px;">
-            <h3 style="font-size:14px; color:var(--wine);">Desglose por categoría</h3>
+          <div class="card-header">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--wine);fill:none;stroke-width:2;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+              Próximas actividades clave
+            </div>
+          </div>
+          <div id="dashUpcomingList" style="display:flex; flex-direction:column; gap:8px;"></div>
+        </div>
+
+        <!-- Accesos rápidos ejecutivos -->
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px;">
+          <div class="card" style="cursor:pointer; margin-bottom:0;" data-goto="extracurricular">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div style="width:40px; height:40px; border-radius:12px; background:var(--antro-bg); border:1px solid var(--antro-border); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--antro);fill:none;stroke-width:2;"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg>
+              </div>
+              <div>
+                <div style="font-weight:700; font-size:13.5px; color:var(--wine);">Fiestas y Antros</div>
+                <div style="font-size:11.5px; color:var(--ink-tertiary);">Boletos, comisiones y finanzas</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="cursor:pointer; margin-bottom:0;" data-goto="ventas">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div style="width:40px; height:40px; border-radius:12px; background:var(--ventas-bg); border:1px solid var(--ventas-border); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--ventas);fill:none;stroke-width:2;"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+              </div>
+              <div>
+                <div style="font-weight:700; font-size:13.5px; color:var(--ventas);">Ventas Escolares</div>
+                <div style="font-size:11.5px; color:var(--ink-tertiary);">Donas, calaveritas y recaudación</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- VIEW: EXTRACURRICULAR (FIESTAS) -->
+      <!-- ======================================================= -->
+      <div class="view" id="view-extracurricular">
+        <div class="hero-banner" style="background: linear-gradient(145deg, #4A1D96 0%, #2E1065 100%);">
+          <div class="hero-eyebrow">PRESUPUESTOS Y BOLETOS</div>
+          <h1>Fiestas Extracurriculares</h1>
+          <p>Control de fiestas en antros y casas de seniors. Proyecciones automáticas de boletos, precio, comisión y utilidad neta.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Ingresos Brutos</div>
+            <div class="stat-val" id="statIngresos">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Gastos Totales</div>
+            <div class="stat-val" id="statGastos">$0</div>
+          </div>
+          <div class="stat-card highlight">
+            <div class="stat-label">Balance Neto</div>
+            <div class="stat-val positive" id="statBalance">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Eventos</div>
+            <div class="stat-val" id="statCount">0</div>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="pill-group" id="filterSegExtra">
+            <button data-f="all" class="pill-btn active">Todas las fiestas</button>
+            <button data-f="antro" class="pill-btn">Antros</button>
+            <button data-f="casa" class="pill-btn">Casas Seniors</button>
+          </div>
+          <button class="btn-primary" id="addEventBtn">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            <span>Nueva fiesta</span>
+          </button>
+        </div>
+
+        <div id="timelineExtra"></div>
+        <div class="empty-state-box" id="emptyExtra" style="display:none;">No hay fiestas registradas en este filtro.</div>
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- VIEW: ESCOLAR (CALENDARIO IMEX) -->
+      <!-- ======================================================= -->
+      <div class="view" id="view-escolar">
+        <div class="hero-banner" style="background: linear-gradient(145deg, var(--wine) 0%, #4D0000 100%);">
+          <div class="hero-eyebrow">ORGANIZACIÓN INTERNA</div>
+          <h1>Calendario Escolar IMEX</h1>
+          <p>Cronograma oficial de actividades, asambleas, semanas temáticas y celebraciones del ciclo 2026–2027.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="pill-group">
+            <span class="pill-btn active" id="statCountEscPill" style="cursor:default;">74 actividades</span>
+          </div>
+          <button class="btn-primary" id="addSchoolEventBtn">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            <span>Agregar actividad</span>
+          </button>
+        </div>
+
+        <div id="timelineEscolar"></div>
+        <div class="empty-state-box" id="emptyEscolar" style="display:none;">No hay actividades escolares registradas.</div>
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- VIEW: VENTAS (RECAUDACIÓN ESCOLAR) -->
+      <!-- ======================================================= -->
+      <div class="view" id="view-ventas">
+        <div class="hero-banner" style="background: linear-gradient(145deg, #0F766E 0%, #134E4A 100%);">
+          <div class="hero-eyebrow">RECAUDACIÓN ACTIVA</div>
+          <h1>Ventas Escolares</h1>
+          <p>Donas, calaveritas y productos escolares. Calcula costos de producción, ventas brutas y margen de ganancia.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Venta Total</div>
+            <div class="stat-val" id="statIngresosVentas">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Costo Insumos</div>
+            <div class="stat-val" id="statGastosVentas">$0</div>
+          </div>
+          <div class="stat-card highlight">
+            <div class="stat-label">Ganancia Neta</div>
+            <div class="stat-val positive" id="statBalanceVentas">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Productos</div>
+            <div class="stat-val" id="statCountVentas">0</div>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <span class="pill-group" style="padding: 6px 12px; font-size:12px; font-weight:700; color:var(--ventas);">
+            Productos en venta
+          </span>
+          <button class="btn-primary" id="addVentaBtn" style="background:var(--ventas);">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            <span>Nuevo producto</span>
+          </button>
+        </div>
+
+        <div id="timelineVentas"></div>
+        <div class="empty-state-box" id="emptyVentas" style="display:none;">No hay ventas registradas aún.</div>
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- VIEW: FOTOS (ÁLBUM GENERACIONAL) -->
+      <!-- ======================================================= -->
+      <div class="view" id="view-fotos">
+        <div class="hero-banner" style="background: linear-gradient(145deg, #B45309 0%, #78350F 100%);">
+          <div class="hero-eyebrow">RECUERDOS 2026–2027</div>
+          <h1>Álbum Generacional</h1>
+          <p>Los mejores momentos del último año. Sube fotos desde cualquier dispositivo en tiempo real con compresión optimizada.</p>
+        </div>
+
+        <label class="upload-dropzone" for="photoInput">
+          <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><rect x="3" y="16" width="18" height="5" rx="1.5"/></svg>
+          <div class="upload-title">Toca para subir fotos al álbum</div>
+          <div class="upload-sub">Compresión automática en alta calidad · Se sincroniza con todos</div>
+        </label>
+        <input type="file" id="photoInput" accept="image/*" multiple style="display:none;">
+
+        <div class="photo-masonry" id="photoGrid"></div>
+        <div class="empty-state-box" id="emptyFotos" style="display:none; margin-top:14px;">Aún no hay fotos. ¡Sube la primera!</div>
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- VIEW: FINANZAS (ESTADO DE RESULTADOS) -->
+      <!-- ======================================================= -->
+      <div class="view" id="view-finanzas">
+        <div class="hero-banner">
+          <div class="hero-eyebrow">ESTADO FINANCIERO CONSOLIDADO</div>
+          <h1>Finanzas y Tesorería</h1>
+          <p>Suma total de fiestas, ventas escolares, gastos logísticos y movimientos extraordinarios del Consejo.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Ingresos Totales</div>
+            <div class="stat-val positive" id="finTotalIngresos">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Gastos Totales</div>
+            <div class="stat-val negative" id="finTotalGastos">$0</div>
+          </div>
+          <div class="stat-card highlight">
+            <div class="stat-label">Balance Neto</div>
+            <div class="stat-val positive" id="finTotalBalance">$0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Movimientos</div>
+            <div class="stat-val" id="finTotalFuentes">0</div>
+          </div>
+        </div>
+
+        <!-- Tabla ejecutiva por categoría -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--wine);fill:none;stroke-width:2;"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+              Desglose consolidado por categoría
+            </div>
           </div>
           <div id="finBreakdown"></div>
         </div>
 
+        <!-- Movimientos extraordinarios -->
         <div class="toolbar">
-          <span class="tab-chip active" style="background:var(--wine); cursor:default;">Ingresos y gastos extra</span>
-          <button class="add-btn" id="addExtraBtn">+ Agregar</button>
+          <div class="pill-group" style="padding:6px 12px; font-weight:700; font-size:12px; color:var(--wine);">
+            Movimientos extraordinarios
+          </div>
+          <button class="btn-primary" id="addExtraBtn">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            <span>Agregar movimiento</span>
+          </button>
         </div>
         <div id="finExtrasList"></div>
-        <div class="empty-state" id="emptyExtras" style="display:none;">No hay movimientos extra registrados.</div>
-
-        <footer>Finanzas generales — 27MEX Seniors</footer>
+        <div class="empty-state-box" id="emptyExtras" style="display:none;">No hay movimientos extraordinarios registrados.</div>
       </div>
 
     </div>
+  </main>
+
+  <!-- ==================== MOBILE BOTTOM NAVIGATION ==================== -->
+  <nav class="bottom-nav-bar" id="mobileNav">
+    <button class="b-nav-item active" data-view="inicio">
+      <svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+      <span>Inicio</span>
+    </button>
+    <button class="b-nav-item" data-view="extracurricular">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v5"/></svg>
+      <span>Fiestas</span>
+    </button>
+    <button class="b-nav-item" data-view="escolar">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>
+      <span>Escolar</span>
+    </button>
+    <button class="b-nav-item" data-view="ventas">
+      <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+      <span>Ventas</span>
+    </button>
+    <button class="b-nav-item" data-view="fotos">
+      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-4 4-3-3-4 4"/></svg>
+      <span>Fotos</span>
+    </button>
+    <button class="b-nav-item" data-view="finanzas">
+      <svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <span>Finanzas</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- ==================== SPOTLIGHT SEARCH MODAL ==================== -->
+<div class="spotlight-overlay" id="spotlightModal">
+  <div class="spotlight-box">
+    <div class="spotlight-input-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Buscar fiesta, venta o actividad escolar…">
+      <button id="closeSearchBtn" style="font-size:12px; font-weight:700; color:var(--ink-tertiary); padding:4px 8px;">ESC</button>
+    </div>
+    <div class="spotlight-results" id="spotlightResults"></div>
   </div>
 </div>
 
+<!-- ==================== PHOTO LIGHTBOX MODAL ==================== -->
+<div class="lightbox-modal" id="photoLightbox">
+  <button class="lightbox-close" id="closeLightbox">×</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="Foto en grande">
+</div>
+
+<!-- ==================== TOAST NOTIFICATION ==================== -->
+<div class="toast-banner" id="toastBanner">
+  <span id="toastMsg">Cambios guardados</span>
+</div>
+
+<!-- =============================================================== -->
+<!-- FIREBASE & LÓGICA DE APLICACIÓN -->
+<!-- =============================================================== -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, addDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -514,22 +1649,23 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const IMGBB_API_KEY = "020bfc16b10189d5f17a72269ae8cb79";
+
 const docRefExtra = doc(db, "consejo-imex", "calendario-financiero");
 const docRefEscolar = doc(db, "consejo-imex", "calendario-escolar");
 const docRefVentas = doc(db, "consejo-imex", "ventas-escolares");
 const docRefFinanzas = doc(db, "consejo-imex", "finanzas-extras");
 const fotosCol = collection(db, "fotos");
 
-window.toggleHowto = (which)=>{
-  const map = {extra:'howtoMore-extra', esc:'howtoMore-esc', ventas:'howtoMore-ventas-more'};
-  const el = document.getElementById(map[which]);
-  el.style.display = el.style.display==='none' ? 'block' : 'none';
-};
+function showToast(msg = "Cambios guardados"){
+  const t = document.getElementById('toastBanner');
+  const m = document.getElementById('toastMsg');
+  if(!t || !m) return;
+  m.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(()=> t.classList.remove('show'), 2200);
+}
 
-// =====================================================================
-// SEGURIDAD: escape de HTML — evita que texto escrito por cualquier
-// persona (nombre de evento, nota, etc.) se interprete como código.
-// =====================================================================
 function esc(str){
   return String(str ?? '').replace(/[&<>"']/g, ch => ({
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
@@ -552,17 +1688,15 @@ function monthOptions(selected){
 let idCounter = 1000;
 const newId = () => 'e' + (idCounter++);
 
-// Evita guardar en Firebase en cada tecla
-function debounce(fn, delay=450){
+function debounce(fn, delay=400){
   let t;
   return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn(...args), delay); };
 }
 
-// Estado de acordeones abiertos
-const expanded = { extra:new Set(), escolar:new Set(), ventas:new Set() };
+const expanded = { extra: new Set([9, 10]), escolar: new Set([8, 9]), ventas: new Set([9, 10]) };
 
 // =====================================================================
-// DATA
+// DATA BASELINE
 // =====================================================================
 let eventos = [
   {id:'e1', nombre:'Back to School', categoria:'antro', mes:9, dia:11, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
@@ -664,10 +1798,11 @@ let fotos = [];
 let extras = [];
 
 // =====================================================================
-// ACORDEÓN GENÉRICO por mes
+// ACORDEÓN GENÉRICO
 // =====================================================================
-function renderAccordion(containerId, sectionKey, items, cardFn, emptyElId){
+function renderAccordion(containerId, sectionKey, items, cardFn, emptyElId, monthBalanceFn=null){
   const timeline = document.getElementById(containerId);
+  if(!timeline) return;
   timeline.innerHTML = '';
   document.getElementById(emptyElId).style.display = items.length ? 'none' : 'block';
 
@@ -677,21 +1812,34 @@ function renderAccordion(containerId, sectionKey, items, cardFn, emptyElId){
     const da = a.dia==null?99:a.dia, db = b.dia==null?99:b.dia;
     return da-db;
   });
+
   const groups = {};
   sorted.forEach(e=>{ (groups[e.mes] ||= []).push(e); });
   const monthKeys = Object.keys(groups).map(Number).sort((a,b)=>monthOrder(a)-monthOrder(b));
 
   monthKeys.forEach(mkey=>{
     const isOpen = expanded[sectionKey].has(mkey);
+    const mItems = groups[mkey];
     const acc = document.createElement('div');
-    acc.className = 'month-acc' + (isOpen ? ' open' : '');
+    acc.className = 'month-group' + (isOpen ? ' open' : '');
+
+    let balancePreviewHtml = '';
+    if(monthBalanceFn){
+      const bal = monthBalanceFn(mItems);
+      balancePreviewHtml = `<span class="month-financial-preview" style="color:${bal>=0?'var(--green)':'var(--red)'};">${money(bal)}</span>`;
+    }
+
     acc.innerHTML = `
-      <button class="month-head" data-toggle-month="${mkey}" data-section="${sectionKey}">
-        <span class="mh-left"><span class="mh-title">${esc(monthLabel(mkey))}</span><span class="mh-count">${groups[mkey].length}</span></span>
-        <svg class="chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      <button class="month-header" data-toggle-month="${mkey}" data-section="${sectionKey}">
+        <div class="month-title-wrap">
+          <span class="month-title">${esc(monthLabel(mkey))}</span>
+          <span class="month-counter">${mItems.length}</span>
+        </div>
+        ${balancePreviewHtml}
+        <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div class="month-body"><div class="month-body-inner">
-        ${groups[mkey].map(cardFn).join('')}
+      <div class="month-content"><div class="month-inner-list">
+        ${mItems.map(cardFn).join('')}
       </div></div>`;
     timeline.appendChild(acc);
   });
@@ -707,45 +1855,48 @@ function balanceEv(e){ return ingresoBruto(e) - gastoTotal(e); }
 
 function renderExtra(){
   const visible = eventos.filter(e => filtro==='all' || e.categoria===filtro);
-  renderAccordion('timelineExtra', 'extra', visible, eventCardHtmlExtra, 'emptyExtra');
+  const extraMonthBal = items => items.reduce((s,x)=>s+balanceEv(x),0);
+  renderAccordion('timelineExtra', 'extra', visible, eventCardHtmlExtra, 'emptyExtra', extraMonthBal);
   updateSummaryExtra();
+  const b = document.getElementById('badgeExtra');
+  if(b) b.textContent = eventos.length;
 }
 
 function eventCardHtmlExtra(e){
   const isAntro = e.categoria==='antro';
   return `
-  <div class="event-card ${esc(e.categoria)}">
-    <div class="ev-top">
-      <div class="date-box">
+  <div class="item-card ${esc(e.categoria)}">
+    <div class="item-header-grid">
+      <div class="date-picker-box">
         <select data-type="ev-mes" data-id="${e.id}">${monthOptions(e.mes)}</select>
-        <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="ev-dia" data-id="${e.id}"></div>
+        <input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="ev-dia" data-id="${e.id}">
       </div>
-      <div class="event-body">
-        <input type="text" class="ev-name" maxlength="80" value="${esc(e.nombre)}" data-type="ev-nombre" data-id="${e.id}" placeholder="Nombre">
-        <div class="meta-row">
-          <select data-type="ev-categoria" data-id="${e.id}">
+      <div>
+        <input type="text" class="item-title-input" maxlength="80" value="${esc(e.nombre)}" data-type="ev-nombre" data-id="${e.id}" placeholder="Nombre de la fiesta">
+        <div class="item-meta-row">
+          <select class="meta-select" data-type="ev-categoria" data-id="${e.id}">
             <option value="antro" ${isAntro?'selected':''}>Antro</option>
             <option value="casa" ${!isAntro?'selected':''}>Casa seniors</option>
           </select>
-          <span class="badge ${e.confirmada?'confirmada':'estimada'}" data-type="ev-confirm-badge" data-id="${e.id}">${e.confirmada?'Confirmada':'Estimada'}</span>
+          <span class="tag-badge ${e.confirmada?'confirmada':'estimada'}" data-type="ev-confirm-badge" data-id="${e.id}">${e.confirmada?'Confirmada':'Por confirmar'}</span>
         </div>
       </div>
-      <button class="del-btn" data-type="del-ev" data-id="${e.id}">×</button>
+      <button class="btn-icon-del" data-type="del-ev" data-id="${e.id}">×</button>
     </div>
-    <div class="fin-grid">
+    <div class="item-fin-grid">
       <div class="fin-col">
-        <h4>Ingresos</h4>
-        <div class="fin-row"><label>Boletos</label><input type="number" min="0" value="${e.boletos}" data-type="ev-boletos" data-id="${e.id}"></div>
-        <div class="fin-row"><label>Precio ($)</label><input type="number" min="0" value="${e.precio}" data-type="ev-precio" data-id="${e.id}"></div>
-        <div class="fin-total ing"><span>Ingreso bruto</span><span id="ingOf-${e.id}">${money(ingresoBruto(e))}</span></div>
+        <h4>Ingresos por boletos</h4>
+        <div class="fin-field-row"><label>Boletos</label><input type="number" min="0" value="${e.boletos}" data-type="ev-boletos" data-id="${e.id}"></div>
+        <div class="fin-field-row"><label>Precio ($)</label><input type="number" min="0" value="${e.precio}" data-type="ev-precio" data-id="${e.id}"></div>
+        <div class="fin-subtotal-row income"><span>Ingreso bruto</span><span id="ingOf-${e.id}">${money(ingresoBruto(e))}</span></div>
       </div>
       <div class="fin-col">
-        <h4>Gastos</h4>
-        <div class="fin-row"><label>Gasto fijo</label><input type="number" min="0" value="${e.gastoFijo}" data-type="ev-gastofijo" data-id="${e.id}"></div>
-        <div class="fin-row"><label>Comisión (%)</label><input type="number" min="0" max="100" value="${e.comisionPct}" data-type="ev-comision" data-id="${e.id}"></div>
-        <div class="fin-total gas"><span>Gasto total</span><span id="gasOf-${e.id}">${money(gastoTotal(e))}</span></div>
+        <h4>Costos y comisiones</h4>
+        <div class="fin-field-row"><label>Gasto fijo ($)</label><input type="number" min="0" value="${e.gastoFijo}" data-type="ev-gastofijo" data-id="${e.id}"></div>
+        <div class="fin-field-row"><label>Comisión (%)</label><input type="number" min="0" max="100" value="${e.comisionPct}" data-type="ev-comision" data-id="${e.id}"></div>
+        <div class="fin-subtotal-row expense"><span>Gasto total</span><span id="gasOf-${e.id}">${money(gastoTotal(e))}</span></div>
       </div>
-      <div class="ev-balance"><span>Balance</span><span class="val ${balanceEv(e)>=0?'pos':'neg'}" id="balOf-${e.id}">${money(balanceEv(e))}</span></div>
+      <div class="item-bottom-balance"><span>Utilidad neta</span><span class="bal-value ${balanceEv(e)>=0?'pos':'neg'}" id="balOf-${e.id}">${money(balanceEv(e))}</span></div>
     </div>
   </div>`;
 }
@@ -754,20 +1905,22 @@ function refreshEventFinance(e){
   const ing = document.getElementById('ingOf-'+e.id); if(ing) ing.textContent = money(ingresoBruto(e));
   const gas = document.getElementById('gasOf-'+e.id); if(gas) gas.textContent = money(gastoTotal(e));
   const bal = document.getElementById('balOf-'+e.id);
-  if(bal){ bal.textContent = money(balanceEv(e)); bal.className = 'val ' + (balanceEv(e)>=0?'pos':'neg'); }
+  if(bal){ bal.textContent = money(balanceEv(e)); bal.className = 'bal-value ' + (balanceEv(e)>=0?'pos':'neg'); }
 }
 
 function updateSummaryExtra(){
   const visible = eventos.filter(e => filtro==='all' || e.categoria===filtro);
   const ti = visible.reduce((s,e)=>s+ingresoBruto(e),0);
   const tg = visible.reduce((s,e)=>s+gastoTotal(e),0);
+  const bal = ti - tg;
   document.getElementById('statIngresos').textContent = money(ti);
   document.getElementById('statGastos').textContent = money(tg);
   const balEl = document.getElementById('statBalance');
-  balEl.textContent = money(ti-tg);
-  balEl.className = 'value ' + (ti-tg>=0?'pos':'neg');
+  balEl.textContent = money(bal);
+  balEl.className = 'stat-val ' + (bal>=0?'positive':'negative');
   document.getElementById('statCount').textContent = visible.length;
   updateFinanzas();
+  updateDashboard();
 }
 
 // =====================================================================
@@ -776,28 +1929,32 @@ function updateSummaryExtra(){
 function renderEscolar(){
   renderAccordion('timelineEscolar', 'escolar', escolares, eventCardHtmlEscolar, 'emptyEscolar');
   document.getElementById('statCountEscPill').textContent = escolares.length + (escolares.length===1?' actividad':' actividades');
+  const b = document.getElementById('badgeEscolar');
+  if(b) b.textContent = escolares.length;
+  updateDashboard();
 }
+
 function eventCardHtmlEscolar(e){
   const g = e.gasto||0;
   return `
-  <div class="event-card escolar">
-    <div class="ev-top">
-      <div class="date-box">
+  <div class="item-card escolar">
+    <div class="item-header-grid">
+      <div class="date-picker-box">
         <select data-type="esc-mes" data-id="${e.id}">${monthOptions(e.mes)}</select>
-        <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="esc-dia" data-id="${e.id}"></div>
+        <input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="esc-dia" data-id="${e.id}">
       </div>
-      <div class="event-body">
-        <input type="text" class="ev-name" maxlength="100" value="${esc(e.nombre)}" data-type="esc-nombre" data-id="${e.id}" placeholder="Nombre">
-        <span class="badge escolar">Escolar</span>
-        <input type="text" class="notas-input" maxlength="200" value="${esc(e.nota)}" data-type="esc-nota" data-id="${e.id}" placeholder="Observaciones">
+      <div>
+        <input type="text" class="item-title-input" maxlength="100" value="${esc(e.nombre)}" data-type="esc-nombre" data-id="${e.id}" placeholder="Nombre de la actividad">
+        <div class="item-meta-row">
+          <span class="tag-badge escolar">IMEX Escolar</span>
+        </div>
+        <input type="text" class="item-notes-input" maxlength="200" value="${esc(e.nota)}" data-type="esc-nota" data-id="${e.id}" placeholder="Detalles, encargados u observaciones…">
       </div>
-      <button class="del-btn" data-type="del-esc" data-id="${e.id}">×</button>
+      <button class="btn-icon-del" data-type="del-esc" data-id="${e.id}">×</button>
     </div>
-    <div class="fin-grid" style="grid-template-columns:1fr;">
+    <div class="item-fin-grid" style="grid-template-columns:1fr;">
       <div class="fin-col">
-        <h4>Gastos</h4>
-        <div class="fin-row"><label>Gasto de esta actividad ($)</label><input type="number" min="0" value="${g}" data-type="esc-gasto" data-id="${e.id}"></div>
-        <div class="fin-total gas"><span>Total</span><span id="escGasOf-${e.id}">${money(g)}</span></div>
+        <div class="fin-field-row"><label>Presupuesto / Gasto de la actividad ($)</label><input type="number" min="0" value="${g}" data-type="esc-gasto" data-id="${e.id}"></div>
       </div>
     </div>
   </div>`;
@@ -809,60 +1966,72 @@ function eventCardHtmlEscolar(e){
 function ingV(v){ return (v.cantidad||0)*(v.precio||0); }
 function balV(v){ return ingV(v) - (v.gasto||0); }
 function renderVentas(){
-  renderAccordion('timelineVentas', 'ventas', ventas, ventaCardHtml, 'emptyVentas');
+  const ventasMonthBal = items => items.reduce((s,x)=>s+balV(x),0);
+  renderAccordion('timelineVentas', 'ventas', ventas, ventaCardHtml, 'emptyVentas', ventasMonthBal);
   updateSummaryVentas();
+  const b = document.getElementById('badgeVentas');
+  if(b) b.textContent = ventas.length;
 }
+
 function ventaCardHtml(v){
+  const margen = ingV(v) > 0 ? Math.round((balV(v)/ingV(v))*100) : 0;
   return `
-  <div class="event-card ventas">
-    <div class="ev-top">
-      <div class="date-box">
+  <div class="item-card ventas">
+    <div class="item-header-grid">
+      <div class="date-picker-box">
         <select data-type="v-mes" data-id="${v.id}">${monthOptions(v.mes)}</select>
-        <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${v.dia==null?'':v.dia}" data-type="v-dia" data-id="${v.id}"></div>
+        <input type="number" min="1" max="31" placeholder="Día" value="${v.dia==null?'':v.dia}" data-type="v-dia" data-id="${v.id}">
       </div>
-      <div class="event-body">
-        <input type="text" class="ev-name" maxlength="80" value="${esc(v.nombre)}" data-type="v-nombre" data-id="${v.id}" placeholder="Producto / venta">
-        <span class="badge" style="background:var(--ventas-bg); color:var(--ventas);">Venta escolar</span>
-        <input type="text" class="notas-input" maxlength="150" value="${esc(v.nota)}" data-type="v-nota" data-id="${v.id}" placeholder="Nota (opcional)">
+      <div>
+        <input type="text" class="item-title-input" maxlength="80" value="${esc(v.nombre)}" data-type="v-nombre" data-id="${v.id}" placeholder="Producto en venta">
+        <div class="item-meta-row">
+          <span class="tag-badge ventas">Venta Escolar</span>
+          <span class="tag-badge" style="background:var(--surface-secondary); color:var(--ink-secondary);">Margen: ${margen}%</span>
+        </div>
+        <input type="text" class="item-notes-input" maxlength="150" value="${esc(v.nota)}" data-type="v-nota" data-id="${v.id}" placeholder="Lugar, proveedor o notas…">
       </div>
-      <button class="del-btn" data-type="del-venta" data-id="${v.id}">×</button>
+      <button class="btn-icon-del" data-type="del-venta" data-id="${v.id}">×</button>
     </div>
-    <div class="fin-grid">
+    <div class="item-fin-grid">
       <div class="fin-col">
-        <h4>Ingresos</h4>
-        <div class="fin-row"><label>Cantidad vendida</label><input type="number" min="0" value="${v.cantidad}" data-type="v-cantidad" data-id="${v.id}"></div>
-        <div class="fin-row"><label>Precio ($)</label><input type="number" min="0" value="${v.precio}" data-type="v-precio" data-id="${v.id}"></div>
-        <div class="fin-total ing"><span>Ingreso</span><span id="vIngOf-${v.id}">${money(ingV(v))}</span></div>
+        <h4>Ventas</h4>
+        <div class="fin-field-row"><label>Unidades</label><input type="number" min="0" value="${v.cantidad}" data-type="v-cantidad" data-id="${v.id}"></div>
+        <div class="fin-field-row"><label>Precio unitario ($)</label><input type="number" min="0" value="${v.precio}" data-type="v-precio" data-id="${v.id}"></div>
+        <div class="fin-subtotal-row income"><span>Ingreso</span><span id="vIngOf-${v.id}">${money(ingV(v))}</span></div>
       </div>
       <div class="fin-col">
-        <h4>Gastos</h4>
-        <div class="fin-row"><label>Costo de producir/comprar</label><input type="number" min="0" value="${v.gasto}" data-type="v-gasto" data-id="${v.id}"></div>
-        <div class="fin-total gas"><span>Gasto total</span><span id="vGasOf-${v.id}">${money(v.gasto||0)}</span></div>
+        <h4>Costos</h4>
+        <div class="fin-field-row"><label>Costo de compra/producción ($)</label><input type="number" min="0" value="${v.gasto}" data-type="v-gasto" data-id="${v.id}"></div>
+        <div class="fin-subtotal-row expense"><span>Costo total</span><span id="vGasOf-${v.id}">${money(v.gasto||0)}</span></div>
       </div>
-      <div class="ev-balance"><span>Balance</span><span class="val ${balV(v)>=0?'pos':'neg'}" id="vBalOf-${v.id}">${money(balV(v))}</span></div>
+      <div class="item-bottom-balance"><span>Ganancia neta</span><span class="bal-value ${balV(v)>=0?'pos':'neg'}" id="vBalOf-${v.id}">${money(balV(v))}</span></div>
     </div>
   </div>`;
 }
+
 function refreshVentaFinance(v){
   const i = document.getElementById('vIngOf-'+v.id); if(i) i.textContent = money(ingV(v));
   const g = document.getElementById('vGasOf-'+v.id); if(g) g.textContent = money(v.gasto||0);
   const b = document.getElementById('vBalOf-'+v.id);
-  if(b){ b.textContent = money(balV(v)); b.className = 'val ' + (balV(v)>=0?'pos':'neg'); }
+  if(b){ b.textContent = money(balV(v)); b.className = 'bal-value ' + (balV(v)>=0?'pos':'neg'); }
 }
+
 function updateSummaryVentas(){
   const ti = ventas.reduce((s,v)=>s+ingV(v),0);
   const tg = ventas.reduce((s,v)=>s+(v.gasto||0),0);
+  const bal = ti - tg;
   document.getElementById('statIngresosVentas').textContent = money(ti);
   document.getElementById('statGastosVentas').textContent = money(tg);
   const balEl = document.getElementById('statBalanceVentas');
-  balEl.textContent = money(ti-tg);
-  balEl.className = 'value ' + (ti-tg>=0?'pos':'neg');
+  balEl.textContent = money(bal);
+  balEl.className = 'stat-val ' + (bal>=0?'positive':'negative');
   document.getElementById('statCountVentas').textContent = ventas.length;
   updateFinanzas();
+  updateDashboard();
 }
 
 // =====================================================================
-// FINANZAS GENERALES (suma de todo)
+// FINANZAS Y DASHBOARD
 // =====================================================================
 function totalEscolarGastos(){ return escolares.reduce((s,e)=>s+(e.gasto||0),0); }
 function totalExtras(tipo){ return extras.filter(x=>x.tipo===tipo).reduce((s,x)=>s+(x.monto||0),0); }
@@ -886,7 +2055,7 @@ function updateFinanzas(){
   const tfEl = document.getElementById('finTotalFuentes');
   if(tiEl) tiEl.textContent = money(totalIng);
   if(tgEl) tgEl.textContent = money(totalGas);
-  if(tbEl){ tbEl.textContent = money(balanceTotal); tbEl.className = 'value ' + (balanceTotal>=0?'pos':'neg'); }
+  if(tbEl){ tbEl.textContent = money(balanceTotal); tbEl.className = 'stat-val ' + (balanceTotal>=0?'positive':'negative'); }
   if(tfEl) tfEl.textContent = (eventos.length + ventas.length + escolares.length + extras.length);
 
   const bd = document.getElementById('finBreakdown');
@@ -894,19 +2063,19 @@ function updateFinanzas(){
     const rows = [
       {nombre:'Fiestas extracurriculares', ing:catExtra, gas:catExtraGasto, color:'var(--antro)'},
       {nombre:'Ventas escolares', ing:catVentasIng, gas:catVentasGasto, color:'var(--ventas)'},
-      {nombre:'Calendario escolar', ing:0, gas:catEscolarGasto, color:'#8A6A11'},
-      {nombre:'Ingresos y gastos extra', ing:extraIngresos, gas:extraGastos, color:'var(--wine)'},
+      {nombre:'Calendario escolar IMEX', ing:0, gas:catEscolarGasto, color:'var(--wine)'},
+      {nombre:'Movimientos extraordinarios', ing:extraIngresos, gas:extraGastos, color:'var(--casa)'},
     ];
 
     bd.innerHTML = `
-      <div class="table-responsive">
-        <table class="fin-table">
+      <div class="table-container">
+        <table class="fin-data-table">
           <thead>
             <tr>
-              <th>Categoría</th>
+              <th>Concepto</th>
               <th>Ingresos</th>
               <th>Gastos</th>
-              <th>Balance</th>
+              <th>Utilidad / Saldo</th>
             </tr>
           </thead>
           <tbody>
@@ -914,8 +2083,8 @@ function updateFinanzas(){
               const bal = r.ing - r.gas;
               return `<tr>
                 <td>
-                  <span class="td-dot" style="background:${r.color};"></span>
-                  <span>${esc(r.nombre)}</span>
+                  <span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:${r.color}; margin-right:8px;"></span>
+                  <strong>${esc(r.nombre)}</strong>
                 </td>
                 <td style="color:var(--green); font-weight:600;">${money(r.ing)}</td>
                 <td style="color:var(--red); font-weight:600;">${r.gas > 0 ? '-' + money(r.gas) : '$0'}</td>
@@ -925,15 +2094,66 @@ function updateFinanzas(){
           </tbody>
           <tfoot>
             <tr>
-              <td>Total neto</td>
-              <td style="color:var(--green); font-weight:700;">${money(totalIng)}</td>
-              <td style="color:var(--red); font-weight:700;">${totalGas > 0 ? '-' + money(totalGas) : '$0'}</td>
-              <td style="color:${balanceTotal>=0?'var(--green)':'var(--red)'}; font-weight:800;">${money(balanceTotal)}</td>
+              <td>Total neto proyectado</td>
+              <td style="color:var(--green);">${money(totalIng)}</td>
+              <td style="color:var(--red);">${totalGas > 0 ? '-' + money(totalGas) : '$0'}</td>
+              <td style="color:${balanceTotal>=0?'var(--green)':'var(--red)'}; font-size:14.5px;">${money(balanceTotal)}</td>
             </tr>
           </tfoot>
         </table>
       </div>
     `;
+  }
+}
+
+function updateDashboard(){
+  const catExtra = eventos.reduce((s,e)=>s+ingresoBruto(e),0);
+  const catExtraGasto = eventos.reduce((s,e)=>s+gastoTotal(e),0);
+  const catVentasIng = ventas.reduce((s,v)=>s+ingV(v),0);
+  const catVentasGasto = ventas.reduce((s,v)=>s+(v.gasto||0),0);
+  const catEscolarGasto = totalEscolarGastos();
+  const extraIngresos = totalExtras('ingreso');
+  const extraGastos = totalExtras('gasto');
+
+  const totalIng = catExtra + catVentasIng + extraIngresos;
+  const totalGas = catExtraGasto + catVentasGasto + catEscolarGasto + extraGastos;
+  const netBalance = totalIng - totalGas;
+
+  const dBal = document.getElementById('dashTotalBalance');
+  if(dBal){ dBal.textContent = money(netBalance); dBal.className = 'stat-val ' + (netBalance>=0?'positive':'negative'); }
+  const dFBal = document.getElementById('dashFiestasBal');
+  if(dFBal) dFBal.textContent = money(catExtra - catExtraGasto);
+  const dVBal = document.getElementById('dashVentasBal');
+  if(dVBal) dVBal.textContent = money(catVentasIng - catVentasGasto);
+  const dEvs = document.getElementById('dashTotalEventos');
+  if(dEvs) dEvs.textContent = (escolares.length + eventos.length);
+
+  // Next upcoming chronological items
+  const upcomingDiv = document.getElementById('dashUpcomingList');
+  if(upcomingDiv){
+    const all = [
+      ...eventos.map(x=>({ ...x, type:'Fiesta (' + x.categoria + ')', color:'var(--antro)' })),
+      ...escolares.map(x=>({ ...x, type:'Escolar IMEX', color:'var(--wine)' })),
+      ...ventas.map(x=>({ ...x, type:'Venta Escolar', color:'var(--ventas)' }))
+    ].sort((a,b)=>{
+      const mo = monthOrder(a.mes) - monthOrder(b.mes);
+      if(mo!==0) return mo;
+      return (a.dia||99) - (b.dia||99);
+    }).slice(0, 4);
+
+    upcomingDiv.innerHTML = all.map(item => `
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 12px; background:var(--surface-secondary); border-radius:var(--radius-md); gap:10px;">
+        <div style="display:flex; align-items:center; gap:10px; min-width:0;">
+          <span style="font-size:10px; font-weight:800; padding:3px 7px; border-radius:6px; background:#FFF; border:1px solid var(--border); color:var(--wine); white-space:nowrap;">
+            ${item.dia ? item.dia + ' ' : ''}${monthLabel(item.mes).split(' ')[0]}
+          </span>
+          <div style="min-width:0;">
+            <div style="font-size:13px; font-weight:700; color:var(--ink-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${esc(item.nombre)}</div>
+            <div style="font-size:10.5px; color:var(--ink-tertiary);">${esc(item.type)}</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
   }
 }
 
@@ -944,43 +2164,67 @@ function renderExtras(){
   document.getElementById('emptyExtras').style.display = extras.length ? 'none' : 'block';
   extras.forEach(x=>{
     const div = document.createElement('div');
-    div.className = 'event-card';
+    div.className = 'item-card';
     div.style.borderLeftColor = x.tipo==='ingreso' ? 'var(--green)' : 'var(--red)';
     div.innerHTML = `
-      <div class="ev-top" style="grid-template-columns:1fr auto;">
-        <div class="event-body">
-          <input type="text" class="ev-name" maxlength="80" value="${esc(x.nombre)}" data-type="ex-nombre" data-id="${x.id}" placeholder="Nombre del movimiento">
-          <div class="meta-row">
-            <select data-type="ex-tipo" data-id="${x.id}">
-              <option value="ingreso" ${x.tipo==='ingreso'?'selected':''}>Ingreso</option>
-              <option value="gasto" ${x.tipo==='gasto'?'selected':''}>Gasto</option>
+      <div class="item-header-grid" style="grid-template-columns:1fr auto;">
+        <div>
+          <input type="text" class="item-title-input" maxlength="80" value="${esc(x.nombre)}" data-type="ex-nombre" data-id="${x.id}" placeholder="Descripción del movimiento">
+          <div class="item-meta-row">
+            <select class="meta-select" data-type="ex-tipo" data-id="${x.id}">
+              <option value="ingreso" ${x.tipo==='ingreso'?'selected':''}>Ingreso (+)</option>
+              <option value="gasto" ${x.tipo==='gasto'?'selected':''}>Gasto (-)</option>
             </select>
-            <input type="number" min="0" value="${x.monto||0}" data-type="ex-monto" data-id="${x.id}" style="width:100px; padding:6px 7px; border:1px solid var(--line); border-radius:7px; font-size:12px;">
+            <input type="number" min="0" value="${x.monto||0}" data-type="ex-monto" data-id="${x.id}" style="width:100px; padding:4px 8px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:12px; font-weight:700;">
           </div>
-          <input type="text" class="notas-input" maxlength="150" value="${esc(x.nota||'')}" data-type="ex-nota" data-id="${x.id}" placeholder="Nota (opcional)">
+          <input type="text" class="item-notes-input" maxlength="150" value="${esc(x.nota||'')}" data-type="ex-nota" data-id="${x.id}" placeholder="Observaciones / factura / comprobante…">
         </div>
-        <button class="del-btn" data-type="del-extra" data-id="${x.id}">×</button>
+        <button class="btn-icon-del" data-type="del-extra" data-id="${x.id}">×</button>
       </div>`;
     list.appendChild(div);
   });
 }
 
 // =====================================================================
-// FOTOS (Firebase Storage + Firestore)
+// FOTOS & LIGHTBOX
 // =====================================================================
 function renderFotos(){
   const grid = document.getElementById('photoGrid');
+  if(!grid) return;
   grid.innerHTML = '';
   document.getElementById('emptyFotos').style.display = fotos.length ? 'none' : 'block';
   fotos.forEach(f=>{
     const div = document.createElement('div');
-    div.className = 'photo-item';
-    div.innerHTML = `<img src="${f.url}" loading="lazy" alt="Foto del año"><button class="ph-del" data-type="del-foto" data-id="${f.id}">×</button>`;
+    div.className = 'photo-card';
+    div.innerHTML = `
+      <img src="${f.url}" loading="lazy" alt="Foto del año">
+      <button class="photo-del-btn" data-type="del-foto" data-id="${f.id}" title="Eliminar foto">×</button>
+    `;
+    div.addEventListener('click', (ev)=>{
+      if(ev.target.dataset.type === 'del-foto') return;
+      openLightbox(f.url);
+    });
     grid.appendChild(div);
   });
+  const b = document.getElementById('badgeFotos');
+  if(b) b.textContent = fotos.length;
 }
 
-async function comprimirImagen(file, maxSize=1400, calidad=0.8){
+function openLightbox(url){
+  const m = document.getElementById('photoLightbox');
+  const img = document.getElementById('lightboxImg');
+  if(!m || !img) return;
+  img.src = url;
+  m.classList.add('active');
+}
+document.getElementById('closeLightbox').addEventListener('click', ()=>{
+  document.getElementById('photoLightbox').classList.remove('active');
+});
+document.getElementById('photoLightbox').addEventListener('click', (e)=>{
+  if(e.target.id === 'photoLightbox') e.currentTarget.classList.remove('active');
+});
+
+async function comprimirImagen(file, maxSize=1400, calidad=0.82){
   const img = await new Promise((res, rej)=>{
     const i = new Image();
     i.onload = ()=>res(i);
@@ -1007,15 +2251,8 @@ function blobToBase64(blob){
 
 document.getElementById('photoInput').addEventListener('change', async (e)=>{
   const files = [...e.target.files];
+  showToast('Subiendo foto(s)…');
   for(const file of files){
-    const tempId = 'uploading-' + Date.now() + Math.random();
-    const grid = document.getElementById('photoGrid');
-    const placeholder = document.createElement('div');
-    placeholder.className = 'photo-item';
-    placeholder.id = tempId;
-    placeholder.innerHTML = `<div class="ph-uploading">Subiendo…</div>`;
-    grid.prepend(placeholder);
-    document.getElementById('emptyFotos').style.display = 'none';
     try{
       const blob = await comprimirImagen(file);
       const base64 = await blobToBase64(blob);
@@ -1027,23 +2264,114 @@ document.getElementById('photoInput').addEventListener('change', async (e)=>{
       if(!data.success) throw new Error('ImgBB no aceptó la imagen');
       const url = data.data.url;
       await addDoc(fotosCol, { url, fecha: new Date().toISOString() });
+      showToast('¡Foto agregada al álbum!');
     }catch(err){
       console.warn('No se pudo subir la foto', err);
-      alert('No se pudo subir esta foto. Revisa tu conexión.');
-    }finally{
-      const el = document.getElementById(tempId);
-      if(el) el.remove();
+      showToast('Error al subir imagen. Revisa tu conexión.');
     }
   }
   e.target.value = '';
 });
 
 // =====================================================================
-// EVENTOS DE INTERFAZ
+// SPOTLIGHT SEARCH
+// =====================================================================
+const spotlightModal = document.getElementById('spotlightModal');
+const spotlightInput = document.getElementById('spotlightInput');
+const spotlightResults = document.getElementById('spotlightResults');
+
+function openSearch(){
+  spotlightModal.classList.add('active');
+  spotlightInput.value = '';
+  spotlightInput.focus();
+  renderSearchResults('');
+}
+function closeSearch(){
+  spotlightModal.classList.remove('active');
+}
+document.getElementById('openSearchBtn').addEventListener('click', openSearch);
+document.getElementById('closeSearchBtn').addEventListener('click', closeSearch);
+document.addEventListener('keydown', e=>{
+  if((e.metaKey || e.ctrlKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); openSearch(); }
+  if(e.key === 'Escape') closeSearch();
+});
+
+spotlightInput.addEventListener('input', e=>{
+  renderSearchResults(e.target.value.trim().toLowerCase());
+});
+
+function renderSearchResults(query){
+  if(!query){
+    spotlightResults.innerHTML = '<div style="padding:16px; text-align:center; color:var(--ink-tertiary); font-size:12.5px;">Escribe para buscar entre fiestas, ventas y calendario escolar…</div>';
+    return;
+  }
+  const all = [
+    ...eventos.map(x=>({ ...x, kind:'Fiesta ('+x.categoria+')', targetView:'extracurricular' })),
+    ...escolares.map(x=>({ ...x, kind:'Escolar IMEX', targetView:'escolar' })),
+    ...ventas.map(x=>({ ...x, kind:'Venta escolar', targetView:'ventas' })),
+  ];
+  const matched = all.filter(x => (x.nombre||'').toLowerCase().includes(query) || (x.nota||'').toLowerCase().includes(query));
+
+  if(!matched.length){
+    spotlightResults.innerHTML = '<div style="padding:20px; text-align:center; color:var(--ink-tertiary); font-size:12.5px;">No se encontraron resultados para "'+esc(query)+'"</div>';
+    return;
+  }
+
+  spotlightResults.innerHTML = matched.slice(0, 10).map(item => `
+    <div class="spotlight-item" data-goto="${item.targetView}" data-month="${item.mes}">
+      <div>
+        <div class="spotlight-item-title">${esc(item.nombre)}</div>
+        <div class="spotlight-item-sub">${esc(item.kind)} · ${monthLabel(item.mes)} ${item.dia ? 'Día ' + item.dia : ''}</div>
+      </div>
+      <svg viewBox="0 0 24 24" style="width:16px; height:16px; stroke:var(--ink-tertiary); fill:none; stroke-width:2;"><path d="M9 18l6-6-6-6"/></svg>
+    </div>
+  `).join('');
+}
+
+spotlightResults.addEventListener('click', e=>{
+  const item = e.target.closest('.spotlight-item');
+  if(!item) return;
+  const view = item.dataset.goto;
+  const month = parseInt(item.dataset.month);
+  if(month && expanded[view]) expanded[view].add(month);
+  switchView(view);
+  closeSearch();
+});
+
+// =====================================================================
+// NAVEGACIÓN Y RUTAS
+// =====================================================================
+function switchView(viewName){
+  document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewName));
+  document.querySelectorAll('.b-nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewName));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const el = document.getElementById('view-'+viewName);
+  if(el) el.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.getElementById('desktopNav').addEventListener('click', e=>{
+  const btn = e.target.closest('.nav-item');
+  if(btn) switchView(btn.dataset.view);
+});
+
+document.getElementById('mobileNav').addEventListener('click', e=>{
+  const btn = e.target.closest('.b-nav-item');
+  if(btn) switchView(btn.dataset.view);
+});
+
+document.addEventListener('click', e=>{
+  const quick = e.target.closest('[data-goto]');
+  if(quick && !quick.classList.contains('spotlight-item')){
+    switchView(quick.dataset.goto);
+  }
+});
+
+// =====================================================================
+// EVENTOS DE INTERFAZ & DELEGACIÓN
 // =====================================================================
 document.addEventListener('input', e=>{
   const t = e.target;
-
   const ev = eventos.find(x=>x.id===t.dataset.id);
   if(ev){
     if(t.dataset.type==='ev-nombre'){ ev.nombre=t.value; saveExtra(); }
@@ -1060,7 +2388,6 @@ document.addEventListener('input', e=>{
     if(t.dataset.type==='esc-nota'){ es.nota=t.value; saveEscolar(); }
     if(t.dataset.type==='esc-gasto'){
       es.gasto = parseFloat(t.value)||0;
-      const el = document.getElementById('escGasOf-'+es.id); if(el) el.textContent = money(es.gasto);
       updateFinanzas(); saveEscolar();
     }
   }
@@ -1073,7 +2400,6 @@ document.addEventListener('input', e=>{
     if(t.dataset.type==='v-precio'){ vt.precio=parseFloat(t.value)||0; refreshVentaFinance(vt); updateSummaryVentas(); saveVentas(); }
     if(t.dataset.type==='v-gasto'){ vt.gasto=parseFloat(t.value)||0; refreshVentaFinance(vt); updateSummaryVentas(); saveVentas(); }
   }
-
   const ex = extras.find(x=>x.id===t.dataset.id);
   if(ex){
     if(t.dataset.type==='ex-nombre'){ ex.nombre=t.value; saveFinanzas(); }
@@ -1103,102 +2429,97 @@ document.addEventListener('click', e=>{
   if(monthToggle){
     const key = parseInt(monthToggle.dataset.toggleMonth);
     const section = monthToggle.dataset.section;
-    const acc = monthToggle.closest('.month-acc');
+    const acc = monthToggle.closest('.month-group');
     if(expanded[section].has(key)){ expanded[section].delete(key); acc.classList.remove('open'); }
     else{ expanded[section].add(key); acc.classList.add('open'); }
     return;
   }
 
-  if(t.dataset.type==='del-ev'){ eventos = eventos.filter(x=>x.id!==t.dataset.id); renderExtra(); saveExtra(); }
+  if(t.dataset.type==='del-ev'){
+    eventos = eventos.filter(x=>x.id!==t.dataset.id);
+    renderExtra(); saveExtra(); showToast('Fiesta eliminada');
+  }
   if(t.dataset.type==='ev-confirm-badge'){
     const ev = eventos.find(x=>x.id===t.dataset.id);
-    ev.confirmada = !ev.confirmada; renderExtra(); saveExtra();
+    ev.confirmada = !ev.confirmada;
+    renderExtra(); saveExtra(); showToast(ev.confirmada ? 'Marcada como confirmada' : 'Marcada como por confirmar');
   }
   if(t.id==='addEventBtn'){
     const cat = filtro==='casa' ? 'casa' : 'antro';
     eventos.push(cat==='antro'
-      ? {id:newId(), nombre:'Nueva actividad', categoria:'antro', mes:9, dia:null, aprox:false, confirmada:false, boletos:200, precio:270, gastoFijo:3000, comisionPct:10}
-      : {id:newId(), nombre:'Nueva actividad', categoria:'casa', mes:9, dia:null, aprox:false, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0});
+      ? {id:newId(), nombre:'Nueva fiesta', categoria:'antro', mes:9, dia:null, aprox:false, confirmada:false, boletos:200, precio:270, gastoFijo:3000, comisionPct:10}
+      : {id:newId(), nombre:'Nueva fiesta en casa', categoria:'casa', mes:9, dia:null, aprox:false, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0});
     expanded.extra.add(9);
-    renderExtra(); saveExtra();
+    renderExtra(); saveExtra(); showToast('Nueva fiesta agregada');
   }
 
-  if(t.dataset.type==='del-esc'){ escolares = escolares.filter(x=>x.id!==t.dataset.id); renderEscolar(); saveEscolar(); }
+  if(t.dataset.type==='del-esc'){
+    escolares = escolares.filter(x=>x.id!==t.dataset.id);
+    renderEscolar(); saveEscolar(); showToast('Actividad escolar eliminada');
+  }
   if(t.id==='addSchoolEventBtn'){
-    escolares.push({id:newId(), mes:8, dia:null, nombre:'Nueva actividad', nota:''});
+    escolares.push({id:newId(), mes:8, dia:null, nombre:'Nueva actividad escolar', nota:'', gasto:0});
     expanded.escolar.add(8);
-    renderEscolar(); saveEscolar();
+    renderEscolar(); saveEscolar(); showToast('Actividad agregada');
   }
 
-  if(t.dataset.type==='del-venta'){ ventas = ventas.filter(x=>x.id!==t.dataset.id); renderVentas(); saveVentas(); }
+  if(t.dataset.type==='del-venta'){
+    ventas = ventas.filter(x=>x.id!==t.dataset.id);
+    renderVentas(); saveVentas(); showToast('Venta eliminada');
+  }
   if(t.id==='addVentaBtn'){
-    ventas.push({id:newId(), nombre:'Nueva venta', mes:9, dia:null, cantidad:0, precio:0, gasto:0, nota:''});
+    ventas.push({id:newId(), nombre:'Nuevo producto', mes:9, dia:null, cantidad:0, precio:0, gasto:0, nota:''});
     expanded.ventas.add(9);
-    renderVentas(); saveVentas();
+    renderVentas(); saveVentas(); showToast('Producto agregado');
   }
 
-  if(t.dataset.type==='del-extra'){ extras = extras.filter(x=>x.id!==t.dataset.id); updateFinanzas(); renderExtras(); saveFinanzas(); }
+  if(t.dataset.type==='del-extra'){
+    extras = extras.filter(x=>x.id!==t.dataset.id);
+    updateFinanzas(); renderExtras(); saveFinanzas(); showToast('Movimiento eliminado');
+  }
   if(t.id==='addExtraBtn'){
     extras.push({id:newId(), nombre:'Nuevo movimiento', tipo:'ingreso', monto:0, nota:''});
-    updateFinanzas(); renderExtras(); saveFinanzas();
+    updateFinanzas(); renderExtras(); saveFinanzas(); showToast('Movimiento agregado');
   }
 
   if(t.dataset.type==='del-foto'){
     const fid = t.dataset.id;
-    deleteDoc(doc(db,'fotos',fid)).catch(err=>console.warn('No se pudo quitar del álbum', err));
-  }
-
-  const quick = t.closest('[data-goto]');
-  if(quick){
-    const view = quick.dataset.goto;
-    document.querySelectorAll('.rail-btn').forEach(b=>b.classList.toggle('active', b.dataset.view===view));
-    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-    document.getElementById('view-'+view).classList.add('active');
+    deleteDoc(doc(db,'fotos',fid)).then(()=> showToast('Foto eliminada')).catch(err=>console.warn('Error', err));
   }
 });
 
 document.getElementById('filterSegExtra').addEventListener('click', e=>{
-  if(!e.target.classList.contains('tab-chip')) return;
+  if(!e.target.classList.contains('pill-btn')) return;
   [...e.target.parentElement.children].forEach(b=>b.classList.remove('active'));
   e.target.classList.add('active');
   filtro = e.target.dataset.f;
   renderExtra();
 });
 
-document.getElementById('rail').addEventListener('click', e=>{
-  const btn = e.target.closest('.rail-btn');
-  if(!btn) return;
-  document.querySelectorAll('.rail-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  document.getElementById('view-'+btn.dataset.view).classList.add('active');
-});
-
 // =====================================================================
-// PERSISTENCIA (Firestore, tiempo real, compartido)
+// PERSISTENCIA EN TIEMPO REAL
 // =====================================================================
 async function saveExtra(){
-  try{ await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('No se pudo guardar (extracurricular)', err); }
+  try{ await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); showToast(); }
+  catch(err){ console.warn('Sync error', err); }
 }
 saveExtra = debounce(saveExtra);
 
 async function saveEscolar(){
-  try{ await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('No se pudo guardar (escolar)', err); }
-  updateFinanzas();
+  try{ await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); updateFinanzas(); showToast(); }
+  catch(err){ console.warn('Sync error', err); }
 }
 saveEscolar = debounce(saveEscolar);
 
 async function saveVentas(){
-  try{ await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('No se pudo guardar (ventas)', err); }
+  try{ await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); showToast(); }
+  catch(err){ console.warn('Sync error', err); }
 }
 saveVentas = debounce(saveVentas);
 
 async function saveFinanzas(){
-  try{ await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('No se pudo guardar (finanzas extra)', err); }
+  try{ await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); showToast(); }
+  catch(err){ console.warn('Sync error', err); }
 }
 saveFinanzas = debounce(saveFinanzas);
 
@@ -1208,7 +2529,7 @@ onSnapshot(docRefExtra, (snap)=>{
   if(data.eventos) eventos = data.eventos;
   if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
   renderExtra();
-}, err=>console.warn('Snapshot extracurricular falló', err));
+}, err=>console.warn(err));
 
 onSnapshot(docRefEscolar, (snap)=>{
   if(!snap.exists() || snap.metadata.hasPendingWrites) return;
@@ -1217,7 +2538,7 @@ onSnapshot(docRefEscolar, (snap)=>{
   if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
   renderEscolar();
   updateFinanzas();
-}, err=>console.warn('Snapshot escolar falló', err));
+}, err=>console.warn(err));
 
 onSnapshot(docRefVentas, (snap)=>{
   if(!snap.exists() || snap.metadata.hasPendingWrites) return;
@@ -1225,12 +2546,12 @@ onSnapshot(docRefVentas, (snap)=>{
   if(data.ventas) ventas = data.ventas;
   if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
   renderVentas();
-}, err=>console.warn('Snapshot ventas falló', err));
+}, err=>console.warn(err));
 
 onSnapshot(query(fotosCol, orderBy('fecha','desc')), (snap)=>{
   fotos = snap.docs.map(d=>({id:d.id, ...d.data()}));
   renderFotos();
-}, err=>console.warn('Snapshot fotos falló', err));
+}, err=>console.warn(err));
 
 onSnapshot(docRefFinanzas, (snap)=>{
   if(!snap.exists() || snap.metadata.hasPendingWrites) return;
@@ -1238,18 +2559,14 @@ onSnapshot(docRefFinanzas, (snap)=>{
   if(data.extras) extras = data.extras;
   if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
   updateFinanzas(); renderExtras();
-}, err=>console.warn('Snapshot finanzas falló', err));
+}, err=>console.warn(err));
 
 (async function init(){
-  try{ const s = await getDoc(docRefExtra); if(!s.exists()) await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('Init extracurricular falló', err); }
-  try{ const s = await getDoc(docRefEscolar); if(!s.exists()) await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('Init escolar falló', err); }
-  try{ const s = await getDoc(docRefVentas); if(!s.exists()) await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('Init ventas falló', err); }
-  try{ const s = await getDoc(docRefFinanzas); if(!s.exists()) await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('Init finanzas falló', err); }
-  renderExtra(); renderEscolar(); renderVentas(); renderFotos(); updateFinanzas(); renderExtras();
+  try{ const s = await getDoc(docRefExtra); if(!s.exists()) await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); }catch(e){}
+  try{ const s = await getDoc(docRefEscolar); if(!s.exists()) await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); }catch(e){}
+  try{ const s = await getDoc(docRefVentas); if(!s.exists()) await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); }catch(e){}
+  try{ const s = await getDoc(docRefFinanzas); if(!s.exists()) await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); }catch(e){}
+  renderExtra(); renderEscolar(); renderVentas(); renderFotos(); updateFinanzas(); renderExtras(); updateDashboard();
 })();
 
 if('serviceWorker' in navigator){
@@ -1257,15 +2574,6 @@ if('serviceWorker' in navigator){
     navigator.serviceWorker.register('./service-worker.js').catch(err=>console.warn('SW no registrado', err));
   });
 }
-
-// Bloquea el "pinch zoom" y el doble-tap zoom sin bloquear el scroll natural con rebote
-document.addEventListener('gesturestart', e=>e.preventDefault());
-let lastTouch = 0;
-document.addEventListener('touchend', e=>{
-  const now = Date.now();
-  if(now - lastTouch <= 300){ e.preventDefault(); }
-  lastTouch = now;
-}, {passive:false});
 </script>
 </body>
 </html>
