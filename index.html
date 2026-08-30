@@ -4,6 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Calendario financiero — Actividades extracurriculares IMEX</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#8E0201">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="27MEX Seniors">
+<link rel="apple-touch-icon" href="icon-180.png">
 <style>
   :root{
     --navy:#1F305E; --navy-deep:#141F42; --gold:#C79A3E; --paper:#F6F5F1; --card:#FFFFFF;
@@ -405,6 +411,16 @@ onSnapshot(docRef, (snap)=>{
   }catch(err){ console.warn('No se pudo inicializar el documento compartido', err); }
   render();
 })();
+
+// Registro de Service Worker: esto es lo que permite instalar la página como app
+// (ícono propio, pantalla completa, funciona algo offline).
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('./service-worker.js').catch(err=>{
+      console.warn('No se pudo registrar el service worker', err);
+    });
+  });
+}
 </script>
 </body>
 </html>
