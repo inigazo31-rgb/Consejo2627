@@ -473,6 +473,14 @@ function monthOptions(selected){
 let idCounter = 1000;
 const newId = () => 'e' + (idCounter++);
 
+// Evita guardar en Firebase en cada tecla — espera a que la persona
+// deje de escribir un momento antes de mandar el cambio. Esto también
+// evita que la app se "auto-reconstruya" a medio tecleo y cierre el teclado.
+function debounce(fn, delay=450){
+  let t;
+  return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn(...args), delay); };
+}
+
 // Estado de acordeones abiertos (se conserva mientras la app está abierta)
 const expanded = { extra:new Set(), escolar:new Set(), ventas:new Set() };
 
@@ -1075,22 +1083,29 @@ async function saveExtra(){
   try{ await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); }
   catch(err){ console.warn('No se pudo guardar (extracurricular)', err); }
 }
+saveExtra = debounce(saveExtra);
+
 async function saveEscolar(){
   try{ await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); }
   catch(err){ console.warn('No se pudo guardar (escolar)', err); }
   updateFinanzas();
 }
+saveEscolar = debounce(saveEscolar);
+
 async function saveVentas(){
   try{ await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); }
   catch(err){ console.warn('No se pudo guardar (ventas)', err); }
 }
+saveVentas = debounce(saveVentas);
+
 async function saveFinanzas(){
   try{ await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); }
   catch(err){ console.warn('No se pudo guardar (finanzas extra)', err); }
 }
+saveFinanzas = debounce(saveFinanzas);
 
 onSnapshot(docRefExtra, (snap)=>{
-  if(!snap.exists()) return;
+  if(!snap.exists() || snap.metadata.hasPendingWrites) return; // ignora el eco de tu propio guardado
   const data = snap.data();
   if(data.eventos) eventos = data.eventos;
   if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
@@ -1098,7 +1113,7 @@ onSnapshot(docRefExtra, (snap)=>{
 }, err=>console.warn('Snapshot extracurricular falló', err));
 
 onSnapshot(docRefEscolar, (snap)=>{
-  if(!snap.exists()) return;
+  if(!snap.exists() || snap.metadata.hasPendingWrites) return;
   const data = snap.data();
   if(data.escolares) escolares = data.escolares;
   if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
@@ -1107,7 +1122,7 @@ onSnapshot(docRefEscolar, (snap)=>{
 }, err=>console.warn('Snapshot escolar falló', err));
 
 onSnapshot(docRefVentas, (snap)=>{
-  if(!snap.exists()) return;
+  if(!snap.exists() || snap.metadata.hasPendingWrites) return;
   const data = snap.data();
   if(data.ventas) ventas = data.ventas;
   if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
@@ -1120,7 +1135,7 @@ onSnapshot(query(fotosCol, orderBy('fecha','desc')), (snap)=>{
 }, err=>console.warn('Snapshot fotos falló', err));
 
 onSnapshot(docRefFinanzas, (snap)=>{
-  if(!snap.exists()) return;
+  if(!snap.exists() || snap.metadata.hasPendingWrites) return;
   const data = snap.data();
   if(data.extras) extras = data.extras;
   if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
