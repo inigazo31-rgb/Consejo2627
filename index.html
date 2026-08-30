@@ -834,8 +834,6 @@ function updateFinanzas(){
       </div>`;
     }).join('');
   }
-  renderExtras();
-}
 
 function renderExtras(){
   const list = document.getElementById('finExtrasList');
@@ -996,7 +994,7 @@ document.addEventListener('change', e=>{
   const vt = ventas.find(x=>x.id===t.dataset.id);
   if(vt && t.dataset.type==='v-mes'){ vt.mes=parseInt(t.value); renderVentas(); saveVentas(); }
   const ex = extras.find(x=>x.id===t.dataset.id);
-  if(ex && t.dataset.type==='ex-tipo'){ ex.tipo=t.value; updateFinanzas(); saveFinanzas(); }
+  if(ex && t.dataset.type==='ex-tipo'){ ex.tipo=t.value; updateFinanzas(); renderExtras(); saveFinanzas(); } 
 });
 
 document.addEventListener('click', e=>{
@@ -1039,8 +1037,8 @@ document.addEventListener('click', e=>{
     renderVentas(); saveVentas();
   }
 
-  if(t.dataset.type==='del-extra'){ extras = extras.filter(x=>x.id!==t.dataset.id); updateFinanzas(); saveFinanzas(); }
-  if(t.id==='addExtraBtn'){
+  if(t.dataset.type==='del-extra'){ extras = extras.filter(x=>x.id!==t.dataset.id); updateFinanzas(); saveFinanzas(); }renderExtras();
+  if(t.id==='addExtraBtn'){ renderExtras();
     extras.push({id:newId(), nombre:'Nuevo movimiento', tipo:'ingreso', monto:0, nota:''});
     updateFinanzas(); saveFinanzas();
   }
@@ -1139,7 +1137,7 @@ onSnapshot(docRefFinanzas, (snap)=>{
   const data = snap.data();
   if(data.extras) extras = data.extras;
   if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
-  updateFinanzas();
+  updateFinanzas(); renderExtras();
 }, err=>console.warn('Snapshot finanzas falló', err));
 
 (async function init(){
@@ -1151,7 +1149,7 @@ onSnapshot(docRefFinanzas, (snap)=>{
   catch(err){ console.warn('Init ventas falló', err); }
   try{ const s = await getDoc(docRefFinanzas); if(!s.exists()) await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); }
   catch(err){ console.warn('Init finanzas falló', err); }
-  renderExtra(); renderEscolar(); renderVentas(); renderFotos(); updateFinanzas();
+  renderExtra(); renderEscolar(); renderVentas(); renderFotos(); updateFinanzas(); renderExtras();
 })();
 
 if('serviceWorker' in navigator){
