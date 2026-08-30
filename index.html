@@ -383,9 +383,6 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, addDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyAgtvRtoQ2_HrfnHFWZ2fZbXDZuECisy3M",
   authDomain: "consejo-2627.firebaseapp.com",
@@ -398,7 +395,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage(app);
+const IMGBB_API_KEY = "020bfc16b10189d5f17a72269ae8cb79";
 const docRefExtra = doc(db, "consejo-imex", "calendario-financiero");
 const docRefEscolar = doc(db, "consejo-imex", "calendario-escolar");
 const docRefVentas = doc(db, "consejo-imex", "ventas-escolares");
@@ -775,10 +772,14 @@ document.getElementById('photoInput').addEventListener('change', async (e)=>{
     document.getElementById('emptyFotos').style.display = 'none';
     try{
       const blob = await comprimirImagen(file);
-      const path = `fotos/${Date.now()}_${Math.random().toString(36).slice(2,8)}.jpg`;
-      const sref = ref(storage, path);
-      await uploadBytes(sref, blob);
-      const url = await getDownloadURL(sref);
+            const base64 = await blobToBase64(blob);
+      const form = new FormData();
+      form.append('key', IMGBB_API_KEY);
+      form.append('image', base64);
+      const resp = await fetch('https://api.imgbb.com/1/upload', { method:'POST', body: form });
+      const data = await resp.json();
+      if(!data.success) throw new Error('ImgBB no aceptó la imagen');
+      const url = data.data.url;
       await addDoc(fotosCol, { url, path, fecha: new Date().toISOString() });
     }catch(err){
       console.warn('No se pudo subir la foto', err);
@@ -876,14 +877,10 @@ document.addEventListener('click', e=>{
     expanded.ventas.add(9);
     renderVentas(); saveVentas();
   }
-
-  if(t.dataset.type==='del-foto'){
-    const path = t.dataset.path;
+if(t.dataset.type==='del-foto'){
     const fid = t.dataset.id;
-    deleteDoc(doc(db,'fotos',fid)).catch(err=>console.warn('No se pudo borrar el registro', err));
-    if(path) deleteObject(ref(storage, path)).catch(err=>console.warn('No se pudo borrar el archivo', err));
+    deleteDoc(doc(db,'fotos',fid)).catch(err=>console.warn('No se pudo quitar del álbum', err));
   }
-
   const quick = t.closest('[data-goto]');
   if(quick){
     const view = quick.dataset.goto;
