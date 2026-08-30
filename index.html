@@ -27,8 +27,9 @@
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
   html,body{
     margin:0; background:var(--cream); color:var(--ink); -webkit-font-smoothing:antialiased;
-    overscroll-behavior:none; touch-action:pan-y; -webkit-text-size-adjust:100%;
-    height:100%;
+    -webkit-text-size-adjust:100%;
+    min-height:100%;
+    -webkit-overflow-scrolling:touch;
   }
   button, .rail-btn, .tab-chip, .del-btn, .add-btn, .month-head{ touch-action:manipulation; }
   h1,h2,h3{font-family:"Space Grotesk","Inter",system-ui,sans-serif; margin:0;}
@@ -54,15 +55,29 @@
   .rail-btn:active{background:rgba(255,255,255,0.12);}
 
   .content{flex:1; min-width:0; overflow-x:hidden;}
-  .wrap{max-width:1120px; margin:0 auto; padding:22px 18px 90px;}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding: calc(24px + env(safe-area-inset-top, 0px)) 18px calc(90px + env(safe-area-inset-bottom, 0px));
+  }
 
   @media(max-width:680px){
-    .rail{width:100%; height:auto; flex-direction:row; justify-content:space-around; position:fixed; bottom:0; top:auto; left:0; padding:6px 2px calc(6px + env(safe-area-inset-bottom)); box-shadow:0 -2px 12px rgba(0,0,0,0.18); z-index:40;}
+    .rail{
+      width:100%; height:auto; flex-direction:row; justify-content:space-around;
+      position:fixed; bottom:0; top:auto; left:0;
+      padding:6px 2px calc(6px + env(safe-area-inset-bottom, 0px));
+      box-shadow:0 -2px 12px rgba(0,0,0,0.18); z-index:40;
+    }
     .rail-logo{display:none;}
     .rail-btn{width:auto; flex:1; padding:6px 2px;}
     .app-shell{flex-direction:column;}
     .content{padding-bottom:0;}
-    .wrap{padding-bottom:86px;}
+    .wrap{
+      padding-top: calc(28px + env(safe-area-inset-top, 24px));
+      padding-bottom: calc(88px + env(safe-area-inset-bottom, 16px));
+      padding-left: calc(16px + env(safe-area-inset-left, 0px));
+      padding-right: calc(16px + env(safe-area-inset-right, 0px));
+    }
   }
 
   .view{display:none;}
@@ -128,11 +143,10 @@
   .event-card.ventas{border-left-color:var(--ventas);}
 
   .ev-top{display:grid; grid-template-columns:92px 1fr auto; gap:12px; align-items:start;}
-  @media(max-width:480px){.ev-top{grid-template-columns:1fr auto; }  .date-box{grid-column:1/-1; flex-direction:row; gap:8px;}}
+  @media(max-width:480px){.ev-top{grid-template-columns:1fr auto; } .date-box{grid-column:1/-1; flex-direction:row; gap:8px;}}
   .date-box{display:flex; flex-direction:column; gap:4px;}
   .date-box select{padding:6px 6px; border:1px solid var(--line); border-radius:7px; font-size:12px; font-family:inherit; color:var(--wine); background:#FCFAF3;}
   .day-row input{width:100%; padding:6px 7px; border:1px solid var(--line); border-radius:7px; font-size:12px; font-family:inherit;}
-  .approx-label{font-size:9px; color:var(--muted); display:flex; align-items:center; gap:4px; margin-top:1px;}
 
   .event-body input[type=text].ev-name{width:100%; border:none; background:transparent; font-size:14.5px; font-weight:700; color:var(--wine); padding:2px 0; margin-bottom:5px; font-family:inherit;}
   .event-body input[type=text].ev-name:focus{outline:1px solid var(--wine); background:#fff; border-radius:4px; padding:2px 4px;}
@@ -160,6 +174,72 @@
   .ev-balance{grid-column:1/-1; display:flex; justify-content:space-between; align-items:center; margin-top:9px; padding-top:9px; border-top:1.5px solid var(--wine); font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:13.5px;}
   .ev-balance .val.pos{color:var(--green);}
   .ev-balance .val.neg{color:var(--red);}
+
+  /* ===== Tabla de Finanzas ===== */
+  .table-responsive{
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    margin-top:6px;
+    border-radius:10px;
+  }
+  .fin-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12.5px;
+    min-width:320px;
+  }
+  .fin-table th{
+    padding:9px 8px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--muted);
+    font-weight:700;
+    border-bottom:1.5px solid var(--line);
+    text-align:right;
+  }
+  .fin-table th:first-child{
+    text-align:left;
+    padding-left:4px;
+  }
+  .fin-table td{
+    padding:11px 8px;
+    border-bottom:1px solid var(--line);
+    text-align:right;
+    font-variant-numeric:tabular-nums;
+    white-space:nowrap;
+  }
+  .fin-table td:first-child{
+    text-align:left;
+    white-space:normal;
+    font-weight:600;
+    padding-left:4px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .fin-table .td-dot{
+    width:8px;
+    height:8px;
+    border-radius:3px;
+    flex-shrink:0;
+    display:inline-block;
+  }
+  .fin-table tbody tr:last-child td{
+    border-bottom:none;
+  }
+  .fin-table tfoot td{
+    font-weight:700;
+    border-top:2px solid var(--wine);
+    font-family:"Space Grotesk",sans-serif;
+    font-size:13px;
+    padding-top:12px;
+    padding-bottom:12px;
+  }
+  .fin-table tfoot td:first-child{
+    color:var(--wine);
+  }
 
   .empty-state{text-align:center; padding:36px 20px; color:var(--muted); font-size:12.5px; background:var(--card); border:1px dashed var(--line); border-radius:var(--radius);}
   footer{text-align:center; font-size:11px; color:var(--muted); margin-top:26px;}
@@ -449,7 +529,6 @@ window.toggleHowto = (which)=>{
 // =====================================================================
 // SEGURIDAD: escape de HTML — evita que texto escrito por cualquier
 // persona (nombre de evento, nota, etc.) se interprete como código.
-// Nunca insertamos texto de usuario en innerHTML sin pasar por esto.
 // =====================================================================
 function esc(str){
   return String(str ?? '').replace(/[&<>"']/g, ch => ({
@@ -473,15 +552,13 @@ function monthOptions(selected){
 let idCounter = 1000;
 const newId = () => 'e' + (idCounter++);
 
-// Evita guardar en Firebase en cada tecla — espera a que la persona
-// deje de escribir un momento antes de mandar el cambio. Esto también
-// evita que la app se "auto-reconstruya" a medio tecleo y cierre el teclado.
+// Evita guardar en Firebase en cada tecla
 function debounce(fn, delay=450){
   let t;
   return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn(...args), delay); };
 }
 
-// Estado de acordeones abiertos (se conserva mientras la app está abierta)
+// Estado de acordeones abiertos
 const expanded = { extra:new Set(), escolar:new Set(), ventas:new Set() };
 
 // =====================================================================
@@ -492,11 +569,11 @@ let eventos = [
   {id:'e2', nombre:'Halloween', categoria:'antro', mes:10, dia:30, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
   {id:'e3', nombre:'San Valentín', categoria:'antro', mes:2, dia:14, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
   {id:'e4', nombre:'AfterMUN', categoria:'antro', mes:3, dia:10, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
-  {id:'e5', nombre:'Fiesta EXTRA', categoria:'antro', mes:5, dia:null, aprox:true, confirmada:false, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
+  {id:'e5', nombre:'Fiesta EXTRA', categoria:'antro', mes:5, dia:null, aprox:false, confirmada:false, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
   {id:'e6', nombre:'Fiesta en casa (16 sept)', categoria:'casa', mes:9, dia:16, aprox:false, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
   {id:'e7', nombre:'Fiesta en casa (18 sept)', categoria:'casa', mes:9, dia:18, aprox:false, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
-  {id:'e8', nombre:'Posada', categoria:'casa', mes:12, dia:null, aprox:true, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
-  {id:'e9', nombre:'En vivo', categoria:'casa', mes:5, dia:null, aprox:true, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
+  {id:'e8', nombre:'Posada', categoria:'casa', mes:12, dia:null, aprox:false, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
+  {id:'e9', nombre:'En vivo', categoria:'casa', mes:5, dia:null, aprox:false, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
   {id:'e10', nombre:'After graduación', categoria:'casa', mes:7, dia:3, aprox:false, confirmada:true, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
 ];
 let filtro = 'all';
@@ -584,10 +661,7 @@ let ventas = [
 ];
 
 let fotos = [];
-
-let extras = [
-  // {id, nombre, tipo:'ingreso'|'gasto', monto, nota}
-];
+let extras = [];
 
 // =====================================================================
 // ACORDEÓN GENÉRICO por mes
@@ -644,8 +718,7 @@ function eventCardHtmlExtra(e){
     <div class="ev-top">
       <div class="date-box">
         <select data-type="ev-mes" data-id="${e.id}">${monthOptions(e.mes)}</select>
-        <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="ev-dia" data-id="${e.id}" ${e.aprox?'disabled':''}></div>
-        <label class="approx-label"><input type="checkbox" data-type="ev-aprox" data-id="${e.id}" ${e.aprox?'checked':''}> Aproximada</label>
+        <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="ev-dia" data-id="${e.id}"></div>
       </div>
       <div class="event-body">
         <input type="text" class="ev-name" maxlength="80" value="${esc(e.nombre)}" data-type="ev-nombre" data-id="${e.id}" placeholder="Nombre">
@@ -805,6 +878,7 @@ function updateFinanzas(){
 
   const totalIng = catExtra + catVentasIng + extraIngresos;
   const totalGas = catExtraGasto + catVentasGasto + catEscolarGasto + extraGastos;
+  const balanceTotal = totalIng - totalGas;
 
   const tiEl = document.getElementById('finTotalIngresos');
   const tgEl = document.getElementById('finTotalGastos');
@@ -812,7 +886,7 @@ function updateFinanzas(){
   const tfEl = document.getElementById('finTotalFuentes');
   if(tiEl) tiEl.textContent = money(totalIng);
   if(tgEl) tgEl.textContent = money(totalGas);
-  if(tbEl){ tbEl.textContent = money(totalIng-totalGas); tbEl.className = 'value ' + (totalIng-totalGas>=0?'pos':'neg'); }
+  if(tbEl){ tbEl.textContent = money(balanceTotal); tbEl.className = 'value ' + (balanceTotal>=0?'pos':'neg'); }
   if(tfEl) tfEl.textContent = (eventos.length + ventas.length + escolares.length + extras.length);
 
   const bd = document.getElementById('finBreakdown');
@@ -823,16 +897,43 @@ function updateFinanzas(){
       {nombre:'Calendario escolar', ing:0, gas:catEscolarGasto, color:'#8A6A11'},
       {nombre:'Ingresos y gastos extra', ing:extraIngresos, gas:extraGastos, color:'var(--wine)'},
     ];
-    bd.innerHTML = rows.map(r=>{
-      const bal = r.ing - r.gas;
-      return `<div style="display:flex; align-items:center; gap:10px; padding:9px 0; border-top:1px solid var(--line);">
-        <span style="width:8px;height:8px;border-radius:3px;background:${r.color};flex-shrink:0;"></span>
-        <span style="flex:1; font-size:12.5px; font-weight:600;">${esc(r.nombre)}</span>
-        <span style="font-size:11.5px; color:var(--green); min-width:78px; text-align:right;">${money(r.ing)}</span>
-        <span style="font-size:11.5px; color:var(--red); min-width:78px; text-align:right;">-${money(r.gas)}</span>
-        <span style="font-size:12.5px; font-weight:700; min-width:88px; text-align:right; color:${bal>=0?'var(--green)':'var(--red)'};">${money(bal)}</span>
-      </div>`;
-    }).join('');
+
+    bd.innerHTML = `
+      <div class="table-responsive">
+        <table class="fin-table">
+          <thead>
+            <tr>
+              <th>Categoría</th>
+              <th>Ingresos</th>
+              <th>Gastos</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(r=>{
+              const bal = r.ing - r.gas;
+              return `<tr>
+                <td>
+                  <span class="td-dot" style="background:${r.color};"></span>
+                  <span>${esc(r.nombre)}</span>
+                </td>
+                <td style="color:var(--green); font-weight:600;">${money(r.ing)}</td>
+                <td style="color:var(--red); font-weight:600;">${r.gas > 0 ? '-' + money(r.gas) : '$0'}</td>
+                <td style="font-weight:700; color:${bal>=0?'var(--green)':'var(--red)'};">${money(bal)}</td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Total neto</td>
+              <td style="color:var(--green); font-weight:700;">${money(totalIng)}</td>
+              <td style="color:var(--red); font-weight:700;">${totalGas > 0 ? '-' + money(totalGas) : '$0'}</td>
+              <td style="color:${balanceTotal>=0?'var(--green)':'var(--red)'}; font-weight:800;">${money(balanceTotal)}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    `;
   }
 }
 
@@ -874,7 +975,6 @@ function renderFotos(){
   fotos.forEach(f=>{
     const div = document.createElement('div');
     div.className = 'photo-item';
-    // f.url viene de ImgBB (URL segura, no texto libre) — no requiere escape.
     div.innerHTML = `<img src="${f.url}" loading="lazy" alt="Foto del año"><button class="ph-del" data-type="del-foto" data-id="${f.id}">×</button>`;
     grid.appendChild(div);
   });
@@ -899,7 +999,7 @@ async function comprimirImagen(file, maxSize=1400, calidad=0.8){
 function blobToBase64(blob){
   return new Promise((res, rej)=>{
     const reader = new FileReader();
-    reader.onload = ()=> res(reader.result.split(',')[1]); // quita el prefijo "data:image/jpeg;base64,"
+    reader.onload = ()=> res(reader.result.split(',')[1]);
     reader.onerror = rej;
     reader.readAsDataURL(blob);
   });
@@ -988,7 +1088,6 @@ document.addEventListener('change', e=>{
   if(ev){
     if(t.dataset.type==='ev-mes'){ ev.mes=parseInt(t.value); renderExtra(); saveExtra(); }
     if(t.dataset.type==='ev-categoria'){ ev.categoria=t.value; renderExtra(); saveExtra(); }
-    if(t.dataset.type==='ev-aprox'){ ev.aprox=t.checked; if(ev.aprox) ev.dia=null; renderExtra(); saveExtra(); }
   }
   const es = escolares.find(x=>x.id===t.dataset.id);
   if(es && t.dataset.type==='esc-mes'){ es.mes=parseInt(t.value); renderEscolar(); saveEscolar(); }
@@ -1018,8 +1117,8 @@ document.addEventListener('click', e=>{
   if(t.id==='addEventBtn'){
     const cat = filtro==='casa' ? 'casa' : 'antro';
     eventos.push(cat==='antro'
-      ? {id:newId(), nombre:'Nueva actividad', categoria:'antro', mes:9, dia:null, aprox:true, confirmada:false, boletos:200, precio:270, gastoFijo:3000, comisionPct:10}
-      : {id:newId(), nombre:'Nueva actividad', categoria:'casa', mes:9, dia:null, aprox:true, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0});
+      ? {id:newId(), nombre:'Nueva actividad', categoria:'antro', mes:9, dia:null, aprox:false, confirmada:false, boletos:200, precio:270, gastoFijo:3000, comisionPct:10}
+      : {id:newId(), nombre:'Nueva actividad', categoria:'casa', mes:9, dia:null, aprox:false, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0});
     expanded.extra.add(9);
     renderExtra(); saveExtra();
   }
@@ -1104,7 +1203,7 @@ async function saveFinanzas(){
 saveFinanzas = debounce(saveFinanzas);
 
 onSnapshot(docRefExtra, (snap)=>{
-  if(!snap.exists() || snap.metadata.hasPendingWrites) return; // ignora el eco de tu propio guardado
+  if(!snap.exists() || snap.metadata.hasPendingWrites) return;
   const data = snap.data();
   if(data.eventos) eventos = data.eventos;
   if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
@@ -1159,7 +1258,7 @@ if('serviceWorker' in navigator){
   });
 }
 
-// Bloquea el "pinch zoom" y el doble-tap zoom para que se sienta app, no página
+// Bloquea el "pinch zoom" y el doble-tap zoom sin bloquear el scroll natural con rebote
 document.addEventListener('gesturestart', e=>e.preventDefault());
 let lastTouch = 0;
 document.addEventListener('touchend', e=>{
