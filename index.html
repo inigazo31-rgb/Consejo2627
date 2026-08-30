@@ -19,33 +19,31 @@
 .card,.stat,.month-acc,.photo-upload{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}.card{border-radius:var(--radius);padding:18px;margin-bottom:14px}.summary-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.stat{border-radius:16px;padding:15px 16px;min-height:78px}.stat .label{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700}.stat .value{font-size:20px;font-weight:700;margin-top:4px;font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}.stat.balance{border-color:#d9bdbc;background:#fffafa}.stat.balance .value.pos{color:var(--green)}.stat.balance .value.neg{color:var(--red)}
 .toolbar{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:14px}.tab-chips{display:flex;background:#fff;border:1px solid var(--line);border-radius:12px;padding:3px;gap:2px;overflow-x:auto}.tab-chip{border:none;background:transparent;padding:8px 13px;border-radius:9px;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap}.tab-chip.active{background:var(--ink);color:#fff}.add-btn{margin-left:auto;background:var(--wine);color:#fff;border:none;border-radius:11px;padding:10px 15px;font-size:12.5px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(125,16,16,.16)}.add-btn:hover{background:var(--wine-2);transform:translateY(-1px)}.add-btn:active{transform:translateY(0);background:var(--wine-deep)}
 .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-bottom:14px}.legend span{display:inline-flex;align-items:center;gap:5px}.dot{width:8px;height:8px;border-radius:3px;display:inline-block}.dot.antro{background:var(--antro-bg);border:1px solid var(--antro)}.dot.casa{background:var(--casa-bg);border:1px solid var(--casa)}.dot.ventas{background:var(--ventas-bg);border:1px solid var(--ventas)}
-.month-acc{border-radius:15px;margin-bottom:10px;overflow:hidden}.month-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 17px;background:transparent;border:none;cursor:pointer}.month-head .mh-left{display:flex;align-items:center;gap:9px}.month-head .mh-title{font-size:12px;font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:.06em}.month-head .mh-count{font-size:10px;font-weight:700;color:var(--muted);background:#f3eee8;padding:3px 8px;border-radius:999px}.chevron{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2.2;transition:transform .2s}.month-acc.open .chevron{transform:rotate(180deg)}.month-body{max-height:0;overflow:hidden;transition:max-height .25s ease}.month-acc.open .month-body{max-height:6000px}.month-body-inner{padding:0 12px 12px}
-.event-card{background:#fff;border:1px solid var(--line);border-left:3px solid var(--muted);border-radius:14px;padding:14px 15px;margin-bottom:9px;transition:box-shadow .15s,transform .15s}.event-card:hover{box-shadow:0 8px 24px rgba(23,20,17,.07);transform:translateY(-1px)}.event-card.antro{border-left-color:var(--antro)}.event-card.casa{border-left-color:var(--casa)}.event-card.escolar{border-left-color:var(--wine)}.event-card.ventas{border-left-color:var(--ventas)}.ev-top{display:grid;grid-template-columns:92px 1fr auto;gap:12px;align-items:start}@media(max-width:480px){.ev-top{grid-template-columns:1fr auto}.date-box{grid-column:1/-1;flex-direction:row;gap:8px}.date-box select{flex:1}.day-row{flex:0 0 82px}.approx-label{align-self:center}}.date-box{display:flex;flex-direction:column;gap:4px}.date-box select,.meta-row select{padding:7px 7px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-family:inherit;color:var(--wine);background:#faf8f5}.day-row input{width:100%;padding:7px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-family:inherit}.approx-label{font-size:9px;color:var(--muted);display:flex;align-items:center;gap:4px}.event-body input[type=text].ev-name{width:100%;border:none;background:transparent;font-size:15px;font-weight:750;color:var(--ink);padding:2px 0 4px;font-family:inherit}.event-body input[type=text].ev-name:focus{outline:none;border-bottom:2px solid var(--wine)}.meta-row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.badge{font-size:9.5px;font-weight:800;padding:4px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.02em;cursor:pointer}.badge.antro{background:var(--antro-bg);color:var(--antro)}.badge.casa{background:var(--casa-bg);color:var(--casa)}.badge.escolar{background:var(--amber-bg);color:var(--amber)}.badge.confirmada{background:var(--green-bg);color:var(--green)}.badge.estimada{background:var(--amber-bg);color:var(--amber)}.notas-input{width:100%;border:1px solid var(--line);border-radius:8px;padding:7px 8px;font-size:11px;font-style:italic;color:var(--muted);font-family:inherit;background:#faf8f5;margin-top:7px}.del-btn{background:transparent;color:#aaa;border:none;border-radius:8px;width:32px;height:32px;font-size:18px;font-weight:500;cursor:pointer;line-height:1}.del-btn:hover{background:var(--red-bg);color:var(--red)}
+.month-acc{border-radius:15px;margin-bottom:10px;overflow:hidden;transition:box-shadow .18s ease,border-color .18s ease}.month-acc.open{box-shadow:0 8px 26px rgba(23,20,17,.055)}.month-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 17px;background:transparent;border:none;cursor:pointer}.month-head .mh-left{display:flex;align-items:center;gap:9px}.month-head .mh-title{font-size:12px;font-weight:800;color:var(--ink);text-transform:uppercase;letter-spacing:.06em}.month-head .mh-count{font-size:10px;font-weight:700;color:var(--muted);background:#f3eee8;padding:3px 8px;border-radius:999px}.chevron{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2.2;transition:transform .2s}.month-acc.open .chevron{transform:rotate(180deg)}
+/* FIX ACORDEON: auto height sin espacio vacío */
+.month-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+.month-body-inner{overflow:hidden;min-width:0;padding:0 14px 0}
+.month-acc.open .month-body{grid-template-rows:1fr}
+.month-acc.open .month-body-inner{padding:0 14px 14px}
+
+.event-card{background:#fff;border:1px solid var(--line);border-left:3px solid var(--muted);border-radius:14px;padding:14px 15px;margin-bottom:9px;transition:box-shadow .15s,transform .15s}.event-card:hover{box-shadow:0 8px 24px rgba(23,20,17,.07);transform:translateY(-1px)}.event-card.antro{border-left-color:var(--antro)}.event-card.casa{border-left-color:var(--casa)}.event-card.escolar{border-left-color:var(--wine)}.event-card.ventas{border-left-color:var(--ventas)}.ev-top{display:grid;grid-template-columns:92px 1fr auto;gap:12px;align-items:start}
+.date-box{display:flex;flex-direction:column;gap:4px}.date-box select,.meta-row select{padding:7px 7px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-family:inherit;color:var(--wine);background:#faf8f5}.day-row input{width:100%;padding:7px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-family:inherit}.approx-label{font-size:9px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.event-body input[type=text].ev-name{width:100%;border:none;background:transparent;font-size:15px;font-weight:750;color:var(--ink);padding:2px 0 4px;font-family:inherit;min-width:0}.event-body input[type=text].ev-name:focus{outline:none;border-bottom:2px solid var(--wine)}.meta-row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.badge{font-size:9.5px;font-weight:800;padding:4px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.02em;cursor:pointer}.badge.antro{background:var(--antro-bg);color:var(--antro)}.badge.casa{background:var(--casa-bg);color:var(--casa)}.badge.escolar{background:var(--amber-bg);color:var(--amber)}.badge.confirmada{background:var(--green-bg);color:var(--green)}.badge.estimada{background:var(--amber-bg);color:var(--amber)}.notas-input{width:100%;border:1px solid var(--line);border-radius:8px;padding:7px 8px;font-size:11px;font-style:italic;color:var(--muted);font-family:inherit;background:#faf8f5;margin-top:7px}.del-btn{background:transparent;color:#aaa;border:none;border-radius:8px;width:32px;height:32px;font-size:18px;font-weight:500;cursor:pointer;line-height:1}.del-btn:hover{background:var(--red-bg);color:var(--red)}
 .fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-top:12px;margin-top:12px;border-top:1px solid var(--line)}@media(max-width:520px){.fin-grid{grid-template-columns:1fr}}.fin-col h4{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:800;margin-bottom:8px}.fin-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin-bottom:6px;font-size:12px}.fin-row input[type=number]{width:96px;padding:7px 8px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-family:inherit;text-align:right;background:#faf8f5;color:var(--ink)}.fin-total{display:flex;justify-content:space-between;font-size:12.5px;font-weight:750;padding-top:8px;margin-top:4px;border-top:1px solid var(--line)}.fin-total.ing{color:var(--green)}.fin-total.gas{color:var(--red)}.ev-balance{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;margin-top:9px;padding-top:10px;border-top:2px solid #eee5df;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px}.ev-balance .val.pos{color:var(--green)}.ev-balance .val.neg{color:var(--red)}
 .empty-state{text-align:center;padding:42px 20px;color:var(--muted);font-size:12.5px;background:#fff;border:1px dashed #d8d0c7;border-radius:var(--radius)}footer{text-align:center;font-size:10px;color:#9a9189;margin-top:30px}.howto{background:#f8f5f1;border:1px solid var(--line);border-radius:14px;padding:12px 15px;margin-bottom:14px;font-size:11.5px;color:var(--muted);line-height:1.55}.howto strong{color:var(--ink)}.howto button{background:none;border:none;color:var(--wine);font-weight:750;font-size:11.5px;cursor:pointer;padding:0}
 .hero{background:var(--wine);border-radius:24px;padding:32px 28px;color:#fff;position:relative;overflow:hidden;margin-bottom:18px;text-align:left;box-shadow:0 18px 40px rgba(125,16,16,.18)}.hero:before{content:'';position:absolute;right:-80px;top:-110px;width:300px;height:300px;border-radius:50%;border:70px solid rgba(255,255,255,.055)}.hero-logo{width:56px;height:56px;border-radius:15px;overflow:hidden;margin:0 0 18px;border:2px solid rgba(255,255,255,.28);position:relative}.hero-logo img{width:100%;height:100%;object-fit:cover;display:block}.hero h1{font-size:31px;font-weight:700;letter-spacing:-.045em;position:relative;max-width:620px}.hero p{margin:9px 0 0;color:#f3dedd;font-size:13px;max-width:650px;line-height:1.6;position:relative}.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:18px}.quick-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:transform .15s,box-shadow .15s;box-shadow:var(--shadow)}.quick-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(23,20,17,.08)}.quick-card:active{transform:scale(.985)}.quick-ic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}.quick-ic svg{width:19px;height:19px;stroke-width:2}.quick-title{font-size:13.5px;font-weight:750;color:var(--ink)}.quick-sub{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.35}
 .photo-upload{border-radius:18px;padding:30px 16px;text-align:center;margin-bottom:16px;cursor:pointer;display:block}.photo-upload:hover{border-color:#cdbeb0}.photo-upload svg{width:28px;height:28px;stroke:var(--wine);fill:none;stroke-width:1.7;margin-bottom:8px}.photo-upload .pu-title{font-size:13.5px;font-weight:750;color:var(--ink)}.photo-upload .pu-sub{font-size:11.5px;color:var(--muted);margin-top:3px}#photoInput{display:none}.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}.photo-item{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#eee8e1}.photo-item img{width:100%;height:100%;object-fit:cover;display:block}.photo-item .ph-del{position:absolute;top:7px;right:7px;width:30px;height:30px;border-radius:9px;border:none;background:rgba(0,0,0,.5);color:#fff;font-size:15px;font-weight:700;cursor:pointer}
-/* mobile-first behavior */
-@media(max-width:760px){.app-shell{display:block}.rail{width:100%;height:auto;flex-direction:row;justify-content:space-around;position:fixed;bottom:0;top:auto;left:0;padding:7px 4px calc(7px + env(safe-area-inset-bottom));box-shadow:0 -5px 20px rgba(23,20,17,.12);border-top:1px solid var(--line);border-right:0;z-index:40}.rail-logo{display:none}.rail-btn{width:auto;flex:1;min-height:48px;padding:7px 2px;justify-content:center;flex-direction:column;gap:4px;text-align:center;font-size:9px}.rail-btn svg{width:18px;height:18px}.rail-btn.active{box-shadow:none;background:#f5eceb}.content{padding-bottom:0}.wrap{padding:16px 14px calc(92px + env(safe-area-inset-bottom))}.hero{padding:25px 20px;border-radius:21px}.hero h1{font-size:27px}.hero p{font-size:12.5px}.header{padding:19px 18px;border-radius:18px}.header h1{font-size:22px}.header p{font-size:12px}.summary-bar{grid-template-columns:repeat(2,1fr);gap:8px}.stat{min-height:72px;padding:12px}.stat .value{font-size:18px}.quick-grid{grid-template-columns:1fr;gap:9px}.quick-card{padding:14px}.toolbar{position:sticky;top:0;z-index:10;background:var(--cream);padding:5px 0 9px;margin-bottom:7px}.add-btn{padding:10px 13px}.tab-chips{max-width:calc(100% - 108px)}.month-head{min-height:52px}.month-body-inner{padding:0 8px 8px}.event-card{padding:12px}.fin-row input[type=number]{width:90px}.photo-grid{grid-template-columns:repeat(3,1fr);gap:6px}}
-@media(max-width:370px){.rail-btn{font-size:8px}.rail-btn svg{width:17px;height:17px}.wrap{padding-left:10px;padding-right:10px}.summary-bar{gap:6px}.stat .label{font-size:9px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-:focus-visible{outline:3px solid rgba(125,16,16,.25);outline-offset:2px}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:#171411;color:#fff;border-radius:12px;padding:10px 14px;font-size:12px;font-weight:700;z-index:100;box-shadow:0 12px 30px rgba(0,0,0,.18);transition:opacity .18s,transform .18s}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:760px){.toast{bottom:calc(88px + env(safe-area-inset-bottom));max-width:calc(100vw - 32px);text-align:center}}
-
-
-/* ===== COMPACT TIMELINES + FINANCE TABLE ===== */
-.month-body-inner{padding:0 14px 14px}
-.month-acc{transition:box-shadow .18s ease,border-color .18s ease}
-.month-acc.open{box-shadow:0 8px 26px rgba(23,20,17,.055)}
-.event-card{position:relative}
+/* compact timelines + finance table */
 .event-card .ev-top{align-items:flex-start}
 .date-box{display:grid;grid-template-columns:92px 72px;gap:6px;align-items:center;align-content:start}
 .date-box select,.date-box .day-row input{height:34px}
-.approx-label{display:none!important}
 .event-body .name-line{display:flex;align-items:center;gap:7px;min-width:0;flex-wrap:wrap}
 .event-body .name-line .ev-name{flex:1 1 180px;min-width:0}
 .inline-status{display:inline-flex;align-items:center;white-space:nowrap;font-size:9px;font-weight:800;line-height:1;padding:6px 8px;border-radius:999px;background:var(--amber-bg);color:var(--amber);text-transform:uppercase;letter-spacing:.025em}
 .inline-status.neutral{background:#f2efeb;color:var(--muted)}
+.approx-pill{border:none;background:#f2efeb;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.02em;padding:5px 8px;border-radius:999px;cursor:pointer;white-space:nowrap;line-height:1;display:inline-flex;align-items:center}
+.approx-pill.aprox{background:var(--amber-bg);color:var(--amber)}
+.approx-pill:hover{filter:brightness(.97)}
 .finance-table{width:100%;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
 .finance-table-head,.finance-table-row{display:grid;grid-template-columns:minmax(190px,1.7fr) minmax(100px,1fr) minmax(100px,1fr) minmax(100px,1fr);align-items:center}
 .finance-table-head{background:#f7f4ef;color:var(--muted);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
@@ -61,12 +59,14 @@
 .finance-num.balance.pos{color:var(--green);font-weight:800}
 .finance-num.balance.neg{color:var(--red);font-weight:800}
 @media(max-width:760px){
-  .month-body-inner{padding:0 8px 9px}
+  .month-body-inner{padding:0 8px 0}
+  .month-acc.open .month-body-inner{padding:0 8px 9px}
   .event-card{padding:11px}
   .date-box{grid-template-columns:minmax(92px,1fr) 64px;gap:5px}
   .date-box select,.date-box .day-row input{height:33px}
   .event-body .name-line{gap:5px}
   .inline-status{font-size:8px;padding:5px 7px}
+  .approx-pill{font-size:9px;padding:4px 7px}
   .finance-table-head,.finance-table-row{grid-template-columns:minmax(125px,1.45fr) repeat(3,minmax(72px,1fr))}
   .finance-table-head>div,.finance-table-row>div{padding:10px 7px}
   .finance-table-head{font-size:8px}
@@ -78,13 +78,10 @@
   .finance-table-head,.finance-table-row{grid-template-columns:minmax(112px,1.3fr) repeat(3,minmax(66px,1fr))}
   .finance-table-head>div,.finance-table-row>div{padding:9px 5px}
 }
-
-/* ===== MOBILE POLISH / NATIVE SCROLL ===== */
 html{min-height:100%;height:auto;overscroll-behavior:auto;}
 body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto;overscroll-behavior:auto;-webkit-overflow-scrolling:touch;}
 .content{min-width:0;width:100%;overflow:visible;}
 .wrap{width:100%;min-width:0;}
-
 @media(max-width:760px){
   html,body{overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:auto;}
   .app-shell{width:100%;min-height:100svh;min-height:100dvh;}
@@ -93,52 +90,8 @@ body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto;overscroll-be
   .view{width:100%;max-width:100%;min-width:0;}
   .header,.hero,.card,.summary-bar,.toolbar,.legend,.month-acc,.photo-upload,.photo-grid,.empty-state{max-width:100%;min-width:0;}
   .header,.hero{margin-left:0;margin-right:0;}
-  .toolbar{position:sticky;top:0;padding:7px 0 10px;margin-left:0;margin-right:0;}
-  .tab-chips{min-width:0;max-width:100%;flex:1;}
-  .add-btn{flex:0 0 auto;}
-  .summary-bar{width:100%;}
-  .stat{min-width:0;}
-  .month-body,.month-body-inner,.event-card{max-width:100%;min-width:0;}
-  .event-card{overflow:hidden;}
-  .ev-top{min-width:0;}
-  .event-body{min-width:0;}
-  .event-body input[type=text].ev-name{min-width:0;}
-  .fin-grid{min-width:0;}
-  .fin-row{min-width:0;}
-  .fin-row label{min-width:0;overflow-wrap:anywhere;}
-  .fin-row input[type=number]{max-width:42vw;}
-  #finBreakdown{width:100%;overflow:hidden;}
-  #finBreakdown > div{min-width:0!important;width:100%!important;}
-  #finBreakdown [style*="min-width:78px"],
-  #finBreakdown [style*="min-width:88px"]{min-width:0!important;width:auto!important;}
-  #finBreakdown [style*="text-align:right"]{white-space:nowrap;}
-  .photo-grid{width:100%;grid-template-columns:repeat(3,minmax(0,1fr));}
-  .photo-item{min-width:0;}
-  .rail{padding-left:max(4px,env(safe-area-inset-left));padding-right:max(4px,env(safe-area-inset-right));}
-  .rail-btn{min-width:0;}
-}
-
-@media(max-width:390px){
-  .wrap{padding-left:12px;padding-right:12px;}
-  .header{padding:18px 16px;}
-  .hero{padding:23px 17px;}
-  .summary-bar{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .stat{padding:11px 10px;}
-  .stat .value{font-size:17px;}
-  .toolbar{gap:6px;}
-  .tab-chip{padding:8px 10px;}
-  .add-btn{padding:10px 11px;}
-}
-
-@media(min-width:761px){
-  .view{width:100%;}
-}
-
-/* ===== V4 — COMPACT MOBILE ACTIVITY CARDS ===== */
-.ventas-badge{background:var(--ventas-bg);color:var(--ventas)}
-.name-line .badge,.name-line .inline-status{flex:none}
-@media(max-width:760px){
-  /* Keep the date and activity title on the same horizontal row. */
+  .toolbar{position:sticky;top:0;z-index:10;background:var(--cream);padding:5px 0 9px;margin-bottom:7px}
+  .add-btn{padding:10px 13px}.tab-chips{max-width:calc(100% - 108px)}.month-head{min-height:52px}.event-card{padding:12px}.fin-row input[type=number]{width:90px}.photo-grid{grid-template-columns:repeat(3,1fr);gap:6px}
   .ev-top{grid-template-columns:92px minmax(0,1fr) 30px;gap:9px;align-items:start}
   .date-box{grid-column:auto!important;display:flex;flex-direction:column;gap:5px;min-width:0}
   .date-box select,.date-box .day-row input{height:34px;width:100%;padding:6px 7px}
@@ -146,254 +99,101 @@ body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto;overscroll-be
   .event-body{min-width:0;padding-top:1px}
   .event-body .name-line{display:flex;align-items:center;gap:5px;flex-wrap:wrap;line-height:1.15}
   .event-body .name-line .ev-name{flex:1 1 105px;width:auto;min-width:80px;font-size:15px;line-height:1.2;padding:1px 0 3px}
-  .event-body .badge,.event-body .inline-status{font-size:8px;padding:5px 6px;line-height:1;}
+  .event-body .badge{font-size:8px;padding:5px 6px;line-height:1;}
   .meta-row{margin-top:5px;gap:5px}
   .meta-row select{height:30px;padding:5px 6px;font-size:11px}
   .notas-input{margin-top:6px;padding:6px 7px;height:31px}
   .del-btn{width:30px;height:30px;margin-top:-2px}
-
-  /* Approximate dates do not need an empty day field. */
   .date-box:has(.day-row input:disabled) .day-row{display:none}
-
-  /* The finance section starts immediately after the header. */
   .fin-grid{margin-top:9px;padding-top:9px;gap:9px}
   .fin-col h4{margin-bottom:6px}
   .fin-row{margin-bottom:5px}
   .fin-total{padding-top:6px}
   .ev-balance{margin-top:5px;padding-top:8px}
-
-  /* Reduce the accordion's visual padding; it should hug its content. */
-  .month-body-inner{padding:0 6px 6px}
-  .event-card{padding:10px;margin-bottom:7px;border-radius:13px}
 }
 @media(max-width:390px){
+  .wrap{padding-left:12px;padding-right:12px;}
   .ev-top{grid-template-columns:84px minmax(0,1fr) 28px;gap:7px}
   .event-body .name-line .ev-name{font-size:14px;min-width:70px}
-  .event-body .badge,.event-body .inline-status{font-size:7.5px;padding:4px 5px}
+  .event-body .badge{font-size:7.5px;padding:4px 5px}
   .date-box select,.date-box .day-row input{height:32px;font-size:11px}
   .event-card{padding:9px}
 }
-/* Desktop: keep the activity header compact as well. */
 @media(min-width:761px){
+  .view{width:100%;}
   .ev-top{grid-template-columns:164px minmax(0,1fr) 32px}
   .date-box{display:grid;grid-template-columns:92px 66px;gap:6px;align-items:center}
   .date-box .day-row{min-width:0}
   .event-body .name-line{gap:7px}
 }
+:focus-visible{outline:3px solid rgba(125,16,16,.25);outline-offset:2px}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:#171411;color:#fff;border-radius:12px;padding:10px 14px;font-size:12px;font-weight:700;z-index:100;box-shadow:0 12px 30px rgba(0,0,0,.18);transition:opacity .18s,transform .18s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.toast{bottom:calc(88px + env(safe-area-inset-bottom));max-width:calc(100vw - 32px);text-align:center}}
+.ventas-badge{background:var(--ventas-bg);color:var(--ventas)}
+.name-line .badge,.name-line .approx-pill{flex:none}
 </style>
 </head>
 <body>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="app-shell">
-
   <nav class="rail" id="rail">
     <div class="rail-logo"><img src="icon-192.png" alt="27MEX"></div>
-    <button class="rail-btn active" data-view="inicio" aria-label="Ir a Inicio">
-      <svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
-      Inicio
-    </button>
-    <button class="rail-btn" data-view="extracurricular" aria-label="Ir a actividades extracurriculares">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v5"/></svg>
-      Extra
-    </button>
-    <button class="rail-btn" data-view="escolar" aria-label="Ir a calendario escolar">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>
-      Escolar
-    </button>
-    <button class="rail-btn" data-view="ventas" aria-label="Ir a ventas escolares">
-      <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
-      Ventas
-    </button>
-    <button class="rail-btn" data-view="fotos" aria-label="Ir a álbum de fotos">
-      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-4 4-3-3-4 4"/></svg>
-      Fotos
-    </button>
-    <button class="rail-btn" data-view="finanzas" aria-label="Ir a finanzas generales">
-      <svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-      Finanzas
-    </button>
+    <button class="rail-btn active" data-view="inicio" aria-label="Ir a Inicio"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Inicio</button>
+    <button class="rail-btn" data-view="extracurricular" aria-label="Ir a actividades extracurriculares"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v5"/></svg>Extra</button>
+    <button class="rail-btn" data-view="escolar" aria-label="Ir a calendario escolar"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>Escolar</button>
+    <button class="rail-btn" data-view="ventas" aria-label="Ir a ventas escolares"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>Ventas</button>
+    <button class="rail-btn" data-view="fotos" aria-label="Ir a álbum de fotos"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-4 4-3-3-4 4"/></svg>Fotos</button>
+    <button class="rail-btn" data-view="finanzas" aria-label="Ir a finanzas generales"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Finanzas</button>
   </nav>
-
-  <div class="content">
-    <div class="wrap">
-
-      <!-- ===================== INICIO ===================== -->
+  <div class="content"><div class="wrap">
       <div class="view active" id="view-inicio">
-        <div class="hero">
-          <div class="hero-logo"><img src="icon-192.png" alt="27MEX Seniors"></div>
-          <h1>Tu centro de mando para el último año 💛</h1>
-          <p>Todo el año del Consejo Estudiantil 27MEX Seniors 26/27, en un solo lugar: actividades, dinero, ventas y recuerdos.</p>
-        </div>
-        <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;">
-          <div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--wine);font-weight:800;">Centro de control</div><div style="font-size:14px;font-weight:750;margin-top:3px;">¿Qué quieres gestionar hoy?</div></div><div style="font-size:11px;color:var(--muted);text-align:right;max-width:180px;line-height:1.4;">Elige una sección y llega directo a la acción.</div>
-        </div>
+        <div class="hero"><div class="hero-logo"><img src="icon-192.png" alt="27MEX Seniors"></div><h1>Tu centro de mando para el último año 💛</h1><p>Todo el año del Consejo Estudiantil 27MEX Seniors 26/27, en un solo lugar: actividades, dinero, ventas y recuerdos.</p></div>
+        <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;"><div><div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--wine);font-weight:800;">Centro de control</div><div style="font-size:14px;font-weight:750;margin-top:3px;">¿Qué quieres gestionar hoy?</div></div><div style="font-size:11px;color:var(--muted);text-align:right;max-width:180px;line-height:1.4;">Elige una sección y llega directo a la acción.</div></div>
         <div class="quick-grid">
-          <div class="quick-card" role="button" tabindex="0" data-goto="extracurricular">
-            <div class="quick-ic" style="background:var(--antro-bg);"><svg viewBox="0 0 24 24" stroke="var(--antro)"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg></div>
-            <div><div class="quick-title">Fiestas extracurriculares</div><div class="quick-sub">Calendario y finanzas de antros y casas</div></div>
-          </div>
-          <div class="quick-card" role="button" tabindex="0" data-goto="escolar">
-            <div class="quick-ic" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" stroke="#8A6A11"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg></div>
-            <div><div class="quick-title">Calendario escolar</div><div class="quick-sub">Todo lo que organizamos dentro del IMEX</div></div>
-          </div>
-          <div class="quick-card" role="button" tabindex="0" data-goto="ventas">
-            <div class="quick-ic" style="background:var(--ventas-bg);"><svg viewBox="0 0 24 24" stroke="var(--ventas)"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
-            <div><div class="quick-title">Ventas escolares</div><div class="quick-sub">Donas, calaveritas y más recaudación</div></div>
-          </div>
-          <div class="quick-card" role="button" tabindex="0" data-goto="fotos">
-            <div class="quick-ic" style="background:var(--casa-bg);"><svg viewBox="0 0 24 24" stroke="var(--casa)"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/></svg></div>
-            <div><div class="quick-title">Álbum de fotos</div><div class="quick-sub">Los recuerdos del año, todos juntos</div></div>
-          </div>
+          <div class="quick-card" role="button" tabindex="0" data-goto="extracurricular"><div class="quick-ic" style="background:var(--antro-bg);"><svg viewBox="0 0 24 24" stroke="var(--antro)"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg></div><div><div class="quick-title">Fiestas extracurriculares</div><div class="quick-sub">Calendario y finanzas de antros y casas</div></div></div>
+          <div class="quick-card" role="button" tabindex="0" data-goto="escolar"><div class="quick-ic" style="background:var(--amber-bg);"><svg viewBox="0 0 24 24" stroke="#8A6A11"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg></div><div><div class="quick-title">Calendario escolar</div><div class="quick-sub">Todo lo que organizamos dentro del IMEX</div></div></div>
+          <div class="quick-card" role="button" tabindex="0" data-goto="ventas"><div class="quick-ic" style="background:var(--ventas-bg);"><svg viewBox="0 0 24 24" stroke="var(--ventas)"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div><div><div class="quick-title">Ventas escolares</div><div class="quick-sub">Donas, calaveritas y más recaudación</div></div></div>
+          <div class="quick-card" role="button" tabindex="0" data-goto="fotos"><div class="quick-ic" style="background:var(--casa-bg);"><svg viewBox="0 0 24 24" stroke="var(--casa)"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/></svg></div><div><div class="quick-title">Álbum de fotos</div><div class="quick-sub">Los recuerdos del año, todos juntos</div></div></div>
         </div>
-        <div class="card" style="text-align:center; color:var(--muted); font-size:12px;">
-          27MEX Seniors · Consejo Estudiantil IMEX 26/27 — hecho por y para la generación.
-        </div>
+        <div class="card" style="text-align:center; color:var(--muted); font-size:12px;">27MEX Seniors · Consejo Estudiantil IMEX 26/27 — hecho por y para la generación.</div>
       </div>
-
-      <!-- ===================== EXTRACURRICULAR ===================== -->
       <div class="view" id="view-extracurricular">
-        <div class="header">
-          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
-          <h1>Calendario financiero extracurricular</h1>
-          <p>Fiestas en antro y fiestas en casa para seniors. Toca un mes para ver sus actividades.</p>
-        </div>
-        <div class="howto">
-          <strong>¿Cómo lo uso?</strong> Todos editan el mismo documento en tiempo real. <button onclick="toggleHowto('extra')">Ver más</button>
-          <div id="howtoMore-extra" style="display:none; margin-top:7px;">
-            Boletos × Precio = ingreso bruto. En antro se suma comisión sobre boletos. En casa el gasto cubre todo. El balance se recalcula solo.
-          </div>
-        </div>
-        <div class="summary-bar">
-          <div class="stat"><div class="label">Ingresos</div><div class="value" id="statIngresos">$0</div></div>
-          <div class="stat"><div class="label">Gastos</div><div class="value" id="statGastos">$0</div></div>
-          <div class="stat balance"><div class="label">Balance</div><div class="value" id="statBalance">$0</div></div>
-          <div class="stat"><div class="label">Actividades</div><div class="value" id="statCount">0</div></div>
-        </div>
-        <div class="legend">
-          <span><span class="dot antro"></span> Antro</span>
-          <span><span class="dot casa"></span> Casa seniors</span>
-        </div>
-        <div class="toolbar">
-          <div class="tab-chips" id="filterSegExtra">
-            <button data-f="all" class="tab-chip active">Todas</button>
-            <button data-f="antro" class="tab-chip">Antro</button>
-            <button data-f="casa" class="tab-chip">Casa</button>
-          </div>
-          <button class="add-btn" id="addEventBtn">+ Agregar</button>
-        </div>
-        <div id="timelineExtra"></div>
-        <div class="empty-state" id="emptyExtra" style="display:none;">No hay actividades en este filtro todavía.</div>
-        <footer>Calendario financiero extracurricular — 27MEX Seniors</footer>
+        <div class="header"><div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div><h1>Calendario financiero extracurricular</h1><p>Fiestas en antro y fiestas en casa para seniors. Toca un mes para ver sus actividades.</p></div>
+        <div class="howto"><strong>¿Cómo lo uso?</strong> Todos editan el mismo documento en tiempo real. <button onclick="toggleHowto('extra')">Ver más</button><div id="howtoMore-extra" style="display:none; margin-top:7px;">Boletos × Precio = ingreso bruto. En antro se suma comisión sobre boletos. En casa el gasto cubre todo. El balance se recalcula solo.</div></div>
+        <div class="summary-bar"><div class="stat"><div class="label">Ingresos</div><div class="value" id="statIngresos">$0</div></div><div class="stat"><div class="label">Gastos</div><div class="value" id="statGastos">$0</div></div><div class="stat balance"><div class="label">Balance</div><div class="value" id="statBalance">$0</div></div><div class="stat"><div class="label">Actividades</div><div class="value" id="statCount">0</div></div></div>
+        <div class="legend"><span><span class="dot antro"></span> Antro</span><span><span class="dot casa"></span> Casa seniors</span></div>
+        <div class="toolbar"><div class="tab-chips" id="filterSegExtra"><button data-f="all" class="tab-chip active">Todas</button><button data-f="antro" class="tab-chip">Antro</button><button data-f="casa" class="tab-chip">Casa</button></div><button class="add-btn" id="addEventBtn">+ Agregar</button></div>
+        <div id="timelineExtra"></div><div class="empty-state" id="emptyExtra" style="display:none;">No hay actividades en este filtro todavía.</div><footer>Calendario financiero extracurricular — 27MEX Seniors</footer>
       </div>
-
-      <!-- ===================== ESCOLAR ===================== -->
       <div class="view" id="view-escolar">
-        <div class="header">
-          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
-          <h1>Calendario escolar</h1>
-          <p>Todo lo que organizamos dentro del IMEX en el ciclo 2026–2027. Toca un mes para desplegarlo.</p>
-        </div>
-        <div class="howto">
-          <strong>¿Cómo lo uso?</strong> Igual, todos ven y editan lo mismo en tiempo real. <button onclick="toggleHowto('esc')">Ver más</button>
-          <div id="howtoMore-esc" style="display:none; margin-top:7px;">
-            Cada tarjeta tiene mes, día y notas editables. Usa + Agregar para meter cualquier evento nuevo.
-          </div>
-        </div>
-        <div class="toolbar">
-          <span class="tab-chip active" id="statCountEscPill" style="background:var(--wine); cursor:default;">0 actividades</span>
-          <button class="add-btn" id="addSchoolEventBtn">+ Agregar</button>
-        </div>
-        <div id="timelineEscolar"></div>
-        <div class="empty-state" id="emptyEscolar" style="display:none;">No hay actividades todavía.</div>
-        <footer>Calendario escolar — 27MEX Seniors</footer>
+        <div class="header"><div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div><h1>Calendario escolar</h1><p>Todo lo que organizamos dentro del IMEX en el ciclo 2026–2027. Toca un mes para desplegarlo.</p></div>
+        <div class="howto"><strong>¿Cómo lo uso?</strong> Igual, todos ven y editan lo mismo en tiempo real. <button onclick="toggleHowto('esc')">Ver más</button><div id="howtoMore-esc" style="display:none; margin-top:7px;">Cada tarjeta tiene mes, día y notas editables. Usa + Agregar para meter cualquier evento nuevo.</div></div>
+        <div class="toolbar"><span class="tab-chip active" id="statCountEscPill" style="background:var(--wine); cursor:default;">0 actividades</span><button class="add-btn" id="addSchoolEventBtn">+ Agregar</button></div>
+        <div id="timelineEscolar"></div><div class="empty-state" id="emptyEscolar" style="display:none;">No hay actividades todavía.</div><footer>Calendario escolar — 27MEX Seniors</footer>
       </div>
-
-      <!-- ===================== VENTAS ===================== -->
       <div class="view" id="view-ventas">
-        <div class="header">
-          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
-          <h1>Ventas escolares</h1>
-          <p>Donas, calaveritas de azúcar y cualquier venta dentro de la escuela — ingresos, gastos y balance de cada una.</p>
-        </div>
-        <div class="howto">
-          <strong>¿Cómo lo uso?</strong> Cantidad × Precio = ingreso. Anota el gasto de producir/comprar lo que vendan. <button onclick="toggleHowto('ventas')">Ver más</button>
-          <div id="howtoMore-ventas-more" style="display:none; margin-top:7px;">
-            Usa + Agregar venta para cualquier producto nuevo (dulces, boletos de rifa, lo que sea). El balance de cada una y el total se calculan solos.
-          </div>
-        </div>
-        <div class="summary-bar">
-          <div class="stat"><div class="label">Ingresos</div><div class="value" id="statIngresosVentas">$0</div></div>
-          <div class="stat"><div class="label">Gastos</div><div class="value" id="statGastosVentas">$0</div></div>
-          <div class="stat balance"><div class="label">Balance</div><div class="value" id="statBalanceVentas">$0</div></div>
-          <div class="stat"><div class="label">Ventas</div><div class="value" id="statCountVentas">0</div></div>
-        </div>
-        <div class="toolbar">
-          <span class="tab-chip active" style="background:var(--ventas); cursor:default;">Ventas dentro de la escuela</span>
-          <button class="add-btn" id="addVentaBtn">+ Agregar venta</button>
-        </div>
-        <div id="timelineVentas"></div>
-        <div class="empty-state" id="emptyVentas" style="display:none;">No hay ventas registradas todavía.</div>
-        <footer>Ventas escolares — 27MEX Seniors</footer>
+        <div class="header"><div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div><h1>Ventas escolares</h1><p>Donas, calaveritas de azúcar y cualquier venta dentro de la escuela — ingresos, gastos y balance de cada una.</p></div>
+        <div class="howto"><strong>¿Cómo lo uso?</strong> Cantidad × Precio = ingreso. Anota el gasto de producir/comprar lo que vendan. <button onclick="toggleHowto('ventas')">Ver más</button><div id="howtoMore-ventas-more" style="display:none; margin-top:7px;">Usa + Agregar venta para cualquier producto nuevo (dulces, boletos de rifa, lo que sea). El balance de cada una y el total se calculan solos.</div></div>
+        <div class="summary-bar"><div class="stat"><div class="label">Ingresos</div><div class="value" id="statIngresosVentas">$0</div></div><div class="stat"><div class="label">Gastos</div><div class="value" id="statGastosVentas">$0</div></div><div class="stat balance"><div class="label">Balance</div><div class="value" id="statBalanceVentas">$0</div></div><div class="stat"><div class="label">Ventas</div><div class="value" id="statCountVentas">0</div></div></div>
+        <div class="toolbar"><span class="tab-chip active" style="background:var(--ventas); cursor:default;">Ventas dentro de la escuela</span><button class="add-btn" id="addVentaBtn">+ Agregar venta</button></div>
+        <div id="timelineVentas"></div><div class="empty-state" id="emptyVentas" style="display:none;">No hay ventas registradas todavía.</div><footer>Ventas escolares — 27MEX Seniors</footer>
       </div>
-
-      <!-- ===================== FOTOS ===================== -->
       <div class="view" id="view-fotos">
-        <div class="header">
-          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
-          <h1>Álbum de fotos</h1>
-          <p>Los recuerdos del año, todos juntos. Cualquiera puede subir fotos aquí.</p>
-        </div>
-        <label class="photo-upload" for="photoInput">
-          <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><rect x="3" y="16" width="18" height="5" rx="1.5"/></svg>
-          <div class="pu-title">Toca para subir una foto</div>
-          <div class="pu-sub">Se comprime automáticamente para que cargue rápido</div>
-        </label>
-        <input type="file" id="photoInput" accept="image/*" multiple>
-        <div class="photo-grid" id="photoGrid"></div>
-        <div class="empty-state" id="emptyFotos" style="display:none; margin-top:14px;">Aún no hay fotos. ¡Sube la primera!</div>
-        <footer>Álbum de fotos — 27MEX Seniors</footer>
+        <div class="header"><div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div><h1>Álbum de fotos</h1><p>Los recuerdos del año, todos juntos. Cualquiera puede subir fotos aquí.</p></div>
+        <label class="photo-upload" for="photoInput"><svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><rect x="3" y="16" width="18" height="5" rx="1.5"/></svg><div class="pu-title">Toca para subir una foto</div><div class="pu-sub">Se comprime automáticamente para que cargue rápido</div></label>
+        <input type="file" id="photoInput" accept="image/*" multiple><div class="photo-grid" id="photoGrid"></div><div class="empty-state" id="emptyFotos" style="display:none; margin-top:14px;">Aún no hay fotos. ¡Sube la primera!</div><footer>Álbum de fotos — 27MEX Seniors</footer>
       </div>
-
-      <!-- ===================== FINANZAS ===================== -->
       <div class="view" id="view-finanzas">
-        <div class="header">
-          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
-          <h1>Finanzas generales</h1>
-          <p>La suma de todo: fiestas, ventas escolares, actividades del calendario y cualquier ingreso o gasto extra.</p>
-        </div>
-
-        <div class="summary-bar">
-          <div class="stat"><div class="label">Ingresos totales</div><div class="value" id="finTotalIngresos">$0</div></div>
-          <div class="stat"><div class="label">Gastos totales</div><div class="value" id="finTotalGastos">$0</div></div>
-          <div class="stat balance"><div class="label">Balance neto</div><div class="value" id="finTotalBalance">$0</div></div>
-          <div class="stat"><div class="label">Fuentes registradas</div><div class="value" id="finTotalFuentes">0</div></div>
-        </div>
-
-        <div class="card">
-          <div class="card-head" style="display:flex; justify-content:space-between; margin-bottom:10px;">
-            <h3 style="font-size:14px; color:var(--wine);">Desglose por categoría</h3>
-          </div>
-          <div id="finBreakdown"></div>
-        </div>
-
-        <div class="toolbar">
-          <span class="tab-chip active" style="background:var(--wine); cursor:default;">Ingresos y gastos extra</span>
-          <button class="add-btn" id="addExtraBtn">+ Agregar</button>
-        </div>
-        <div id="finExtrasList"></div>
-        <div class="empty-state" id="emptyExtras" style="display:none;">No hay movimientos extra registrados.</div>
-
-        <footer>Finanzas generales — 27MEX Seniors</footer>
+        <div class="header"><div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div><h1>Finanzas generales</h1><p>La suma de todo: fiestas, ventas escolares, actividades del calendario y cualquier ingreso o gasto extra.</p></div>
+        <div class="summary-bar"><div class="stat"><div class="label">Ingresos totales</div><div class="value" id="finTotalIngresos">$0</div></div><div class="stat"><div class="label">Gastos totales</div><div class="value" id="finTotalGastos">$0</div></div><div class="stat balance"><div class="label">Balance neto</div><div class="value" id="finTotalBalance">$0</div></div><div class="stat"><div class="label">Fuentes registradas</div><div class="value" id="finTotalFuentes">0</div></div></div>
+        <div class="card"><div class="card-head" style="display:flex; justify-content:space-between; margin-bottom:10px;"><h3 style="font-size:14px; color:var(--wine);">Desglose por categoría</h3></div><div id="finBreakdown"></div></div>
+        <div class="toolbar"><span class="tab-chip active" style="background:var(--wine); cursor:default;">Ingresos y gastos extra</span><button class="add-btn" id="addExtraBtn">+ Agregar</button></div>
+        <div id="finExtrasList"></div><div class="empty-state" id="emptyExtras" style="display:none;">No hay movimientos extra registrados.</div><footer>Finanzas generales — 27MEX Seniors</footer>
       </div>
-
-    </div>
-  </div>
+    </div></div>
 </div>
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, addDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyAgtvRtoQ2_HrfnHFWZ2fZbXDZuECisy3M",
   authDomain: "consejo-2627.firebaseapp.com",
@@ -403,7 +203,6 @@ const firebaseConfig = {
   appId: "1:60906579981:web:92a181ffba9dc8c1718d44",
   measurementId: "G-45ED46QZFN"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const IMGBB_API_KEY = "020bfc16b10189d5f17a72269ae8cb79";
@@ -412,24 +211,14 @@ const docRefEscolar = doc(db, "consejo-imex", "calendario-escolar");
 const docRefVentas = doc(db, "consejo-imex", "ventas-escolares");
 const docRefFinanzas = doc(db, "consejo-imex", "finanzas-extras");
 const fotosCol = collection(db, "fotos");
-
 window.toggleHowto = (which)=>{
   const map = {extra:'howtoMore-extra', esc:'howtoMore-esc', ventas:'howtoMore-ventas-more'};
   const el = document.getElementById(map[which]);
   el.style.display = el.style.display==='none' ? 'block' : 'none';
 };
-
-// =====================================================================
-// SEGURIDAD: escape de HTML — evita que texto escrito por cualquier
-// persona (nombre de evento, nota, etc.) se interprete como código.
-// Nunca insertamos texto de usuario en innerHTML sin pasar por esto.
-// =====================================================================
 function esc(str){
-  return String(str ?? '').replace(/[&<>"']/g, ch => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  }[ch]));
+  return String(str ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 }
-
 const MONTHS = [
   {v:8, label:'Agosto 2026'}, {v:9, label:'Septiembre 2026'}, {v:10, label:'Octubre 2026'},
   {v:11, label:'Noviembre 2026'}, {v:12, label:'Diciembre 2026'}, {v:1, label:'Enero 2027'},
@@ -438,28 +227,18 @@ const MONTHS = [
 ];
 const monthOrder = m => { const idx = MONTHS.findIndex(x=>x.v===m); return idx===-1?99:idx; };
 const monthLabel = m => (MONTHS.find(x=>x.v===m)||{}).label || '¿Mes?';
-const money = n => '$' + Math.round(n||0).toLocaleString('es-MX');
+function toNum(v){ const n = Number(v); return Number.isFinite(n) ? n : 0; }
+const money = n => '$' + Math.round(toNum(n)||0).toLocaleString('es-MX');
 function monthOptions(selected){
   return MONTHS.map(m=>`<option value="${m.v}" ${m.v===selected?'selected':''}>${m.label}</option>`).join('');
 }
-
 let idCounter = 1000;
 const newId = () => 'e' + (idCounter++);
-
-// Evita guardar en Firebase en cada tecla — espera a que la persona
-// deje de escribir un momento antes de mandar el cambio. Esto también
-// evita que la app se "auto-reconstruya" a medio tecleo y cierre el teclado.
 function debounce(fn, delay=450){
   let t;
   return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn(...args), delay); };
 }
-
-// Estado de acordeones abiertos (se conserva mientras la app está abierta)
 const expanded = { extra:new Set(), escolar:new Set(), ventas:new Set() };
-
-// =====================================================================
-// DATA
-// =====================================================================
 let eventos = [
   {id:'e1', nombre:'Back to School', categoria:'antro', mes:9, dia:11, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
   {id:'e2', nombre:'Halloween', categoria:'antro', mes:10, dia:30, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
@@ -473,7 +252,6 @@ let eventos = [
   {id:'e10', nombre:'After graduación', categoria:'casa', mes:7, dia:3, aprox:false, confirmada:true, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
 ];
 let filtro = 'all';
-
 let escolares = [
   {id:'s1', mes:8, dia:1, nombre:'Pintar escudo', nota:'11:00 am · Encargados: Barbara, Victoria Riveroll, Rafa Luna y Sofia Brito', gasto:0},
   {id:'s2', mes:8, dia:28, nombre:'Reunión consejo', nota:'', gasto:0},
@@ -550,26 +328,17 @@ let escolares = [
   {id:'s73', mes:7, dia:9, nombre:'Fin del curso', nota:'', gasto:0},
   {id:'s74', mes:7, dia:19, nombre:'Último día', nota:'L: Deportes · M: Grupitos · X: Superhéroes y villanos · J: Disney · V: Caja fuerte', gasto:0},
 ];
-
 let ventas = [
   {id:'v1', nombre:'Donas', mes:9, dia:null, cantidad:100, precio:20, gasto:1200, nota:'Venta durante recreo'},
   {id:'v2', nombre:'Calaveritas de azúcar', mes:10, dia:null, cantidad:150, precio:25, gasto:2000, nota:''},
 ];
-
 let fotos = [];
+let extras = [];
 
-let extras = [
-  // {id, nombre, tipo:'ingreso'|'gasto', monto, nota}
-];
-
-// =====================================================================
-// ACORDEÓN GENÉRICO por mes
-// =====================================================================
 function renderAccordion(containerId, sectionKey, items, cardFn, emptyElId){
   const timeline = document.getElementById(containerId);
   timeline.innerHTML = '';
   document.getElementById(emptyElId).style.display = items.length ? 'none' : 'block';
-
   const sorted = [...items].sort((a,b)=>{
     const mo = monthOrder(a.mes) - monthOrder(b.mes);
     if(mo!==0) return mo;
@@ -579,7 +348,6 @@ function renderAccordion(containerId, sectionKey, items, cardFn, emptyElId){
   const groups = {};
   sorted.forEach(e=>{ (groups[e.mes] ||= []).push(e); });
   const monthKeys = Object.keys(groups).map(Number).sort((a,b)=>monthOrder(a)-monthOrder(b));
-
   monthKeys.forEach(mkey=>{
     const isOpen = expanded[sectionKey].has(mkey);
     const acc = document.createElement('div');
@@ -595,23 +363,20 @@ function renderAccordion(containerId, sectionKey, items, cardFn, emptyElId){
     timeline.appendChild(acc);
   });
 }
-
-// =====================================================================
-// EXTRACURRICULAR
-// =====================================================================
-function ingresoBruto(e){ return (e.boletos||0) * (e.precio||0); }
-function comisionMonto(e){ return ingresoBruto(e) * ((e.comisionPct||0)/100); }
-function gastoTotal(e){ return (e.gastoFijo||0) + comisionMonto(e); }
+function ingresoBruto(e){ return toNum(e.boletos) * toNum(e.precio); }
+function comisionMonto(e){ return ingresoBruto(e) * (toNum(e.comisionPct)/100); }
+function gastoTotal(e){ return toNum(e.gastoFijo) + comisionMonto(e); }
 function balanceEv(e){ return ingresoBruto(e) - gastoTotal(e); }
-
 function renderExtra(){
   const visible = eventos.filter(e => filtro==='all' || e.categoria===filtro);
   renderAccordion('timelineExtra', 'extra', visible, eventCardHtmlExtra, 'emptyExtra');
   updateSummaryExtra();
 }
-
 function eventCardHtmlExtra(e){
   const isAntro = e.categoria==='antro';
+  const approxBtn = e.aprox
+    ? `<button type="button" class="approx-pill aprox" data-type="ev-aprox" data-id="${e.id}" title="Cambiar a fecha exacta">· Aprox.</button>`
+    : ``;
   return `
   <div class="event-card ${esc(e.categoria)}">
     <div class="ev-top">
@@ -622,7 +387,7 @@ function eventCardHtmlExtra(e){
       <div class="event-body">
         <div class="name-line">
           <input type="text" class="ev-name" maxlength="80" value="${esc(e.nombre)}" data-type="ev-nombre" data-id="${e.id}" placeholder="Nombre">
-          ${e.aprox ? '<button type="button" class="inline-status" data-type="ev-aprox" data-id="'+e.id+'" title="Toca para marcar como fecha exacta">Aproximada</button>' : '<button type="button" class="inline-status neutral" data-type="ev-aprox" data-id="'+e.id+'" title="Toca para marcar como aproximada">Fecha exacta</button>'}
+          ${approxBtn}
         </div>
         <div class="meta-row">
           <select data-type="ev-categoria" data-id="${e.id}">
@@ -630,35 +395,24 @@ function eventCardHtmlExtra(e){
             <option value="casa" ${!isAntro?'selected':''}>Casa seniors</option>
           </select>
           <span class="badge ${e.confirmada?'confirmada':'estimada'}" data-type="ev-confirm-badge" data-id="${e.id}">${e.confirmada?'Confirmada':'Estimada'}</span>
+          ${!e.aprox ? `<button type="button" class="approx-pill" data-type="ev-aprox" data-id="${e.id}" title="Marcar como fecha aproximada">Marcar aprox.</button>` : ``}
         </div>
       </div>
       <button class="del-btn" data-type="del-ev" data-id="${e.id}">×</button>
     </div>
     <div class="fin-grid">
-      <div class="fin-col">
-        <h4>Ingresos</h4>
-        <div class="fin-row"><label>Boletos</label><input type="number" min="0" value="${e.boletos}" data-type="ev-boletos" data-id="${e.id}"></div>
-        <div class="fin-row"><label>Precio ($)</label><input type="number" min="0" value="${e.precio}" data-type="ev-precio" data-id="${e.id}"></div>
-        <div class="fin-total ing"><span>Ingreso bruto</span><span id="ingOf-${e.id}">${money(ingresoBruto(e))}</span></div>
-      </div>
-      <div class="fin-col">
-        <h4>Gastos</h4>
-        <div class="fin-row"><label>Gasto fijo</label><input type="number" min="0" value="${e.gastoFijo}" data-type="ev-gastofijo" data-id="${e.id}"></div>
-        <div class="fin-row"><label>Comisión (%)</label><input type="number" min="0" max="100" value="${e.comisionPct}" data-type="ev-comision" data-id="${e.id}"></div>
-        <div class="fin-total gas"><span>Gasto total</span><span id="gasOf-${e.id}">${money(gastoTotal(e))}</span></div>
-      </div>
+      <div class="fin-col"><h4>Ingresos</h4><div class="fin-row"><label>Boletos</label><input type="number" min="0" value="${toNum(e.boletos)}" data-type="ev-boletos" data-id="${e.id}"></div><div class="fin-row"><label>Precio ($)</label><input type="number" min="0" value="${toNum(e.precio)}" data-type="ev-precio" data-id="${e.id}"></div><div class="fin-total ing"><span>Ingreso bruto</span><span id="ingOf-${e.id}">${money(ingresoBruto(e))}</span></div></div>
+      <div class="fin-col"><h4>Gastos</h4><div class="fin-row"><label>Gasto fijo</label><input type="number" min="0" value="${toNum(e.gastoFijo)}" data-type="ev-gastofijo" data-id="${e.id}"></div><div class="fin-row"><label>Comisión (%)</label><input type="number" min="0" max="100" value="${toNum(e.comisionPct)}" data-type="ev-comision" data-id="${e.id}"></div><div class="fin-total gas"><span>Gasto total</span><span id="gasOf-${e.id}">${money(gastoTotal(e))}</span></div></div>
       <div class="ev-balance"><span>Balance</span><span class="val ${balanceEv(e)>=0?'pos':'neg'}" id="balOf-${e.id}">${money(balanceEv(e))}</span></div>
     </div>
   </div>`;
 }
-
 function refreshEventFinance(e){
   const ing = document.getElementById('ingOf-'+e.id); if(ing) ing.textContent = money(ingresoBruto(e));
   const gas = document.getElementById('gasOf-'+e.id); if(gas) gas.textContent = money(gastoTotal(e));
   const bal = document.getElementById('balOf-'+e.id);
   if(bal){ bal.textContent = money(balanceEv(e)); bal.className = 'val ' + (balanceEv(e)>=0?'pos':'neg'); }
 }
-
 function updateSummaryExtra(){
   const visible = eventos.filter(e => filtro==='all' || e.categoria===filtro);
   const ti = visible.reduce((s,e)=>s+ingresoBruto(e),0);
@@ -671,95 +425,68 @@ function updateSummaryExtra(){
   document.getElementById('statCount').textContent = visible.length;
   updateFinanzas();
 }
-
-// =====================================================================
-// ESCOLAR
-// =====================================================================
 function renderEscolar(){
   renderAccordion('timelineEscolar', 'escolar', escolares, eventCardHtmlEscolar, 'emptyEscolar');
   document.getElementById('statCountEscPill').textContent = escolares.length + (escolares.length===1?' actividad':' actividades');
 }
 function eventCardHtmlEscolar(e){
-  const g = e.gasto||0;
+  const g = toNum(e.gasto);
+  const approxInline = (e.dia==null) ? `<span class="approx-pill aprox" title="Sin día exacto">· Aprox.</span>` : ``;
   return `
   <div class="event-card escolar">
     <div class="ev-top">
-      <div class="date-box">
-        <select data-type="esc-mes" data-id="${e.id}">${monthOptions(e.mes)}</select>
-        <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="esc-dia" data-id="${e.id}"></div>
-      </div>
+      <div class="date-box"><select data-type="esc-mes" data-id="${e.id}">${monthOptions(e.mes)}</select><div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="esc-dia" data-id="${e.id}"></div></div>
       <div class="event-body">
         <div class="name-line">
           <input type="text" class="ev-name" maxlength="100" value="${esc(e.nombre)}" data-type="esc-nombre" data-id="${e.id}" placeholder="Nombre">
+          ${approxInline}
           <span class="badge escolar">Escolar</span>
-          ${e.dia==null ? '<span class="inline-status neutral">Sin fecha exacta</span>' : ''}
         </div>
         <input type="text" class="notas-input" maxlength="200" value="${esc(e.nota)}" data-type="esc-nota" data-id="${e.id}" placeholder="Observaciones">
       </div>
       <button class="del-btn" data-type="del-esc" data-id="${e.id}">×</button>
     </div>
-    <div class="fin-grid" style="grid-template-columns:1fr;">
-      <div class="fin-col">
-        <h4>Gastos</h4>
-        <div class="fin-row"><label>Gasto de esta actividad ($)</label><input type="number" min="0" value="${g}" data-type="esc-gasto" data-id="${e.id}"></div>
-        <div class="fin-total gas"><span>Total</span><span id="escGasOf-${e.id}">${money(g)}</span></div>
-      </div>
-    </div>
+    <div class="fin-grid" style="grid-template-columns:1fr;"><div class="fin-col"><h4>Gastos</h4><div class="fin-row"><label>Gasto de esta actividad ($)</label><input type="number" min="0" value="${g}" data-type="esc-gasto" data-id="${e.id}"></div><div class="fin-total gas"><span>Total</span><span id="escGasOf-${e.id}">${money(g)}</span></div></div></div>
   </div>`;
 }
-
-// =====================================================================
-// VENTAS
-// =====================================================================
-function ingV(v){ return (v.cantidad||0)*(v.precio||0); }
-function balV(v){ return ingV(v) - (v.gasto||0); }
+function ingV(v){ return toNum(v.cantidad)*toNum(v.precio); }
+function balV(v){ return ingV(v) - toNum(v.gasto); }
 function renderVentas(){
   renderAccordion('timelineVentas', 'ventas', ventas, ventaCardHtml, 'emptyVentas');
   updateSummaryVentas();
 }
 function ventaCardHtml(v){
+  const approxInline = (v.dia==null) ? `<span class="approx-pill aprox" title="Sin día exacto">· Aprox.</span>` : ``;
   return `
   <div class="event-card ventas">
     <div class="ev-top">
-      <div class="date-box">
-        <select data-type="v-mes" data-id="${v.id}">${monthOptions(v.mes)}</select>
-        <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${v.dia==null?'':v.dia}" data-type="v-dia" data-id="${v.id}"></div>
-      </div>
+      <div class="date-box"><select data-type="v-mes" data-id="${v.id}">${monthOptions(v.mes)}</select><div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${v.dia==null?'':v.dia}" data-type="v-dia" data-id="${v.id}"></div></div>
       <div class="event-body">
         <div class="name-line">
           <input type="text" class="ev-name" maxlength="80" value="${esc(v.nombre)}" data-type="v-nombre" data-id="${v.id}" placeholder="Producto / venta">
+          ${approxInline}
           <span class="badge ventas-badge">Venta escolar</span>
-          ${v.dia==null ? '<span class="inline-status neutral">Sin fecha exacta</span>' : ''}
         </div>
         <input type="text" class="notas-input" maxlength="150" value="${esc(v.nota)}" data-type="v-nota" data-id="${v.id}" placeholder="Nota (opcional)">
       </div>
       <button class="del-btn" data-type="del-venta" data-id="${v.id}">×</button>
     </div>
     <div class="fin-grid">
-      <div class="fin-col">
-        <h4>Ingresos</h4>
-        <div class="fin-row"><label>Cantidad vendida</label><input type="number" min="0" value="${v.cantidad}" data-type="v-cantidad" data-id="${v.id}"></div>
-        <div class="fin-row"><label>Precio ($)</label><input type="number" min="0" value="${v.precio}" data-type="v-precio" data-id="${v.id}"></div>
-        <div class="fin-total ing"><span>Ingreso</span><span id="vIngOf-${v.id}">${money(ingV(v))}</span></div>
-      </div>
-      <div class="fin-col">
-        <h4>Gastos</h4>
-        <div class="fin-row"><label>Costo de producir/comprar</label><input type="number" min="0" value="${v.gasto}" data-type="v-gasto" data-id="${v.id}"></div>
-        <div class="fin-total gas"><span>Gasto total</span><span id="vGasOf-${v.id}">${money(v.gasto||0)}</span></div>
-      </div>
+      <div class="fin-col"><h4>Ingresos</h4><div class="fin-row"><label>Cantidad vendida</label><input type="number" min="0" value="${toNum(v.cantidad)}" data-type="v-cantidad" data-id="${v.id}"></div><div class="fin-row"><label>Precio ($)</label><input type="number" min="0" value="${toNum(v.precio)}" data-type="v-precio" data-id="${v.id}"></div><div class="fin-total ing"><span>Ingreso</span><span id="vIngOf-${v.id}">${money(ingV(v))}</span></div></div>
+      <div class="fin-col"><h4>Gastos</h4><div class="fin-row"><label>Costo de producir/comprar</label><input type="number" min="0" value="${toNum(v.gasto)}" data-type="v-gasto" data-id="${v.id}"></div><div class="fin-total gas"><span>Gasto total</span><span id="vGasOf-${v.id}">${money(toNum(v.gasto))}</span></div></div>
       <div class="ev-balance"><span>Balance</span><span class="val ${balV(v)>=0?'pos':'neg'}" id="vBalOf-${v.id}">${money(balV(v))}</span></div>
     </div>
   </div>`;
 }
 function refreshVentaFinance(v){
   const i = document.getElementById('vIngOf-'+v.id); if(i) i.textContent = money(ingV(v));
-  const g = document.getElementById('vGasOf-'+v.id); if(g) g.textContent = money(v.gasto||0);
+  const g = document.getElementById('vGasOf-'+v.id); if(g) g.textContent = money(toNum(v.gasto));
   const b = document.getElementById('vBalOf-'+v.id);
   if(b){ b.textContent = money(balV(v)); b.className = 'val ' + (balV(v)>=0?'pos':'neg'); }
 }
 function updateSummaryVentas(){
   const ti = ventas.reduce((s,v)=>s+ingV(v),0);
-  const tg = ventas.reduce((s,v)=>s+(v.gasto||0),0);
+  const tg = ventas.reduce((s,v)=>s+toNum(v.gasto),0);
   document.getElementById('statIngresosVentas').textContent = money(ti);
   document.getElementById('statGastosVentas').textContent = money(tg);
   const balEl = document.getElementById('statBalanceVentas');
@@ -768,24 +495,19 @@ function updateSummaryVentas(){
   document.getElementById('statCountVentas').textContent = ventas.length;
   updateFinanzas();
 }
-
-// =====================================================================
-// FINANZAS GENERALES (suma de todo)
-// =====================================================================
-function totalEscolarGastos(){ return escolares.reduce((s,e)=>s+(e.gasto||0),0); }
-function totalExtras(tipo){ return extras.filter(x=>x.tipo===tipo).reduce((s,x)=>s+(x.monto||0),0); }
-
+function totalEscolarGastos(){ return escolares.reduce((s,e)=>s+toNum(e.gasto),0); }
+function totalExtras(tipo){ return extras.filter(x=>x.tipo===tipo).reduce((s,x)=>s+toNum(x.monto),0); }
 function updateFinanzas(){
-  const catExtra = eventos.reduce((s,e)=>s+ingresoBruto(e),0);
+  const catExtraIng = eventos.reduce((s,e)=>s+ingresoBruto(e),0);
   const catExtraGasto = eventos.reduce((s,e)=>s+gastoTotal(e),0);
   const catVentasIng = ventas.reduce((s,v)=>s+ingV(v),0);
-  const catVentasGasto = ventas.reduce((s,v)=>s+(v.gasto||0),0);
+  const catVentasGasto = ventas.reduce((s,v)=>s+toNum(v.gasto),0);
   const catEscolarGasto = totalEscolarGastos();
   const extraIngresos = totalExtras('ingreso');
   const extraGastos = totalExtras('gasto');
 
-  const totalIng = catExtra + catVentasIng + extraIngresos;
-  const totalGas = catExtraGasto + catVentasGasto + catEscolarGasto + extraGastos;
+  const totalIng = toNum(catExtraIng) + toNum(catVentasIng) + toNum(extraIngresos);
+  const totalGas = toNum(catExtraGasto) + toNum(catVentasGasto) + toNum(catEscolarGasto) + toNum(extraGastos);
 
   const tiEl = document.getElementById('finTotalIngresos');
   const tgEl = document.getElementById('finTotalGastos');
@@ -799,18 +521,16 @@ function updateFinanzas(){
   const bd = document.getElementById('finBreakdown');
   if(bd){
     const rows = [
-      {nombre:'Fiestas extracurriculares', ing:catExtra, gas:catExtraGasto, color:'var(--antro)'},
+      {nombre:'Fiestas extracurriculares', ing:catExtraIng, gas:catExtraGasto, color:'var(--antro)'},
       {nombre:'Ventas escolares', ing:catVentasIng, gas:catVentasGasto, color:'var(--ventas)'},
       {nombre:'Calendario escolar', ing:0, gas:catEscolarGasto, color:'var(--amber)'},
       {nombre:'Ingresos y gastos extra', ing:extraIngresos, gas:extraGastos, color:'var(--wine)'},
     ];
     bd.innerHTML = `
       <div class="finance-table" role="table" aria-label="Desglose por categoría">
-        <div class="finance-table-head" role="row">
-          <div role="columnheader">Categoría</div><div role="columnheader">Ingresos</div><div role="columnheader">Gastos</div><div role="columnheader">Balance</div>
-        </div>
+        <div class="finance-table-head" role="row"><div role="columnheader">Categoría</div><div role="columnheader">Ingresos</div><div role="columnheader">Gastos</div><div role="columnheader">Balance</div></div>
         ${rows.map(r=>{
-          const bal = r.ing-r.gas;
+          const bal = toNum(r.ing)-toNum(r.gas);
           return `<div class="finance-table-row" role="row">
             <div role="cell"><span class="finance-category"><span class="finance-dot" style="background:${r.color}"></span><span>${esc(r.nombre)}</span></span></div>
             <div role="cell" class="finance-num ing">${money(r.ing)}</div>
@@ -821,7 +541,6 @@ function updateFinanzas(){
       </div>`;
   }
 }
-
 function renderExtras(){
   const list = document.getElementById('finExtrasList');
   if(!list) return;
@@ -835,24 +554,13 @@ function renderExtras(){
       <div class="ev-top" style="grid-template-columns:1fr auto;">
         <div class="event-body">
           <input type="text" class="ev-name" maxlength="80" value="${esc(x.nombre)}" data-type="ex-nombre" data-id="${x.id}" placeholder="Nombre del movimiento">
-          <div class="meta-row">
-            <select data-type="ex-tipo" data-id="${x.id}">
-              <option value="ingreso" ${x.tipo==='ingreso'?'selected':''}>Ingreso</option>
-              <option value="gasto" ${x.tipo==='gasto'?'selected':''}>Gasto</option>
-            </select>
-            <input type="number" min="0" value="${x.monto||0}" data-type="ex-monto" data-id="${x.id}" style="width:100px; padding:6px 7px; border:1px solid var(--line); border-radius:7px; font-size:12px;">
-          </div>
+          <div class="meta-row"><select data-type="ex-tipo" data-id="${x.id}"><option value="ingreso" ${x.tipo==='ingreso'?'selected':''}>Ingreso</option><option value="gasto" ${x.tipo==='gasto'?'selected':''}>Gasto</option></select><input type="number" min="0" value="${toNum(x.monto)}" data-type="ex-monto" data-id="${x.id}" style="width:100px; padding:6px 7px; border:1px solid var(--line); border-radius:7px; font-size:12px;"></div>
           <input type="text" class="notas-input" maxlength="150" value="${esc(x.nota||'')}" data-type="ex-nota" data-id="${x.id}" placeholder="Nota (opcional)">
-        </div>
-        <button class="del-btn" data-type="del-extra" data-id="${x.id}">×</button>
+        </div><button class="del-btn" data-type="del-extra" data-id="${x.id}">×</button>
       </div>`;
     list.appendChild(div);
   });
 }
-
-// =====================================================================
-// FOTOS (Firebase Storage + Firestore)
-// =====================================================================
 function renderFotos(){
   const grid = document.getElementById('photoGrid');
   grid.innerHTML = '';
@@ -860,19 +568,12 @@ function renderFotos(){
   fotos.forEach(f=>{
     const div = document.createElement('div');
     div.className = 'photo-item';
-    // f.url viene de ImgBB (URL segura, no texto libre) — no requiere escape.
     div.innerHTML = `<img src="${f.url}" loading="lazy" alt="Foto del año"><button class="ph-del" data-type="del-foto" data-id="${f.id}">×</button>`;
     grid.appendChild(div);
   });
 }
-
 async function comprimirImagen(file, maxSize=1400, calidad=0.8){
-  const img = await new Promise((res, rej)=>{
-    const i = new Image();
-    i.onload = ()=>res(i);
-    i.onerror = rej;
-    i.src = URL.createObjectURL(file);
-  });
+  const img = await new Promise((res, rej)=>{ const i = new Image(); i.onload = ()=>res(i); i.onerror = rej; i.src = URL.createObjectURL(file); });
   let {width, height} = img;
   if(width > height && width > maxSize){ height *= maxSize/width; width = maxSize; }
   else if(height > maxSize){ width *= maxSize/height; height = maxSize; }
@@ -881,16 +582,9 @@ async function comprimirImagen(file, maxSize=1400, calidad=0.8){
   canvas.getContext('2d').drawImage(img, 0, 0, width, height);
   return new Promise(res => canvas.toBlob(res, 'image/jpeg', calidad));
 }
-
 function blobToBase64(blob){
-  return new Promise((res, rej)=>{
-    const reader = new FileReader();
-    reader.onload = ()=> res(reader.result.split(',')[1]); // quita el prefijo "data:image/jpeg;base64,"
-    reader.onerror = rej;
-    reader.readAsDataURL(blob);
-  });
+  return new Promise((res, rej)=>{ const reader = new FileReader(); reader.onload = ()=> res(reader.result.split(',')[1]); reader.onerror = rej; reader.readAsDataURL(blob); });
 }
-
 document.getElementById('photoInput').addEventListener('change', async (e)=>{
   const files = [...e.target.files];
   for(const file of files){
@@ -899,7 +593,7 @@ document.getElementById('photoInput').addEventListener('change', async (e)=>{
     const placeholder = document.createElement('div');
     placeholder.className = 'photo-item';
     placeholder.id = tempId;
-    placeholder.innerHTML = `<div class="ph-uploading">Subiendo…</div>`;
+    placeholder.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:11px;color:var(--muted)">Subiendo…</div>`;
     grid.prepend(placeholder);
     document.getElementById('emptyFotos').style.display = 'none';
     try{
@@ -923,7 +617,6 @@ document.getElementById('photoInput').addEventListener('change', async (e)=>{
   }
   e.target.value = '';
 });
-
 function showToast(message){
   const el=document.getElementById('toast'); if(!el) return;
   el.textContent=message; el.classList.add('show');
@@ -935,29 +628,24 @@ function goToView(view){
   const target=document.getElementById('view-'+view); if(target) target.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
-// =====================================================================
-// EVENTOS DE INTERFAZ
-// =====================================================================
 document.addEventListener('input', e=>{
   const t = e.target;
-
   const ev = eventos.find(x=>x.id===t.dataset.id);
   if(ev){
     if(t.dataset.type==='ev-nombre'){ ev.nombre=t.value; saveExtra(); }
-    if(t.dataset.type==='ev-dia'){ ev.dia = t.value===''?null:parseInt(t.value); saveExtra(); }
-    if(t.dataset.type==='ev-boletos'){ ev.boletos=parseFloat(t.value)||0; refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
-    if(t.dataset.type==='ev-precio'){ ev.precio=parseFloat(t.value)||0; refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
-    if(t.dataset.type==='ev-gastofijo'){ ev.gastoFijo=parseFloat(t.value)||0; refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
-    if(t.dataset.type==='ev-comision'){ ev.comisionPct=parseFloat(t.value)||0; refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
+    if(t.dataset.type==='ev-dia'){ ev.dia = t.value===''?null:parseInt(t.value); if(t.value===''){ ev.aprox=true; renderExtra(); } saveExtra(); }
+    if(t.dataset.type==='ev-boletos'){ ev.boletos=toNum(t.value); refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
+    if(t.dataset.type==='ev-precio'){ ev.precio=toNum(t.value); refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
+    if(t.dataset.type==='ev-gastofijo'){ ev.gastoFijo=toNum(t.value); refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
+    if(t.dataset.type==='ev-comision'){ ev.comisionPct=toNum(t.value); refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
   }
   const es = escolares.find(x=>x.id===t.dataset.id);
   if(es){
     if(t.dataset.type==='esc-nombre'){ es.nombre=t.value; saveEscolar(); }
-    if(t.dataset.type==='esc-dia'){ es.dia = t.value===''?null:parseInt(t.value); saveEscolar(); }
+    if(t.dataset.type==='esc-dia'){ es.dia = t.value===''?null:parseInt(t.value); if(t.value===''){ renderEscolar(); } saveEscolar(); }
     if(t.dataset.type==='esc-nota'){ es.nota=t.value; saveEscolar(); }
     if(t.dataset.type==='esc-gasto'){
-      es.gasto = parseFloat(t.value)||0;
+      es.gasto = toNum(t.value);
       const el = document.getElementById('escGasOf-'+es.id); if(el) el.textContent = money(es.gasto);
       updateFinanzas(); saveEscolar();
     }
@@ -965,28 +653,25 @@ document.addEventListener('input', e=>{
   const vt = ventas.find(x=>x.id===t.dataset.id);
   if(vt){
     if(t.dataset.type==='v-nombre'){ vt.nombre=t.value; saveVentas(); }
-    if(t.dataset.type==='v-dia'){ vt.dia = t.value===''?null:parseInt(t.value); saveVentas(); }
+    if(t.dataset.type==='v-dia'){ vt.dia = t.value===''?null:parseInt(t.value); if(t.value===''){ renderVentas(); } saveVentas(); }
     if(t.dataset.type==='v-nota'){ vt.nota=t.value; saveVentas(); }
-    if(t.dataset.type==='v-cantidad'){ vt.cantidad=parseFloat(t.value)||0; refreshVentaFinance(vt); updateSummaryVentas(); saveVentas(); }
-    if(t.dataset.type==='v-precio'){ vt.precio=parseFloat(t.value)||0; refreshVentaFinance(vt); updateSummaryVentas(); saveVentas(); }
-    if(t.dataset.type==='v-gasto'){ vt.gasto=parseFloat(t.value)||0; refreshVentaFinance(vt); updateSummaryVentas(); saveVentas(); }
+    if(t.dataset.type==='v-cantidad'){ vt.cantidad=toNum(t.value); refreshVentaFinance(vt); updateSummaryVentas(); saveVentas(); }
+    if(t.dataset.type==='v-precio'){ vt.precio=toNum(t.value); refreshVentaFinance(vt); updateSummaryVentas(); saveVentas(); }
+    if(t.dataset.type==='v-gasto'){ vt.gasto=toNum(t.value); refreshVentaFinance(vt); updateSummaryVentas(); saveVentas(); }
   }
-
   const ex = extras.find(x=>x.id===t.dataset.id);
   if(ex){
     if(t.dataset.type==='ex-nombre'){ ex.nombre=t.value; saveFinanzas(); }
     if(t.dataset.type==='ex-nota'){ ex.nota=t.value; saveFinanzas(); }
-    if(t.dataset.type==='ex-monto'){ ex.monto=parseFloat(t.value)||0; updateFinanzas(); saveFinanzas(); }
+    if(t.dataset.type==='ex-monto'){ ex.monto=toNum(t.value); updateFinanzas(); saveFinanzas(); }
   }
 });
-
 document.addEventListener('change', e=>{
   const t = e.target;
   const ev = eventos.find(x=>x.id===t.dataset.id);
   if(ev){
     if(t.dataset.type==='ev-mes'){ ev.mes=parseInt(t.value); renderExtra(); saveExtra(); }
     if(t.dataset.type==='ev-categoria'){ ev.categoria=t.value; renderExtra(); saveExtra(); }
-    if(t.dataset.type==='ev-aprox'){ ev.aprox=!ev.aprox; if(ev.aprox) ev.dia=null; renderExtra(); saveExtra(); }
   }
   const es = escolares.find(x=>x.id===t.dataset.id);
   if(es && t.dataset.type==='esc-mes'){ es.mes=parseInt(t.value); renderEscolar(); saveEscolar(); }
@@ -995,7 +680,6 @@ document.addEventListener('change', e=>{
   const ex = extras.find(x=>x.id===t.dataset.id);
   if(ex && t.dataset.type==='ex-tipo'){ ex.tipo=t.value; updateFinanzas(); renderExtras(); saveFinanzas(); }
 });
-
 document.addEventListener('click', e=>{
   const t = e.target;
   const monthToggle = t.closest('[data-toggle-month]');
@@ -1007,159 +691,50 @@ document.addEventListener('click', e=>{
     else{ expanded[section].add(key); acc.classList.add('open'); }
     return;
   }
-
   if(t.dataset.type==='del-ev'){ if(!confirm('¿Eliminar esta actividad?')) return; eventos = eventos.filter(x=>x.id!==t.dataset.id); renderExtra(); saveExtra(); showToast('Actividad eliminada'); }
-  if(t.dataset.type==='ev-confirm-badge'){
-    const ev = eventos.find(x=>x.id===t.dataset.id);
-    ev.confirmada = !ev.confirmada; renderExtra(); saveExtra();
-  }
+  if(t.dataset.type==='ev-confirm-badge'){ const ev = eventos.find(x=>x.id===t.dataset.id); ev.confirmada = !ev.confirmada; renderExtra(); saveExtra(); }
+  if(t.dataset.type==='ev-aprox'){ const ev = eventos.find(x=>x.id===t.dataset.id); if(!ev) return; ev.aprox=!ev.aprox; if(ev.aprox) ev.dia=null; renderExtra(); saveExtra(); }
   if(t.id==='addEventBtn'){
     showToast('Nueva actividad lista para editar');
     const cat = filtro==='casa' ? 'casa' : 'antro';
     eventos.push(cat==='antro'
       ? {id:newId(), nombre:'Nueva actividad', categoria:'antro', mes:9, dia:null, aprox:true, confirmada:false, boletos:200, precio:270, gastoFijo:3000, comisionPct:10}
       : {id:newId(), nombre:'Nueva actividad', categoria:'casa', mes:9, dia:null, aprox:true, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0});
-    expanded.extra.add(9);
-    renderExtra(); saveExtra();
+    expanded.extra.add(9); renderExtra(); saveExtra();
   }
-
   if(t.dataset.type==='del-esc'){ if(!confirm('¿Eliminar esta actividad escolar?')) return; escolares = escolares.filter(x=>x.id!==t.dataset.id); renderEscolar(); saveEscolar(); showToast('Actividad eliminada'); }
-  if(t.id==='addSchoolEventBtn'){
-    showToast('Nueva actividad lista para editar');
-    escolares.push({id:newId(), mes:8, dia:null, nombre:'Nueva actividad', nota:''});
-    expanded.escolar.add(8);
-    renderEscolar(); saveEscolar();
-  }
-
+  if(t.id==='addSchoolEventBtn'){ showToast('Nueva actividad lista para editar'); escolares.push({id:newId(), mes:8, dia:null, nombre:'Nueva actividad', nota:'', gasto:0}); expanded.escolar.add(8); renderEscolar(); saveEscolar(); }
   if(t.dataset.type==='del-venta'){ if(!confirm('¿Eliminar esta venta?')) return; ventas = ventas.filter(x=>x.id!==t.dataset.id); renderVentas(); saveVentas(); showToast('Venta eliminada'); }
-  if(t.id==='addVentaBtn'){
-    showToast('Nueva venta lista para editar');
-    ventas.push({id:newId(), nombre:'Nueva venta', mes:9, dia:null, cantidad:0, precio:0, gasto:0, nota:''});
-    expanded.ventas.add(9);
-    renderVentas(); saveVentas();
-  }
-
+  if(t.id==='addVentaBtn'){ showToast('Nueva venta lista para editar'); ventas.push({id:newId(), nombre:'Nueva venta', mes:9, dia:null, cantidad:0, precio:0, gasto:0, nota:''}); expanded.ventas.add(9); renderVentas(); saveVentas(); }
   if(t.dataset.type==='del-extra'){ if(!confirm('¿Eliminar este movimiento?')) return; extras = extras.filter(x=>x.id!==t.dataset.id); updateFinanzas(); renderExtras(); saveFinanzas(); showToast('Movimiento eliminado'); }
-  if(t.id==='addExtraBtn'){
-    showToast('Nuevo movimiento listo para editar');
-    extras.push({id:newId(), nombre:'Nuevo movimiento', tipo:'ingreso', monto:0, nota:''});
-    updateFinanzas(); renderExtras(); saveFinanzas();
-  }
-
-  if(t.dataset.type==='del-foto'){
-    const fid = t.dataset.id;
-    deleteDoc(doc(db,'fotos',fid)).catch(err=>console.warn('No se pudo quitar del álbum', err));
-  }
-
-  const quick = t.closest('[data-goto]');
-  if(quick){ goToView(quick.dataset.goto); }
+  if(t.id==='addExtraBtn'){ showToast('Nuevo movimiento listo para editar'); extras.push({id:newId(), nombre:'Nuevo movimiento', tipo:'ingreso', monto:0, nota:''}); updateFinanzas(); renderExtras(); saveFinanzas(); }
+  if(t.dataset.type==='del-foto'){ const fid = t.dataset.id; deleteDoc(doc(db,'fotos',fid)).catch(err=>console.warn('No se pudo quitar del álbum', err)); }
+  const quick = t.closest('[data-goto]'); if(quick){ goToView(quick.dataset.goto); }
 });
-
-
-document.addEventListener('keydown',e=>{
-  if((e.key==='Enter'||e.key===' ') && e.target.matches('.quick-card[data-goto]')){ e.preventDefault(); goToView(e.target.dataset.goto); }
-});
-
-document.getElementById('filterSegExtra').addEventListener('click', e=>{
-  if(!e.target.classList.contains('tab-chip')) return;
-  [...e.target.parentElement.children].forEach(b=>b.classList.remove('active'));
-  e.target.classList.add('active');
-  filtro = e.target.dataset.f;
-  renderExtra();
-});
-
-document.getElementById('rail').addEventListener('click', e=>{
-  const btn = e.target.closest('.rail-btn');
-  if(!btn) return;
-  goToView(btn.dataset.view);
-});
-
-// =====================================================================
-// PERSISTENCIA (Firestore, tiempo real, compartido)
-// =====================================================================
-async function saveExtra(){
-  try{ await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('No se pudo guardar (extracurricular)', err); }
-}
+document.addEventListener('keydown',e=>{ if((e.key==='Enter'||e.key===' ') && e.target.matches('.quick-card[data-goto]')){ e.preventDefault(); goToView(e.target.dataset.goto); } });
+document.getElementById('filterSegExtra').addEventListener('click', e=>{ if(!e.target.classList.contains('tab-chip')) return; [...e.target.parentElement.children].forEach(b=>b.classList.remove('active')); e.target.classList.add('active'); filtro = e.target.dataset.f; renderExtra(); });
+document.getElementById('rail').addEventListener('click', e=>{ const btn = e.target.closest('.rail-btn'); if(!btn) return; goToView(btn.dataset.view); });
+async function saveExtra(){ try{ await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); }catch(err){ console.warn('No se pudo guardar (extracurricular)', err); } }
 saveExtra = debounce(saveExtra);
-
-async function saveEscolar(){
-  try{ await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('No se pudo guardar (escolar)', err); }
-  updateFinanzas();
-}
+async function saveEscolar(){ try{ await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); }catch(err){ console.warn('No se pudo guardar (escolar)', err); } updateFinanzas(); }
 saveEscolar = debounce(saveEscolar);
-
-async function saveVentas(){
-  try{ await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('No se pudo guardar (ventas)', err); }
-}
+async function saveVentas(){ try{ await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); }catch(err){ console.warn('No se pudo guardar (ventas)', err); } }
 saveVentas = debounce(saveVentas);
-
-async function saveFinanzas(){
-  try{ await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('No se pudo guardar (finanzas extra)', err); }
-}
+async function saveFinanzas(){ try{ await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); }catch(err){ console.warn('No se pudo guardar (finanzas extra)', err); } }
 saveFinanzas = debounce(saveFinanzas);
-
-onSnapshot(docRefExtra, (snap)=>{
-  if(!snap.exists() || snap.metadata.hasPendingWrites) return; // ignora el eco de tu propio guardado
-  const data = snap.data();
-  if(data.eventos) eventos = data.eventos;
-  if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
-  renderExtra();
-}, err=>console.warn('Snapshot extracurricular falló', err));
-
-onSnapshot(docRefEscolar, (snap)=>{
-  if(!snap.exists() || snap.metadata.hasPendingWrites) return;
-  const data = snap.data();
-  if(data.escolares) escolares = data.escolares;
-  if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
-  renderEscolar();
-  updateFinanzas();
-}, err=>console.warn('Snapshot escolar falló', err));
-
-onSnapshot(docRefVentas, (snap)=>{
-  if(!snap.exists() || snap.metadata.hasPendingWrites) return;
-  const data = snap.data();
-  if(data.ventas) ventas = data.ventas;
-  if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
-  renderVentas();
-}, err=>console.warn('Snapshot ventas falló', err));
-
-onSnapshot(query(fotosCol, orderBy('fecha','desc')), (snap)=>{
-  fotos = snap.docs.map(d=>({id:d.id, ...d.data()}));
-  renderFotos();
-}, err=>console.warn('Snapshot fotos falló', err));
-
-onSnapshot(docRefFinanzas, (snap)=>{
-  if(!snap.exists() || snap.metadata.hasPendingWrites) return;
-  const data = snap.data();
-  if(data.extras) extras = data.extras;
-  if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
-  updateFinanzas(); renderExtras();
-}, err=>console.warn('Snapshot finanzas falló', err));
-
+onSnapshot(docRefExtra, (snap)=>{ if(!snap.exists() || snap.metadata.hasPendingWrites) return; const data = snap.data(); if(data.eventos) eventos = data.eventos; if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter); renderExtra(); }, err=>console.warn('Snapshot extracurricular falló', err));
+onSnapshot(docRefEscolar, (snap)=>{ if(!snap.exists() || snap.metadata.hasPendingWrites) return; const data = snap.data(); if(data.escolares) escolares = data.escolares; if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter); renderEscolar(); updateFinanzas(); }, err=>console.warn('Snapshot escolar falló', err));
+onSnapshot(docRefVentas, (snap)=>{ if(!snap.exists() || snap.metadata.hasPendingWrites) return; const data = snap.data(); if(data.ventas) ventas = data.ventas; if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter); renderVentas(); }, err=>console.warn('Snapshot ventas falló', err));
+onSnapshot(query(fotosCol, orderBy('fecha','desc')), (snap)=>{ fotos = snap.docs.map(d=>({id:d.id, ...d.data()})); renderFotos(); }, err=>console.warn('Snapshot fotos falló', err));
+onSnapshot(docRefFinanzas, (snap)=>{ if(!snap.exists() || snap.metadata.hasPendingWrites) return; const data = snap.data(); if(data.extras) extras = data.extras; if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter); updateFinanzas(); renderExtras(); }, err=>console.warn('Snapshot finanzas falló', err));
 (async function init(){
-  try{ const s = await getDoc(docRefExtra); if(!s.exists()) await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('Init extracurricular falló', err); }
-  try{ const s = await getDoc(docRefEscolar); if(!s.exists()) await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('Init escolar falló', err); }
-  try{ const s = await getDoc(docRefVentas); if(!s.exists()) await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('Init ventas falló', err); }
-  try{ const s = await getDoc(docRefFinanzas); if(!s.exists()) await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); }
-  catch(err){ console.warn('Init finanzas falló', err); }
+  try{ const s = await getDoc(docRefExtra); if(!s.exists()) await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); }catch(err){ console.warn('Init extracurricular falló', err); }
+  try{ const s = await getDoc(docRefEscolar); if(!s.exists()) await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); }catch(err){ console.warn('Init escolar falló', err); }
+  try{ const s = await getDoc(docRefVentas); if(!s.exists()) await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); }catch(err){ console.warn('Init ventas falló', err); }
+  try{ const s = await getDoc(docRefFinanzas); if(!s.exists()) await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); }catch(err){ console.warn('Init finanzas falló', err); }
   renderExtra(); renderEscolar(); renderVentas(); renderFotos(); updateFinanzas(); renderExtras();
 })();
-
-if('serviceWorker' in navigator){
-  window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('./service-worker.js').catch(err=>console.warn('SW no registrado', err));
-  });
-}
-
-// El navegador/iOS gestiona el scroll, el rebote y el zoom de forma nativa.
-// No bloqueamos touchend/gesturestart: esto evita scroll recortado y mejora accesibilidad.
+if('serviceWorker' in navigator){ window.addEventListener('load', ()=>{ navigator.serviceWorker.register('./service-worker.js').catch(err=>console.warn('SW no registrado', err)); }); }
 </script>
 </body>
 </html>
