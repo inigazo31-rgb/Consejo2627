@@ -32,6 +32,53 @@
 :focus-visible{outline:3px solid rgba(125,16,16,.25);outline-offset:2px}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:#171411;color:#fff;border-radius:12px;padding:10px 14px;font-size:12px;font-weight:700;z-index:100;box-shadow:0 12px 30px rgba(0,0,0,.18);transition:opacity .18s,transform .18s}.toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:760px){.toast{bottom:calc(88px + env(safe-area-inset-bottom));max-width:calc(100vw - 32px);text-align:center}}
 
+
+/* ===== COMPACT TIMELINES + FINANCE TABLE ===== */
+.month-body-inner{padding:0 14px 14px}
+.month-acc{transition:box-shadow .18s ease,border-color .18s ease}
+.month-acc.open{box-shadow:0 8px 26px rgba(23,20,17,.055)}
+.event-card{position:relative}
+.event-card .ev-top{align-items:flex-start}
+.date-box{display:grid;grid-template-columns:92px 72px;gap:6px;align-items:center;align-content:start}
+.date-box select,.date-box .day-row input{height:34px}
+.approx-label{display:none!important}
+.event-body .name-line{display:flex;align-items:center;gap:7px;min-width:0;flex-wrap:wrap}
+.event-body .name-line .ev-name{flex:1 1 180px;min-width:0}
+.inline-status{display:inline-flex;align-items:center;white-space:nowrap;font-size:9px;font-weight:800;line-height:1;padding:6px 8px;border-radius:999px;background:var(--amber-bg);color:var(--amber);text-transform:uppercase;letter-spacing:.025em}
+.inline-status.neutral{background:#f2efeb;color:var(--muted)}
+.finance-table{width:100%;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.finance-table-head,.finance-table-row{display:grid;grid-template-columns:minmax(190px,1.7fr) minmax(100px,1fr) minmax(100px,1fr) minmax(100px,1fr);align-items:center}
+.finance-table-head{background:#f7f4ef;color:var(--muted);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.finance-table-head>div,.finance-table-row>div{padding:11px 12px}
+.finance-table-row{border-top:1px solid var(--line);font-size:11.5px}
+.finance-table-row:first-of-type{border-top:0}
+.finance-table-row>div:not(:first-child),.finance-table-head>div:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+.finance-category{display:flex;align-items:center;gap:8px;font-weight:700;min-width:0}
+.finance-dot{width:8px;height:8px;border-radius:3px;flex:none}
+.finance-num{font-weight:650;white-space:nowrap}
+.finance-num.ing{color:var(--green)}
+.finance-num.gas{color:var(--red)}
+.finance-num.balance.pos{color:var(--green);font-weight:800}
+.finance-num.balance.neg{color:var(--red);font-weight:800}
+@media(max-width:760px){
+  .month-body-inner{padding:0 8px 9px}
+  .event-card{padding:11px}
+  .date-box{grid-template-columns:minmax(92px,1fr) 64px;gap:5px}
+  .date-box select,.date-box .day-row input{height:33px}
+  .event-body .name-line{gap:5px}
+  .inline-status{font-size:8px;padding:5px 7px}
+  .finance-table-head,.finance-table-row{grid-template-columns:minmax(125px,1.45fr) repeat(3,minmax(72px,1fr))}
+  .finance-table-head>div,.finance-table-row>div{padding:10px 7px}
+  .finance-table-head{font-size:8px}
+  .finance-table-row{font-size:10.5px}
+  .finance-category{gap:5px}
+  .finance-num{white-space:normal;line-height:1.15}
+}
+@media(max-width:380px){
+  .finance-table-head,.finance-table-row{grid-template-columns:minmax(112px,1.3fr) repeat(3,minmax(66px,1fr))}
+  .finance-table-head>div,.finance-table-row>div{padding:9px 5px}
+}
+
 /* ===== MOBILE POLISH / NATIVE SCROLL ===== */
 html{min-height:100%;height:auto;overscroll-behavior:auto;}
 body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto;overscroll-behavior:auto;-webkit-overflow-scrolling:touch;}
@@ -524,10 +571,12 @@ function eventCardHtmlExtra(e){
       <div class="date-box">
         <select data-type="ev-mes" data-id="${e.id}">${monthOptions(e.mes)}</select>
         <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="ev-dia" data-id="${e.id}" ${e.aprox?'disabled':''}></div>
-        <label class="approx-label"><input type="checkbox" data-type="ev-aprox" data-id="${e.id}" ${e.aprox?'checked':''}> Aproximada</label>
       </div>
       <div class="event-body">
-        <input type="text" class="ev-name" maxlength="80" value="${esc(e.nombre)}" data-type="ev-nombre" data-id="${e.id}" placeholder="Nombre">
+        <div class="name-line">
+          <input type="text" class="ev-name" maxlength="80" value="${esc(e.nombre)}" data-type="ev-nombre" data-id="${e.id}" placeholder="Nombre">
+          ${e.aprox ? '<button type="button" class="inline-status" data-type="ev-aprox" data-id="'+e.id+'" title="Toca para marcar como fecha exacta">Aproximada</button>' : '<button type="button" class="inline-status neutral" data-type="ev-aprox" data-id="'+e.id+'" title="Toca para marcar como aproximada">Fecha exacta</button>'}
+        </div>
         <div class="meta-row">
           <select data-type="ev-categoria" data-id="${e.id}">
             <option value="antro" ${isAntro?'selected':''}>Antro</option>
@@ -593,7 +642,10 @@ function eventCardHtmlEscolar(e){
         <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="esc-dia" data-id="${e.id}"></div>
       </div>
       <div class="event-body">
-        <input type="text" class="ev-name" maxlength="100" value="${esc(e.nombre)}" data-type="esc-nombre" data-id="${e.id}" placeholder="Nombre">
+        <div class="name-line">
+          <input type="text" class="ev-name" maxlength="100" value="${esc(e.nombre)}" data-type="esc-nombre" data-id="${e.id}" placeholder="Nombre">
+          ${e.dia==null ? '<span class="inline-status neutral">Sin fecha exacta</span>' : ''}
+        </div>
         <span class="badge escolar">Escolar</span>
         <input type="text" class="notas-input" maxlength="200" value="${esc(e.nota)}" data-type="esc-nota" data-id="${e.id}" placeholder="Observaciones">
       </div>
@@ -627,7 +679,10 @@ function ventaCardHtml(v){
         <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${v.dia==null?'':v.dia}" data-type="v-dia" data-id="${v.id}"></div>
       </div>
       <div class="event-body">
-        <input type="text" class="ev-name" maxlength="80" value="${esc(v.nombre)}" data-type="v-nombre" data-id="${v.id}" placeholder="Producto / venta">
+        <div class="name-line">
+          <input type="text" class="ev-name" maxlength="80" value="${esc(v.nombre)}" data-type="v-nombre" data-id="${v.id}" placeholder="Producto / venta">
+          ${v.dia==null ? '<span class="inline-status neutral">Sin fecha exacta</span>' : ''}
+        </div>
         <span class="badge" style="background:var(--ventas-bg); color:var(--ventas);">Venta escolar</span>
         <input type="text" class="notas-input" maxlength="150" value="${esc(v.nota)}" data-type="v-nota" data-id="${v.id}" placeholder="Nota (opcional)">
       </div>
@@ -699,19 +754,24 @@ function updateFinanzas(){
     const rows = [
       {nombre:'Fiestas extracurriculares', ing:catExtra, gas:catExtraGasto, color:'var(--antro)'},
       {nombre:'Ventas escolares', ing:catVentasIng, gas:catVentasGasto, color:'var(--ventas)'},
-      {nombre:'Calendario escolar', ing:0, gas:catEscolarGasto, color:'#8A6A11'},
+      {nombre:'Calendario escolar', ing:0, gas:catEscolarGasto, color:'var(--amber)'},
       {nombre:'Ingresos y gastos extra', ing:extraIngresos, gas:extraGastos, color:'var(--wine)'},
     ];
-    bd.innerHTML = rows.map(r=>{
-      const bal = r.ing - r.gas;
-      return `<div style="display:flex; align-items:center; gap:10px; padding:9px 0; border-top:1px solid var(--line);">
-        <span style="width:8px;height:8px;border-radius:3px;background:${r.color};flex-shrink:0;"></span>
-        <span style="flex:1; font-size:12.5px; font-weight:600;">${esc(r.nombre)}</span>
-        <span style="font-size:11.5px; color:var(--green); min-width:78px; text-align:right;">${money(r.ing)}</span>
-        <span style="font-size:11.5px; color:var(--red); min-width:78px; text-align:right;">-${money(r.gas)}</span>
-        <span style="font-size:12.5px; font-weight:700; min-width:88px; text-align:right; color:${bal>=0?'var(--green)':'var(--red)'};">${money(bal)}</span>
+    bd.innerHTML = `
+      <div class="finance-table" role="table" aria-label="Desglose por categoría">
+        <div class="finance-table-head" role="row">
+          <div role="columnheader">Categoría</div><div role="columnheader">Ingresos</div><div role="columnheader">Gastos</div><div role="columnheader">Balance</div>
+        </div>
+        ${rows.map(r=>{
+          const bal = r.ing-r.gas;
+          return `<div class="finance-table-row" role="row">
+            <div role="cell"><span class="finance-category"><span class="finance-dot" style="background:${r.color}"></span><span>${esc(r.nombre)}</span></span></div>
+            <div role="cell" class="finance-num ing">${money(r.ing)}</div>
+            <div role="cell" class="finance-num gas">${money(r.gas)}</div>
+            <div role="cell" class="finance-num balance ${bal>=0?'pos':'neg'}">${money(bal)}</div>
+          </div>`;
+        }).join('')}
       </div>`;
-    }).join('');
   }
 }
 
@@ -879,7 +939,7 @@ document.addEventListener('change', e=>{
   if(ev){
     if(t.dataset.type==='ev-mes'){ ev.mes=parseInt(t.value); renderExtra(); saveExtra(); }
     if(t.dataset.type==='ev-categoria'){ ev.categoria=t.value; renderExtra(); saveExtra(); }
-    if(t.dataset.type==='ev-aprox'){ ev.aprox=t.checked; if(ev.aprox) ev.dia=null; renderExtra(); saveExtra(); }
+    if(t.dataset.type==='ev-aprox'){ ev.aprox=!ev.aprox; if(ev.aprox) ev.dia=null; renderExtra(); saveExtra(); }
   }
   const es = escolares.find(x=>x.id===t.dataset.id);
   if(es && t.dataset.type==='esc-mes'){ es.mes=parseInt(t.value); renderEscolar(); saveEscolar(); }
