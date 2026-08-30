@@ -133,6 +133,53 @@ body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto;overscroll-be
 @media(min-width:761px){
   .view{width:100%;}
 }
+
+/* ===== V4 — COMPACT MOBILE ACTIVITY CARDS ===== */
+.ventas-badge{background:var(--ventas-bg);color:var(--ventas)}
+.name-line .badge,.name-line .inline-status{flex:none}
+@media(max-width:760px){
+  /* Keep the date and activity title on the same horizontal row. */
+  .ev-top{grid-template-columns:92px minmax(0,1fr) 30px;gap:9px;align-items:start}
+  .date-box{grid-column:auto!important;display:flex;flex-direction:column;gap:5px;min-width:0}
+  .date-box select,.date-box .day-row input{height:34px;width:100%;padding:6px 7px}
+  .day-row{width:100%;min-width:0}
+  .event-body{min-width:0;padding-top:1px}
+  .event-body .name-line{display:flex;align-items:center;gap:5px;flex-wrap:wrap;line-height:1.15}
+  .event-body .name-line .ev-name{flex:1 1 105px;width:auto;min-width:80px;font-size:15px;line-height:1.2;padding:1px 0 3px}
+  .event-body .badge,.event-body .inline-status{font-size:8px;padding:5px 6px;line-height:1;}
+  .meta-row{margin-top:5px;gap:5px}
+  .meta-row select{height:30px;padding:5px 6px;font-size:11px}
+  .notas-input{margin-top:6px;padding:6px 7px;height:31px}
+  .del-btn{width:30px;height:30px;margin-top:-2px}
+
+  /* Approximate dates do not need an empty day field. */
+  .date-box:has(.day-row input:disabled) .day-row{display:none}
+
+  /* The finance section starts immediately after the header. */
+  .fin-grid{margin-top:9px;padding-top:9px;gap:9px}
+  .fin-col h4{margin-bottom:6px}
+  .fin-row{margin-bottom:5px}
+  .fin-total{padding-top:6px}
+  .ev-balance{margin-top:5px;padding-top:8px}
+
+  /* Reduce the accordion's visual padding; it should hug its content. */
+  .month-body-inner{padding:0 6px 6px}
+  .event-card{padding:10px;margin-bottom:7px;border-radius:13px}
+}
+@media(max-width:390px){
+  .ev-top{grid-template-columns:84px minmax(0,1fr) 28px;gap:7px}
+  .event-body .name-line .ev-name{font-size:14px;min-width:70px}
+  .event-body .badge,.event-body .inline-status{font-size:7.5px;padding:4px 5px}
+  .date-box select,.date-box .day-row input{height:32px;font-size:11px}
+  .event-card{padding:9px}
+}
+/* Desktop: keep the activity header compact as well. */
+@media(min-width:761px){
+  .ev-top{grid-template-columns:164px minmax(0,1fr) 32px}
+  .date-box{display:grid;grid-template-columns:92px 66px;gap:6px;align-items:center}
+  .date-box .day-row{min-width:0}
+  .event-body .name-line{gap:7px}
+}
 </style>
 </head>
 <body>
@@ -644,9 +691,9 @@ function eventCardHtmlEscolar(e){
       <div class="event-body">
         <div class="name-line">
           <input type="text" class="ev-name" maxlength="100" value="${esc(e.nombre)}" data-type="esc-nombre" data-id="${e.id}" placeholder="Nombre">
+          <span class="badge escolar">Escolar</span>
           ${e.dia==null ? '<span class="inline-status neutral">Sin fecha exacta</span>' : ''}
         </div>
-        <span class="badge escolar">Escolar</span>
         <input type="text" class="notas-input" maxlength="200" value="${esc(e.nota)}" data-type="esc-nota" data-id="${e.id}" placeholder="Observaciones">
       </div>
       <button class="del-btn" data-type="del-esc" data-id="${e.id}">×</button>
@@ -681,9 +728,9 @@ function ventaCardHtml(v){
       <div class="event-body">
         <div class="name-line">
           <input type="text" class="ev-name" maxlength="80" value="${esc(v.nombre)}" data-type="v-nombre" data-id="${v.id}" placeholder="Producto / venta">
+          <span class="badge ventas-badge">Venta escolar</span>
           ${v.dia==null ? '<span class="inline-status neutral">Sin fecha exacta</span>' : ''}
         </div>
-        <span class="badge" style="background:var(--ventas-bg); color:var(--ventas);">Venta escolar</span>
         <input type="text" class="notas-input" maxlength="150" value="${esc(v.nota)}" data-type="v-nota" data-id="${v.id}" placeholder="Nota (opcional)">
       </div>
       <button class="del-btn" data-type="del-venta" data-id="${v.id}">×</button>
