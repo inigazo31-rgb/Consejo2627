@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>27MEX Seniors — Consejo Estudiantil</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#8E0201">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="27MEX Seniors">
+<link rel="apple-touch-icon" href="icon-180.png">
+<style>
+  :root{
+    --wine:#8E0201;
+    --wine-deep:#650000;
+    --cream:#F5EDDD;
+    --cream-deep:#EADCC0;
+    --card:#FFFDF8;
+    --ink:#2A1A12;
+    --muted:#8A776A;
+    --line:#E3D6C0;
+    --green:#3C7A4F;
+    --green-bg:#E6F0E8;
+    --red:#B3382C;
+    --red-bg:#FBEAE7;
+    --amber-bg:#FBF0D6;
+    --antro:#6B4E9E;
+    --antro-bg:#EFE9F7;
+    --casa:#B5731E;
+    --casa-bg:#FBEEDA;
+    --radius:14px;
+    font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--cream); color:var(--ink); -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:"Space Grotesk","Inter",system-ui,sans-serif; margin:0;}
+
+  /* ===== App shell: left rail + content ===== */
+  .app-shell{display:flex; min-height:100vh;}
+
+  .rail{
+    width:78px; flex-shrink:0; background:linear-gradient(180deg,var(--wine) 0%,var(--wine-deep) 100%);
+    display:flex; flex-direction:column; align-items:center; padding:18px 0; gap:6px;
+    position:sticky; top:0; height:100vh; z-index:30;
+  }
+  .rail-logo{width:40px; height:40px; border-radius:10px; overflow:hidden; margin-bottom:14px; border:2px solid rgba(255,255,255,0.35);}
+  .rail-logo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .rail-btn{
+    width:58px; padding:9px 4px 8px; border-radius:12px; background:transparent; border:none;
+    color:#F0DCC8; display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer;
+    font-family:inherit; font-size:9.5px; font-weight:600; letter-spacing:.01em; text-align:center; line-height:1.2;
+  }
+  .rail-btn svg{width:21px; height:21px; stroke:#F0DCC8; fill:none; stroke-width:1.8;}
+  .rail-btn.active{background:rgba(255,255,255,0.16); color:#fff;}
+  .rail-btn.active svg{stroke:#fff;}
+  .rail-btn:hover{background:rgba(255,255,255,0.10);}
+
+  .content{flex:1; min-width:0;}
+  .wrap{max-width:1120px; margin:0 auto; padding:24px 20px 80px;}
+
+  @media(max-width:680px){
+    .rail{width:100%; height:auto; flex-direction:row; justify-content:space-around; position:fixed; bottom:0; top:auto; left:0; padding:8px 4px; box-shadow:0 -2px 10px rgba(0,0,0,0.15);}
+    .rail-logo{display:none;}
+    .rail-btn{width:auto; flex:1;}
+    .app-shell{flex-direction:column;}
+    .content{padding-bottom:70px;}
+  }
+
+  /* ===== Shared UI ===== */
+  .view{display:none;}
+  .view.active{display:block; animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+
+  .header{
+    background:linear-gradient(135deg,var(--wine) 0%,var(--wine-deep) 100%);
+    color:#fff; border-radius:var(--radius); padding:24px 26px; margin-bottom:18px;
+    position:relative; overflow:hidden;
+  }
+  .header::after{content:""; position:absolute; right:-40px; top:-40px; width:180px;height:180px;border-radius:50%;
+    background:radial-gradient(circle, rgba(245,237,221,0.25), transparent 70%);}
+  .eyebrow{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#F0DCC8; font-weight:600; margin-bottom:6px;}
+  .header h1{font-size:22px; font-weight:600; letter-spacing:-0.01em;}
+  .header p{margin:6px 0 0; color:#EDD9C4; font-size:13.5px; max-width:680px; line-height:1.5;}
+
+  .howto{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:14px 18px; margin-bottom:18px; font-size:12.5px; color:var(--muted); line-height:1.6;}
+  .howto strong{color:var(--wine);}
+  .howto button{background:none; border:none; color:var(--wine); font-weight:700; font-size:12px; text-decoration:underline; cursor:pointer; padding:0; font-family:inherit;}
+
+  .summary-bar{position:sticky; top:12px; z-index:20; display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px;}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; box-shadow:0 1px 2px rgba(101,0,0,0.05);}
+  .stat .label{font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:600;}
+  .stat .value{font-size:19px; font-weight:700; margin-top:4px; font-family:"Space Grotesk",sans-serif;}
+  .stat.balance .value.pos{color:var(--green);}
+  .stat.balance .value.neg{color:var(--red);}
+  .stat.balance{border-color:var(--wine);}
+
+  .toolbar{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:18px;}
+  .filter-seg{display:flex; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px; gap:2px;}
+  .filter-seg button{border:none; background:transparent; padding:7px 14px; border-radius:999px; font-size:12.5px; font-weight:600; color:var(--muted); cursor:pointer; font-family:inherit;}
+  .filter-seg button.active{background:var(--wine); color:#fff;}
+  .add-btn{margin-left:auto; background:var(--wine); color:#fff; border:none; border-radius:9px; padding:9px 16px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit;}
+  .add-btn:hover{background:var(--wine-deep);}
+  .add-btn.ghost{background:var(--card); color:var(--wine); border:1px solid var(--wine);}
+
+  .legend{display:flex; gap:16px; flex-wrap:wrap; font-size:11.5px; color:var(--muted); margin-bottom:18px;}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .dot{width:9px;height:9px;border-radius:3px; display:inline-block;}
+  .dot.antro{background:var(--antro-bg); border:1px solid var(--antro);}
+  .dot.casa{background:var(--casa-bg); border:1px solid var(--casa);}
+  .dot.amber{background:var(--amber-bg); border:1px solid #D9B84B;}
+  .dot.wine{background:var(--wine); border:1px solid var(--wine);}
+
+  .month-group{margin-bottom:22px;}
+  .month-title{font-family:"Space Grotesk",sans-serif; font-size:13px; font-weight:700; color:var(--wine); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; padding-bottom:6px; border-bottom:2px solid var(--line);}
+
+  .event-card{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--muted); border-radius:12px; padding:16px 18px; margin-bottom:12px;}
+  .event-card.antro{border-left-color:var(--antro);}
+  .event-card.casa{border-left-color:var(--casa);}
+  .event-card.escolar{border-left-color:var(--wine);}
+
+  .ev-top{display:grid; grid-template-columns:110px 1fr auto; gap:14px; align-items:start;}
+  .date-box{display:flex; flex-direction:column; gap:4px;}
+  .date-box select{padding:6px 7px; border:1px solid var(--line); border-radius:7px; font-size:12px; font-family:inherit; color:var(--wine); background:#FCFAF3;}
+  .day-row input{width:100%; padding:6px 7px; border:1px solid var(--line); border-radius:7px; font-size:12px; font-family:inherit;}
+  .approx-label{font-size:9.5px; color:var(--muted); display:flex; align-items:center; gap:4px; margin-top:2px;}
+
+  .event-body input[type=text].ev-name{width:100%; border:none; background:transparent; font-size:15px; font-weight:700; color:var(--wine); padding:2px 0; margin-bottom:6px; font-family:inherit;}
+  .event-body input[type=text].ev-name:focus{outline:1px solid var(--wine); background:#fff; border-radius:4px; padding:2px 4px;}
+  .meta-row{display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  .meta-row select{padding:5px 8px; border:1px solid var(--line); border-radius:7px; font-size:11.5px; color:var(--wine); background:#FCFAF3; font-family:inherit;}
+  .badge{font-size:10px; font-weight:700; padding:2px 8px; border-radius:999px; text-transform:uppercase; letter-spacing:.03em; cursor:pointer;}
+  .badge.antro{background:var(--antro-bg); color:var(--antro);}
+  .badge.casa{background:var(--casa-bg); color:var(--casa);}
+  .badge.escolar{background:var(--amber-bg); color:#8A6A11;}
+  .badge.confirmada{background:var(--green-bg); color:var(--green);}
+  .badge.estimada{background:var(--amber-bg); color:#8A6A11;}
+
+  .notas-input{width:100%; border:1px dashed var(--line); border-radius:7px; padding:6px 8px; font-size:11.5px; font-style:italic; color:var(--muted); font-family:inherit; background:#FCFAF3; margin-top:8px;}
+
+  .del-btn{background:var(--red-bg); color:var(--red); border:none; border-radius:8px; width:26px; height:26px; font-size:14px; font-weight:700; cursor:pointer; line-height:1;}
+
+  .fin-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; padding-top:12px; margin-top:12px; border-top:1px dashed var(--line);}
+  @media(max-width:720px){.fin-grid{grid-template-columns:1fr;}}
+  .fin-col h4{font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); font-weight:700; margin-bottom:8px;}
+  .fin-row{display:grid; grid-template-columns:1fr auto; gap:8px; align-items:center; margin-bottom:6px; font-size:12.5px;}
+  .fin-row label{color:var(--ink);}
+  .fin-row input[type=number]{width:100px; padding:6px 8px; border:1px solid var(--line); border-radius:7px; font-size:12.5px; font-family:inherit; text-align:right; background:#FCFAF3; color:var(--wine);}
+  .fin-row .readout{font-weight:700; color:var(--wine); text-align:right;}
+  .fin-total{display:flex; justify-content:space-between; font-size:13px; font-weight:700; padding-top:8px; margin-top:4px; border-top:1px solid var(--line);}
+  .fin-total.ing{color:var(--green);}
+  .fin-total.gas{color:var(--red);}
+  .ev-balance{grid-column:1/-1; display:flex; justify-content:space-between; align-items:center; margin-top:10px; padding-top:10px; border-top:1.5px solid var(--wine); font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:14px;}
+  .ev-balance .val.pos{color:var(--green);}
+  .ev-balance .val.neg{color:var(--red);}
+
+  .empty-state{text-align:center; padding:40px 20px; color:var(--muted); font-size:13px; background:var(--card); border:1px dashed var(--line); border-radius:var(--radius);}
+  footer{text-align:center; font-size:11.5px; color:var(--muted); margin-top:30px;}
+</style>
+</head>
+<body>
+<div class="app-shell">
+
+  <nav class="rail" id="rail">
+    <div class="rail-logo"><img src="icon-192.png" alt="27MEX"></div>
+    <button class="rail-btn active" data-view="extracurricular">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v5"/></svg>
+      Extra
+    </button>
+    <button class="rail-btn" data-view="escolar">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>
+      Escolar
+    </button>
+  </nav>
+
+  <div class="content">
+    <div class="wrap">
+
+      <!-- ===================== VIEW: EXTRACURRICULAR ===================== -->
+      <div class="view active" id="view-extracurricular">
+        <div class="header">
+          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
+          <h1>Calendario financiero extracurricular</h1>
+          <p>Fiestas en antro y fiestas en casa para seniors. Cada actividad trae su fecha y sus finanzas juntas.</p>
+        </div>
+
+        <div class="howto">
+          <strong>¿Cómo lo uso?</strong> Todos los que abran este link editan el mismo documento en tiempo real. <button onclick="toggleHowto('extra')">Ver más detalles</button>
+          <div id="howtoMore-extra" style="display:none; margin-top:8px;">
+            • <b>Boletos vendidos × Precio</b> = ingreso bruto de esa actividad.<br>
+            • En fiestas de <b>antro</b>: el gasto fijo es decoración/otros, y se suma la <b>comisión</b> sobre el ingreso de boletos.<br>
+            • En fiestas <b>en casa</b>: el gasto cubre todo — no hay comisión de antro.<br>
+            • El <b>balance</b> de cada tarjeta y el total de arriba se recalculan solos.
+          </div>
+        </div>
+
+        <div class="summary-bar">
+          <div class="stat"><div class="label">Total ingresos</div><div class="value" id="statIngresos">$0</div></div>
+          <div class="stat"><div class="label">Total gastos</div><div class="value" id="statGastos">$0</div></div>
+          <div class="stat balance"><div class="label">Balance neto</div><div class="value" id="statBalance">$0</div></div>
+          <div class="stat"><div class="label">Actividades</div><div class="value" id="statCount">0</div></div>
+        </div>
+
+        <div class="legend">
+          <span><span class="dot antro"></span> Fiesta en antro</span>
+          <span><span class="dot casa"></span> Fiesta en casa (seniors)</span>
+        </div>
+
+        <div class="toolbar">
+          <div class="filter-seg" id="filterSegExtra">
+            <button data-f="all" class="active">Todas</button>
+            <button data-f="antro">Antro</button>
+            <button data-f="casa">Casa seniors</button>
+          </div>
+          <button class="add-btn" id="addEventBtn">+ Agregar actividad</button>
+        </div>
+
+        <div id="timelineExtra"></div>
+        <div class="empty-state" id="emptyExtra" style="display:none;">No hay actividades en este filtro todavía.</div>
+
+        <footer>Calendario financiero extracurricular — 27MEX Seniors</footer>
+      </div>
+
+      <!-- ===================== VIEW: ESCOLAR ===================== -->
+      <div class="view" id="view-escolar">
+        <div class="header">
+          <div class="eyebrow">27MEX Seniors · Consejo Estudiantil</div>
+          <h1>Calendario escolar</h1>
+          <p>Todas las actividades organizadas por el consejo dentro del IMEX a lo largo del ciclo 2026–2027.</p>
+        </div>
+
+        <div class="howto">
+          <strong>¿Cómo lo uso?</strong> Igual que el otro calendario: todos ven y editan lo mismo en tiempo real. <button onclick="toggleHowto('esc')">Ver más detalles</button>
+          <div id="howtoMore-esc" style="display:none; margin-top:8px;">
+            • Cada tarjeta tiene mes y día editables. Si un evento dura varios días, pon el día de inicio y anota el rango en la nota.<br>
+            • Usa <b>+ Agregar actividad</b> para meter cualquier evento nuevo que se les ocurra.<br>
+            • El ícono <b>×</b> borra la tarjeta.
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <span class="filter-seg" id="statCountEscPill" style="padding:9px 16px; font-size:12px; font-weight:600; color:var(--wine); background:var(--card); border:1px solid var(--line);">0 actividades</span>
+          <button class="add-btn" id="addSchoolEventBtn" style="margin-left:auto;">+ Agregar actividad</button>
+        </div>
+
+        <div id="timelineEscolar"></div>
+        <div class="empty-state" id="emptyEscolar" style="display:none;">No hay actividades todavía.</div>
+
+        <footer>Calendario escolar — 27MEX Seniors</footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAgtvRtoQ2_HrfnHFWZ2fZbXDZuECisy3M",
+  authDomain: "consejo-2627.firebaseapp.com",
+  projectId: "consejo-2627",
+  storageBucket: "consejo-2627.firebasestorage.app",
+  messagingSenderId: "60906579981",
+  appId: "1:60906579981:web:92a181ffba9dc8c1718d44",
+  measurementId: "G-45ED46QZFN"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const docRefExtra = doc(db, "consejo-imex", "calendario-financiero");
+const docRefEscolar = doc(db, "consejo-imex", "calendario-escolar");
+
+window.toggleHowto = (which)=>{
+  const el = document.getElementById('howtoMore-'+which);
+  el.style.display = el.style.display==='none' ? 'block' : 'none';
+};
+
+const MONTHS = [
+  {v:8, label:'Agosto 2026'}, {v:9, label:'Septiembre 2026'}, {v:10, label:'Octubre 2026'},
+  {v:11, label:'Noviembre 2026'}, {v:12, label:'Diciembre 2026'}, {v:1, label:'Enero 2027'},
+  {v:2, label:'Febrero 2027'}, {v:3, label:'Marzo 2027'}, {v:4, label:'Abril 2027'},
+  {v:5, label:'Mayo 2027'}, {v:6, label:'Junio 2027'}, {v:7, label:'Julio 2027'}
+];
+const monthOrder = m => { const idx = MONTHS.findIndex(x=>x.v===m); return idx===-1?99:idx; };
+const monthLabel = m => (MONTHS.find(x=>x.v===m)||{}).label || '¿Mes?';
+const money = n => '$' + Math.round(n||0).toLocaleString('es-MX');
+function monthOptions(selected){
+  return MONTHS.map(m=>`<option value="${m.v}" ${m.v===selected?'selected':''}>${m.label}</option>`).join('');
+}
+
+let idCounter = 500;
+const newId = () => 'e' + (idCounter++);
+
+// =====================================================================
+// DATA: Calendario extracurricular (con finanzas)
+// =====================================================================
+let eventos = [
+  {id:'e1', nombre:'Back to School', categoria:'antro', mes:9, dia:11, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
+  {id:'e2', nombre:'Halloween', categoria:'antro', mes:10, dia:30, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
+  {id:'e3', nombre:'San Valentín', categoria:'antro', mes:2, dia:14, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
+  {id:'e4', nombre:'AfterMUN', categoria:'antro', mes:3, dia:10, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
+  {id:'e5', nombre:'Fiesta EXTRA', categoria:'antro', mes:5, dia:null, aprox:true, confirmada:false, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
+  {id:'e6', nombre:'Fiesta en casa (16 sept)', categoria:'casa', mes:9, dia:16, aprox:false, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
+  {id:'e7', nombre:'Fiesta en casa (18 sept)', categoria:'casa', mes:9, dia:18, aprox:false, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
+  {id:'e8', nombre:'Posada', categoria:'casa', mes:12, dia:null, aprox:true, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
+  {id:'e9', nombre:'En vivo', categoria:'casa', mes:5, dia:null, aprox:true, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
+  {id:'e10', nombre:'After graduación', categoria:'casa', mes:7, dia:3, aprox:false, confirmada:true, boletos:100, precio:50, gastoFijo:15000, comisionPct:0},
+];
+let filtro = 'all';
+
+// =====================================================================
+// DATA: Calendario escolar (dentro de la escuela, sin finanzas)
+// =====================================================================
+let escolares = [
+  {id:'s1', mes:8, dia:1, nombre:'Pintar escudo', nota:'11:00 am · Encargados: Barbara, Victoria Riveroll, Rafa Luna y Sofia Brito'},
+  {id:'s2', mes:8, dia:28, nombre:'Reunión consejo', nota:''},
+  {id:'s3', mes:8, dia:29, nombre:'Acomodar todo para el primer día', nota:''},
+  {id:'s4', mes:8, dia:31, nombre:'Escribir carta seniors', nota:''},
+  {id:'s5', mes:8, dia:31, nombre:'Entrega de chamarras', nota:''},
+  {id:'s6', mes:8, dia:31, nombre:'Pintar manos en la pared', nota:''},
+
+  {id:'s7', mes:9, dia:2, nombre:'Poner frases en el espejo', nota:''},
+  {id:'s8', mes:9, dia:4, nombre:'Bienvenida a 1° semestre', nota:''},
+  {id:'s9', mes:9, dia:8, nombre:'Junta consejo', nota:''},
+  {id:'s10', mes:9, dia:11, nombre:'Back to school', nota:''},
+  {id:'s11', mes:9, dia:15, nombre:'Festejo de 15 de septiembre', nota:'Vender refrescos o aguas frescas'},
+  {id:'s12', mes:9, dia:25, nombre:'Noche de películas', nota:''},
+
+  {id:'s13', mes:10, dia:5, nombre:'Inicio de venta de calaveritas', nota:'Del 5 al 12 · ver proveedora de calaveritas'},
+  {id:'s14', mes:10, dia:8, nombre:'Junta de consejos', nota:''},
+  {id:'s15', mes:10, dia:26, nombre:'Inscripciones para Kings y Queens', nota:'Del 26 al 29'},
+  {id:'s16', mes:10, dia:29, nombre:'Organizar la entrega de calaveritas', nota:''},
+  {id:'s17', mes:10, dia:30, nombre:'Entrega de calaveritas / pan de muerto', nota:''},
+  {id:'s18', mes:10, dia:30, nombre:'Venir de catrines · Día de Muertos', nota:''},
+
+  {id:'s19', mes:11, dia:3, nombre:'Draft de Kings y Queens', nota:''},
+  {id:'s20', mes:11, dia:4, nombre:'Inicio de la Kings y Queens', nota:''},
+  {id:'s21', mes:11, dia:10, nombre:'Junta del consejo', nota:''},
+  {id:'s22', mes:11, dia:17, nombre:'Partidos de la Kings y Queens', nota:''},
+  {id:'s23', mes:11, dia:19, nombre:'Partidos de la Kings y Queens', nota:''},
+  {id:'s24', mes:11, dia:20, nombre:'Noche de cine (Cristo)', nota:''},
+  {id:'s25', mes:11, dia:24, nombre:'Partidos de la Kings y Queens', nota:''},
+  {id:'s26', mes:11, dia:23, nombre:'Promocionar Winter Prom', nota:'Del 23 al 27'},
+  {id:'s27', mes:11, dia:23, nombre:'Propuestas e invitaciones al Winter Prom', nota:'Del 23 nov al 4 dic'},
+  {id:'s28', mes:11, dia:25, nombre:'Bazar Navideño', nota:'25 y 26'},
+  {id:'s29', mes:11, dia:26, nombre:'Partidos de la Kings y Queens', nota:''},
+
+  {id:'s30', mes:12, dia:1, nombre:'Partido King y Queen', nota:''},
+  {id:'s31', mes:12, dia:3, nombre:'Winter Prom', nota:''},
+  {id:'s32', mes:12, dia:3, nombre:'Partido King y Queen', nota:''},
+  {id:'s33', mes:12, dia:8, nombre:'Partido King y Queen', nota:''},
+  {id:'s34', mes:12, dia:10, nombre:'Final Kings y Queens', nota:'Empieza a las 4:00'},
+  {id:'s35', mes:12, dia:11, nombre:'Posada', nota:''},
+  {id:'s36', mes:12, dia:18, nombre:'Recompensa de likes', nota:''},
+
+  {id:'s37', mes:1, dia:8, nombre:'Vestirnos de Reyes Magos y partir rosca con primaria', nota:'Fiesta temática americana · Roof de prepa · 7:00 pm a 11:00 pm'},
+
+  {id:'s38', mes:2, dia:8, nombre:'Pin pon en los recreos', nota:'Del 8 al 12 · ensayos en asesorías y salidas'},
+  {id:'s39', mes:2, dia:8, nombre:'Venta de rosas y enjambres', nota:'Del 8 al 11'},
+  {id:'s40', mes:2, dia:12, nombre:'Dar enjambres y rosas', nota:'Serenata'},
+  {id:'s41', mes:2, dia:12, nombre:'Festejo de 14 de febrero', nota:'Enamorándonos · entrega de enjambres y rosas'},
+  {id:'s42', mes:2, dia:16, nombre:'Inicio de torneo de flag', nota:''},
+  {id:'s43', mes:2, dia:18, nombre:'Junta con el consejo', nota:''},
+  {id:'s44', mes:2, dia:23, nombre:'Día de la Bandera', nota:'Hacer despapaye mexicano'},
+
+  {id:'s45', mes:3, dia:2, nombre:'Inscripciones Kings y Queens', nota:'Del 2 al 5'},
+  {id:'s46', mes:3, dia:6, nombre:'Congreso de la familia', nota:''},
+  {id:'s47', mes:3, dia:8, nombre:'Día de la Mujer', nota:'Vestidas de rosa · post-its · chocolates · manos en tela'},
+  {id:'s48', mes:3, dia:16, nombre:'Draft · Kings y Queens', nota:''},
+  {id:'s49', mes:3, dia:18, nombre:'Junta con el consejo', nota:''},
+
+  {id:'s50', mes:4, dia:9, nombre:'Publicación de convocatoria consejo estudiantil', nota:''},
+  {id:'s51', mes:4, dia:16, nombre:'Registro de candidatos del consejo', nota:''},
+  {id:'s52', mes:4, dia:15, nombre:'Actividad de huevos de Pascua', nota:''},
+  {id:'s53', mes:4, dia:16, nombre:'Escondidas nocturnas', nota:''},
+  {id:'s54', mes:4, dia:18, nombre:'Escondidas nocturnas (Captura el conejo)', nota:''},
+  {id:'s55', mes:4, dia:21, nombre:'Registro de postulantes al consejo estudiantil', nota:''},
+  {id:'s56', mes:4, dia:28, nombre:'Entrega del video con presentación de propuestas', nota:''},
+  {id:'s57', mes:4, dia:29, nombre:'Día del Niño', nota:''},
+
+  {id:'s58', mes:5, dia:4, nombre:'Campaña de candidatos al consejo', nota:'Del 4 al 6'},
+  {id:'s59', mes:5, dia:11, nombre:'Día de la Madre', nota:''},
+  {id:'s60', mes:5, dia:13, nombre:'Junta de consejo', nota:''},
+  {id:'s61', mes:5, dia:15, nombre:'Cine', nota:''},
+  {id:'s62', mes:5, dia:17, nombre:'Votación del consejo estudiantil', nota:''},
+  {id:'s63', mes:5, dia:17, nombre:'Guerra de grados', nota:'17, 18, 19, 21 y 22'},
+  {id:'s64', mes:5, dia:18, nombre:'Conteo de votos', nota:''},
+  {id:'s65', mes:5, dia:21, nombre:'Día del Estudiante', nota:''},
+  {id:'s66', mes:5, dia:28, nombre:'Susto olimpiadas', nota:''},
+
+  {id:'s67', mes:6, dia:1, nombre:'Entrega de estafeta', nota:''},
+  {id:'s68', mes:6, dia:3, nombre:'Vestigium', nota:''},
+  {id:'s69', mes:6, dia:7, nombre:'Semana loca', nota:'L: Deportes · M: Grupitos · X: Superhéroes y villanos · J: Disney · V: Caja fuerte'},
+  {id:'s70', mes:6, dia:19, nombre:'Día del Padre', nota:'Retas de fut y carnita asada'},
+  {id:'s71', mes:6, dia:11, nombre:'Último día', nota:'Mojada, fogatada, cápsula del tiempo, entrega de carta, firma de playeras y entrega de chocolates'},
+
+  {id:'s72', mes:7, dia:1, nombre:'Ceremonia de toda', nota:''},
+  {id:'s73', mes:7, dia:9, nombre:'Fin del curso', nota:''},
+  {id:'s74', mes:7, dia:19, nombre:'Último día', nota:'L: Deportes · M: Grupitos · X: Superhéroes y villanos · J: Disney · V: Caja fuerte'},
+];
+
+// =====================================================================
+// LÓGICA: Calendario extracurricular (finanzas)
+// =====================================================================
+function ingresoBruto(e){ return (e.boletos||0) * (e.precio||0); }
+function comisionMonto(e){ return ingresoBruto(e) * ((e.comisionPct||0)/100); }
+function gastoTotal(e){ return (e.gastoFijo||0) + comisionMonto(e); }
+function balanceEv(e){ return ingresoBruto(e) - gastoTotal(e); }
+
+function renderExtra(){
+  const timeline = document.getElementById('timelineExtra');
+  timeline.innerHTML = '';
+  const visible = eventos.filter(e => filtro==='all' || e.categoria===filtro);
+  document.getElementById('emptyExtra').style.display = visible.length ? 'none' : 'block';
+
+  const sorted = [...visible].sort((a,b)=>{
+    const mo = monthOrder(a.mes) - monthOrder(b.mes);
+    if(mo!==0) return mo;
+    const da = a.dia==null?99:a.dia, db = b.dia==null?99:b.dia;
+    return da-db;
+  });
+  const groups = {};
+  sorted.forEach(e=>{ (groups[e.mes] ||= []).push(e); });
+  const monthKeys = Object.keys(groups).map(Number).sort((a,b)=>monthOrder(a)-monthOrder(b));
+
+  monthKeys.forEach(mkey=>{
+    const group = document.createElement('div');
+    group.className='month-group';
+    let html = `<div class="month-title">${monthLabel(mkey)}</div>`;
+    groups[mkey].forEach(e=>{ html += eventCardHtmlExtra(e); });
+    group.innerHTML = html;
+    timeline.appendChild(group);
+  });
+  updateSummaryExtra();
+}
+
+function eventCardHtmlExtra(e){
+  const isAntro = e.categoria==='antro';
+  return `
+  <div class="event-card ${e.categoria}">
+    <div class="ev-top">
+      <div class="date-box">
+        <select data-type="ev-mes" data-id="${e.id}">${monthOptions(e.mes)}</select>
+        <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="ev-dia" data-id="${e.id}" ${e.aprox?'disabled':''}></div>
+        <label class="approx-label"><input type="checkbox" data-type="ev-aprox" data-id="${e.id}" ${e.aprox?'checked':''}> Fecha aproximada</label>
+      </div>
+      <div class="event-body">
+        <input type="text" class="ev-name" value="${e.nombre}" data-type="ev-nombre" data-id="${e.id}" placeholder="Nombre de la actividad">
+        <div class="meta-row">
+          <select data-type="ev-categoria" data-id="${e.id}">
+            <option value="antro" ${isAntro?'selected':''}>Fiesta en antro</option>
+            <option value="casa" ${!isAntro?'selected':''}>Fiesta en casa (seniors)</option>
+          </select>
+          <span class="badge ${e.categoria}">${isAntro?'Antro':'Casa seniors'}</span>
+          <span class="badge ${e.confirmada?'confirmada':'estimada'}" data-type="ev-confirm-badge" data-id="${e.id}" title="Clic para cambiar">${e.confirmada?'Confirmada':'Estimada'}</span>
+        </div>
+      </div>
+      <button class="del-btn" data-type="del-ev" data-id="${e.id}" title="Borrar">×</button>
+    </div>
+    <div class="fin-grid">
+      <div class="fin-col">
+        <h4>Ingresos</h4>
+        <div class="fin-row"><label>Boletos vendidos</label><input type="number" min="0" value="${e.boletos}" data-type="ev-boletos" data-id="${e.id}"></div>
+        <div class="fin-row"><label>Precio por boleto ($)</label><input type="number" min="0" value="${e.precio}" data-type="ev-precio" data-id="${e.id}"></div>
+        <div class="fin-total ing"><span>Ingreso bruto</span><span id="ingOf-${e.id}">${money(ingresoBruto(e))}</span></div>
+      </div>
+      <div class="fin-col">
+        <h4>Gastos</h4>
+        <div class="fin-row"><label>Gasto fijo (decoración, etc.)</label><input type="number" min="0" value="${e.gastoFijo}" data-type="ev-gastofijo" data-id="${e.id}"></div>
+        <div class="fin-row"><label>Comisión antro (%)</label><input type="number" min="0" max="100" value="${e.comisionPct}" data-type="ev-comision" data-id="${e.id}"></div>
+        <div class="fin-row"><label style="color:var(--muted);font-style:italic;">= comisión en $</label><span class="readout" id="comOf-${e.id}">${money(comisionMonto(e))}</span></div>
+        <div class="fin-total gas"><span>Gasto total</span><span id="gasOf-${e.id}">${money(gastoTotal(e))}</span></div>
+      </div>
+      <div class="ev-balance">
+        <span>Balance de esta actividad</span>
+        <span class="val ${balanceEv(e)>=0?'pos':'neg'}" id="balOf-${e.id}">${money(balanceEv(e))}</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+function refreshEventFinance(e){
+  const ing = document.getElementById('ingOf-'+e.id); if(ing) ing.textContent = money(ingresoBruto(e));
+  const com = document.getElementById('comOf-'+e.id); if(com) com.textContent = money(comisionMonto(e));
+  const gas = document.getElementById('gasOf-'+e.id); if(gas) gas.textContent = money(gastoTotal(e));
+  const bal = document.getElementById('balOf-'+e.id);
+  if(bal){ bal.textContent = money(balanceEv(e)); bal.className = 'val ' + (balanceEv(e)>=0?'pos':'neg'); }
+}
+
+function updateSummaryExtra(){
+  const visible = eventos.filter(e => filtro==='all' || e.categoria===filtro);
+  const ti = visible.reduce((s,e)=>s+ingresoBruto(e),0);
+  const tg = visible.reduce((s,e)=>s+gastoTotal(e),0);
+  const bal = ti-tg;
+  document.getElementById('statIngresos').textContent = money(ti);
+  document.getElementById('statGastos').textContent = money(tg);
+  const balEl = document.getElementById('statBalance');
+  balEl.textContent = money(bal);
+  balEl.className = 'value ' + (bal>=0?'pos':'neg');
+  document.getElementById('statCount').textContent = visible.length;
+}
+
+// =====================================================================
+// LÓGICA: Calendario escolar (sin finanzas)
+// =====================================================================
+function renderEscolar(){
+  const timeline = document.getElementById('timelineEscolar');
+  timeline.innerHTML = '';
+  document.getElementById('emptyEscolar').style.display = escolares.length ? 'none' : 'block';
+  document.getElementById('statCountEscPill').textContent = escolares.length + (escolares.length===1?' actividad':' actividades');
+
+  const sorted = [...escolares].sort((a,b)=>{
+    const mo = monthOrder(a.mes) - monthOrder(b.mes);
+    if(mo!==0) return mo;
+    const da = a.dia==null?99:a.dia, db = b.dia==null?99:b.dia;
+    return da-db;
+  });
+  const groups = {};
+  sorted.forEach(e=>{ (groups[e.mes] ||= []).push(e); });
+  const monthKeys = Object.keys(groups).map(Number).sort((a,b)=>monthOrder(a)-monthOrder(b));
+
+  monthKeys.forEach(mkey=>{
+    const group = document.createElement('div');
+    group.className='month-group';
+    let html = `<div class="month-title">${monthLabel(mkey)}</div>`;
+    groups[mkey].forEach(e=>{ html += eventCardHtmlEscolar(e); });
+    group.innerHTML = html;
+    timeline.appendChild(group);
+  });
+}
+
+function eventCardHtmlEscolar(e){
+  return `
+  <div class="event-card escolar">
+    <div class="ev-top">
+      <div class="date-box">
+        <select data-type="esc-mes" data-id="${e.id}">${monthOptions(e.mes)}</select>
+        <div class="day-row"><input type="number" min="1" max="31" placeholder="Día" value="${e.dia==null?'':e.dia}" data-type="esc-dia" data-id="${e.id}"></div>
+      </div>
+      <div class="event-body">
+        <input type="text" class="ev-name" value="${e.nombre}" data-type="esc-nombre" data-id="${e.id}" placeholder="Nombre de la actividad">
+        <span class="badge escolar">Escolar</span>
+        <input type="text" class="notas-input" value="${e.nota||''}" data-type="esc-nota" data-id="${e.id}" placeholder="Observaciones (opcional)">
+      </div>
+      <button class="del-btn" data-type="del-esc" data-id="${e.id}" title="Borrar">×</button>
+    </div>
+  </div>`;
+}
+
+// =====================================================================
+// EVENTOS DE INTERFAZ
+// =====================================================================
+document.addEventListener('input', e=>{
+  const t = e.target;
+
+  // extracurricular
+  const ev = eventos.find(x=>x.id===t.dataset.id);
+  if(ev){
+    if(t.dataset.type==='ev-nombre'){ ev.nombre=t.value; saveExtra(); }
+    if(t.dataset.type==='ev-dia'){ ev.dia = t.value===''?null:parseInt(t.value); saveExtra(); }
+    if(t.dataset.type==='ev-boletos'){ ev.boletos=parseFloat(t.value)||0; refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
+    if(t.dataset.type==='ev-precio'){ ev.precio=parseFloat(t.value)||0; refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
+    if(t.dataset.type==='ev-gastofijo'){ ev.gastoFijo=parseFloat(t.value)||0; refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
+    if(t.dataset.type==='ev-comision'){ ev.comisionPct=parseFloat(t.value)||0; refreshEventFinance(ev); updateSummaryExtra(); saveExtra(); }
+  }
+
+  // escolar
+  const es = escolares.find(x=>x.id===t.dataset.id);
+  if(es){
+    if(t.dataset.type==='esc-nombre'){ es.nombre=t.value; saveEscolar(); }
+    if(t.dataset.type==='esc-dia'){ es.dia = t.value===''?null:parseInt(t.value); saveEscolar(); }
+    if(t.dataset.type==='esc-nota'){ es.nota=t.value; saveEscolar(); }
+  }
+});
+
+document.addEventListener('change', e=>{
+  const t = e.target;
+  const ev = eventos.find(x=>x.id===t.dataset.id);
+  if(ev){
+    if(t.dataset.type==='ev-mes'){ ev.mes=parseInt(t.value); renderExtra(); saveExtra(); }
+    if(t.dataset.type==='ev-categoria'){ ev.categoria=t.value; renderExtra(); saveExtra(); }
+    if(t.dataset.type==='ev-aprox'){ ev.aprox=t.checked; if(ev.aprox) ev.dia=null; renderExtra(); saveExtra(); }
+  }
+  const es = escolares.find(x=>x.id===t.dataset.id);
+  if(es){
+    if(t.dataset.type==='esc-mes'){ es.mes=parseInt(t.value); renderEscolar(); saveEscolar(); }
+  }
+});
+
+document.addEventListener('click', e=>{
+  const t = e.target;
+
+  if(t.dataset.type==='del-ev'){ eventos = eventos.filter(x=>x.id!==t.dataset.id); renderExtra(); saveExtra(); }
+  if(t.dataset.type==='ev-confirm-badge'){
+    const ev = eventos.find(x=>x.id===t.dataset.id);
+    ev.confirmada = !ev.confirmada; renderExtra(); saveExtra();
+  }
+  if(t.id==='addEventBtn'){
+    const cat = filtro==='casa' ? 'casa' : 'antro';
+    eventos.push(cat==='antro'
+      ? {id:newId(), nombre:'Nueva actividad', categoria:'antro', mes:9, dia:null, aprox:true, confirmada:false, boletos:200, precio:270, gastoFijo:3000, comisionPct:10}
+      : {id:newId(), nombre:'Nueva actividad', categoria:'casa', mes:9, dia:null, aprox:true, confirmada:false, boletos:100, precio:50, gastoFijo:15000, comisionPct:0});
+    renderExtra(); saveExtra();
+  }
+
+  if(t.dataset.type==='del-esc'){ escolares = escolares.filter(x=>x.id!==t.dataset.id); renderEscolar(); saveEscolar(); }
+  if(t.id==='addSchoolEventBtn'){
+    escolares.push({id:newId(), mes:8, dia:null, nombre:'Nueva actividad', nota:''});
+    renderEscolar(); saveEscolar();
+  }
+});
+
+document.getElementById('filterSegExtra').addEventListener('click', e=>{
+  if(e.target.tagName!=='BUTTON') return;
+  [...e.target.parentElement.children].forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  filtro = e.target.dataset.f;
+  renderExtra();
+});
+
+// ===== Navegación lateral =====
+document.getElementById('rail').addEventListener('click', e=>{
+  const btn = e.target.closest('.rail-btn');
+  if(!btn) return;
+  document.querySelectorAll('.rail-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+btn.dataset.view).classList.add('active');
+});
+
+// =====================================================================
+// PERSISTENCIA (Firebase Firestore — tiempo real, compartido)
+// =====================================================================
+async function saveExtra(){
+  try{ await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); }
+  catch(err){ console.warn('No se pudo guardar (extracurricular)', err); }
+}
+async function saveEscolar(){
+  try{ await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); }
+  catch(err){ console.warn('No se pudo guardar (escolar)', err); }
+}
+
+onSnapshot(docRefExtra, (snap)=>{
+  if(!snap.exists()) return;
+  const data = snap.data();
+  if(data.eventos) eventos = data.eventos;
+  if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
+  renderExtra();
+}, (err)=>console.warn('Snapshot extracurricular falló', err));
+
+onSnapshot(docRefEscolar, (snap)=>{
+  if(!snap.exists()) return;
+  const data = snap.data();
+  if(data.escolares) escolares = data.escolares;
+  if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
+  renderEscolar();
+}, (err)=>console.warn('Snapshot escolar falló', err));
+
+(async function init(){
+  try{
+    const snapE = await getDoc(docRefExtra);
+    if(!snapE.exists()) await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() });
+  }catch(err){ console.warn('No se pudo inicializar extracurricular', err); }
+  try{
+    const snapS = await getDoc(docRefEscolar);
+    if(!snapS.exists()) await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() });
+  }catch(err){ console.warn('No se pudo inicializar escolar', err); }
+  renderExtra();
+  renderEscolar();
+})();
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('./service-worker.js').catch(err=>{
+      console.warn('No se pudo registrar el service worker', err);
+    });
+  });
+}
+</script>
+</body>
+</html>
