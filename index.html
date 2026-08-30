@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>27MEX Seniors — Consejo Estudiantil</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#8E0201">
@@ -13,7 +13,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 :root{--wine:#7d1010;--wine-deep:#4d0808;--wine-2:#a51d1d;--cream:#f7f5f0;--card:#fff;--ink:#171411;--muted:#746c64;--line:#e8e2da;--green:#287a4d;--green-bg:#e9f5ee;--red:#b93830;--red-bg:#fbeceb;--amber:#a16b12;--amber-bg:#fff5dc;--antro:#7355a6;--antro-bg:#f0ebf8;--casa:#b87318;--casa-bg:#fbefdd;--ventas:#217b68;--ventas-bg:#e5f3ef;--radius:18px;--shadow:0 1px 2px rgba(23,20,17,.04),0 10px 30px rgba(23,20,17,.05);font-family:'DM Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overscroll-behavior:none;touch-action:pan-y;-webkit-text-size-adjust:100%;height:100%}button,input,select,textarea{font:inherit}button,.rail-btn,.tab-chip,.del-btn,.add-btn,.month-head{touch-action:manipulation}input,select,textarea{font-size:16px}h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;margin:0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overscroll-behavior:auto;touch-action:pan-y;-webkit-text-size-adjust:100%;height:100%}button,input,select,textarea{font:inherit}button,.rail-btn,.tab-chip,.del-btn,.add-btn,.month-head{touch-action:manipulation}input,select,textarea{font-size:16px}h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;margin:0}
 .app-shell{display:flex;min-height:100vh}.rail{width:232px;flex-shrink:0;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;padding:20px 14px;gap:5px;position:sticky;top:0;height:100vh;z-index:30}.rail-logo{width:42px;height:42px;border-radius:13px;overflow:hidden;margin:0 0 24px 8px;border:1px solid var(--line);box-shadow:var(--shadow)}.rail-logo img{width:100%;height:100%;object-fit:cover;display:block}.rail-btn{width:100%;min-height:46px;padding:9px 12px;border-radius:12px;background:transparent;border:none;color:var(--muted);display:flex;align-items:center;gap:12px;cursor:pointer;font-size:13px;font-weight:600;text-align:left;line-height:1}.rail-btn svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;flex:none}.rail-btn.active{background:#f5eceb;color:var(--wine);box-shadow:inset 3px 0 0 var(--wine)}.rail-btn:hover{background:#f8f5f2}.content{flex:1;min-width:0;overflow-x:hidden}.wrap{max-width:1180px;margin:0 auto;padding:30px 32px 80px}.view{display:none}.view.active{display:block;animation:fade .18s ease}@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 .header{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:22px;padding:24px 26px;margin-bottom:18px;position:relative;overflow:hidden;box-shadow:var(--shadow)}.header:after{content:'';position:absolute;right:-70px;top:-90px;width:230px;height:230px;border-radius:50%;background:var(--wine);opacity:.055}.eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--wine);font-weight:700;margin-bottom:7px}.header h1{font-size:25px;font-weight:700;letter-spacing:-.035em}.header p{margin:7px 0 0;color:var(--muted);font-size:13px;max-width:700px;line-height:1.55}
 .card,.stat,.month-acc,.photo-upload{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}.card{border-radius:var(--radius);padding:18px;margin-bottom:14px}.summary-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.stat{border-radius:16px;padding:15px 16px;min-height:78px}.stat .label{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700}.stat .value{font-size:20px;font-weight:700;margin-top:4px;font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}.stat.balance{border-color:#d9bdbc;background:#fffafa}.stat.balance .value.pos{color:var(--green)}.stat.balance .value.neg{color:var(--red)}
@@ -31,6 +31,61 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 :focus-visible{outline:3px solid rgba(125,16,16,.25);outline-offset:2px}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:#171411;color:#fff;border-radius:12px;padding:10px 14px;font-size:12px;font-weight:700;z-index:100;box-shadow:0 12px 30px rgba(0,0,0,.18);transition:opacity .18s,transform .18s}.toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:760px){.toast{bottom:calc(88px + env(safe-area-inset-bottom));max-width:calc(100vw - 32px);text-align:center}}
+
+/* ===== MOBILE POLISH / NATIVE SCROLL ===== */
+html{min-height:100%;height:auto;overscroll-behavior:auto;}
+body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto;overscroll-behavior:auto;-webkit-overflow-scrolling:touch;}
+.content{min-width:0;width:100%;overflow:visible;}
+.wrap{width:100%;min-width:0;}
+
+@media(max-width:760px){
+  html,body{overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:auto;}
+  .app-shell{width:100%;min-height:100svh;min-height:100dvh;}
+  .content{width:100%;padding:0;overflow:visible;}
+  .wrap{width:100%;max-width:720px;margin:0 auto;padding:18px 16px calc(112px + env(safe-area-inset-bottom))!important;}
+  .view{width:100%;max-width:100%;min-width:0;}
+  .header,.hero,.card,.summary-bar,.toolbar,.legend,.month-acc,.photo-upload,.photo-grid,.empty-state{max-width:100%;min-width:0;}
+  .header,.hero{margin-left:0;margin-right:0;}
+  .toolbar{position:sticky;top:0;padding:7px 0 10px;margin-left:0;margin-right:0;}
+  .tab-chips{min-width:0;max-width:100%;flex:1;}
+  .add-btn{flex:0 0 auto;}
+  .summary-bar{width:100%;}
+  .stat{min-width:0;}
+  .month-body,.month-body-inner,.event-card{max-width:100%;min-width:0;}
+  .event-card{overflow:hidden;}
+  .ev-top{min-width:0;}
+  .event-body{min-width:0;}
+  .event-body input[type=text].ev-name{min-width:0;}
+  .fin-grid{min-width:0;}
+  .fin-row{min-width:0;}
+  .fin-row label{min-width:0;overflow-wrap:anywhere;}
+  .fin-row input[type=number]{max-width:42vw;}
+  #finBreakdown{width:100%;overflow:hidden;}
+  #finBreakdown > div{min-width:0!important;width:100%!important;}
+  #finBreakdown [style*="min-width:78px"],
+  #finBreakdown [style*="min-width:88px"]{min-width:0!important;width:auto!important;}
+  #finBreakdown [style*="text-align:right"]{white-space:nowrap;}
+  .photo-grid{width:100%;grid-template-columns:repeat(3,minmax(0,1fr));}
+  .photo-item{min-width:0;}
+  .rail{padding-left:max(4px,env(safe-area-inset-left));padding-right:max(4px,env(safe-area-inset-right));}
+  .rail-btn{min-width:0;}
+}
+
+@media(max-width:390px){
+  .wrap{padding-left:12px;padding-right:12px;}
+  .header{padding:18px 16px;}
+  .hero{padding:23px 17px;}
+  .summary-bar{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .stat{padding:11px 10px;}
+  .stat .value{font-size:17px;}
+  .toolbar{gap:6px;}
+  .tab-chip{padding:8px 10px;}
+  .add-btn{padding:10px 11px;}
+}
+
+@media(min-width:761px){
+  .view{width:100%;}
+}
 </style>
 </head>
 <body>
@@ -996,14 +1051,8 @@ if('serviceWorker' in navigator){
   });
 }
 
-// Bloquea el "pinch zoom" y el doble-tap zoom para que se sienta app, no página
-document.addEventListener('gesturestart', e=>e.preventDefault());
-let lastTouch = 0;
-document.addEventListener('touchend', e=>{
-  const now = Date.now();
-  if(now - lastTouch <= 300){ e.preventDefault(); }
-  lastTouch = now;
-}, {passive:false});
+// El navegador/iOS gestiona el scroll, el rebote y el zoom de forma nativa.
+// No bloqueamos touchend/gesturestart: esto evita scroll recortado y mejora accesibilidad.
 </script>
 </body>
 </html>
