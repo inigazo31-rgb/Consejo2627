@@ -251,8 +251,8 @@
       <div class="view active" id="view-inicio">
         <div class="hero">
           <div class="hero-logo"><img src="icon-192.png" alt="27MEX Seniors"></div>
-          <h1>Nuestro último año</h1>
-          <p>Un ciclo entero por delante para dejar huella. Esta es la app del Consejo Estudiantil 27MEX Seniors 26/27.</p>
+          <h1>Nuestro último año 💛</h1>
+          <p>Un ciclo entero por delante para dejar huella — fiestas, tradiciones, recaudación y muchos recuerdos. Esta es la app del Consejo Estudiantil 27MEX Seniors 26/27.</p>
         </div>
         <div class="quick-grid">
           <div class="quick-card" data-goto="extracurricular">
@@ -834,6 +834,7 @@ function updateFinanzas(){
       </div>`;
     }).join('');
   }
+}
 
 function renderExtras(){
   const list = document.getElementById('finExtrasList');
@@ -994,7 +995,7 @@ document.addEventListener('change', e=>{
   const vt = ventas.find(x=>x.id===t.dataset.id);
   if(vt && t.dataset.type==='v-mes'){ vt.mes=parseInt(t.value); renderVentas(); saveVentas(); }
   const ex = extras.find(x=>x.id===t.dataset.id);
-  if(ex && t.dataset.type==='ex-tipo'){ ex.tipo=t.value; updateFinanzas(); renderExtras(); saveFinanzas(); } 
+  if(ex && t.dataset.type==='ex-tipo'){ ex.tipo=t.value; updateFinanzas(); renderExtras(); saveFinanzas(); }
 });
 
 document.addEventListener('click', e=>{
@@ -1037,10 +1038,10 @@ document.addEventListener('click', e=>{
     renderVentas(); saveVentas();
   }
 
-  if(t.dataset.type==='del-extra'){ extras = extras.filter(x=>x.id!==t.dataset.id); updateFinanzas(); saveFinanzas(); }renderExtras();
-  if(t.id==='addExtraBtn'){ renderExtras();
+  if(t.dataset.type==='del-extra'){ extras = extras.filter(x=>x.id!==t.dataset.id); updateFinanzas(); renderExtras(); saveFinanzas(); }
+  if(t.id==='addExtraBtn'){
     extras.push({id:newId(), nombre:'Nuevo movimiento', tipo:'ingreso', monto:0, nota:''});
-    updateFinanzas(); saveFinanzas();
+    updateFinanzas(); renderExtras(); saveFinanzas();
   }
 
   if(t.dataset.type==='del-foto'){
