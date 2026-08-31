@@ -26,7 +26,7 @@
 
     --bg-app: #F8F6F0;
     --surface: #FFFFFF;
-    --surface-glass: rgba(255, 255, 255, 0.85);
+    --surface-glass: rgba(255, 255, 255, 0.88);
     --surface-secondary: #F3EFE6;
     --border: #E6DFD3;
     --border-light: #EFE9DF;
@@ -43,6 +43,10 @@
     --red: #BE123C;
     --red-bg: #FFF1F2;
     --red-border: #FECDD3;
+
+    --amber: #B45309;
+    --amber-bg: #FEF3C7;
+    --amber-border: #FDE68A;
 
     --antro: #6D28D9;
     --antro-bg: #F5F3FF;
@@ -98,7 +102,7 @@
   }
 
   input, select, textarea {
-    font-size: 16px; /* Evita zoom molesto en Safari iOS */
+    font-size: 16px;
   }
 
   button {
@@ -113,13 +117,12 @@
     transform: scale(0.97);
   }
 
-  /* ===== APP LAYOUT ===== */
   .app-layout {
     display: flex;
     min-height: 100vh;
   }
 
-  /* SIDEBAR (Desktop / Tablet) */
+  /* SIDEBAR */
   .sidebar {
     width: 240px;
     flex-shrink: 0;
@@ -138,9 +141,9 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 6px 10px 20px;
+    padding: 6px 10px 18px;
     border-bottom: 1px solid var(--border-light);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .brand-avatar {
@@ -179,15 +182,16 @@
   .nav-group {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
     flex: 1;
+    overflow-y: auto;
   }
 
   .nav-item {
     display: flex;
     align-items: center;
     gap: 11px;
-    padding: 9px 12px;
+    padding: 8px 12px;
     border-radius: var(--radius-md);
     font-size: 13px;
     font-weight: 600;
@@ -236,7 +240,6 @@
     color: #FFFFFF;
   }
 
-  /* Live Sync Pill in Sidebar */
   .sync-indicator {
     padding: 10px 12px;
     border-radius: var(--radius-md);
@@ -248,7 +251,7 @@
     font-size: 11.5px;
     font-weight: 600;
     color: var(--ink-secondary);
-    margin-top: auto;
+    margin-top: 10px;
   }
 
   .sync-dot {
@@ -266,7 +269,7 @@
     100% { transform: scale(0.95); opacity: 0.8; }
   }
 
-  /* MAIN CONTENT AREA */
+  /* MAIN CONTENT */
   .main-content {
     flex: 1;
     min-width: 0;
@@ -279,13 +282,12 @@
     padding: calc(20px + env(safe-area-inset-top, 0px)) 20px calc(100px + env(safe-area-inset-bottom, 0px));
   }
 
-  /* TOP ACTION BAR (Mobile & Desktop) */
   .top-action-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-    gap: 12px;
+    gap: 10px;
   }
 
   .mobile-brand {
@@ -318,22 +320,31 @@
     color: var(--ink-secondary);
   }
 
-  /* VIEWS */
-  .view {
-    display: none;
+  .notif-perm-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--wine);
+    box-shadow: var(--shadow-sm);
   }
 
+  .view { display: none; }
   .view.active {
     display: block;
-    animation: fadeInView 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: fadeInView 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @keyframes fadeInView {
-    from { opacity: 0; transform: translateY(8px); }
+    from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ===== CARDS & SURFACES ===== */
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -362,15 +373,14 @@
     gap: 8px;
   }
 
-  /* HERO HEADER BANNER */
   .hero-banner {
     background: linear-gradient(145deg, var(--wine) 0%, #4D0000 100%);
     border-radius: var(--radius-xl);
-    padding: 26px 24px;
+    padding: 24px 22px;
     color: #FFFFFF;
     position: relative;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     box-shadow: var(--shadow-md);
   }
 
@@ -391,7 +401,7 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.75);
     margin-bottom: 6px;
     display: flex;
     align-items: center;
@@ -400,7 +410,7 @@
 
   .hero-banner h1 {
     font-family: var(--font-heading);
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.25;
@@ -410,42 +420,35 @@
   .hero-banner p {
     font-size: 13px;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.88);
     max-width: 620px;
   }
 
-  /* METRICS GRID (KPIs) */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .stat-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 14px 16px;
+    padding: 13px 15px;
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .stat-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
   }
 
   .stat-label {
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--ink-tertiary);
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -453,7 +456,7 @@
 
   .stat-val {
     font-family: var(--font-heading);
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 700;
     color: var(--ink-primary);
     letter-spacing: -0.02em;
@@ -468,7 +471,6 @@
   .stat-val.positive { color: var(--green); }
   .stat-val.negative { color: var(--red); }
 
-  /* TOOLBARS & FILTERS */
   .toolbar {
     display: flex;
     align-items: center;
@@ -526,11 +528,22 @@
     stroke-width: 2.4;
   }
 
-  .btn-primary:hover {
-    background: var(--wine-dark);
+  .btn-primary:hover { background: var(--wine-dark); }
+
+  .btn-secondary {
+    background: var(--surface-secondary);
+    border: 1px solid var(--border);
+    color: var(--ink-primary);
+    padding: 8px 14px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  /* ===== MONTH ACCORDIONS ===== */
+  /* ACORDEONES */
   .month-group {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -538,7 +551,6 @@
     margin-bottom: 12px;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
-    transition: border-color 0.15s ease;
   }
 
   .month-header {
@@ -609,10 +621,7 @@
     transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .month-group.open .month-content {
-    max-height: 8000px;
-  }
-
+  .month-group.open .month-content { max-height: 9000px; }
   .month-inner-list {
     padding: 12px;
     display: flex;
@@ -620,7 +629,6 @@
     gap: 10px;
   }
 
-  /* EVENT ITEM CARD */
   .item-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -705,6 +713,7 @@
   .tag-badge.ventas { background: var(--ventas-bg); color: var(--ventas); border: 1px solid var(--ventas-border); }
   .tag-badge.confirmada { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); cursor: pointer; }
   .tag-badge.estimada { background: var(--casa-bg); color: var(--casa); border: 1px solid var(--casa-border); cursor: pointer; }
+  .tag-badge.crono-btn { background: var(--wine-subtle); color: var(--wine); border: 1px solid rgba(131,2,1,0.2); cursor: pointer; }
 
   .meta-select {
     padding: 3px 8px;
@@ -741,12 +750,6 @@
     flex-shrink: 0;
   }
 
-  .btn-icon-del:hover {
-    background: var(--red);
-    color: #FFFFFF;
-  }
-
-  /* ITEM FINANCIAL GRID */
   .item-fin-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -821,7 +824,7 @@
   .bal-value.pos { color: var(--green); }
   .bal-value.neg { color: var(--red); }
 
-  /* ===== RESPONSIVE TABLE (Finanzas) ===== */
+  /* TABLAS */
   .table-container {
     width: 100%;
     overflow-x: auto;
@@ -849,9 +852,7 @@
     text-align: right;
   }
 
-  .fin-data-table th:first-child {
-    text-align: left;
-  }
+  .fin-data-table th:first-child { text-align: left; }
 
   .fin-data-table td {
     padding: 12px 12px;
@@ -869,10 +870,6 @@
     color: var(--ink-primary);
   }
 
-  .fin-data-table tbody tr:hover td {
-    background: var(--surface-secondary);
-  }
-
   .fin-data-table tfoot td {
     background: var(--surface-secondary);
     font-weight: 800;
@@ -883,47 +880,267 @@
     padding-bottom: 14px;
   }
 
-  .fin-data-table tfoot td:first-child {
+  .fin-data-table tfoot td:first-child { color: var(--wine); }
+
+  /* MINUTAS & TAREAS */
+  .minuta-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .minuta-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .minuta-num {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 700;
     color: var(--wine);
   }
 
-  /* ===== PHOTO GALLERY ===== */
+  .minuta-meta {
+    font-size: 11.5px;
+    color: var(--ink-tertiary);
+    margin-top: 2px;
+  }
+
+  .minuta-badge-grid {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .minuta-section-block {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .minuta-section-block h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-tertiary);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .minuta-dyn-item {
+    background: var(--surface-secondary);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    font-size: 12.5px;
+  }
+
+  .task-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--ink-tertiary);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .task-card.alta { border-left-color: var(--red); }
+  .task-card.media { border-left-color: var(--amber); }
+  .task-card.baja { border-left-color: var(--green); }
+  .task-card.completed { opacity: 0.65; background: var(--surface-secondary); }
+
+  .task-check-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--green);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .task-card.completed .task-check-btn {
+    background: var(--green);
+    border-color: var(--green);
+    color: #FFF;
+  }
+
+  .task-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .task-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--ink-primary);
+    margin-bottom: 4px;
+  }
+
+  .task-card.completed .task-title {
+    text-decoration: line-through;
+    color: var(--ink-tertiary);
+  }
+
+  .task-meta-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 11.5px;
+    color: var(--ink-secondary);
+  }
+
+  /* CRONOGRAMAS */
+  .timeline-step {
+    display: flex;
+    gap: 14px;
+    position: relative;
+    padding-bottom: 16px;
+  }
+
+  .timeline-step::before {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 30px;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-step:last-child::before { display: none; }
+
+  .timeline-time-col {
+    width: 58px;
+    flex-shrink: 0;
+    text-align: right;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--wine);
+    padding-top: 4px;
+  }
+
+  .timeline-node {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 3px solid var(--wine);
+    margin-top: 6px;
+    flex-shrink: 0;
+    z-index: 2;
+  }
+
+  .timeline-step.completed .timeline-node { background: var(--green); border-color: var(--green); }
+  .timeline-step.active-step .timeline-node { background: var(--red); border-color: var(--red); box-shadow: 0 0 0 4px var(--red-bg); }
+  .timeline-step.delayed .timeline-node { background: var(--amber); border-color: var(--amber); }
+
+  .timeline-card-body {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+  }
+
+  /* MODO EVENTO EN VIVO */
+  .event-mode-overlay {
+    position: fixed;
+    inset: 0;
+    background: #110B08;
+    color: #FFFFFF;
+    z-index: 150;
+    display: none;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: calc(20px + env(safe-area-inset-top, 16px)) 18px calc(30px + env(safe-area-inset-bottom, 16px));
+  }
+
+  .event-mode-overlay.active {
+    display: flex;
+    animation: fadeInView 0.25s ease;
+  }
+
+  .em-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 14px;
+  }
+
+  .em-live-clock {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: #FBBF24;
+    letter-spacing: 0.05em;
+  }
+
+  .em-current-card {
+    background: linear-gradient(145deg, #2A0808 0%, #150404 100%);
+    border: 2px solid var(--wine-light);
+    border-radius: var(--radius-xl);
+    padding: 22px 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 10px 30px rgba(131,2,1,0.4);
+  }
+
+  .em-progress-bar-wrap {
+    height: 8px;
+    background: rgba(255,255,255,0.15);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin: 14px 0;
+  }
+
+  .em-progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10B981, #059669);
+    border-radius: var(--radius-full);
+    transition: width 0.3s ease;
+  }
+
+  /* FOTOS */
   .upload-dropzone {
     border: 2px dashed var(--border);
     border-radius: var(--radius-lg);
-    padding: 30px 20px;
+    padding: 28px 20px;
     text-align: center;
     background: var(--surface);
     cursor: pointer;
     display: block;
     margin-bottom: 18px;
-    transition: all 0.2s ease;
-  }
-
-  .upload-dropzone:hover {
-    border-color: var(--wine);
-    background: var(--wine-subtle);
   }
 
   .upload-dropzone svg {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     stroke: var(--wine);
     fill: none;
     stroke-width: 1.8;
     margin-bottom: 8px;
-  }
-
-  .upload-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--wine);
-  }
-
-  .upload-sub {
-    font-size: 11.5px;
-    color: var(--ink-tertiary);
-    margin-top: 4px;
   }
 
   .photo-masonry {
@@ -938,7 +1155,6 @@
     border-radius: var(--radius-md);
     overflow: hidden;
     background: var(--surface-secondary);
-    box-shadow: var(--shadow-sm);
     cursor: pointer;
   }
 
@@ -947,11 +1163,6 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.2s ease;
-  }
-
-  .photo-card:hover img {
-    transform: scale(1.05);
   }
 
   .photo-del-btn {
@@ -962,57 +1173,40 @@
     height: 26px;
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    color: #FFFFFF;
+    color: #FFF;
     font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
   }
 
-  /* PHOTO LIGHTBOX MODAL */
-  .lightbox-modal {
+  /* MODALES */
+  .lightbox-modal, .crono-modal {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(12px);
-    z-index: 100;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(10px);
+    z-index: 110;
     display: none;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 16px;
   }
 
-  .lightbox-modal.active {
-    display: flex;
-    animation: fadeInView 0.2s ease;
+  .lightbox-modal.active, .crono-modal.active { display: flex; }
+
+  .crono-modal-box {
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-float);
+    overflow-y: auto;
+    padding: 22px 20px;
   }
 
-  .lightbox-img {
-    max-width: 92vw;
-    max-height: 85vh;
-    border-radius: var(--radius-md);
-    object-fit: contain;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  }
-
-  .lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.2);
-    color: #FFF;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-  }
-
-  /* SPOTLIGHT QUICK SEARCH MODAL */
   .spotlight-overlay {
     position: fixed;
     inset: 0;
@@ -1025,9 +1219,7 @@
     padding: calc(60px + env(safe-area-inset-top, 0px)) 16px 20px;
   }
 
-  .spotlight-overlay.active {
-    display: flex;
-  }
+  .spotlight-overlay.active { display: flex; }
 
   .spotlight-box {
     width: 100%;
@@ -1064,15 +1256,8 @@
     color: var(--ink-primary);
   }
 
-  .spotlight-input:focus {
-    outline: none;
-  }
-
-  .spotlight-results {
-    max-height: 380px;
-    overflow-y: auto;
-    padding: 8px;
-  }
+  .spotlight-input:focus { outline: none; }
+  .spotlight-results { max-height: 380px; overflow-y: auto; padding: 8px; }
 
   .spotlight-item {
     display: flex;
@@ -1081,25 +1266,10 @@
     padding: 10px 14px;
     border-radius: var(--radius-md);
     cursor: pointer;
-    transition: background 0.12s;
   }
 
-  .spotlight-item:hover {
-    background: var(--surface-secondary);
-  }
+  .spotlight-item:hover { background: var(--surface-secondary); }
 
-  .spotlight-item-title {
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--ink-primary);
-  }
-
-  .spotlight-item-sub {
-    font-size: 11px;
-    color: var(--ink-tertiary);
-  }
-
-  /* TOAST NOTIFICATION */
   .toast-banner {
     position: fixed;
     bottom: calc(85px + env(safe-area-inset-bottom, 0px));
@@ -1126,7 +1296,6 @@
     transform: translateX(-50%) translateY(0);
   }
 
-  /* EMPTY STATES */
   .empty-state-box {
     text-align: center;
     padding: 40px 20px;
@@ -1137,59 +1306,23 @@
     border-radius: var(--radius-lg);
   }
 
-  /* ===== MOBILE ADAPTATIONS ===== */
+  /* BOTTOM NAV MÓVIL */
   @media(max-width: 768px) {
-    .sidebar {
-      display: none;
-    }
-
-    .mobile-brand {
-      display: flex;
-    }
-
+    .sidebar { display: none; }
+    .mobile-brand { display: flex; }
     .container {
       padding-top: calc(16px + env(safe-area-inset-top, 20px));
       padding-bottom: calc(96px + env(safe-area-inset-bottom, 16px));
       padding-left: 14px;
       padding-right: 14px;
     }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .hero-banner { padding: 20px 18px; }
+    .hero-banner h1 { font-size: 19px; }
+    .item-header-grid { grid-template-columns: 1fr auto; }
+    .date-picker-box { grid-column: 1 / -1; flex-direction: row; gap: 8px; }
+    .item-fin-grid { grid-template-columns: 1fr; }
 
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
-
-    .stat-card {
-      padding: 12px 13px;
-    }
-
-    .stat-val {
-      font-size: 17px;
-    }
-
-    .hero-banner {
-      padding: 20px 18px;
-    }
-
-    .hero-banner h1 {
-      font-size: 19px;
-    }
-
-    .item-header-grid {
-      grid-template-columns: 1fr auto;
-    }
-
-    .date-picker-box {
-      grid-column: 1 / -1;
-      flex-direction: row;
-      gap: 8px;
-    }
-
-    .item-fin-grid {
-      grid-template-columns: 1fr;
-    }
-
-    /* BOTTOM NAVIGATION BAR FOR MOBILE (iOS style) */
     .bottom-nav-bar {
       display: flex;
       position: fixed;
@@ -1200,9 +1333,12 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid var(--border);
-      padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 10px));
+      padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 10px));
       z-index: 50;
-      justify-content: space-around;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 4px;
+      justify-content: flex-start;
       box-shadow: 0 -4px 16px rgba(0,0,0,0.04);
     }
 
@@ -1212,31 +1348,21 @@
       align-items: center;
       justify-content: center;
       gap: 3px;
-      padding: 5px 2px;
+      padding: 5px 8px;
       border-radius: var(--radius-md);
       color: var(--ink-tertiary);
       font-size: 10px;
       font-weight: 700;
-      flex: 1;
+      flex-shrink: 0;
+      min-width: 58px;
     }
 
-    .b-nav-item svg {
-      width: 20px;
-      height: 20px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.9;
-    }
-
-    .b-nav-item.active {
-      color: var(--wine);
-    }
+    .b-nav-item svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.9; }
+    .b-nav-item.active { color: var(--wine); }
   }
 
   @media(min-width: 769px) {
-    .bottom-nav-bar {
-      display: none;
-    }
+    .bottom-nav-bar { display: none; }
   }
 </style>
 </head>
@@ -1247,9 +1373,7 @@
   <!-- ==================== DESKTOP SIDEBAR ==================== -->
   <aside class="sidebar">
     <div class="brand">
-      <div class="brand-avatar">
-        <img src="icon-192.png" alt="27MEX">
-      </div>
+      <div class="brand-avatar"><img src="icon-192.png" alt="27MEX"></div>
       <div class="brand-text">
         <h2>27MEX Seniors</h2>
         <span>IMEX 2026–2027</span>
@@ -1276,6 +1400,16 @@
         <span>Ventas</span>
         <span class="nav-badge" id="badgeVentas">2</span>
       </button>
+      <button class="nav-item" data-view="minutas">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Minutas</span>
+        <span class="nav-badge" id="badgeMinutas">1</span>
+      </button>
+      <button class="nav-item" data-view="tareas">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>Tareas</span>
+        <span class="nav-badge" id="badgeTareas">3</span>
+      </button>
       <button class="nav-item" data-view="fotos">
         <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-4 4-3-3-4 4"/></svg>
         <span>Fotos</span>
@@ -1300,18 +1434,19 @@
       <!-- TOP ACTION BAR -->
       <div class="top-action-bar">
         <div class="mobile-brand">
-          <div class="brand-avatar" style="width:32px; height:32px; border-radius:8px;">
-            <img src="icon-192.png" alt="27MEX">
-          </div>
-          <div class="brand-text">
-            <h2 style="font-size:13.5px;">27MEX Seniors</h2>
-          </div>
+          <div class="brand-avatar" style="width:32px; height:32px; border-radius:8px;"><img src="icon-192.png" alt="27MEX"></div>
+          <div class="brand-text"><h2 style="font-size:13.5px;">27MEX Seniors</h2></div>
         </div>
 
         <button class="search-trigger-btn" id="openSearchBtn">
           <svg viewBox="0 0 24 24" style="width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          <span>Buscar evento o actividad…</span>
+          <span>Buscar eventos, minutas o tareas…</span>
           <kbd>⌘K</kbd>
+        </button>
+
+        <button class="notif-perm-btn" id="btnReqNotifs" title="Habilitar alertas sonoras y push">
+          <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span id="notifBtnLabel">Notificaciones</span>
         </button>
       </div>
 
@@ -1320,22 +1455,20 @@
       <!-- ======================================================= -->
       <div class="view active" id="view-inicio">
         <div class="hero-banner">
-          <div class="hero-eyebrow">
-            <span>✨</span> CONSEJO ESTUDIANTIL IMEX 2026–2027
-          </div>
+          <div class="hero-eyebrow"><span>✨</span> CONSEJO ESTUDIANTIL IMEX 2026–2027</div>
           <h1>Nuestro último año juntos</h1>
-          <p>Un ciclo entero para dejar huella. Aquí gestionamos todas las fiestas, ventas escolares, logística interna y recuerdos de la generación 27MEX.</p>
+          <p>Centro de mando del Consejo 27MEX: finanzas, logística minuto a minuto, acuerdos de reuniones y seguimiento de tareas en tiempo real.</p>
         </div>
 
         <!-- Dashboard KPIs -->
         <div class="stats-grid">
           <div class="stat-card highlight">
-            <div class="stat-label">Balance General</div>
+            <div class="stat-label">Balance Neto</div>
             <div class="stat-val positive" id="dashTotalBalance">$0</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Fiestas Extracurr.</div>
-            <div class="stat-val" id="dashFiestasBal">$0</div>
+            <div class="stat-label">Tareas Activas</div>
+            <div class="stat-val" id="dashTareasPend">0</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Ventas Escolares</div>
@@ -1352,7 +1485,7 @@
           <div class="card-header">
             <div class="card-title">
               <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--wine);fill:none;stroke-width:2;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
-              Próximas actividades clave
+              Próximas actividades y cronogramas
             </div>
           </div>
           <div id="dashUpcomingList" style="display:flex; flex-direction:column; gap:8px;"></div>
@@ -1360,26 +1493,26 @@
 
         <!-- Accesos rápidos ejecutivos -->
         <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px;">
-          <div class="card" style="cursor:pointer; margin-bottom:0;" data-goto="extracurricular">
+          <div class="card" style="cursor:pointer; margin-bottom:0;" data-goto="minutas">
             <div style="display:flex; align-items:center; gap:12px;">
-              <div style="width:40px; height:40px; border-radius:12px; background:var(--antro-bg); border:1px solid var(--antro-border); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--antro);fill:none;stroke-width:2;"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg>
+              <div style="width:40px; height:40px; border-radius:12px; background:var(--wine-subtle); border:1px solid rgba(131,2,1,0.15); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--wine);fill:none;stroke-width:2;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               </div>
               <div>
-                <div style="font-weight:700; font-size:13.5px; color:var(--wine);">Fiestas y Antros</div>
-                <div style="font-size:11.5px; color:var(--ink-tertiary);">Boletos, comisiones y finanzas</div>
+                <div style="font-weight:700; font-size:13.5px; color:var(--wine);">Minutas de Reunión</div>
+                <div style="font-size:11.5px; color:var(--ink-tertiary);">Acuerdos y notas en vivo</div>
               </div>
             </div>
           </div>
 
-          <div class="card" style="cursor:pointer; margin-bottom:0;" data-goto="ventas">
+          <div class="card" style="cursor:pointer; margin-bottom:0;" data-goto="tareas">
             <div style="display:flex; align-items:center; gap:12px;">
-              <div style="width:40px; height:40px; border-radius:12px; background:var(--ventas-bg); border:1px solid var(--ventas-border); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--ventas);fill:none;stroke-width:2;"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+              <div style="width:40px; height:40px; border-radius:12px; background:var(--green-bg); border:1px solid var(--green-border); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--green);fill:none;stroke-width:2;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
               </div>
               <div>
-                <div style="font-weight:700; font-size:13.5px; color:var(--ventas);">Ventas Escolares</div>
-                <div style="font-size:11.5px; color:var(--ink-tertiary);">Donas, calaveritas y recaudación</div>
+                <div style="font-weight:700; font-size:13.5px; color:var(--green);">Tareas y Acuerdos</div>
+                <div style="font-size:11.5px; color:var(--ink-tertiary);">Seguimiento y responsables</div>
               </div>
             </div>
           </div>
@@ -1393,7 +1526,7 @@
         <div class="hero-banner" style="background: linear-gradient(145deg, #4A1D96 0%, #2E1065 100%);">
           <div class="hero-eyebrow">PRESUPUESTOS Y BOLETOS</div>
           <h1>Fiestas Extracurriculares</h1>
-          <p>Control de fiestas en antros y casas de seniors. Proyecciones automáticas de boletos, precio, comisión y utilidad neta.</p>
+          <p>Control de fiestas en antros y casas. Incluye cronograma minuto a minuto y finanzas en tiempo real.</p>
         </div>
 
         <div class="stats-grid">
@@ -1438,7 +1571,7 @@
         <div class="hero-banner" style="background: linear-gradient(145deg, var(--wine) 0%, #4D0000 100%);">
           <div class="hero-eyebrow">ORGANIZACIÓN INTERNA</div>
           <h1>Calendario Escolar IMEX</h1>
-          <p>Cronograma oficial de actividades, asambleas, semanas temáticas y celebraciones del ciclo 2026–2027.</p>
+          <p>Cronograma oficial de actividades, asambleas y celebraciones. Accede al cronograma minuto a minuto de cada evento.</p>
         </div>
 
         <div class="toolbar">
@@ -1462,7 +1595,7 @@
         <div class="hero-banner" style="background: linear-gradient(145deg, #0F766E 0%, #134E4A 100%);">
           <div class="hero-eyebrow">RECAUDACIÓN ACTIVA</div>
           <h1>Ventas Escolares</h1>
-          <p>Donas, calaveritas y productos escolares. Calcula costos de producción, ventas brutas y margen de ganancia.</p>
+          <p>Donas, calaveritas y productos escolares. Calcula costos, ganancias netas y margen de cada venta.</p>
         </div>
 
         <div class="stats-grid">
@@ -1499,19 +1632,227 @@
       </div>
 
       <!-- ======================================================= -->
+      <!-- VIEW: MINUTAS (📝 NUEVO MÓDULO) -->
+      <!-- ======================================================= -->
+      <div class="view" id="view-minutas">
+        <div class="hero-banner" style="background: linear-gradient(145deg, #830201 0%, #3D0000 100%);">
+          <div class="hero-eyebrow">SESIONES DEL CONSEJO</div>
+          <h1>Minutas y Acuerdos de Reunión</h1>
+          <p>Toma notas en vivo durante la reunión, registra acuerdos convertibles en tareas y genera la minuta lista para compartir por WhatsApp.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="pill-group">
+            <button class="pill-btn active" id="filterMinutasAll">Todas las minutas</button>
+          </div>
+          <button class="btn-primary" id="btnNuevaMinuta">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            <span>+ Nueva minuta</span>
+          </button>
+        </div>
+
+        <!-- Formulario Editor de Minuta -->
+        <div class="card" id="minutaEditorCard" style="display:none; border:2px solid var(--wine);">
+          <div class="card-header">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--wine);fill:none;stroke-width:2;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              <span id="editorMinutaTitle">Registro de Minuta en Vivo</span>
+            </div>
+            <button class="btn-secondary" id="btnCancelarMinuta" style="padding:4px 10px; font-size:11.5px;">Cerrar</button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-bottom:14px;">
+            <div>
+              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Título / Número</label>
+              <input type="text" id="mInpTitulo" placeholder="Ej: Reunión Ordinaria #09" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; font-weight:700;">
+            </div>
+            <div>
+              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Fecha</label>
+              <input type="date" id="mInpFecha" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+            </div>
+            <div>
+              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Hora Inicio - Fin</label>
+              <div style="display:flex; gap:6px; margin-top:4px;">
+                <input type="time" id="mInpHoraInicio" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+                <input type="time" id="mInpHoraFin" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+              </div>
+            </div>
+            <div>
+              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Lugar</label>
+              <input type="text" id="mInpLugar" placeholder="Ej: Sala de Consejo / Roof Prepa" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-bottom:14px;">
+            <div>
+              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Dirigió</label>
+              <input type="text" id="mInpDirigio" placeholder="Presidente / Coordinador" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+            </div>
+            <div>
+              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Secretario/a</label>
+              <input type="text" id="mInpSecretario" placeholder="Nombre de quien redacta" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+            </div>
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Asistentes</label>
+            <input type="text" id="mInpAsistentes" placeholder="Ej: Barbara, Rafa Luna, Sofia Brito, Victoria Riveroll..." style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Objetivo de la sesión</label>
+            <input type="text" id="mInpObjetivo" placeholder="Ej: Definir presupuestos de Back to School y asignar roles..." style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+          </div>
+
+          <!-- BLOQUE DINÁMICO: TEMAS TRATADOS -->
+          <div class="minuta-section-block">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <h4 style="margin:0;">📌 Temas tratados</h4>
+              <button class="btn-secondary" id="btnAddTema" style="padding:3px 10px; font-size:11px;">+ Agregar tema</button>
+            </div>
+            <div id="mTemasList"></div>
+          </div>
+
+          <!-- BLOQUE DINÁMICO: ACUERDOS Y TAREAS -->
+          <div class="minuta-section-block">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <h4 style="margin:0;">🤝 Acuerdos tomados</h4>
+              <button class="btn-secondary" id="btnAddAcuerdo" style="padding:3px 10px; font-size:11px;">+ Agregar acuerdo</button>
+            </div>
+            <div id="mAcuerdosList"></div>
+          </div>
+
+          <!-- BLOQUE DINÁMICO: PENDIENTES & PROPUESTAS -->
+          <div class="minuta-section-block">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <h4 style="margin:0;">⏳ Pendientes y Propuestas</h4>
+              <div style="display:flex; gap:6px;">
+                <button class="btn-secondary" id="btnAddPendiente" style="padding:3px 8px; font-size:11px;">+ Pendiente</button>
+                <button class="btn-secondary" id="btnAddPropuesta" style="padding:3px 8px; font-size:11px;">+ Propuesta</button>
+              </div>
+            </div>
+            <div id="mPendientesList"></div>
+            <div id="mPropuestasList" style="margin-top:6px;"></div>
+          </div>
+
+          <!-- OBSERVACIONES -->
+          <div class="minuta-section-block">
+            <h4>Observaciones generales</h4>
+            <textarea id="mInpObservaciones" rows="2" placeholder="Notas adicionales, acuerdos de próxima reunión..." style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:12px;"></textarea>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-top:16px; justify-content:flex-end;">
+            <button class="btn-secondary" id="btnGuardarBorrador">Guardar borrador</button>
+            <button class="btn-primary" id="btnFinalizarMinuta">✅ Finalizar y Generar Minuta</button>
+          </div>
+        </div>
+
+        <!-- LISTADO / HISTORIAL DE MINUTAS -->
+        <div id="minutasListContainer"></div>
+        <div class="empty-state-box" id="emptyMinutas" style="display:none;">No hay minutas registradas todavía. Crea la primera con el botón "+ Nueva minuta".</div>
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- VIEW: TAREAS (✅ NUEVO MÓDULO) -->
+      <!-- ======================================================= -->
+      <div class="view" id="view-tareas">
+        <div class="hero-banner" style="background: linear-gradient(145deg, #15803D 0%, #064E3B 100%);">
+          <div class="hero-eyebrow">SEGUIMIENTO DE RESPONSABILIDADES</div>
+          <h1>Tablero de Tareas y Acuerdos</h1>
+          <p>Control de compromisos, fechas límite y recordatorios generados a partir de las reuniones del Consejo Estudiantil.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Tareas</div>
+            <div class="stat-val" id="statTareasTotal">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pendientes</div>
+            <div class="stat-val negative" id="statTareasPendientes">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">En Proceso</div>
+            <div class="stat-val" style="color:var(--amber);" id="statTareasProceso">0</div>
+          </div>
+          <div class="stat-card highlight">
+            <div class="stat-label">Completadas</div>
+            <div class="stat-val positive" id="statTareasCompletadas">0</div>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="pill-group" id="filterTareasGroup">
+            <button data-filter="todas" class="pill-btn active">Todas</button>
+            <button data-filter="pendientes" class="pill-btn">Pendientes</button>
+            <button data-filter="alta" class="pill-btn">Prioridad Alta</button>
+            <button data-filter="completadas" class="pill-btn">Completadas</button>
+          </div>
+          <button class="btn-primary" id="btnNuevaTarea" style="background:var(--green);">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            <span>+ Nueva tarea</span>
+          </button>
+        </div>
+
+        <!-- Modal / Formulario Nueva Tarea rápida -->
+        <div class="card" id="tareaEditorCard" style="display:none; border:2px solid var(--green);">
+          <div class="card-header">
+            <div class="card-title" style="color:var(--green);">Crear Tarea Rápida</div>
+            <button class="btn-secondary" id="btnCerrarTareaEditor" style="padding:3px 8px; font-size:11px;">×</button>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-bottom:10px;">
+            <div>
+              <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">TAREA</label>
+              <input type="text" id="tInpNombre" placeholder="Descripción de la tarea..." style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:700;">
+            </div>
+            <div>
+              <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">PROYECTO / EVENTO</label>
+              <input type="text" id="tInpProyecto" placeholder="Ej: Back to School, Escolar..." style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+            </div>
+            <div>
+              <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">RESPONSABLE</label>
+              <input type="text" id="tInpResponsable" placeholder="Persona o equipo" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+            </div>
+            <div>
+              <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">FECHA LÍMITE</label>
+              <input type="date" id="tInpFechaLimite" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+            </div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; gap:10px; align-items:center;">
+              <select id="tInpPrioridad" class="meta-select" style="padding:6px 10px;">
+                <option value="alta">🔴 Prioridad Alta</option>
+                <option value="media" selected>🟡 Prioridad Media</option>
+                <option value="baja">🟢 Prioridad Baja</option>
+              </select>
+              <select id="tInpRecordatorio" class="meta-select" style="padding:6px 10px;">
+                <option value="1_dia">🔔 Avisar 1 día antes</option>
+                <option value="mismo_dia">🔔 Avisar mismo día</option>
+                <option value="ninguno">Sin recordatorio</option>
+              </select>
+            </div>
+            <button class="btn-primary" id="btnGuardarTareaDirecta" style="background:var(--green);">Guardar Tarea</button>
+          </div>
+        </div>
+
+        <div id="tareasListContainer"></div>
+        <div class="empty-state-box" id="emptyTareas" style="display:none;">No hay tareas registradas en este filtro.</div>
+      </div>
+
+      <!-- ======================================================= -->
       <!-- VIEW: FOTOS (ÁLBUM GENERACIONAL) -->
       <!-- ======================================================= -->
       <div class="view" id="view-fotos">
         <div class="hero-banner" style="background: linear-gradient(145deg, #B45309 0%, #78350F 100%);">
           <div class="hero-eyebrow">RECUERDOS 2026–2027</div>
           <h1>Álbum Generacional</h1>
-          <p>Los mejores momentos del último año. Sube fotos desde cualquier dispositivo en tiempo real con compresión optimizada.</p>
+          <p>Los mejores momentos del año. Sube fotos desde cualquier dispositivo en tiempo real con compresión optimizada.</p>
         </div>
 
         <label class="upload-dropzone" for="photoInput">
           <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><rect x="3" y="16" width="18" height="5" rx="1.5"/></svg>
-          <div class="upload-title">Toca para subir fotos al álbum</div>
-          <div class="upload-sub">Compresión automática en alta calidad · Se sincroniza con todos</div>
+          <div style="font-size:14px; font-weight:700; color:var(--wine);">Toca para subir fotos al álbum</div>
+          <div style="font-size:11.5px; color:var(--ink-tertiary); margin-top:4px;">Compresión automática en alta calidad · Se sincroniza con todos</div>
         </label>
         <input type="file" id="photoInput" accept="image/*" multiple style="display:none;">
 
@@ -1548,7 +1889,6 @@
           </div>
         </div>
 
-        <!-- Tabla ejecutiva por categoría -->
         <div class="card">
           <div class="card-header">
             <div class="card-title">
@@ -1559,7 +1899,6 @@
           <div id="finBreakdown"></div>
         </div>
 
-        <!-- Movimientos extraordinarios -->
         <div class="toolbar">
           <div class="pill-group" style="padding:6px 12px; font-weight:700; font-size:12px; color:var(--wine);">
             Movimientos extraordinarios
@@ -1594,6 +1933,14 @@
       <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
       <span>Ventas</span>
     </button>
+    <button class="b-nav-item" data-view="minutas">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span>Minutas</span>
+    </button>
+    <button class="b-nav-item" data-view="tareas">
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span>Tareas</span>
+    </button>
     <button class="b-nav-item" data-view="fotos">
       <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-4 4-3-3-4 4"/></svg>
       <span>Fotos</span>
@@ -1606,12 +1953,148 @@
 
 </div>
 
+<!-- ==================== CRONOGRAMA MINUTO A MINUTO MODAL ==================== -->
+<div class="crono-modal" id="cronoModal">
+  <div class="crono-modal-box">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; border-bottom:1px solid var(--border-light); padding-bottom:10px;">
+      <div>
+        <div style="font-size:11px; font-weight:700; color:var(--wine); text-transform:uppercase; letter-spacing:0.06em;">⏱️ Cronograma Minuto a Minuto</div>
+        <h2 id="cronoEventTitle" style="font-family:var(--font-heading); font-size:18px; color:var(--ink-primary); margin-top:2px;">Evento</h2>
+        <div id="cronoEventMeta" style="font-size:12px; color:var(--ink-tertiary); margin-top:2px;">Fecha y detalles</div>
+      </div>
+      <button class="btn-secondary" id="btnCloseCronoModal" style="padding:4px 10px;">Cerrar ✕</button>
+    </div>
+
+    <!-- Progreso general y Modo Evento -->
+    <div style="background:var(--surface-secondary); border-radius:var(--radius-md); padding:12px 14px; margin-bottom:16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <span style="font-size:12px; font-weight:700; color:var(--ink-secondary);">Progreso de la actividad</span>
+        <span id="cronoProgressPercent" style="font-size:12px; font-weight:800; color:var(--wine);">0%</span>
+      </div>
+      <div style="height:8px; background:var(--border); border-radius:var(--radius-full); overflow:hidden;">
+        <div id="cronoProgressBar" style="height:100%; width:0%; background:var(--wine); border-radius:var(--radius-full); transition:width .25s;"></div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:12px;">
+        <button class="btn-primary" id="btnAbrirModoEvento" style="background:#110B08; border:1px solid var(--wine); flex:1; justify-content:center;">
+          🔴 Abrir Modo Evento en Vivo
+        </button>
+        <button class="btn-secondary" id="btnAddCronoItem" style="white-space:nowrap;">
+          + Agregar paso
+        </button>
+      </div>
+    </div>
+
+    <!-- Editor rápido de paso del cronograma -->
+    <div id="cronoItemEditor" style="display:none; background:#FFF; border:1px solid var(--wine); border-radius:var(--radius-md); padding:14px; margin-bottom:16px;">
+      <h4 style="font-size:13px; color:var(--wine); margin-bottom:10px;">Nuevo paso del cronograma</h4>
+      <div style="display:grid; grid-template-columns:80px 1fr; gap:8px; margin-bottom:8px;">
+        <div>
+          <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">HORA</label>
+          <input type="time" id="crInpHora" value="19:00" style="width:100%; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:700;">
+        </div>
+        <div>
+          <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">ACTIVIDAD</label>
+          <input type="text" id="crInpNombre" placeholder="Ej: Llegada del Consejo / Discurso" style="width:100%; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:600;">
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:8px; margin-bottom:8px;">
+        <div>
+          <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">RESPONSABLE</label>
+          <select id="crInpResponsable" class="meta-select" style="width:100%; padding:6px;">
+            <option value="Todos">👥 Todos</option>
+            <option value="Presidente">👤 Presidente</option>
+            <option value="Vicepresidente">👤 Vicepresidente</option>
+            <option value="Finanzas">💰 Finanzas</option>
+            <option value="Eventos">🎉 Eventos</option>
+            <option value="Comunicación">📢 Comunicación</option>
+            <option value="Audio / Multimedia">🎧 Audio / Multimedia</option>
+            <option value="Staff">🛡️ Staff / Logística</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">DURACIÓN ESTIMADA</label>
+          <input type="text" id="crInpDuracion" placeholder="Ej: 15 min" style="width:100%; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+        </div>
+        <div>
+          <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">LUGAR</label>
+          <input type="text" id="crInpLugar" placeholder="Auditorio / Entrada..." style="width:100%; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+        </div>
+      </div>
+      <div style="background:var(--surface-secondary); padding:8px 10px; border-radius:var(--radius-sm); margin-bottom:10px;">
+        <span style="font-size:11px; font-weight:700; color:var(--ink-secondary); display:block; margin-bottom:4px;">Notificaciones automáticas:</span>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; font-size:11.5px;">
+          <label><input type="checkbox" id="crNotif15" checked> 15 min antes</label>
+          <label><input type="checkbox" id="crNotif5" checked> 5 min antes</label>
+          <label><input type="checkbox" id="crNotif0" checked> A la hora exacta</label>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:8px;">
+        <button class="btn-secondary" id="btnCancelCronoItem" style="padding:4px 10px;">Cancelar</button>
+        <button class="btn-primary" id="btnSaveCronoItem" style="padding:4px 14px;">Guardar paso</button>
+      </div>
+    </div>
+
+    <!-- Lista de pasos -->
+    <div id="cronoTimelineContainer"></div>
+  </div>
+</div>
+
+<!-- ==================== 🔴 MODO EVENTO EN VIVO (FULLSCREEN) ==================== -->
+<div class="event-mode-overlay" id="modoEventoOverlay">
+  <div class="em-head">
+    <div>
+      <span style="font-size:11px; font-weight:800; background:#DC2626; color:#FFF; padding:2px 8px; border-radius:999px; text-transform:uppercase;">🔴 MODO EVENTO EN VIVO</span>
+      <h2 id="emEventTitle" style="font-size:18px; margin-top:4px;">Ceremonia Senior</h2>
+    </div>
+    <div style="text-align:right;">
+      <div class="em-live-clock" id="emClock">00:00:00</div>
+      <button id="btnCloseModoEvento" style="color:#FFF; background:rgba(255,255,255,0.2); padding:4px 12px; border-radius:var(--radius-full); font-size:12px; margin-top:4px;">Salir ✕</button>
+    </div>
+  </div>
+
+  <div class="em-progress-bar-wrap">
+    <div class="em-progress-bar-fill" id="emProgressFill" style="width: 0%;"></div>
+  </div>
+
+  <!-- ACTIVIDAD ACTUAL -->
+  <div class="em-current-card">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+      <span id="emStatusBadge" style="font-size:11.5px; font-weight:800; color:#EF4444; text-transform:uppercase; letter-spacing:0.05em;">● EN CURSO</span>
+      <span id="emCountdown" style="font-size:13px; font-weight:700; color:#FCD34D;">⏱️ Tiempo real</span>
+    </div>
+    <div id="emCurrentTime" style="font-family:var(--font-heading); font-size:26px; font-weight:800; color:#F5EDDD;">19:00</div>
+    <h3 id="emCurrentTitle" style="font-size:20px; font-weight:700; margin:4px 0 8px;">Llegada del Consejo</h3>
+    <div style="font-size:13px; color:#D1D5DB; margin-bottom:14px;" id="emCurrentMeta">👥 Todos · 📍 Auditorio</div>
+    <button id="btnEmCompletarActual" style="width:100%; padding:12px; background:#10B981; color:#FFF; border-radius:var(--radius-md); font-weight:800; font-size:14px; box-shadow:0 4px 15px rgba(16,185,129,0.4);">
+      ✅ MARCAR COMO COMPLETADA
+    </button>
+  </div>
+
+  <!-- SIGUIENTE ACTIVIDAD -->
+  <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius-lg); padding:14px 16px; margin-bottom:20px;">
+    <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:#9CA3AF; margin-bottom:4px;">PRÓXIMA ACTIVIDAD</div>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <div id="emNextTitle" style="font-size:15px; font-weight:700; color:#F3F4F6;">Subir al auditorio</div>
+        <div id="emNextMeta" style="font-size:12px; color:#9CA3AF;">👥 Todos</div>
+      </div>
+      <div id="emNextTime" style="font-family:var(--font-heading); font-size:17px; font-weight:800; color:#FBBF24;">19:15</div>
+    </div>
+  </div>
+
+  <!-- LISTADO COMPLETO DEL CRONOGRAMA -->
+  <div style="flex:1;">
+    <h4 style="font-size:12px; text-transform:uppercase; color:#9CA3AF; letter-spacing:0.06em; margin-bottom:10px;">Cronograma completo</h4>
+    <div id="emFullList" style="display:flex; flex-direction:column; gap:8px;"></div>
+  </div>
+</div>
+
 <!-- ==================== SPOTLIGHT SEARCH MODAL ==================== -->
 <div class="spotlight-overlay" id="spotlightModal">
   <div class="spotlight-box">
     <div class="spotlight-input-wrap">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-      <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Buscar fiesta, venta o actividad escolar…">
+      <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Buscar eventos, minutas o tareas…">
       <button id="closeSearchBtn" style="font-size:12px; font-weight:700; color:var(--ink-tertiary); padding:4px 8px;">ESC</button>
     </div>
     <div class="spotlight-results" id="spotlightResults"></div>
@@ -1620,8 +2103,8 @@
 
 <!-- ==================== PHOTO LIGHTBOX MODAL ==================== -->
 <div class="lightbox-modal" id="photoLightbox">
-  <button class="lightbox-close" id="closeLightbox">×</button>
-  <img class="lightbox-img" id="lightboxImg" src="" alt="Foto en grande">
+  <button class="lightbox-close" id="closeLightbox" style="position:absolute; top:20px; right:20px; background:rgba(255,255,255,0.2); color:#FFF; border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:18px;">×</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="Foto en grande" style="max-width:92vw; max-height:85vh; border-radius:var(--radius-md); object-fit:contain;">
 </div>
 
 <!-- ==================== TOAST NOTIFICATION ==================== -->
@@ -1654,6 +2137,9 @@ const docRefExtra = doc(db, "consejo-imex", "calendario-financiero");
 const docRefEscolar = doc(db, "consejo-imex", "calendario-escolar");
 const docRefVentas = doc(db, "consejo-imex", "ventas-escolares");
 const docRefFinanzas = doc(db, "consejo-imex", "finanzas-extras");
+const docRefMinutas = doc(db, "consejo-imex", "minutas");
+const docRefTareas = doc(db, "consejo-imex", "tareas");
+const docRefCronos = doc(db, "consejo-imex", "cronogramas");
 const fotosCol = collection(db, "fotos");
 
 function showToast(msg = "Cambios guardados"){
@@ -1695,9 +2181,7 @@ function debounce(fn, delay=400){
 
 const expanded = { extra: new Set([9, 10]), escolar: new Set([8, 9]), ventas: new Set([9, 10]) };
 
-// =====================================================================
 // DATA BASELINE
-// =====================================================================
 let eventos = [
   {id:'e1', nombre:'Back to School', categoria:'antro', mes:9, dia:11, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
   {id:'e2', nombre:'Halloween', categoria:'antro', mes:10, dia:30, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
@@ -1797,9 +2281,140 @@ let ventas = [
 let fotos = [];
 let extras = [];
 
-// =====================================================================
+// MINUTAS, TAREAS Y CRONOGRAMAS BASE
+let minutas = [
+  {
+    id: 'm1',
+    numero: 8,
+    titulo: 'Reunión Ordinaria #08',
+    fecha: '2026-08-30',
+    horaInicio: '16:00',
+    horaFin: '17:30',
+    lugar: 'Sala de Consejo / Prepa IMEX',
+    dirigio: 'Iñigo (Presidente)',
+    secretario: 'Sofia Brito',
+    asistentes: 'Barbara, Victoria Riveroll, Rafa Luna, Sofia Brito, Iñigo, Juan Pablo',
+    objetivo: 'Planear logística de Back to School y organizar inicio de venta de calaveritas.',
+    temas: [
+      {id:'t1', titulo:'Logística Back to School', desc:'Definición de precios de boletos ($270), comisión del 10% y contratación de sonido.'},
+      {id:'t2', titulo:'Venta de Calaveritas', desc:'Contacto con proveedora y fijar fecha de entrega para el 30 de octubre.'}
+    ],
+    acuerdos: [
+      {id:'a1', desc:'Cotizar equipo de audio e iluminación para Back to School', responsable:'Iñigo', fechaLimite:'2026-09-05', prioridad:'alta', estado:'en_proceso', esTarea:true},
+      {id:'a2', desc:'Revisar diseño de playeras y chamarras seniors', responsable:'Barbara', fechaLimite:'2026-09-02', prioridad:'media', estado:'completado', esTarea:true}
+    ],
+    pendientes: [{id:'p1', texto:'Confirmar con dirección el permiso para fiesta temática de Reyes Magos'}],
+    propuestas: [{id:'pr1', proponente:'Rafa Luna', texto:'Organizar noche de cine temática en Cristo Rey durante noviembre'}],
+    observaciones: 'Excelente asistencia. Todos los miembros del Consejo confirmaron disponibilidad para el primer día de clases.',
+    finalizada: true
+  }
+];
+
+let tareas = [
+  {id:'tk1', nombre:'Cotizar equipo de audio e iluminación', proyecto:'Back to School', responsable:'Iñigo', fechaLimite:'2026-09-05', prioridad:'alta', estado:'en_proceso', recordatorio:'1_dia', completada:false, origenMinutaId:'m1'},
+  {id:'tk2', nombre:'Revisar diseño de playeras y chamarras seniors', proyecto:'Chamarras', responsable:'Barbara', fechaLimite:'2026-09-02', prioridad:'media', estado:'completado', recordatorio:'mismo_dia', completada:true, origenMinutaId:'m1'},
+  {id:'tk3', nombre:'Contactar proveedor de calaveritas de azúcar', proyecto:'Ventas Escolares', responsable:'Victoria Riveroll', fechaLimite:'2026-09-10', prioridad:'alta', estado:'pendiente', recordatorio:'1_dia', completada:false}
+];
+
+let cronogramas = {
+  's71': [
+    {id:'c1', hora:'19:00', nombre:'Llegada del Consejo y Staff', desc:'Revisión general del acceso y materiales', responsable:'Todos', duracion:'30 min', lugar:'Lobby Prepa', prioridad:'alta', estado:'completado', notif15:true, notif5:true, notif0:true},
+    {id:'c2', hora:'19:30', nombre:'Apertura de puertas y recepción', desc:'Registro de asistencia y entrega de recuerdos', responsable:'Staff', duracion:'30 min', lugar:'Acceso principal', prioridad:'alta', estado:'en_proceso', notif15:true, notif5:true, notif0:true},
+    {id:'c3', hora:'20:00', nombre:'Firma de playeras y entrega de cartas', desc:'Momento emotivo y cápsula del tiempo', responsable:'Todos', duracion:'45 min', lugar:'Roof', prioridad:'alta', estado:'pendiente', notif15:true, notif5:true, notif0:true},
+    {id:'c4', hora:'21:00', nombre:'Fogatada y mojada de generación', desc:'Actividad final de cierre', responsable:'Eventos', duracion:'60 min', lugar:'Patio', prioridad:'alta', estado:'pendiente', notif15:true, notif5:true, notif0:true}
+  ],
+  'e1': [
+    {id:'ce1', hora:'21:00', nombre:'Acceso y montaje DJ', desc:'Revisión de sonido y lista de invitados', responsable:'Audio & DJ', duracion:'60 min', lugar:'Antro', prioridad:'alta', estado:'completado', notif15:true, notif5:true, notif0:true},
+    {id:'ce2', hora:'22:00', nombre:'Apertura general Back to School', desc:'Validación de boletos y pulseras', responsable:'Staff', duracion:'180 min', lugar:'Puerta', prioridad:'alta', estado:'en_proceso', notif15:true, notif5:true, notif0:true}
+  ]
+};
+
+// NOTIFICACIONES WEB & IN-APP
+let notifPermission = ("Notification" in window) ? Notification.permission : "default";
+let firedNotifs = new Set();
+
+function updateNotifBtnUI(){
+  const btn = document.getElementById('btnReqNotifs');
+  const lbl = document.getElementById('notifBtnLabel');
+  if(!btn || !lbl) return;
+  if(Notification.permission === 'granted'){
+    lbl.textContent = 'Alertas Activas';
+    btn.style.color = 'var(--green)';
+  } else {
+    lbl.textContent = 'Activar Alertas';
+    btn.style.color = 'var(--wine)';
+  }
+}
+
+async function requestNotifPermission(){
+  if(!("Notification" in window)){
+    showToast("Notificaciones no soportadas en este navegador");
+    return;
+  }
+  const res = await Notification.requestPermission();
+  notifPermission = res;
+  updateNotifBtnUI();
+  if(res === 'granted'){
+    showToast("¡Notificaciones y recordatorios activados!");
+    try {
+      new Notification("27MEX Seniors", {
+        body: "Notificaciones del Consejo activadas correctamente.",
+        icon: "icon-192.png"
+      });
+    } catch(e){}
+  } else {
+    showToast("Permiso de notificaciones denegado.");
+  }
+}
+document.getElementById('btnReqNotifs').addEventListener('click', requestNotifPermission);
+
+function checkCronogramasAndTaskReminders(){
+  const now = new Date();
+  const curHours = now.getHours();
+  const curMins = now.getMinutes();
+  const nowMinutes = curHours * 60 + curMins;
+
+  Object.keys(cronogramas).forEach(evId => {
+    const items = cronogramas[evId] || [];
+    items.forEach(step => {
+      if(!step.hora) return;
+      const [h, m] = step.hora.split(':').map(Number);
+      const stepMinutes = h * 60 + m;
+      const diff = stepMinutes - nowMinutes;
+
+      if(diff === 0 && step.notif0 && !firedNotifs.has(step.id + '_0')){
+        firedNotifs.add(step.id + '_0');
+        fireAlert(`🔴 AHORA: ${step.nombre}`, `Responsable: ${step.responsable} · Lugar: ${step.lugar || 'Sede'}`);
+      }
+      else if(diff === 5 && step.notif5 && !firedNotifs.has(step.id + '_5')){
+        firedNotifs.add(step.id + '_5');
+        fireAlert(`🔔 En 5 minutos: ${step.nombre}`, `Hora: ${step.hora} · Responsable: ${step.responsable}`);
+      }
+      else if(diff === 15 && step.notif15 && !firedNotifs.has(step.id + '_15')){
+        firedNotifs.add(step.id + '_15');
+        fireAlert(`🔔 En 15 minutos: ${step.nombre}`, `Hora: ${step.hora} · Responsable: ${step.responsable}`);
+      }
+    });
+  });
+}
+
+function fireAlert(title, body){
+  showToast(`${title} — ${body}`);
+  if(Notification.permission === 'granted'){
+    try {
+      navigator.serviceWorker.ready.then(reg => {
+        reg.showNotification(title, { body, icon: 'icon-192.png', badge: 'icon-192.png' });
+      }).catch(()=>{
+        new Notification(title, { body, icon: 'icon-192.png' });
+      });
+    } catch(e){
+      try { new Notification(title, { body, icon: 'icon-192.png' }); } catch(err){}
+    }
+  }
+}
+setInterval(checkCronogramasAndTaskReminders, 15000);
+
 // ACORDEÓN GENÉRICO
-// =====================================================================
 function renderAccordion(containerId, sectionKey, items, cardFn, emptyElId, monthBalanceFn=null){
   const timeline = document.getElementById(containerId);
   if(!timeline) return;
@@ -1845,9 +2460,7 @@ function renderAccordion(containerId, sectionKey, items, cardFn, emptyElId, mont
   });
 }
 
-// =====================================================================
 // EXTRACURRICULAR
-// =====================================================================
 function ingresoBruto(e){ return (e.boletos||0) * (e.precio||0); }
 function comisionMonto(e){ return ingresoBruto(e) * ((e.comisionPct||0)/100); }
 function gastoTotal(e){ return (e.gastoFijo||0) + comisionMonto(e); }
@@ -1864,6 +2477,7 @@ function renderExtra(){
 
 function eventCardHtmlExtra(e){
   const isAntro = e.categoria==='antro';
+  const cCount = (cronogramas[e.id] || []).length;
   return `
   <div class="item-card ${esc(e.categoria)}">
     <div class="item-header-grid">
@@ -1879,6 +2493,7 @@ function eventCardHtmlExtra(e){
             <option value="casa" ${!isAntro?'selected':''}>Casa seniors</option>
           </select>
           <span class="tag-badge ${e.confirmada?'confirmada':'estimada'}" data-type="ev-confirm-badge" data-id="${e.id}">${e.confirmada?'Confirmada':'Por confirmar'}</span>
+          <span class="tag-badge crono-btn" data-type="open-crono" data-id="${e.id}">⏱️ Cronograma (${cCount})</span>
         </div>
       </div>
       <button class="btn-icon-del" data-type="del-ev" data-id="${e.id}">×</button>
@@ -1923,9 +2538,7 @@ function updateSummaryExtra(){
   updateDashboard();
 }
 
-// =====================================================================
 // ESCOLAR
-// =====================================================================
 function renderEscolar(){
   renderAccordion('timelineEscolar', 'escolar', escolares, eventCardHtmlEscolar, 'emptyEscolar');
   document.getElementById('statCountEscPill').textContent = escolares.length + (escolares.length===1?' actividad':' actividades');
@@ -1936,6 +2549,7 @@ function renderEscolar(){
 
 function eventCardHtmlEscolar(e){
   const g = e.gasto||0;
+  const cCount = (cronogramas[e.id] || []).length;
   return `
   <div class="item-card escolar">
     <div class="item-header-grid">
@@ -1947,6 +2561,7 @@ function eventCardHtmlEscolar(e){
         <input type="text" class="item-title-input" maxlength="100" value="${esc(e.nombre)}" data-type="esc-nombre" data-id="${e.id}" placeholder="Nombre de la actividad">
         <div class="item-meta-row">
           <span class="tag-badge escolar">IMEX Escolar</span>
+          <span class="tag-badge crono-btn" data-type="open-crono" data-id="${e.id}">⏱️ Cronograma (${cCount})</span>
         </div>
         <input type="text" class="item-notes-input" maxlength="200" value="${esc(e.nota)}" data-type="esc-nota" data-id="${e.id}" placeholder="Detalles, encargados u observaciones…">
       </div>
@@ -1960,9 +2575,7 @@ function eventCardHtmlEscolar(e){
   </div>`;
 }
 
-// =====================================================================
 // VENTAS
-// =====================================================================
 function ingV(v){ return (v.cantidad||0)*(v.precio||0); }
 function balV(v){ return ingV(v) - (v.gasto||0); }
 function renderVentas(){
@@ -2030,9 +2643,555 @@ function updateSummaryVentas(){
   updateDashboard();
 }
 
-// =====================================================================
+// MINUTAS (LÓGICA Y RENDER)
+let activeMinutaEditId = null;
+let currentMinutaTemas = [];
+let currentMinutaAcuerdos = [];
+let currentMinutaPendientes = [];
+let currentMinutaPropuestas = [];
+
+function renderMinutas(){
+  const container = document.getElementById('minutasListContainer');
+  if(!container) return;
+  container.innerHTML = '';
+  document.getElementById('emptyMinutas').style.display = minutas.length ? 'none' : 'block';
+
+  minutas.slice().reverse().forEach(m => {
+    const div = document.createElement('div');
+    div.className = 'minuta-card';
+    div.innerHTML = `
+      <div class="minuta-card-head">
+        <div>
+          <div class="minuta-num">📝 ${esc(m.titulo || ('Reunión #' + m.numero))}</div>
+          <div class="minuta-meta">📅 ${m.fecha || 'Sin fecha'} · ⏰ ${m.horaInicio || '--:--'} a ${m.horaFin || '--:--'} · 📍 ${esc(m.lugar || 'IMEX')}</div>
+        </div>
+        <div style="display:flex; gap:6px;">
+          <button class="btn-secondary" data-type="share-minuta" data-id="${m.id}" title="Copiar para WhatsApp" style="padding:5px 10px; font-size:11.5px;">📋 Compartir</button>
+          <button class="btn-secondary" data-type="edit-minuta" data-id="${m.id}" style="padding:5px 10px; font-size:11.5px;">✏️ Editar</button>
+          <button class="btn-icon-del" data-type="del-minuta" data-id="${m.id}">×</button>
+        </div>
+      </div>
+      <div class="minuta-badge-grid">
+        <span class="tag-badge" style="background:var(--surface-secondary);">Dirigió: ${esc(m.dirigio || 'Presidente')}</span>
+        <span class="tag-badge" style="background:var(--surface-secondary);">Secretario: ${esc(m.secretario || 'Sofia Brito')}</span>
+        <span class="tag-badge" style="background:var(--green-bg); color:var(--green);">${(m.acuerdos||[]).length} Acuerdos</span>
+      </div>
+      <div style="font-size:12.5px; color:var(--ink-secondary); line-height:1.5;">
+        <strong>Objetivo:</strong> ${esc(m.objetivo || 'Revisión general')}
+      </div>
+      ${(m.temas && m.temas.length) ? `
+        <div class="minuta-section-block">
+          <h4>Temas Tratados (${m.temas.length})</h4>
+          ${m.temas.map(t => `<div class="minuta-dyn-item"><strong>${esc(t.titulo)}:</strong> ${esc(t.desc)}</div>`).join('')}
+        </div>
+      ` : ''}
+      ${(m.acuerdos && m.acuerdos.length) ? `
+        <div class="minuta-section-block">
+          <h4>Acuerdos y Compromisos (${m.acuerdos.length})</h4>
+          ${m.acuerdos.map(a => `<div class="minuta-dyn-item" style="border-left:3px solid var(--green);"><strong>${esc(a.desc)}</strong><div style="font-size:11px; color:var(--ink-tertiary); margin-top:2px;">👤 ${esc(a.responsable)} · 📅 Límite: ${a.fechaLimite || 'Por definir'} · Prioridad: ${esc(a.prioridad || 'media')}</div></div>`).join('')}
+        </div>
+      ` : ''}
+    `;
+    container.appendChild(div);
+  });
+
+  const b = document.getElementById('badgeMinutas');
+  if(b) b.textContent = minutas.length;
+}
+
+function openMinutaEditor(m = null){
+  const card = document.getElementById('minutaEditorCard');
+  card.style.display = 'block';
+  activeMinutaEditId = m ? m.id : null;
+
+  if(m){
+    document.getElementById('editorMinutaTitle').textContent = 'Editar Minuta: ' + (m.titulo || ('Reunión #' + m.numero));
+    document.getElementById('mInpTitulo').value = m.titulo || '';
+    document.getElementById('mInpFecha').value = m.fecha || '';
+    document.getElementById('mInpHoraInicio').value = m.horaInicio || '';
+    document.getElementById('mInpHoraFin').value = m.horaFin || '';
+    document.getElementById('mInpLugar').value = m.lugar || '';
+    document.getElementById('mInpDirigio').value = m.dirigio || '';
+    document.getElementById('mInpSecretario').value = m.secretario || '';
+    document.getElementById('mInpAsistentes').value = m.asistentes || '';
+    document.getElementById('mInpObjetivo').value = m.objetivo || '';
+    document.getElementById('mInpObservaciones').value = m.observaciones || '';
+    currentMinutaTemas = JSON.parse(JSON.stringify(m.temas || []));
+    currentMinutaAcuerdos = JSON.parse(JSON.stringify(m.acuerdos || []));
+    currentMinutaPendientes = JSON.parse(JSON.stringify(m.pendientes || []));
+    currentMinutaPropuestas = JSON.parse(JSON.stringify(m.propuestas || []));
+  } else {
+    document.getElementById('editorMinutaTitle').textContent = 'Nueva Minuta de Reunión';
+    const nextNum = minutas.length + 1;
+    document.getElementById('mInpTitulo').value = `Reunión Ordinaria #${nextNum < 10 ? '0'+nextNum : nextNum}`;
+    document.getElementById('mInpFecha').value = new Date().toISOString().split('T')[0];
+    document.getElementById('mInpHoraInicio').value = '16:00';
+    document.getElementById('mInpHoraFin').value = '17:30';
+    document.getElementById('mInpLugar').value = 'Sala de Consejo / Prepa IMEX';
+    document.getElementById('mInpDirigio').value = 'Iñigo';
+    document.getElementById('mInpSecretario').value = 'Sofia Brito';
+    document.getElementById('mInpAsistentes').value = 'Consejo Estudiantil';
+    document.getElementById('mInpObjetivo').value = '';
+    document.getElementById('mInpObservaciones').value = '';
+    currentMinutaTemas = [];
+    currentMinutaAcuerdos = [];
+    currentMinutaPendientes = [];
+    currentMinutaPropuestas = [];
+  }
+  renderMinutaEditorDynamics();
+  card.scrollIntoView({ behavior: 'smooth' });
+}
+
+function renderMinutaEditorDynamics(){
+  const tList = document.getElementById('mTemasList');
+  tList.innerHTML = currentMinutaTemas.map((t, idx) => `
+    <div style="display:flex; gap:6px; margin-bottom:6px;">
+      <input type="text" placeholder="Título tema..." value="${esc(t.titulo)}" oninput="window.__updateTema(${idx}, 'titulo', this.value)" style="width:160px; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:700;">
+      <input type="text" placeholder="Discusión / puntos tratados..." value="${esc(t.desc)}" oninput="window.__updateTema(${idx}, 'desc', this.value)" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+      <button class="btn-icon-del" onclick="window.__delTema(${idx})" style="width:24px; height:24px;">×</button>
+    </div>
+  `).join('');
+
+  const aList = document.getElementById('mAcuerdosList');
+  aList.innerHTML = currentMinutaAcuerdos.map((a, idx) => `
+    <div style="background:var(--surface-secondary); padding:8px 10px; border-radius:var(--radius-sm); margin-bottom:6px; border-left:3px solid var(--wine);">
+      <div style="display:flex; gap:6px; margin-bottom:6px;">
+        <input type="text" placeholder="Descripción del acuerdo..." value="${esc(a.desc)}" oninput="window.__updateAcuerdo(${idx}, 'desc', this.value)" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:600;">
+        <button class="btn-icon-del" onclick="window.__delAcuerdo(${idx})" style="width:24px; height:24px;">×</button>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+        <input type="text" placeholder="Responsable" value="${esc(a.responsable)}" oninput="window.__updateAcuerdo(${idx}, 'responsable', this.value)" style="width:130px; padding:4px 6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:11.5px;">
+        <input type="date" value="${a.fechaLimite || ''}" oninput="window.__updateAcuerdo(${idx}, 'fechaLimite', this.value)" style="padding:4px 6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:11.5px;">
+        <select onchange="window.__updateAcuerdo(${idx}, 'prioridad', this.value)" class="meta-select">
+          <option value="alta" ${a.prioridad==='alta'?'selected':''}>🔴 Alta</option>
+          <option value="media" ${a.prioridad==='media'?'selected':''}>🟡 Media</option>
+          <option value="baja" ${a.prioridad==='baja'?'selected':''}>🟢 Baja</option>
+        </select>
+        <label style="font-size:11px; font-weight:700; color:var(--green); display:inline-flex; align-items:center; gap:4px;">
+          <input type="checkbox" ${a.esTarea?'checked':''} onchange="window.__updateAcuerdo(${idx}, 'esTarea', this.checked)"> ☑ Convertir en tarea
+        </label>
+      </div>
+    </div>
+  `).join('');
+
+  const pList = document.getElementById('mPendientesList');
+  pList.innerHTML = currentMinutaPendientes.map((p, idx) => `
+    <div style="display:flex; gap:6px; margin-bottom:4px;">
+      <input type="text" placeholder="Pendiente..." value="${esc(p.texto)}" oninput="window.__updatePendiente(${idx}, this.value)" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+      <button class="btn-icon-del" onclick="window.__delPendiente(${idx})" style="width:24px; height:24px;">×</button>
+    </div>
+  `).join('');
+
+  const prList = document.getElementById('mPropuestasList');
+  prList.innerHTML = currentMinutaPropuestas.map((pr, idx) => `
+    <div style="display:flex; gap:6px; margin-bottom:4px;">
+      <input type="text" placeholder="Proponente (Nombre)" value="${esc(pr.proponente)}" oninput="window.__updatePropuesta(${idx}, 'proponente', this.value)" style="width:130px; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+      <input type="text" placeholder="Propuesta..." value="${esc(pr.texto)}" oninput="window.__updatePropuesta(${idx}, 'texto', this.value)" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+      <button class="btn-icon-del" onclick="window.__delPropuesta(${idx})" style="width:24px; height:24px;">×</button>
+    </div>
+  `).join('');
+}
+
+window.__updateTema = (i, k, val) => { currentMinutaTemas[i][k] = val; };
+window.__delTema = (i) => { currentMinutaTemas.splice(i, 1); renderMinutaEditorDynamics(); };
+window.__updateAcuerdo = (i, k, val) => { currentMinutaAcuerdos[i][k] = val; };
+window.__delAcuerdo = (i) => { currentMinutaAcuerdos.splice(i, 1); renderMinutaEditorDynamics(); };
+window.__updatePendiente = (i, val) => { currentMinutaPendientes[i].texto = val; };
+window.__delPendiente = (i) => { currentMinutaPendientes.splice(i, 1); renderMinutaEditorDynamics(); };
+window.__updatePropuesta = (i, k, val) => { currentMinutaPropuestas[i][k] = val; };
+window.__delPropuesta = (i) => { currentMinutaPropuestas.splice(i, 1); renderMinutaEditorDynamics(); };
+
+document.getElementById('btnAddTema').addEventListener('click', ()=>{
+  currentMinutaTemas.push({ id: newId(), titulo: '', desc: '' });
+  renderMinutaEditorDynamics();
+});
+document.getElementById('btnAddAcuerdo').addEventListener('click', ()=>{
+  currentMinutaAcuerdos.push({ id: newId(), desc: '', responsable: 'Iñigo', fechaLimite: '', prioridad: 'alta', estado: 'pendiente', esTarea: true });
+  renderMinutaEditorDynamics();
+});
+document.getElementById('btnAddPendiente').addEventListener('click', ()=>{
+  currentMinutaPendientes.push({ id: newId(), texto: '' });
+  renderMinutaEditorDynamics();
+});
+document.getElementById('btnAddPropuesta').addEventListener('click', ()=>{
+  currentMinutaPropuestas.push({ id: newId(), proponente: '', texto: '' });
+  renderMinutaEditorDynamics();
+});
+document.getElementById('btnNuevaMinuta').addEventListener('click', ()=> openMinutaEditor());
+document.getElementById('btnCancelarMinuta').addEventListener('click', ()=>{
+  document.getElementById('minutaEditorCard').style.display = 'none';
+});
+
+function saveMinutaData(finalizar = false){
+  const id = activeMinutaEditId || newId();
+  const numMatch = (document.getElementById('mInpTitulo').value || '').match(/\d+/);
+  const num = numMatch ? parseInt(numMatch[0]) : minutas.length + 1;
+
+  const minutaObj = {
+    id,
+    numero: num,
+    titulo: document.getElementById('mInpTitulo').value || `Reunión #${num}`,
+    fecha: document.getElementById('mInpFecha').value || new Date().toISOString().split('T')[0],
+    horaInicio: document.getElementById('mInpHoraInicio').value,
+    horaFin: document.getElementById('mInpHoraFin').value,
+    lugar: document.getElementById('mInpLugar').value,
+    dirigio: document.getElementById('mInpDirigio').value,
+    secretario: document.getElementById('mInpSecretario').value,
+    asistentes: document.getElementById('mInpAsistentes').value,
+    objetivo: document.getElementById('mInpObjetivo').value,
+    temas: currentMinutaTemas.filter(t => t.titulo.trim() || t.desc.trim()),
+    acuerdos: currentMinutaAcuerdos.filter(a => a.desc.trim()),
+    pendientes: currentMinutaPendientes.filter(p => p.texto.trim()),
+    propuestas: currentMinutaPropuestas.filter(pr => pr.texto.trim()),
+    observaciones: document.getElementById('mInpObservaciones').value,
+    finalizada: finalizar
+  };
+
+  const existingIdx = minutas.findIndex(m => m.id === id);
+  if(existingIdx >= 0) minutas[existingIdx] = minutaObj;
+  else minutas.push(minutaObj);
+
+  minutaObj.acuerdos.forEach(ac => {
+    if(ac.esTarea){
+      const tIdx = tareas.findIndex(tk => tk.origenMinutaAcuerdoId === ac.id);
+      const taskData = {
+        id: tIdx >= 0 ? tareas[tIdx].id : newId(),
+        nombre: ac.desc,
+        proyecto: minutaObj.titulo,
+        responsable: ac.responsable || 'Consejo',
+        fechaLimite: ac.fechaLimite,
+        prioridad: ac.prioridad || 'media',
+        estado: ac.estado || 'pendiente',
+        completada: ac.estado === 'completado',
+        origenMinutaId: minutaObj.id,
+        origenMinutaAcuerdoId: ac.id,
+        recordatorio: '1_dia'
+      };
+      if(tIdx >= 0) tareas[tIdx] = taskData;
+      else tareas.push(taskData);
+    }
+  });
+
+  renderMinutas();
+  renderTareas();
+  saveMinutas();
+  saveTareas();
+  document.getElementById('minutaEditorCard').style.display = 'none';
+  showToast(finalizar ? '¡Minuta finalizada y acuerdos convertidos en tareas!' : 'Borrador de minuta guardado.');
+}
+
+document.getElementById('btnGuardarBorrador').addEventListener('click', ()=> saveMinutaData(false));
+document.getElementById('btnFinalizarMinuta').addEventListener('click', ()=> saveMinutaData(true));
+
+function shareMinutaWhatsApp(m){
+  let text = `📝 *MINUTA DE REUNIÓN — 27MEX SENIORS*\n`;
+  text += `*${m.titulo || ('Reunión #' + m.numero)}*\n`;
+  text += `📅 *Fecha:* ${m.fecha} | ⏰ *Hora:* ${m.horaInicio || ''} - ${m.horaFin || ''}\n`;
+  text += `📍 *Lugar:* ${m.lugar || 'Prepa IMEX'}\n`;
+  text += `👥 *Asistentes:* ${m.asistentes || 'Consejo Estudiantil'}\n`;
+  text += `🎯 *Objetivo:* ${m.objetivo || 'Revisión de acuerdos'}\n\n`;
+
+  if(m.temas && m.temas.length){
+    text += `📌 *TEMAS TRATADOS:*\n`;
+    m.temas.forEach((t, i)=> { text += `${i+1}. *${t.titulo}:* ${t.desc}\n`; });
+    text += `\n`;
+  }
+  if(m.acuerdos && m.acuerdos.length){
+    text += `🤝 *ACUERDOS Y COMPROMISOS:*\n`;
+    m.acuerdos.forEach((a, i)=> { text += `• *${a.desc}* (👤 ${a.responsable} | 📅 ${a.fechaLimite || 'Por definir'})\n`; });
+    text += `\n`;
+  }
+  if(m.pendientes && m.pendientes.length){
+    text += `⏳ *PENDIENTES:*\n`;
+    m.pendientes.forEach((p)=> { text += `• ${p.texto}\n`; });
+    text += `\n`;
+  }
+  if(m.observaciones){
+    text += `📝 *Observaciones:* ${m.observaciones}\n`;
+  }
+  text += `\n_Generado automáticamente desde la App del Consejo 27MEX_`;
+
+  navigator.clipboard.writeText(text).then(()=>{
+    showToast("¡Minuta copiada! Lista para pegar en WhatsApp.");
+  }).catch(()=>{
+    alert(text);
+  });
+}
+
+// TAREAS (LÓGICA Y RENDER)
+let tareaFilter = 'todas';
+
+function renderTareas(){
+  const container = document.getElementById('tareasListContainer');
+  if(!container) return;
+  container.innerHTML = '';
+
+  let filtered = tareas.slice().reverse();
+  if(tareaFilter === 'pendientes') filtered = filtered.filter(t => !t.completada);
+  else if(tareaFilter === 'completadas') filtered = filtered.filter(t => t.completada);
+  else if(tareaFilter === 'alta') filtered = filtered.filter(t => t.prioridad === 'alta');
+
+  document.getElementById('emptyTareas').style.display = filtered.length ? 'none' : 'block';
+
+  const total = tareas.length;
+  const comp = tareas.filter(t => t.completada).length;
+  const pend = tareas.filter(t => !t.completada && t.estado !== 'en_proceso').length;
+  const proc = tareas.filter(t => !t.completada && t.estado === 'en_proceso').length;
+
+  document.getElementById('statTareasTotal').textContent = total;
+  document.getElementById('statTareasCompletadas').textContent = comp;
+  document.getElementById('statTareasPendientes').textContent = pend;
+  document.getElementById('statTareasProceso').textContent = proc;
+  const b = document.getElementById('badgeTareas');
+  if(b) b.textContent = total - comp;
+  const dB = document.getElementById('dashTareasPend');
+  if(dB) dB.textContent = total - comp;
+
+  filtered.forEach(t => {
+    const div = document.createElement('div');
+    div.className = `task-card ${t.prioridad || 'media'} ${t.completada ? 'completed' : ''}`;
+    div.innerHTML = `
+      <button class="task-check-btn" data-type="toggle-tarea" data-id="${t.id}">
+        ${t.completada ? '✓' : ''}
+      </button>
+      <div class="task-content">
+        <div class="task-title">${esc(t.nombre)}</div>
+        <div class="task-meta-line">
+          <span>📁 <strong>${esc(t.proyecto || 'General')}</strong></span>
+          <span>👤 ${esc(t.responsable || 'Consejo')}</span>
+          <span>📅 ${t.fechaLimite || 'Sin fecha límite'}</span>
+          <span class="tag-badge ${t.prioridad === 'alta' ? 'antro' : 'ventas'}">${t.prioridad ? t.prioridad.toUpperCase() : 'NORMAL'}</span>
+        </div>
+      </div>
+      <button class="btn-icon-del" data-type="del-tarea" data-id="${t.id}">×</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+document.getElementById('btnNuevaTarea').addEventListener('click', ()=>{
+  const card = document.getElementById('tareaEditorCard');
+  card.style.display = 'block';
+  document.getElementById('tInpNombre').focus();
+});
+document.getElementById('btnCerrarTareaEditor').addEventListener('click', ()=>{
+  document.getElementById('tareaEditorCard').style.display = 'none';
+});
+
+document.getElementById('btnGuardarTareaDirecta').addEventListener('click', ()=>{
+  const nombre = document.getElementById('tInpNombre').value.trim();
+  if(!nombre){ showToast('Escribe la descripción de la tarea'); return; }
+
+  tareas.push({
+    id: newId(),
+    nombre,
+    proyecto: document.getElementById('tInpProyecto').value.trim() || 'General',
+    responsable: document.getElementById('tInpResponsable').value.trim() || 'Consejo',
+    fechaLimite: document.getElementById('tInpFechaLimite').value,
+    prioridad: document.getElementById('tInpPrioridad').value,
+    recordatorio: document.getElementById('tInpRecordatorio').value,
+    estado: 'pendiente',
+    completada: false
+  });
+
+  document.getElementById('tInpNombre').value = '';
+  document.getElementById('tareaEditorCard').style.display = 'none';
+  renderTareas();
+  saveTareas();
+  showToast('Tarea agregada exitosamente.');
+});
+
+document.getElementById('filterTareasGroup').addEventListener('click', e=>{
+  if(!e.target.classList.contains('pill-btn')) return;
+  [...e.target.parentElement.children].forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  tareaFilter = e.target.dataset.filter;
+  renderTareas();
+});
+
+// CRONOGRAMA MINUTO A MINUTO & MODO EVENTO
+let activeCronoEventId = null;
+
+function openCronoModal(eventId){
+  activeCronoEventId = eventId;
+  const evObj = [...eventos, ...escolares].find(x => x.id === eventId);
+  if(!evObj) return;
+
+  document.getElementById('cronoEventTitle').textContent = evObj.nombre;
+  document.getElementById('cronoEventMeta').textContent = `📅 ${monthLabel(evObj.mes)} · Día ${evObj.dia || 'Por definir'}`;
+  renderCronoTimeline();
+  document.getElementById('cronoModal').classList.add('active');
+}
+
+function renderCronoTimeline(){
+  const container = document.getElementById('cronoTimelineContainer');
+  const items = cronogramas[activeCronoEventId] || [];
+  container.innerHTML = '';
+
+  const total = items.length;
+  const completed = items.filter(x => x.estado === 'completado').length;
+  const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+  document.getElementById('cronoProgressPercent').textContent = `${pct}% (${completed}/${total})`;
+  document.getElementById('cronoProgressBar').style.width = `${pct}%`;
+
+  if(!items.length){
+    container.innerHTML = '<div class="empty-state-box" style="padding:20px;">No hay actividades registradas en el cronograma aún. Usa "+ Agregar paso".</div>';
+    return;
+  }
+
+  items.sort((a,b)=> (a.hora || '00:00').localeCompare(b.hora || '00:00'));
+
+  items.forEach((step, idx) => {
+    const isComp = step.estado === 'completado';
+    const isProc = step.estado === 'en_proceso';
+    const div = document.createElement('div');
+    div.className = `timeline-step ${isComp ? 'completed' : ''} ${isProc ? 'active-step' : ''}`;
+    div.innerHTML = `
+      <div class="timeline-time-col">${step.hora || '--:--'}</div>
+      <div class="timeline-node"></div>
+      <div class="timeline-card-body">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div>
+            <div style="font-size:14px; font-weight:700; color:var(--ink-primary);">${esc(step.nombre)}</div>
+            <div style="font-size:11.5px; color:var(--ink-tertiary); margin-top:2px;">
+              👤 <strong>${esc(step.responsable)}</strong> ${step.duracion ? '· ⏱️ ' + esc(step.duracion) : ''} ${step.lugar ? '· 📍 ' + esc(step.lugar) : ''}
+            </div>
+          </div>
+          <div style="display:flex; gap:6px;">
+            <button class="btn-secondary" data-type="toggle-crono-state" data-idx="${idx}" style="padding:3px 8px; font-size:11px;">
+              ${isComp ? '✅ Hecho' : (isProc ? '🟡 En curso' : '⬜ Pendiente')}
+            </button>
+            <button class="btn-icon-del" data-type="del-crono-item" data-idx="${idx}" style="width:24px; height:24px;">×</button>
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+document.getElementById('btnCloseCronoModal').addEventListener('click', ()=>{
+  document.getElementById('cronoModal').classList.remove('active');
+});
+document.getElementById('btnAddCronoItem').addEventListener('click', ()=>{
+  document.getElementById('cronoItemEditor').style.display = 'block';
+});
+document.getElementById('btnCancelCronoItem').addEventListener('click', ()=>{
+  document.getElementById('cronoItemEditor').style.display = 'none';
+});
+
+document.getElementById('btnSaveCronoItem').addEventListener('click', ()=>{
+  const nombre = document.getElementById('crInpNombre').value.trim();
+  if(!nombre){ showToast('Escribe el nombre de la actividad'); return; }
+
+  if(!cronogramas[activeCronoEventId]) cronogramas[activeCronoEventId] = [];
+  cronogramas[activeCronoEventId].push({
+    id: newId(),
+    hora: document.getElementById('crInpHora').value,
+    nombre,
+    responsable: document.getElementById('crInpResponsable').value,
+    duracion: document.getElementById('crInpDuracion').value.trim(),
+    lugar: document.getElementById('crInpLugar').value.trim(),
+    prioridad: 'alta',
+    estado: 'pendiente',
+    notif15: document.getElementById('crNotif15').checked,
+    notif5: document.getElementById('crNotif5').checked,
+    notif0: document.getElementById('crNotif0').checked
+  });
+
+  document.getElementById('crInpNombre').value = '';
+  document.getElementById('cronoItemEditor').style.display = 'none';
+  renderCronoTimeline();
+  saveCronogramas();
+  showToast('Paso agregado al cronograma.');
+});
+
+// MODO EVENTO EN VIVO
+let modoEventoTimer = null;
+
+function openModoEvento(){
+  const items = cronogramas[activeCronoEventId] || [];
+  if(!items.length){ showToast('Agrega al menos una actividad al cronograma'); return; }
+
+  const evObj = [...eventos, ...escolares].find(x => x.id === activeCronoEventId);
+  document.getElementById('emEventTitle').textContent = evObj ? evObj.nombre : 'Evento en Vivo';
+  document.getElementById('cronoModal').classList.remove('active');
+  document.getElementById('modoEventoOverlay').classList.add('active');
+
+  updateModoEventoUI();
+  clearInterval(modoEventoTimer);
+  modoEventoTimer = setInterval(updateModoEventoUI, 2000);
+}
+
+function updateModoEventoUI(){
+  const now = new Date();
+  document.getElementById('emClock').textContent = now.toLocaleTimeString('es-MX');
+
+  const items = cronogramas[activeCronoEventId] || [];
+  items.sort((a,b)=> (a.hora || '00:00').localeCompare(b.hora || '00:00'));
+
+  const total = items.length;
+  const completed = items.filter(x => x.estado === 'completado').length;
+  const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+  document.getElementById('emProgressFill').style.width = `${pct}%`;
+
+  let curIndex = items.findIndex(x => x.estado === 'en_proceso');
+  if(curIndex === -1){
+    curIndex = items.findIndex(x => x.estado !== 'completado');
+  }
+  if(curIndex === -1) curIndex = items.length - 1;
+
+  const cur = items[curIndex];
+  if(cur){
+    document.getElementById('emCurrentTime').textContent = cur.hora;
+    document.getElementById('emCurrentTitle').textContent = cur.nombre;
+    document.getElementById('emCurrentMeta').textContent = `👥 ${cur.responsable} ${cur.lugar ? '· 📍 ' + cur.lugar : ''}`;
+    document.getElementById('emStatusBadge').textContent = cur.estado === 'completado' ? '✅ COMPLETADA' : '● EN EJECUCIÓN';
+  }
+
+  const next = items[curIndex + 1];
+  if(next){
+    document.getElementById('emNextTitle').textContent = next.nombre;
+    document.getElementById('emNextTime').textContent = next.hora;
+    document.getElementById('emNextMeta').textContent = `👥 ${next.responsable}`;
+  } else {
+    document.getElementById('emNextTitle').textContent = 'Fin del cronograma';
+    document.getElementById('emNextTime').textContent = '🎉';
+    document.getElementById('emNextMeta').textContent = 'Todas las actividades programadas concluyeron.';
+  }
+
+  const listEl = document.getElementById('emFullList');
+  listEl.innerHTML = items.map((st, i) => `
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-radius:10px; background:${i === curIndex ? 'rgba(239,68,68,0.2)' : 'rgba(255,255,255,0.05)'}; border:${i === curIndex ? '1px solid #EF4444' : '1px solid transparent'};">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-family:var(--font-heading); font-size:13px; font-weight:800; color:#FCD34D;">${st.hora}</span>
+        <span style="font-size:13px; font-weight:600; ${st.estado==='completado'?'text-decoration:line-through; opacity:0.6;':''}">${esc(st.nombre)}</span>
+      </div>
+      <span style="font-size:11px; font-weight:700; color:${st.estado==='completado'?'#10B981':'#D1D5DB'};">${st.estado==='completado'?'✓ Hecho':'Pendiente'}</span>
+    </div>
+  `).join('');
+}
+
+document.getElementById('btnAbrirModoEvento').addEventListener('click', openModoEvento);
+document.getElementById('btnCloseModoEvento').addEventListener('click', ()=>{
+  document.getElementById('modoEventoOverlay').classList.remove('active');
+  clearInterval(modoEventoTimer);
+});
+
+document.getElementById('btnEmCompletarActual').addEventListener('click', ()=>{
+  const items = cronogramas[activeCronoEventId] || [];
+  let curIndex = items.findIndex(x => x.estado === 'en_proceso');
+  if(curIndex === -1) curIndex = items.findIndex(x => x.estado !== 'completado');
+  if(curIndex >= 0 && items[curIndex]){
+    items[curIndex].estado = 'completado';
+    if(items[curIndex + 1]) items[curIndex + 1].estado = 'en_proceso';
+    saveCronogramas();
+    updateModoEventoUI();
+    showToast('¡Actividad completada!');
+  }
+});
+
 // FINANZAS Y DASHBOARD
-// =====================================================================
 function totalEscolarGastos(){ return escolares.reduce((s,e)=>s+(e.gasto||0),0); }
 function totalExtras(tipo){ return extras.filter(x=>x.tipo===tipo).reduce((s,x)=>s+(x.monto||0),0); }
 
@@ -2121,14 +3280,11 @@ function updateDashboard(){
 
   const dBal = document.getElementById('dashTotalBalance');
   if(dBal){ dBal.textContent = money(netBalance); dBal.className = 'stat-val ' + (netBalance>=0?'positive':'negative'); }
-  const dFBal = document.getElementById('dashFiestasBal');
-  if(dFBal) dFBal.textContent = money(catExtra - catExtraGasto);
   const dVBal = document.getElementById('dashVentasBal');
   if(dVBal) dVBal.textContent = money(catVentasIng - catVentasGasto);
   const dEvs = document.getElementById('dashTotalEventos');
   if(dEvs) dEvs.textContent = (escolares.length + eventos.length);
 
-  // Next upcoming chronological items
   const upcomingDiv = document.getElementById('dashUpcomingList');
   if(upcomingDiv){
     const all = [
@@ -2141,7 +3297,9 @@ function updateDashboard(){
       return (a.dia||99) - (b.dia||99);
     }).slice(0, 4);
 
-    upcomingDiv.innerHTML = all.map(item => `
+    upcomingDiv.innerHTML = all.map(item => {
+      const hasCrono = (cronogramas[item.id] || []).length > 0;
+      return `
       <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 12px; background:var(--surface-secondary); border-radius:var(--radius-md); gap:10px;">
         <div style="display:flex; align-items:center; gap:10px; min-width:0;">
           <span style="font-size:10px; font-weight:800; padding:3px 7px; border-radius:6px; background:#FFF; border:1px solid var(--border); color:var(--wine); white-space:nowrap;">
@@ -2152,8 +3310,9 @@ function updateDashboard(){
             <div style="font-size:10.5px; color:var(--ink-tertiary);">${esc(item.type)}</div>
           </div>
         </div>
+        ${hasCrono ? `<button class="btn-secondary" data-type="open-crono" data-id="${item.id}" style="padding:3px 8px; font-size:11px; white-space:nowrap;">⏱️ Cronograma</button>` : ''}
       </div>
-    `).join('');
+    `}).join('');
   }
 }
 
@@ -2177,7 +3336,7 @@ function renderExtras(){
             </select>
             <input type="number" min="0" value="${x.monto||0}" data-type="ex-monto" data-id="${x.id}" style="width:100px; padding:4px 8px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:12px; font-weight:700;">
           </div>
-          <input type="text" class="item-notes-input" maxlength="150" value="${esc(x.nota||'')}" data-type="ex-nota" data-id="${x.id}" placeholder="Observaciones / factura / comprobante…">
+          <input type="text" class="item-notes-input" maxlength="150" value="${esc(x.nota||'')}" data-type="ex-nota" data-id="${x.id}" placeholder="Observaciones / comprobante…">
         </div>
         <button class="btn-icon-del" data-type="del-extra" data-id="${x.id}">×</button>
       </div>`;
@@ -2185,9 +3344,7 @@ function renderExtras(){
   });
 }
 
-// =====================================================================
 // FOTOS & LIGHTBOX
-// =====================================================================
 function renderFotos(){
   const grid = document.getElementById('photoGrid');
   if(!grid) return;
@@ -2202,7 +3359,9 @@ function renderFotos(){
     `;
     div.addEventListener('click', (ev)=>{
       if(ev.target.dataset.type === 'del-foto') return;
-      openLightbox(f.url);
+      const m = document.getElementById('photoLightbox');
+      document.getElementById('lightboxImg').src = f.url;
+      m.classList.add('active');
     });
     grid.appendChild(div);
   });
@@ -2210,18 +3369,8 @@ function renderFotos(){
   if(b) b.textContent = fotos.length;
 }
 
-function openLightbox(url){
-  const m = document.getElementById('photoLightbox');
-  const img = document.getElementById('lightboxImg');
-  if(!m || !img) return;
-  img.src = url;
-  m.classList.add('active');
-}
 document.getElementById('closeLightbox').addEventListener('click', ()=>{
   document.getElementById('photoLightbox').classList.remove('active');
-});
-document.getElementById('photoLightbox').addEventListener('click', (e)=>{
-  if(e.target.id === 'photoLightbox') e.currentTarget.classList.remove('active');
 });
 
 async function comprimirImagen(file, maxSize=1400, calidad=0.82){
@@ -2261,21 +3410,18 @@ document.getElementById('photoInput').addEventListener('change', async (e)=>{
       form.append('image', base64);
       const resp = await fetch('https://api.imgbb.com/1/upload', { method:'POST', body: form });
       const data = await resp.json();
-      if(!data.success) throw new Error('ImgBB no aceptó la imagen');
+      if(!data.success) throw new Error('ImgBB error');
       const url = data.data.url;
       await addDoc(fotosCol, { url, fecha: new Date().toISOString() });
       showToast('¡Foto agregada al álbum!');
     }catch(err){
-      console.warn('No se pudo subir la foto', err);
-      showToast('Error al subir imagen. Revisa tu conexión.');
+      showToast('Error al subir imagen.');
     }
   }
   e.target.value = '';
 });
 
-// =====================================================================
 // SPOTLIGHT SEARCH
-// =====================================================================
 const spotlightModal = document.getElementById('spotlightModal');
 const spotlightInput = document.getElementById('spotlightInput');
 const spotlightResults = document.getElementById('spotlightResults');
@@ -2286,9 +3432,8 @@ function openSearch(){
   spotlightInput.focus();
   renderSearchResults('');
 }
-function closeSearch(){
-  spotlightModal.classList.remove('active');
-}
+function closeSearch(){ spotlightModal.classList.remove('active'); }
+
 document.getElementById('openSearchBtn').addEventListener('click', openSearch);
 document.getElementById('closeSearchBtn').addEventListener('click', closeSearch);
 document.addEventListener('keydown', e=>{
@@ -2302,15 +3447,17 @@ spotlightInput.addEventListener('input', e=>{
 
 function renderSearchResults(query){
   if(!query){
-    spotlightResults.innerHTML = '<div style="padding:16px; text-align:center; color:var(--ink-tertiary); font-size:12.5px;">Escribe para buscar entre fiestas, ventas y calendario escolar…</div>';
+    spotlightResults.innerHTML = '<div style="padding:16px; text-align:center; color:var(--ink-tertiary); font-size:12.5px;">Escribe para buscar entre fiestas, ventas, minutas, tareas y calendario escolar…</div>';
     return;
   }
   const all = [
     ...eventos.map(x=>({ ...x, kind:'Fiesta ('+x.categoria+')', targetView:'extracurricular' })),
     ...escolares.map(x=>({ ...x, kind:'Escolar IMEX', targetView:'escolar' })),
     ...ventas.map(x=>({ ...x, kind:'Venta escolar', targetView:'ventas' })),
+    ...minutas.map(x=>({ ...x, nombre: x.titulo, kind:'Minuta de Reunión', targetView:'minutas' })),
+    ...tareas.map(x=>({ ...x, kind:'Tarea ('+x.responsable+')', targetView:'tareas' }))
   ];
-  const matched = all.filter(x => (x.nombre||'').toLowerCase().includes(query) || (x.nota||'').toLowerCase().includes(query));
+  const matched = all.filter(x => (x.nombre||'').toLowerCase().includes(query) || (x.nota||'').toLowerCase().includes(query) || (x.desc||'').toLowerCase().includes(query));
 
   if(!matched.length){
     spotlightResults.innerHTML = '<div style="padding:20px; text-align:center; color:var(--ink-tertiary); font-size:12.5px;">No se encontraron resultados para "'+esc(query)+'"</div>';
@@ -2318,10 +3465,10 @@ function renderSearchResults(query){
   }
 
   spotlightResults.innerHTML = matched.slice(0, 10).map(item => `
-    <div class="spotlight-item" data-goto="${item.targetView}" data-month="${item.mes}">
+    <div class="spotlight-item" data-goto="${item.targetView}" data-month="${item.mes || ''}">
       <div>
-        <div class="spotlight-item-title">${esc(item.nombre)}</div>
-        <div class="spotlight-item-sub">${esc(item.kind)} · ${monthLabel(item.mes)} ${item.dia ? 'Día ' + item.dia : ''}</div>
+        <div style="font-size:13.5px; font-weight:700; color:var(--ink-primary);">${esc(item.nombre)}</div>
+        <div style="font-size:11px; color:var(--ink-tertiary);">${esc(item.kind)} ${item.mes ? '· ' + monthLabel(item.mes) : ''}</div>
       </div>
       <svg viewBox="0 0 24 24" style="width:16px; height:16px; stroke:var(--ink-tertiary); fill:none; stroke-width:2;"><path d="M9 18l6-6-6-6"/></svg>
     </div>
@@ -2338,9 +3485,7 @@ spotlightResults.addEventListener('click', e=>{
   closeSearch();
 });
 
-// =====================================================================
 // NAVEGACIÓN Y RUTAS
-// =====================================================================
 function switchView(viewName){
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewName));
   document.querySelectorAll('.b-nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewName));
@@ -2367,9 +3512,7 @@ document.addEventListener('click', e=>{
   }
 });
 
-// =====================================================================
 // EVENTOS DE INTERFAZ & DELEGACIÓN
-// =====================================================================
 document.addEventListener('input', e=>{
   const t = e.target;
   const ev = eventos.find(x=>x.id===t.dataset.id);
@@ -2435,6 +3578,7 @@ document.addEventListener('click', e=>{
     return;
   }
 
+  // FIESTAS ACTIONS
   if(t.dataset.type==='del-ev'){
     eventos = eventos.filter(x=>x.id!==t.dataset.id);
     renderExtra(); saveExtra(); showToast('Fiesta eliminada');
@@ -2453,6 +3597,7 @@ document.addEventListener('click', e=>{
     renderExtra(); saveExtra(); showToast('Nueva fiesta agregada');
   }
 
+  // ESCOLAR ACTIONS
   if(t.dataset.type==='del-esc'){
     escolares = escolares.filter(x=>x.id!==t.dataset.id);
     renderEscolar(); saveEscolar(); showToast('Actividad escolar eliminada');
@@ -2463,6 +3608,57 @@ document.addEventListener('click', e=>{
     renderEscolar(); saveEscolar(); showToast('Actividad agregada');
   }
 
+  // CRONOGRAMA OPEN
+  if(t.dataset.type==='open-crono'){
+    openCronoModal(t.dataset.id);
+  }
+  if(t.dataset.type==='toggle-crono-state'){
+    const idx = parseInt(t.dataset.idx);
+    const items = cronogramas[activeCronoEventId] || [];
+    if(items[idx]){
+      const cur = items[idx].estado;
+      items[idx].estado = cur === 'pendiente' ? 'en_proceso' : (cur === 'en_proceso' ? 'completado' : 'pendiente');
+      saveCronogramas();
+      renderCronoTimeline();
+    }
+  }
+  if(t.dataset.type==='del-crono-item'){
+    const idx = parseInt(t.dataset.idx);
+    const items = cronogramas[activeCronoEventId] || [];
+    items.splice(idx, 1);
+    saveCronogramas();
+    renderCronoTimeline();
+  }
+
+  // MINUTAS ACTIONS
+  if(t.dataset.type==='share-minuta'){
+    const m = minutas.find(x=>x.id===t.dataset.id);
+    if(m) shareMinutaWhatsApp(m);
+  }
+  if(t.dataset.type==='edit-minuta'){
+    const m = minutas.find(x=>x.id===t.dataset.id);
+    if(m) openMinutaEditor(m);
+  }
+  if(t.dataset.type==='del-minuta'){
+    minutas = minutas.filter(x=>x.id!==t.dataset.id);
+    renderMinutas(); saveMinutas(); showToast('Minuta eliminada');
+  }
+
+  // TAREAS ACTIONS
+  if(t.dataset.type==='toggle-tarea'){
+    const tk = tareas.find(x=>x.id===t.dataset.id);
+    if(tk){
+      tk.completada = !tk.completada;
+      tk.estado = tk.completada ? 'completado' : 'pendiente';
+      renderTareas(); saveTareas(); showToast(tk.completada ? '¡Tarea completada!' : 'Tarea reactivada');
+    }
+  }
+  if(t.dataset.type==='del-tarea'){
+    tareas = tareas.filter(x=>x.id!==t.dataset.id);
+    renderTareas(); saveTareas(); showToast('Tarea eliminada');
+  }
+
+  // VENTAS ACTIONS
   if(t.dataset.type==='del-venta'){
     ventas = ventas.filter(x=>x.id!==t.dataset.id);
     renderVentas(); saveVentas(); showToast('Venta eliminada');
@@ -2473,6 +3669,7 @@ document.addEventListener('click', e=>{
     renderVentas(); saveVentas(); showToast('Producto agregado');
   }
 
+  // EXTRAS FINANZAS
   if(t.dataset.type==='del-extra'){
     extras = extras.filter(x=>x.id!==t.dataset.id);
     updateFinanzas(); renderExtras(); saveFinanzas(); showToast('Movimiento eliminado');
@@ -2484,7 +3681,7 @@ document.addEventListener('click', e=>{
 
   if(t.dataset.type==='del-foto'){
     const fid = t.dataset.id;
-    deleteDoc(doc(db,'fotos',fid)).then(()=> showToast('Foto eliminada')).catch(err=>console.warn('Error', err));
+    deleteDoc(doc(db,'fotos',fid)).then(()=> showToast('Foto eliminada')).catch(err=>console.warn(err));
   }
 });
 
@@ -2496,82 +3693,104 @@ document.getElementById('filterSegExtra').addEventListener('click', e=>{
   renderExtra();
 });
 
-// =====================================================================
 // PERSISTENCIA EN TIEMPO REAL
-// =====================================================================
 async function saveExtra(){
-  try{ await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); showToast(); }
-  catch(err){ console.warn('Sync error', err); }
+  try{ await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); localStorage.setItem('c_eventos', JSON.stringify(eventos)); }catch(e){}
 }
 saveExtra = debounce(saveExtra);
 
 async function saveEscolar(){
-  try{ await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); updateFinanzas(); showToast(); }
-  catch(err){ console.warn('Sync error', err); }
+  try{ await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); updateFinanzas(); localStorage.setItem('c_escolares', JSON.stringify(escolares)); }catch(e){}
 }
 saveEscolar = debounce(saveEscolar);
 
 async function saveVentas(){
-  try{ await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); showToast(); }
-  catch(err){ console.warn('Sync error', err); }
+  try{ await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); localStorage.setItem('c_ventas', JSON.stringify(ventas)); }catch(e){}
 }
 saveVentas = debounce(saveVentas);
 
 async function saveFinanzas(){
-  try{ await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); showToast(); }
-  catch(err){ console.warn('Sync error', err); }
+  try{ await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); localStorage.setItem('c_extras', JSON.stringify(extras)); }catch(e){}
 }
 saveFinanzas = debounce(saveFinanzas);
 
-onSnapshot(docRefExtra, (snap)=>{
+async function saveMinutas(){
+  try{ await setDoc(docRefMinutas, { minutas, actualizado: new Date().toISOString() }); localStorage.setItem('c_minutas', JSON.stringify(minutas)); }catch(e){}
+}
+saveMinutas = debounce(saveMinutas);
+
+async function saveTareas(){
+  try{ await setDoc(docRefTareas, { tareas, actualizado: new Date().toISOString() }); localStorage.setItem('c_tareas', JSON.stringify(tareas)); }catch(e){}
+}
+saveTareas = debounce(saveTareas);
+
+async function saveCronogramas(){
+  try{ await setDoc(docRefCronos, { cronogramas, actualizado: new Date().toISOString() }); localStorage.setItem('c_cronogramas', JSON.stringify(cronogramas)); }catch(e){}
+}
+saveCronogramas = debounce(saveCronogramas);
+
+// LISTENERS FIRESTORE REALTIME
+onSnapshot(docRefExtra, snap => {
   if(!snap.exists() || snap.metadata.hasPendingWrites) return;
-  const data = snap.data();
-  if(data.eventos) eventos = data.eventos;
-  if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
-  renderExtra();
-}, err=>console.warn(err));
+  const d = snap.data(); if(d.eventos) eventos = d.eventos; renderExtra();
+}, ()=>{});
 
-onSnapshot(docRefEscolar, (snap)=>{
+onSnapshot(docRefEscolar, snap => {
   if(!snap.exists() || snap.metadata.hasPendingWrites) return;
-  const data = snap.data();
-  if(data.escolares) escolares = data.escolares;
-  if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
-  renderEscolar();
-  updateFinanzas();
-}, err=>console.warn(err));
+  const d = snap.data(); if(d.escolares) escolares = d.escolares; renderEscolar(); updateFinanzas();
+}, ()=>{});
 
-onSnapshot(docRefVentas, (snap)=>{
+onSnapshot(docRefVentas, snap => {
   if(!snap.exists() || snap.metadata.hasPendingWrites) return;
-  const data = snap.data();
-  if(data.ventas) ventas = data.ventas;
-  if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
-  renderVentas();
-}, err=>console.warn(err));
+  const d = snap.data(); if(d.ventas) ventas = d.ventas; renderVentas();
+}, ()=>{});
 
-onSnapshot(query(fotosCol, orderBy('fecha','desc')), (snap)=>{
-  fotos = snap.docs.map(d=>({id:d.id, ...d.data()}));
-  renderFotos();
-}, err=>console.warn(err));
-
-onSnapshot(docRefFinanzas, (snap)=>{
+onSnapshot(docRefMinutas, snap => {
   if(!snap.exists() || snap.metadata.hasPendingWrites) return;
-  const data = snap.data();
-  if(data.extras) extras = data.extras;
-  if(data.idCounter) idCounter = Math.max(idCounter, data.idCounter);
-  updateFinanzas(); renderExtras();
-}, err=>console.warn(err));
+  const d = snap.data(); if(d.minutas) minutas = d.minutas; renderMinutas();
+}, ()=>{});
 
+onSnapshot(docRefTareas, snap => {
+  if(!snap.exists() || snap.metadata.hasPendingWrites) return;
+  const d = snap.data(); if(d.tareas) tareas = d.tareas; renderTareas();
+}, ()=>{});
+
+onSnapshot(docRefCronos, snap => {
+  if(!snap.exists() || snap.metadata.hasPendingWrites) return;
+  const d = snap.data(); if(d.cronogramas) cronogramas = d.cronogramas;
+}, ()=>{});
+
+onSnapshot(query(fotosCol, orderBy('fecha','desc')), snap => {
+  fotos = snap.docs.map(d=>({id:d.id, ...d.data()})); renderFotos();
+}, ()=>{});
+
+onSnapshot(docRefFinanzas, snap => {
+  if(!snap.exists() || snap.metadata.hasPendingWrites) return;
+  const d = snap.data(); if(d.extras) extras = d.extras; updateFinanzas(); renderExtras();
+}, ()=>{});
+
+// INIT LOCALSTORAGE Y FIRESTORE
 (async function init(){
+  try {
+    const locM = localStorage.getItem('c_minutas'); if(locM) minutas = JSON.parse(locM);
+    const locT = localStorage.getItem('c_tareas'); if(locT) tareas = JSON.parse(locT);
+    const locC = localStorage.getItem('c_cronogramas'); if(locC) cronogramas = JSON.parse(locC);
+  } catch(e){}
+
   try{ const s = await getDoc(docRefExtra); if(!s.exists()) await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); }catch(e){}
   try{ const s = await getDoc(docRefEscolar); if(!s.exists()) await setDoc(docRefEscolar, { escolares, idCounter, actualizado: new Date().toISOString() }); }catch(e){}
   try{ const s = await getDoc(docRefVentas); if(!s.exists()) await setDoc(docRefVentas, { ventas, idCounter, actualizado: new Date().toISOString() }); }catch(e){}
   try{ const s = await getDoc(docRefFinanzas); if(!s.exists()) await setDoc(docRefFinanzas, { extras, idCounter, actualizado: new Date().toISOString() }); }catch(e){}
-  renderExtra(); renderEscolar(); renderVentas(); renderFotos(); updateFinanzas(); renderExtras(); updateDashboard();
+  try{ const s = await getDoc(docRefMinutas); if(!s.exists()) await setDoc(docRefMinutas, { minutas, actualizado: new Date().toISOString() }); }catch(e){}
+  try{ const s = await getDoc(docRefTareas); if(!s.exists()) await setDoc(docRefTareas, { tareas, actualizado: new Date().toISOString() }); }catch(e){}
+  try{ const s = await getDoc(docRefCronos); if(!s.exists()) await setDoc(docRefCronos, { cronogramas, actualizado: new Date().toISOString() }); }catch(e){}
+
+  renderExtra(); renderEscolar(); renderVentas(); renderFotos(); updateFinanzas(); renderExtras(); renderMinutas(); renderTareas(); updateDashboard(); updateNotifBtnUI();
 })();
 
 if('serviceWorker' in navigator){
   window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('./service-worker.js').catch(err=>console.warn('SW no registrado', err));
+    navigator.serviceWorker.register('./service-worker.js').catch(err=>console.warn('SW:', err));
   });
 }
 </script>
