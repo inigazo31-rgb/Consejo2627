@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-title" content="27MEX Seniors">
 <link rel="apple-touch-icon" href="icon-180.png">
 
-<!-- Fuentes modernas y de alto rendimiento -->
+<!-- Tipografías Premium -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -19,29 +19,29 @@
 <style>
   :root {
     --wine: #830201;
-    --wine-dark: #5C0000;
-    --wine-light: #A31818;
-    --wine-subtle: rgba(131, 2, 1, 0.06);
-    --wine-glow: rgba(131, 2, 1, 0.12);
+    --wine-dark: #550000;
+    --wine-light: #9B1515;
+    --wine-subtle: rgba(131, 2, 1, 0.07);
+    --wine-glow: rgba(131, 2, 1, 0.14);
 
-    --bg-app: #F8F6F0;
+    --bg-app: #F7F5EE;
     --surface: #FFFFFF;
-    --surface-glass: rgba(255, 255, 255, 0.88);
-    --surface-secondary: #F3EFE6;
-    --border: #E6DFD3;
-    --border-light: #EFE9DF;
+    --surface-glass: rgba(255, 255, 255, 0.92);
+    --surface-secondary: #F2EDE2;
+    --border: #E4DDD0;
+    --border-light: #EFE9DE;
 
-    --ink-primary: #18100C;
-    --ink-secondary: #574B43;
-    --ink-tertiary: #8E8278;
+    --ink-primary: #17100C;
+    --ink-secondary: #52473F;
+    --ink-tertiary: #877B71;
     --ink-inverse: #FFFFFF;
 
     --green: #15803D;
-    --green-bg: #EAF8EE;
-    --green-border: #BBF7D0;
+    --green-bg: #E8F7ED;
+    --green-border: #BAF0CB;
 
     --red: #BE123C;
-    --red-bg: #FFF1F2;
+    --red-bg: #FFF0F2;
     --red-border: #FECDD3;
 
     --amber: #B45309;
@@ -63,16 +63,16 @@
     --escolar: #8A6A11;
     --escolar-bg: #FEF9C3;
 
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 18px;
-    --radius-xl: 24px;
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 26px;
     --radius-full: 9999px;
 
-    --shadow-sm: 0 1px 2px rgba(24, 16, 12, 0.04);
-    --shadow-md: 0 4px 14px -2px rgba(24, 16, 12, 0.06), 0 2px 4px rgba(24, 16, 12, 0.02);
-    --shadow-lg: 0 12px 30px -4px rgba(24, 16, 12, 0.08), 0 4px 10px rgba(24, 16, 12, 0.03);
-    --shadow-float: 0 20px 40px -8px rgba(131, 2, 1, 0.16);
+    --shadow-sm: 0 1px 3px rgba(23, 16, 12, 0.04);
+    --shadow-md: 0 4px 16px -2px rgba(23, 16, 12, 0.06), 0 2px 4px rgba(23, 16, 12, 0.02);
+    --shadow-lg: 0 14px 34px -4px rgba(23, 16, 12, 0.08), 0 4px 12px rgba(23, 16, 12, 0.03);
+    --shadow-float: 0 20px 48px -8px rgba(131, 2, 1, 0.2);
 
     --font-main: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-heading: "Space Grotesk", var(--font-main);
@@ -113,9 +113,7 @@
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  button:active {
-    transform: scale(0.97);
-  }
+  button:active { transform: scale(0.96); }
 
   .app-layout {
     display: flex;
@@ -124,7 +122,7 @@
 
   /* SIDEBAR */
   .sidebar {
-    width: 240px;
+    width: 250px;
     flex-shrink: 0;
     background: var(--surface);
     border-right: 1px solid var(--border);
@@ -133,7 +131,7 @@
     position: sticky;
     top: 0;
     height: 100vh;
-    padding: 20px 14px;
+    padding: 24px 16px;
     z-index: 40;
   }
 
@@ -141,19 +139,20 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 6px 10px 18px;
+    padding: 6px 8px 20px;
     border-bottom: 1px solid var(--border-light);
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
   .brand-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(131, 2, 1, 0.2);
-    border: 1.5px solid rgba(131, 2, 1, 0.15);
+    box-shadow: 0 3px 10px rgba(131, 2, 1, 0.22);
+    border: 1.5px solid rgba(131, 2, 1, 0.2);
     background: var(--wine);
+    flex-shrink: 0;
   }
 
   .brand-avatar img {
@@ -164,7 +163,7 @@
   }
 
   .brand-text h2 {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
     color: var(--wine);
     letter-spacing: -0.01em;
@@ -172,8 +171,8 @@
   }
 
   .brand-text span {
-    font-size: 10.5px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 700;
     color: var(--ink-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -182,7 +181,7 @@
   .nav-group {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     flex: 1;
     overflow-y: auto;
   }
@@ -190,10 +189,10 @@
   .nav-item {
     display: flex;
     align-items: center;
-    gap: 11px;
-    padding: 8px 12px;
+    gap: 12px;
+    padding: 10px 14px;
     border-radius: var(--radius-md);
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 600;
     color: var(--ink-secondary);
     text-align: left;
@@ -202,8 +201,8 @@
   }
 
   .nav-item svg {
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
     stroke: currentColor;
     fill: none;
     stroke-width: 1.9;
@@ -218,45 +217,43 @@
   .nav-item.active {
     background: var(--wine);
     color: #FFFFFF;
-    box-shadow: 0 4px 12px -2px rgba(131, 2, 1, 0.35);
+    box-shadow: 0 4px 14px -2px rgba(131, 2, 1, 0.35);
   }
 
-  .nav-item.active svg {
-    stroke: #FFFFFF;
-  }
+  .nav-item.active svg { stroke: #FFFFFF; }
 
   .nav-badge {
     margin-left: auto;
-    font-size: 10.5px;
+    font-size: 11px;
     font-weight: 700;
-    padding: 1px 7px;
+    padding: 2px 8px;
     border-radius: var(--radius-full);
     background: rgba(0, 0, 0, 0.06);
     color: var(--ink-secondary);
   }
 
   .nav-item.active .nav-badge {
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.24);
     color: #FFFFFF;
   }
 
   .sync-indicator {
-    padding: 10px 12px;
+    padding: 12px 14px;
     border-radius: var(--radius-md);
     background: var(--surface-secondary);
     border: 1px solid var(--border-light);
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 11.5px;
+    gap: 10px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--ink-secondary);
-    margin-top: 10px;
+    margin-top: 12px;
   }
 
   .sync-dot {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--green);
     box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.2);
@@ -265,7 +262,7 @@
 
   @keyframes pulse {
     0% { transform: scale(0.95); opacity: 0.8; }
-    50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 0 5px rgba(21, 128, 61, 0.25); }
+    50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 0 6px rgba(21, 128, 61, 0.25); }
     100% { transform: scale(0.95); opacity: 0.8; }
   }
 
@@ -279,15 +276,16 @@
   .container {
     max-width: 1080px;
     margin: 0 auto;
-    padding: calc(20px + env(safe-area-inset-top, 0px)) 20px calc(100px + env(safe-area-inset-bottom, 0px));
+    padding: calc(24px + env(safe-area-inset-top, 0px)) 24px calc(110px + env(safe-area-inset-bottom, 0px));
   }
 
+  /* TOP ACTION BAR */
   .top-action-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
-    gap: 10px;
+    margin-bottom: 24px;
+    gap: 12px;
   }
 
   .mobile-brand {
@@ -299,39 +297,41 @@
   .search-trigger-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 8px 14px;
+    padding: 10px 16px;
     border-radius: var(--radius-full);
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 500;
     color: var(--ink-tertiary);
     box-shadow: var(--shadow-sm);
+    min-height: 42px;
   }
 
   .search-trigger-btn kbd {
-    font-size: 10px;
+    font-size: 10.5px;
     font-weight: 700;
     background: var(--surface-secondary);
     border: 1px solid var(--border);
-    padding: 1px 5px;
-    border-radius: 4px;
+    padding: 2px 6px;
+    border-radius: 6px;
     color: var(--ink-secondary);
   }
 
   .notif-perm-btn {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 8px 12px;
+    padding: 9px 16px;
     border-radius: var(--radius-full);
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 700;
     color: var(--wine);
     box-shadow: var(--shadow-sm);
+    min-height: 42px;
   }
 
   .view { display: none; }
@@ -345,12 +345,13 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* CARDS */
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 18px 20px;
-    margin-bottom: 16px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
     box-shadow: var(--shadow-sm);
     position: relative;
   }
@@ -359,28 +360,28 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 14px;
-    gap: 10px;
+    margin-bottom: 18px;
+    gap: 12px;
   }
 
   .card-title {
     font-family: var(--font-heading);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--ink-primary);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   .hero-banner {
-    background: linear-gradient(145deg, var(--wine) 0%, #4D0000 100%);
+    background: linear-gradient(145deg, var(--wine) 0%, #480000 100%);
     border-radius: var(--radius-xl);
-    padding: 24px 22px;
+    padding: 28px 26px;
     color: #FFFFFF;
     position: relative;
     overflow: hidden;
-    margin-bottom: 18px;
+    margin-bottom: 22px;
     box-shadow: var(--shadow-md);
   }
 
@@ -389,20 +390,20 @@
     position: absolute;
     top: -50%;
     right: -10%;
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0%, transparent 70%);
     pointer-events: none;
   }
 
   .hero-eyebrow {
-    font-size: 11px;
+    font-size: 11.5px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.75);
-    margin-bottom: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -410,7 +411,7 @@
 
   .hero-banner h1 {
     font-family: var(--font-heading);
-    font-size: 21px;
+    font-size: 23px;
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.25;
@@ -418,37 +419,38 @@
   }
 
   .hero-banner p {
-    font-size: 13px;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.88);
-    max-width: 620px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 640px;
   }
 
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-bottom: 18px;
+    gap: 12px;
+    margin-bottom: 22px;
   }
 
   .stat-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 13px 15px;
+    padding: 16px 18px;
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: 84px;
   }
 
   .stat-label {
-    font-size: 10.5px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--ink-tertiary);
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -456,7 +458,7 @@
 
   .stat-val {
     font-family: var(--font-heading);
-    font-size: 19px;
+    font-size: 21px;
     font-weight: 700;
     color: var(--ink-primary);
     letter-spacing: -0.02em;
@@ -465,7 +467,7 @@
 
   .stat-card.highlight {
     border-color: rgba(131, 2, 1, 0.25);
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(131, 2, 1, 0.03) 100%);
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(131, 2, 1, 0.04) 100%);
   }
 
   .stat-val.positive { color: var(--green); }
@@ -475,8 +477,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 16px;
+    gap: 12px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
   }
 
@@ -485,8 +487,8 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-full);
-    padding: 3px;
-    gap: 2px;
+    padding: 4px;
+    gap: 4px;
     box-shadow: var(--shadow-sm);
     overflow-x: auto;
     max-width: 100%;
@@ -494,35 +496,39 @@
 
   .pill-btn {
     border-radius: var(--radius-full);
-    padding: 6px 14px;
-    font-size: 12px;
+    padding: 8px 16px;
+    font-size: 12.5px;
     font-weight: 600;
     color: var(--ink-secondary);
     white-space: nowrap;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
   }
 
   .pill-btn.active {
     background: var(--wine);
     color: #FFFFFF;
-    box-shadow: 0 2px 6px rgba(131, 2, 1, 0.25);
+    box-shadow: 0 2px 8px rgba(131, 2, 1, 0.25);
   }
 
   .btn-primary {
     background: var(--wine);
     color: #FFFFFF;
-    padding: 8px 16px;
+    padding: 10px 20px;
     border-radius: var(--radius-full);
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 700;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    box-shadow: 0 3px 10px rgba(131, 2, 1, 0.25);
+    gap: 8px;
+    box-shadow: 0 3px 12px rgba(131, 2, 1, 0.25);
+    min-height: 42px;
   }
 
   .btn-primary svg {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     stroke: currentColor;
     fill: none;
     stroke-width: 2.4;
@@ -534,13 +540,14 @@
     background: var(--surface-secondary);
     border: 1px solid var(--border);
     color: var(--ink-primary);
-    padding: 8px 14px;
+    padding: 9px 16px;
     border-radius: var(--radius-full);
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 700;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    min-height: 38px;
   }
 
   /* ACORDEONES */
@@ -548,14 +555,14 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
   }
 
   .month-header {
     width: 100%;
-    padding: 14px 18px;
+    padding: 16px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -571,12 +578,12 @@
   .month-title-wrap {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
 
   .month-title {
     font-family: var(--font-heading);
-    font-size: 13.5px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--wine);
     letter-spacing: 0.02em;
@@ -584,26 +591,26 @@
   }
 
   .month-counter {
-    font-size: 11px;
+    font-size: 11.5px;
     font-weight: 700;
     color: var(--ink-secondary);
     background: rgba(0, 0, 0, 0.06);
-    padding: 2px 8px;
+    padding: 3px 9px;
     border-radius: var(--radius-full);
   }
 
   .month-financial-preview {
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--green);
     margin-left: auto;
-    margin-right: 12px;
+    margin-right: 14px;
     font-variant-numeric: tabular-nums;
   }
 
   .chevron-icon {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     stroke: var(--ink-tertiary);
     fill: none;
     stroke-width: 2.2;
@@ -621,22 +628,23 @@
     transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .month-group.open .month-content { max-height: 9000px; }
+  .month-group.open .month-content { max-height: 9999px; }
+
   .month-inner-list {
-    padding: 12px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
   }
 
   .item-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 14px 16px;
+    padding: 18px 20px;
     position: relative;
     border-left: 4px solid var(--ink-tertiary);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
   }
 
   .item-card.antro { border-left-color: var(--antro); }
@@ -646,24 +654,24 @@
 
   .item-header-grid {
     display: grid;
-    grid-template-columns: 88px 1fr auto;
-    gap: 12px;
+    grid-template-columns: 100px 1fr auto;
+    gap: 14px;
     align-items: start;
   }
 
   .date-picker-box {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
 
   .date-picker-box select,
   .date-picker-box input {
     width: 100%;
-    padding: 6px 8px;
+    padding: 8px 10px;
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 600;
     background: var(--surface-secondary);
     color: var(--ink-primary);
@@ -674,31 +682,31 @@
     border: none;
     background: transparent;
     font-family: var(--font-heading);
-    font-size: 14.5px;
+    font-size: 15.5px;
     font-weight: 700;
     color: var(--ink-primary);
-    padding: 2px 0;
-    margin-bottom: 6px;
+    padding: 4px 0;
+    margin-bottom: 8px;
   }
 
   .item-title-input:focus {
     outline: none;
     background: var(--surface-secondary);
-    border-radius: 4px;
-    padding: 2px 6px;
+    border-radius: 6px;
+    padding: 4px 8px;
   }
 
   .item-meta-row {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     flex-wrap: wrap;
   }
 
   .tag-badge {
-    font-size: 10px;
+    font-size: 10.5px;
     font-weight: 700;
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: var(--radius-full);
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -713,13 +721,13 @@
   .tag-badge.ventas { background: var(--ventas-bg); color: var(--ventas); border: 1px solid var(--ventas-border); }
   .tag-badge.confirmada { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); cursor: pointer; }
   .tag-badge.estimada { background: var(--casa-bg); color: var(--casa); border: 1px solid var(--casa-border); cursor: pointer; }
-  .tag-badge.crono-btn { background: var(--wine-subtle); color: var(--wine); border: 1px solid rgba(131,2,1,0.2); cursor: pointer; }
+  .tag-badge.crono-btn { background: var(--wine-subtle); color: var(--wine); border: 1px solid rgba(131,2,1,0.2); cursor: pointer; padding: 5px 12px; }
 
   .meta-select {
-    padding: 3px 8px;
+    padding: 5px 10px;
     border: 1px solid var(--border);
     border-radius: var(--radius-full);
-    font-size: 10.5px;
+    font-size: 11px;
     font-weight: 600;
     background: var(--surface-secondary);
     color: var(--ink-secondary);
@@ -729,60 +737,61 @@
     width: 100%;
     border: 1px dashed var(--border);
     border-radius: var(--radius-sm);
-    padding: 6px 10px;
-    font-size: 11.5px;
+    padding: 8px 12px;
+    font-size: 12px;
     color: var(--ink-secondary);
     background: var(--surface-secondary);
-    margin-top: 8px;
+    margin-top: 10px;
   }
 
   .btn-icon-del {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--red-bg);
     color: var(--red);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     flex-shrink: 0;
   }
 
+  /* ITEM FINANCIAL GRID */
   .item-fin-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding-top: 12px;
-    margin-top: 12px;
+    gap: 16px;
+    padding-top: 14px;
+    margin-top: 14px;
     border-top: 1px dashed var(--border);
   }
 
   .fin-col h4 {
-    font-size: 10px;
+    font-size: 10.5px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--ink-tertiary);
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .fin-field-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 6px;
-    font-size: 12px;
+    margin-bottom: 8px;
+    font-size: 12.5px;
     color: var(--ink-secondary);
   }
 
   .fin-field-row input {
-    width: 90px;
-    padding: 5px 8px;
+    width: 100px;
+    padding: 6px 10px;
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 600;
     text-align: right;
     background: var(--surface-secondary);
@@ -792,10 +801,10 @@
   .fin-subtotal-row {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 700;
-    padding-top: 6px;
-    margin-top: 4px;
+    padding-top: 8px;
+    margin-top: 6px;
     border-top: 1px solid var(--border-light);
     font-variant-numeric: tabular-nums;
   }
@@ -808,23 +817,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 10px;
-    margin-top: 6px;
+    padding-top: 12px;
+    margin-top: 8px;
     border-top: 1.5px solid var(--border);
     font-family: var(--font-heading);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
   }
 
   .item-bottom-balance .bal-value {
-    font-size: 15px;
+    font-size: 16px;
     font-variant-numeric: tabular-nums;
   }
 
   .bal-value.pos { color: var(--green); }
   .bal-value.neg { color: var(--red); }
 
-  /* TABLAS */
+  /* TABLAS RESPONSIVAS */
   .table-container {
     width: 100%;
     overflow-x: auto;
@@ -836,14 +845,14 @@
   .fin-data-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12.5px;
-    min-width: 440px;
+    font-size: 13px;
+    min-width: 460px;
   }
 
   .fin-data-table th {
     background: var(--surface-secondary);
-    padding: 10px 12px;
-    font-size: 10px;
+    padding: 12px 14px;
+    font-size: 10.5px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--ink-tertiary);
@@ -855,7 +864,7 @@
   .fin-data-table th:first-child { text-align: left; }
 
   .fin-data-table td {
-    padding: 12px 12px;
+    padding: 14px 14px;
     border-bottom: 1px solid var(--border-light);
     text-align: right;
     font-variant-numeric: tabular-nums;
@@ -875,9 +884,9 @@
     font-weight: 800;
     border-top: 2px solid var(--wine);
     font-family: var(--font-heading);
-    font-size: 13.5px;
-    padding-top: 14px;
-    padding-bottom: 14px;
+    font-size: 14px;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 
   .fin-data-table tfoot td:first-child { color: var(--wine); }
@@ -887,8 +896,8 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 18px 20px;
-    margin-bottom: 14px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
     box-shadow: var(--shadow-sm);
   }
 
@@ -896,81 +905,83 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 14px;
+    margin-bottom: 14px;
   }
 
   .minuta-num {
     font-family: var(--font-heading);
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--wine);
   }
 
   .minuta-meta {
-    font-size: 11.5px;
+    font-size: 12px;
     color: var(--ink-tertiary);
-    margin-top: 2px;
+    margin-top: 3px;
   }
 
   .minuta-badge-grid {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .minuta-section-block {
-    margin-top: 12px;
-    padding-top: 10px;
+    margin-top: 16px;
+    padding-top: 14px;
     border-top: 1px solid var(--border-light);
   }
 
   .minuta-section-block h4 {
-    font-size: 11px;
+    font-size: 11.5px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--ink-tertiary);
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
   }
 
   .minuta-dyn-item {
     background: var(--surface-secondary);
     border-radius: var(--radius-sm);
-    padding: 8px 12px;
-    margin-bottom: 6px;
-    font-size: 12.5px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    line-height: 1.45;
   }
 
   .task-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-left: 4px solid var(--ink-tertiary);
+    border-left: 5px solid var(--ink-tertiary);
     border-radius: var(--radius-md);
-    padding: 14px 16px;
-    margin-bottom: 10px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
     box-shadow: var(--shadow-sm);
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 14px;
   }
 
   .task-card.alta { border-left-color: var(--red); }
   .task-card.media { border-left-color: var(--amber); }
   .task-card.baja { border-left-color: var(--green); }
-  .task-card.completed { opacity: 0.65; background: var(--surface-secondary); }
+  .task-card.completed { opacity: 0.62; background: var(--surface-secondary); }
 
   .task-check-btn {
-    width: 22px;
-    height: 22px;
-    border-radius: 6px;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
     border: 2px solid var(--border);
     background: #FFF;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 800;
     color: var(--green);
     cursor: pointer;
     flex-shrink: 0;
@@ -989,10 +1000,11 @@
   }
 
   .task-title {
-    font-size: 13.5px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--ink-primary);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    line-height: 1.4;
   }
 
   .task-card.completed .task-title {
@@ -1003,25 +1015,25 @@
   .task-meta-line {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
-    font-size: 11.5px;
+    font-size: 12px;
     color: var(--ink-secondary);
   }
 
-  /* CRONOGRAMAS */
+  /* CRONOGRAMA MINUTO A MINUTO */
   .timeline-step {
     display: flex;
-    gap: 14px;
+    gap: 16px;
     position: relative;
-    padding-bottom: 16px;
+    padding-bottom: 20px;
   }
 
   .timeline-step::before {
     content: "";
     position: absolute;
-    left: 17px;
-    top: 30px;
+    left: 20px;
+    top: 34px;
     bottom: 0;
     width: 2px;
     background: var(--border);
@@ -1030,50 +1042,131 @@
   .timeline-step:last-child::before { display: none; }
 
   .timeline-time-col {
-    width: 58px;
+    width: 64px;
     flex-shrink: 0;
     text-align: right;
     font-family: var(--font-heading);
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 800;
     color: var(--wine);
     padding-top: 4px;
   }
 
   .timeline-node {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: var(--surface);
-    border: 3px solid var(--wine);
+    border: 3.5px solid var(--wine);
     margin-top: 6px;
     flex-shrink: 0;
     z-index: 2;
   }
 
   .timeline-step.completed .timeline-node { background: var(--green); border-color: var(--green); }
-  .timeline-step.active-step .timeline-node { background: var(--red); border-color: var(--red); box-shadow: 0 0 0 4px var(--red-bg); }
-  .timeline-step.delayed .timeline-node { background: var(--amber); border-color: var(--amber); }
+  .timeline-step.active-step .timeline-node { background: var(--red); border-color: var(--red); box-shadow: 0 0 0 5px var(--red-bg); }
 
   .timeline-card-body {
     flex: 1;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 12px 14px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
   }
 
-  /* MODO EVENTO EN VIVO */
+  /* FLOATING LIVE ACTIVITY (IN-APP CAPSULE / MINI HUD) */
+  .live-activity-floating-bar {
+    position: fixed;
+    bottom: calc(75px + env(safe-area-inset-bottom, 10px));
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    width: calc(100% - 32px);
+    max-width: 580px;
+    background: rgba(18, 11, 8, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-xl);
+    color: #FFFFFF;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: var(--shadow-float);
+    z-index: 95;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .live-activity-floating-bar.active {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+  .la-live-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #EF4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
+    animation: pulse 1.6s infinite;
+    flex-shrink: 0;
+  }
+
+  .la-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .la-header-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #FBBF24;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .la-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #FFFFFF;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+  }
+
+  .la-action-btn {
+    background: #10B981;
+    color: #FFFFFF;
+    border-radius: var(--radius-full);
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+    flex-shrink: 0;
+  }
+
+  /* MODO EVENTO EN VIVO FULLSCREEN */
   .event-mode-overlay {
     position: fixed;
     inset: 0;
-    background: #110B08;
+    background: #120A07;
     color: #FFFFFF;
-    z-index: 150;
+    z-index: 160;
     display: none;
     flex-direction: column;
     overflow-y: auto;
-    padding: calc(20px + env(safe-area-inset-top, 16px)) 18px calc(30px + env(safe-area-inset-bottom, 16px));
+    padding: calc(24px + env(safe-area-inset-top, 16px)) 22px calc(36px + env(safe-area-inset-bottom, 16px));
   }
 
   .event-mode-overlay.active {
@@ -1085,34 +1178,34 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    padding-bottom: 14px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 16px;
   }
 
   .em-live-clock {
     font-family: var(--font-heading);
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 800;
     color: #FBBF24;
     letter-spacing: 0.05em;
   }
 
   .em-current-card {
-    background: linear-gradient(145deg, #2A0808 0%, #150404 100%);
+    background: linear-gradient(145deg, #2B0707 0%, #150303 100%);
     border: 2px solid var(--wine-light);
     border-radius: var(--radius-xl);
-    padding: 22px 20px;
-    margin-bottom: 18px;
-    box-shadow: 0 10px 30px rgba(131,2,1,0.4);
+    padding: 24px 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 12px 36px rgba(131, 2, 1, 0.45);
   }
 
   .em-progress-bar-wrap {
-    height: 8px;
-    background: rgba(255,255,255,0.15);
+    height: 10px;
+    background: rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-full);
     overflow: hidden;
-    margin: 14px 0;
+    margin: 16px 0;
   }
 
   .em-progress-bar-fill {
@@ -1126,27 +1219,27 @@
   .upload-dropzone {
     border: 2px dashed var(--border);
     border-radius: var(--radius-lg);
-    padding: 28px 20px;
+    padding: 32px 22px;
     text-align: center;
     background: var(--surface);
     cursor: pointer;
     display: block;
-    margin-bottom: 18px;
+    margin-bottom: 22px;
   }
 
   .upload-dropzone svg {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     stroke: var(--wine);
     fill: none;
     stroke-width: 1.8;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .photo-masonry {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
   }
 
   .photo-card {
@@ -1167,14 +1260,14 @@
 
   .photo-del-btn {
     position: absolute;
-    top: 6px;
-    right: 6px;
-    width: 26px;
-    height: 26px;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.65);
     color: #FFF;
-    font-size: 14px;
+    font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1185,12 +1278,12 @@
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.78);
-    backdrop-filter: blur(10px);
-    z-index: 110;
+    backdrop-filter: blur(12px);
+    z-index: 120;
     display: none;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    padding: 20px;
   }
 
   .lightbox-modal.active, .crono-modal.active { display: flex; }
@@ -1204,26 +1297,26 @@
     border: 1px solid var(--border);
     box-shadow: var(--shadow-float);
     overflow-y: auto;
-    padding: 22px 20px;
+    padding: 24px 22px;
   }
 
   .spotlight-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(24, 16, 12, 0.45);
+    background: rgba(23, 16, 12, 0.45);
     backdrop-filter: blur(8px);
-    z-index: 90;
+    z-index: 100;
     display: none;
     align-items: flex-start;
     justify-content: center;
-    padding: calc(60px + env(safe-area-inset-top, 0px)) 16px 20px;
+    padding: calc(60px + env(safe-area-inset-top, 0px)) 18px 20px;
   }
 
   .spotlight-overlay.active { display: flex; }
 
   .spotlight-box {
     width: 100%;
-    max-width: 560px;
+    max-width: 580px;
     background: var(--surface);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-float);
@@ -1234,14 +1327,14 @@
   .spotlight-input-wrap {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 16px 18px;
+    gap: 14px;
+    padding: 18px 20px;
     border-bottom: 1px solid var(--border-light);
   }
 
   .spotlight-input-wrap svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     stroke: var(--wine);
     fill: none;
     stroke-width: 2;
@@ -1257,13 +1350,13 @@
   }
 
   .spotlight-input:focus { outline: none; }
-  .spotlight-results { max-height: 380px; overflow-y: auto; padding: 8px; }
+  .spotlight-results { max-height: 380px; overflow-y: auto; padding: 10px; }
 
   .spotlight-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 14px;
+    padding: 12px 16px;
     border-radius: var(--radius-md);
     cursor: pointer;
   }
@@ -1278,15 +1371,15 @@
     opacity: 0;
     background: var(--ink-primary);
     color: #FFFFFF;
-    padding: 10px 18px;
+    padding: 12px 20px;
     border-radius: var(--radius-full);
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 600;
     box-shadow: var(--shadow-float);
     display: flex;
     align-items: center;
-    gap: 8px;
-    z-index: 120;
+    gap: 10px;
+    z-index: 140;
     pointer-events: none;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -1298,9 +1391,9 @@
 
   .empty-state-box {
     text-align: center;
-    padding: 40px 20px;
+    padding: 44px 22px;
     color: var(--ink-tertiary);
-    font-size: 13px;
+    font-size: 13.5px;
     background: var(--surface);
     border: 1px dashed var(--border);
     border-radius: var(--radius-lg);
@@ -1311,17 +1404,17 @@
     .sidebar { display: none; }
     .mobile-brand { display: flex; }
     .container {
-      padding-top: calc(16px + env(safe-area-inset-top, 20px));
-      padding-bottom: calc(96px + env(safe-area-inset-bottom, 16px));
-      padding-left: 14px;
-      padding-right: 14px;
+      padding-top: calc(18px + env(safe-area-inset-top, 20px));
+      padding-bottom: calc(105px + env(safe-area-inset-bottom, 16px));
+      padding-left: 16px;
+      padding-right: 16px;
     }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-    .hero-banner { padding: 20px 18px; }
-    .hero-banner h1 { font-size: 19px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .hero-banner { padding: 22px 20px; }
+    .hero-banner h1 { font-size: 20px; }
     .item-header-grid { grid-template-columns: 1fr auto; }
-    .date-picker-box { grid-column: 1 / -1; flex-direction: row; gap: 8px; }
-    .item-fin-grid { grid-template-columns: 1fr; }
+    .date-picker-box { grid-column: 1 / -1; flex-direction: row; gap: 10px; }
+    .item-fin-grid { grid-template-columns: 1fr; gap: 12px; }
 
     .bottom-nav-bar {
       display: flex;
@@ -1333,13 +1426,13 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid var(--border);
-      padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 10px));
+      padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 12px));
       z-index: 50;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      gap: 4px;
+      gap: 6px;
       justify-content: flex-start;
-      box-shadow: 0 -4px 16px rgba(0,0,0,0.04);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
     }
 
     .b-nav-item {
@@ -1348,17 +1441,18 @@
       align-items: center;
       justify-content: center;
       gap: 3px;
-      padding: 5px 8px;
+      padding: 6px 10px;
       border-radius: var(--radius-md);
       color: var(--ink-tertiary);
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 700;
       flex-shrink: 0;
-      min-width: 58px;
+      min-width: 60px;
+      min-height: 48px;
     }
 
-    .b-nav-item svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.9; }
-    .b-nav-item.active { color: var(--wine); }
+    .b-nav-item svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.9; }
+    .b-nav-item.active { color: var(--wine); background: var(--wine-subtle); }
   }
 
   @media(min-width: 769px) {
@@ -1434,18 +1528,18 @@
       <!-- TOP ACTION BAR -->
       <div class="top-action-bar">
         <div class="mobile-brand">
-          <div class="brand-avatar" style="width:32px; height:32px; border-radius:8px;"><img src="icon-192.png" alt="27MEX"></div>
-          <div class="brand-text"><h2 style="font-size:13.5px;">27MEX Seniors</h2></div>
+          <div class="brand-avatar" style="width:34px; height:34px; border-radius:10px;"><img src="icon-192.png" alt="27MEX"></div>
+          <div class="brand-text"><h2 style="font-size:14px;">27MEX Seniors</h2></div>
         </div>
 
         <button class="search-trigger-btn" id="openSearchBtn">
-          <svg viewBox="0 0 24 24" style="width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <svg viewBox="0 0 24 24" style="width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2;"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
           <span>Buscar eventos, minutas o tareas…</span>
           <kbd>⌘K</kbd>
         </button>
 
         <button class="notif-perm-btn" id="btnReqNotifs" title="Habilitar alertas sonoras y push">
-          <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <svg viewBox="0 0 24 24" style="width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
           <span id="notifBtnLabel">Notificaciones</span>
         </button>
       </div>
@@ -1484,35 +1578,35 @@
         <div class="card">
           <div class="card-header">
             <div class="card-title">
-              <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--wine);fill:none;stroke-width:2;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+              <svg viewBox="0 0 24 24" style="width:19px;height:19px;stroke:var(--wine);fill:none;stroke-width:2;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
               Próximas actividades y cronogramas
             </div>
           </div>
-          <div id="dashUpcomingList" style="display:flex; flex-direction:column; gap:8px;"></div>
+          <div id="dashUpcomingList" style="display:flex; flex-direction:column; gap:10px;"></div>
         </div>
 
         <!-- Accesos rápidos ejecutivos -->
-        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
           <div class="card" style="cursor:pointer; margin-bottom:0;" data-goto="minutas">
-            <div style="display:flex; align-items:center; gap:12px;">
-              <div style="width:40px; height:40px; border-radius:12px; background:var(--wine-subtle); border:1px solid rgba(131,2,1,0.15); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--wine);fill:none;stroke-width:2;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div style="width:44px; height:44px; border-radius:12px; background:var(--wine-subtle); border:1px solid rgba(131,2,1,0.15); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:var(--wine);fill:none;stroke-width:2;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               </div>
               <div>
-                <div style="font-weight:700; font-size:13.5px; color:var(--wine);">Minutas de Reunión</div>
-                <div style="font-size:11.5px; color:var(--ink-tertiary);">Acuerdos y notas en vivo</div>
+                <div style="font-weight:700; font-size:14px; color:var(--wine);">Minutas de Reunión</div>
+                <div style="font-size:12px; color:var(--ink-tertiary); margin-top:2px;">Acuerdos y notas en vivo</div>
               </div>
             </div>
           </div>
 
           <div class="card" style="cursor:pointer; margin-bottom:0;" data-goto="tareas">
-            <div style="display:flex; align-items:center; gap:12px;">
-              <div style="width:40px; height:40px; border-radius:12px; background:var(--green-bg); border:1px solid var(--green-border); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--green);fill:none;stroke-width:2;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div style="width:44px; height:44px; border-radius:12px; background:var(--green-bg); border:1px solid var(--green-border); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:var(--green);fill:none;stroke-width:2;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
               </div>
               <div>
-                <div style="font-weight:700; font-size:13.5px; color:var(--green);">Tareas y Acuerdos</div>
-                <div style="font-size:11.5px; color:var(--ink-tertiary);">Seguimiento y responsables</div>
+                <div style="font-weight:700; font-size:14px; color:var(--green);">Tareas y Acuerdos</div>
+                <div style="font-size:12px; color:var(--ink-tertiary); margin-top:2px;">Seguimiento y responsables</div>
               </div>
             </div>
           </div>
@@ -1568,7 +1662,7 @@
       <!-- VIEW: ESCOLAR (CALENDARIO IMEX) -->
       <!-- ======================================================= -->
       <div class="view" id="view-escolar">
-        <div class="hero-banner" style="background: linear-gradient(145deg, var(--wine) 0%, #4D0000 100%);">
+        <div class="hero-banner" style="background: linear-gradient(145deg, var(--wine) 0%, #480000 100%);">
           <div class="hero-eyebrow">ORGANIZACIÓN INTERNA</div>
           <h1>Calendario Escolar IMEX</h1>
           <p>Cronograma oficial de actividades, asambleas y celebraciones. Accede al cronograma minuto a minuto de cada evento.</p>
@@ -1618,7 +1712,7 @@
         </div>
 
         <div class="toolbar">
-          <span class="pill-group" style="padding: 6px 12px; font-size:12px; font-weight:700; color:var(--ventas);">
+          <span class="pill-group" style="padding: 6px 14px; font-size:12.5px; font-weight:700; color:var(--ventas);">
             Productos en venta
           </span>
           <button class="btn-primary" id="addVentaBtn" style="background:var(--ventas);">
@@ -1632,10 +1726,10 @@
       </div>
 
       <!-- ======================================================= -->
-      <!-- VIEW: MINUTAS (📝 NUEVO MÓDULO) -->
+      <!-- VIEW: MINUTAS -->
       <!-- ======================================================= -->
       <div class="view" id="view-minutas">
-        <div class="hero-banner" style="background: linear-gradient(145deg, #830201 0%, #3D0000 100%);">
+        <div class="hero-banner" style="background: linear-gradient(145deg, #830201 0%, #380000 100%);">
           <div class="hero-eyebrow">SESIONES DEL CONSEJO</div>
           <h1>Minutas y Acuerdos de Reunión</h1>
           <p>Toma notas en vivo durante la reunión, registra acuerdos convertibles en tareas y genera la minuta lista para compartir por WhatsApp.</p>
@@ -1655,93 +1749,93 @@
         <div class="card" id="minutaEditorCard" style="display:none; border:2px solid var(--wine);">
           <div class="card-header">
             <div class="card-title">
-              <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--wine);fill:none;stroke-width:2;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--wine);fill:none;stroke-width:2;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
               <span id="editorMinutaTitle">Registro de Minuta en Vivo</span>
             </div>
-            <button class="btn-secondary" id="btnCancelarMinuta" style="padding:4px 10px; font-size:11.5px;">Cerrar</button>
+            <button class="btn-secondary" id="btnCancelarMinuta" style="padding:6px 12px; font-size:12px;">Cerrar ✕</button>
           </div>
 
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-bottom:14px;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-bottom:16px;">
             <div>
-              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Título / Número</label>
-              <input type="text" id="mInpTitulo" placeholder="Ej: Reunión Ordinaria #09" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; font-weight:700;">
+              <label style="font-size:11.5px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Título / Número</label>
+              <input type="text" id="mInpTitulo" placeholder="Ej: Reunión Ordinaria #09" style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; font-weight:700; background:var(--surface-secondary);">
             </div>
             <div>
-              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Fecha</label>
-              <input type="date" id="mInpFecha" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+              <label style="font-size:11.5px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Fecha</label>
+              <input type="date" id="mInpFecha" style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--surface-secondary);">
             </div>
             <div>
-              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Hora Inicio - Fin</label>
-              <div style="display:flex; gap:6px; margin-top:4px;">
-                <input type="time" id="mInpHoraInicio" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
-                <input type="time" id="mInpHoraFin" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+              <label style="font-size:11.5px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Hora Inicio - Fin</label>
+              <div style="display:flex; gap:8px; margin-top:4px;">
+                <input type="time" id="mInpHoraInicio" style="flex:1; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
+                <input type="time" id="mInpHoraFin" style="flex:1; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
               </div>
             </div>
             <div>
-              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Lugar</label>
-              <input type="text" id="mInpLugar" placeholder="Ej: Sala de Consejo / Roof Prepa" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+              <label style="font-size:11.5px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Lugar</label>
+              <input type="text" id="mInpLugar" placeholder="Ej: Sala de Consejo / Roof Prepa" style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--surface-secondary);">
             </div>
           </div>
 
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-bottom:14px;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-bottom:16px;">
             <div>
-              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Dirigió</label>
-              <input type="text" id="mInpDirigio" placeholder="Presidente / Coordinador" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+              <label style="font-size:11.5px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Dirigió</label>
+              <input type="text" id="mInpDirigio" placeholder="Presidente / Coordinador" style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--surface-secondary);">
             </div>
             <div>
-              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Secretario/a</label>
-              <input type="text" id="mInpSecretario" placeholder="Nombre de quien redacta" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+              <label style="font-size:11.5px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Secretario/a</label>
+              <input type="text" id="mInpSecretario" placeholder="Nombre de quien redacta" style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--surface-secondary);">
             </div>
           </div>
 
-          <div style="margin-bottom:14px;">
-            <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Asistentes</label>
-            <input type="text" id="mInpAsistentes" placeholder="Ej: Barbara, Rafa Luna, Sofia Brito, Victoria Riveroll..." style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+          <div style="margin-bottom:16px;">
+            <label style="font-size:11.5px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Asistentes</label>
+            <input type="text" id="mInpAsistentes" placeholder="Ej: Barbara, Rafa Luna, Sofia Brito, Victoria Riveroll..." style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--surface-secondary);">
           </div>
 
-          <div style="margin-bottom:14px;">
-            <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Objetivo de la sesión</label>
-            <input type="text" id="mInpObjetivo" placeholder="Ej: Definir presupuestos de Back to School y asignar roles..." style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px;">
+          <div style="margin-bottom:16px;">
+            <label style="font-size:11.5px; font-weight:700; color:var(--ink-tertiary); text-transform:uppercase;">Objetivo de la sesión</label>
+            <input type="text" id="mInpObjetivo" placeholder="Ej: Definir presupuestos de Back to School y asignar roles..." style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); margin-top:4px; background:var(--surface-secondary);">
           </div>
 
           <!-- BLOQUE DINÁMICO: TEMAS TRATADOS -->
           <div class="minuta-section-block">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
               <h4 style="margin:0;">📌 Temas tratados</h4>
-              <button class="btn-secondary" id="btnAddTema" style="padding:3px 10px; font-size:11px;">+ Agregar tema</button>
+              <button class="btn-secondary" id="btnAddTema" style="padding:5px 12px; font-size:11.5px;">+ Agregar tema</button>
             </div>
             <div id="mTemasList"></div>
           </div>
 
           <!-- BLOQUE DINÁMICO: ACUERDOS Y TAREAS -->
           <div class="minuta-section-block">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
               <h4 style="margin:0;">🤝 Acuerdos tomados</h4>
-              <button class="btn-secondary" id="btnAddAcuerdo" style="padding:3px 10px; font-size:11px;">+ Agregar acuerdo</button>
+              <button class="btn-secondary" id="btnAddAcuerdo" style="padding:5px 12px; font-size:11.5px;">+ Agregar acuerdo</button>
             </div>
             <div id="mAcuerdosList"></div>
           </div>
 
           <!-- BLOQUE DINÁMICO: PENDIENTES & PROPUESTAS -->
           <div class="minuta-section-block">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
               <h4 style="margin:0;">⏳ Pendientes y Propuestas</h4>
-              <div style="display:flex; gap:6px;">
-                <button class="btn-secondary" id="btnAddPendiente" style="padding:3px 8px; font-size:11px;">+ Pendiente</button>
-                <button class="btn-secondary" id="btnAddPropuesta" style="padding:3px 8px; font-size:11px;">+ Propuesta</button>
+              <div style="display:flex; gap:8px;">
+                <button class="btn-secondary" id="btnAddPendiente" style="padding:5px 10px; font-size:11.5px;">+ Pendiente</button>
+                <button class="btn-secondary" id="btnAddPropuesta" style="padding:5px 10px; font-size:11.5px;">+ Propuesta</button>
               </div>
             </div>
             <div id="mPendientesList"></div>
-            <div id="mPropuestasList" style="margin-top:6px;"></div>
+            <div id="mPropuestasList" style="margin-top:8px;"></div>
           </div>
 
           <!-- OBSERVACIONES -->
           <div class="minuta-section-block">
             <h4>Observaciones generales</h4>
-            <textarea id="mInpObservaciones" rows="2" placeholder="Notas adicionales, acuerdos de próxima reunión..." style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:12px;"></textarea>
+            <textarea id="mInpObservaciones" rows="2" placeholder="Notas adicionales, acuerdos de próxima reunión..." style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:12.5px; background:var(--surface-secondary);"></textarea>
           </div>
 
-          <div style="display:flex; gap:10px; margin-top:16px; justify-content:flex-end;">
+          <div style="display:flex; gap:12px; margin-top:20px; justify-content:flex-end; flex-wrap:wrap;">
             <button class="btn-secondary" id="btnGuardarBorrador">Guardar borrador</button>
             <button class="btn-primary" id="btnFinalizarMinuta">✅ Finalizar y Generar Minuta</button>
           </div>
@@ -1753,7 +1847,7 @@
       </div>
 
       <!-- ======================================================= -->
-      <!-- VIEW: TAREAS (✅ NUEVO MÓDULO) -->
+      <!-- VIEW: TAREAS -->
       <!-- ======================================================= -->
       <div class="view" id="view-tareas">
         <div class="hero-banner" style="background: linear-gradient(145deg, #15803D 0%, #064E3B 100%);">
@@ -1798,34 +1892,34 @@
         <div class="card" id="tareaEditorCard" style="display:none; border:2px solid var(--green);">
           <div class="card-header">
             <div class="card-title" style="color:var(--green);">Crear Tarea Rápida</div>
-            <button class="btn-secondary" id="btnCerrarTareaEditor" style="padding:3px 8px; font-size:11px;">×</button>
+            <button class="btn-secondary" id="btnCerrarTareaEditor" style="padding:4px 10px; font-size:12px;">✕</button>
           </div>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-bottom:10px;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-bottom:14px;">
             <div>
-              <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">TAREA</label>
-              <input type="text" id="tInpNombre" placeholder="Descripción de la tarea..." style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:700;">
+              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary);">TAREA</label>
+              <input type="text" id="tInpNombre" placeholder="Descripción de la tarea..." style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:700; background:var(--surface-secondary);">
             </div>
             <div>
-              <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">PROYECTO / EVENTO</label>
-              <input type="text" id="tInpProyecto" placeholder="Ej: Back to School, Escolar..." style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary);">PROYECTO / EVENTO</label>
+              <input type="text" id="tInpProyecto" placeholder="Ej: Back to School, Escolar..." style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
             </div>
             <div>
-              <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">RESPONSABLE</label>
-              <input type="text" id="tInpResponsable" placeholder="Persona o equipo" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary);">RESPONSABLE</label>
+              <input type="text" id="tInpResponsable" placeholder="Persona o equipo" style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
             </div>
             <div>
-              <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">FECHA LÍMITE</label>
-              <input type="date" id="tInpFechaLimite" style="width:100%; padding:8px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+              <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary);">FECHA LÍMITE</label>
+              <input type="date" id="tInpFechaLimite" style="width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
             </div>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-            <div style="display:flex; gap:10px; align-items:center;">
-              <select id="tInpPrioridad" class="meta-select" style="padding:6px 10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+              <select id="tInpPrioridad" class="meta-select" style="padding:8px 12px;">
                 <option value="alta">🔴 Prioridad Alta</option>
                 <option value="media" selected>🟡 Prioridad Media</option>
                 <option value="baja">🟢 Prioridad Baja</option>
               </select>
-              <select id="tInpRecordatorio" class="meta-select" style="padding:6px 10px;">
+              <select id="tInpRecordatorio" class="meta-select" style="padding:8px 12px;">
                 <option value="1_dia">🔔 Avisar 1 día antes</option>
                 <option value="mismo_dia">🔔 Avisar mismo día</option>
                 <option value="ninguno">Sin recordatorio</option>
@@ -1840,7 +1934,7 @@
       </div>
 
       <!-- ======================================================= -->
-      <!-- VIEW: FOTOS (ÁLBUM GENERACIONAL) -->
+      <!-- VIEW: FOTOS (ÁLBUM) -->
       <!-- ======================================================= -->
       <div class="view" id="view-fotos">
         <div class="hero-banner" style="background: linear-gradient(145deg, #B45309 0%, #78350F 100%);">
@@ -1851,17 +1945,17 @@
 
         <label class="upload-dropzone" for="photoInput">
           <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><rect x="3" y="16" width="18" height="5" rx="1.5"/></svg>
-          <div style="font-size:14px; font-weight:700; color:var(--wine);">Toca para subir fotos al álbum</div>
-          <div style="font-size:11.5px; color:var(--ink-tertiary); margin-top:4px;">Compresión automática en alta calidad · Se sincroniza con todos</div>
+          <div style="font-size:15px; font-weight:700; color:var(--wine);">Toca para subir fotos al álbum</div>
+          <div style="font-size:12px; color:var(--ink-tertiary); margin-top:4px;">Compresión automática en alta calidad · Se sincroniza con todos</div>
         </label>
         <input type="file" id="photoInput" accept="image/*" multiple style="display:none;">
 
         <div class="photo-masonry" id="photoGrid"></div>
-        <div class="empty-state-box" id="emptyFotos" style="display:none; margin-top:14px;">Aún no hay fotos. ¡Sube la primera!</div>
+        <div class="empty-state-box" id="emptyFotos" style="display:none; margin-top:16px;">Aún no hay fotos. ¡Sube la primera!</div>
       </div>
 
       <!-- ======================================================= -->
-      <!-- VIEW: FINANZAS (ESTADO DE RESULTADOS) -->
+      <!-- VIEW: FINANZAS -->
       <!-- ======================================================= -->
       <div class="view" id="view-finanzas">
         <div class="hero-banner">
@@ -1892,7 +1986,7 @@
         <div class="card">
           <div class="card-header">
             <div class="card-title">
-              <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--wine);fill:none;stroke-width:2;"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+              <svg viewBox="0 0 24 24" style="width:19px;height:19px;stroke:var(--wine);fill:none;stroke-width:2;"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
               Desglose consolidado por categoría
             </div>
           </div>
@@ -1900,7 +1994,7 @@
         </div>
 
         <div class="toolbar">
-          <div class="pill-group" style="padding:6px 12px; font-weight:700; font-size:12px; color:var(--wine);">
+          <div class="pill-group" style="padding:6px 14px; font-weight:700; font-size:12.5px; color:var(--wine);">
             Movimientos extraordinarios
           </div>
           <button class="btn-primary" id="addExtraBtn">
@@ -1953,29 +2047,46 @@
 
 </div>
 
+<!-- ================================================================= -->
+<!-- FLOATING LIVE ACTIVITY (CAPSULA HUD FLOTANTE) -->
+<!-- ================================================================= -->
+<div class="live-activity-floating-bar" id="liveActivityBar">
+  <span class="la-live-dot"></span>
+  <div class="la-info" id="laInfoBody">
+    <div class="la-header-row">
+      <span id="laEventName">Modo Evento</span> · <span id="laClock">19:30</span>
+    </div>
+    <div class="la-title" id="laCurrentTitle">Paso activo del cronograma</div>
+  </div>
+  <button class="la-action-btn" id="laBtnCheck">
+    <span>✅ Listo</span>
+  </button>
+  <button id="laBtnClose" style="color:#9CA3AF; font-size:16px; padding:4px 6px;">✕</button>
+</div>
+
 <!-- ==================== CRONOGRAMA MINUTO A MINUTO MODAL ==================== -->
 <div class="crono-modal" id="cronoModal">
   <div class="crono-modal-box">
-    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; border-bottom:1px solid var(--border-light); padding-bottom:10px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid var(--border-light); padding-bottom:12px;">
       <div>
-        <div style="font-size:11px; font-weight:700; color:var(--wine); text-transform:uppercase; letter-spacing:0.06em;">⏱️ Cronograma Minuto a Minuto</div>
-        <h2 id="cronoEventTitle" style="font-family:var(--font-heading); font-size:18px; color:var(--ink-primary); margin-top:2px;">Evento</h2>
-        <div id="cronoEventMeta" style="font-size:12px; color:var(--ink-tertiary); margin-top:2px;">Fecha y detalles</div>
+        <div style="font-size:11.5px; font-weight:800; color:var(--wine); text-transform:uppercase; letter-spacing:0.06em;">⏱️ Cronograma Minuto a Minuto</div>
+        <h2 id="cronoEventTitle" style="font-family:var(--font-heading); font-size:19px; color:var(--ink-primary); margin-top:2px;">Evento</h2>
+        <div id="cronoEventMeta" style="font-size:12.5px; color:var(--ink-tertiary); margin-top:2px;">Fecha y detalles</div>
       </div>
-      <button class="btn-secondary" id="btnCloseCronoModal" style="padding:4px 10px;">Cerrar ✕</button>
+      <button class="btn-secondary" id="btnCloseCronoModal" style="padding:6px 12px;">Cerrar ✕</button>
     </div>
 
     <!-- Progreso general y Modo Evento -->
-    <div style="background:var(--surface-secondary); border-radius:var(--radius-md); padding:12px 14px; margin-bottom:16px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-        <span style="font-size:12px; font-weight:700; color:var(--ink-secondary);">Progreso de la actividad</span>
-        <span id="cronoProgressPercent" style="font-size:12px; font-weight:800; color:var(--wine);">0%</span>
+    <div style="background:var(--surface-secondary); border-radius:var(--radius-md); padding:16px 18px; margin-bottom:18px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span style="font-size:12.5px; font-weight:700; color:var(--ink-secondary);">Progreso de la actividad</span>
+        <span id="cronoProgressPercent" style="font-size:13px; font-weight:800; color:var(--wine);">0%</span>
       </div>
-      <div style="height:8px; background:var(--border); border-radius:var(--radius-full); overflow:hidden;">
+      <div style="height:10px; background:var(--border); border-radius:var(--radius-full); overflow:hidden;">
         <div id="cronoProgressBar" style="height:100%; width:0%; background:var(--wine); border-radius:var(--radius-full); transition:width .25s;"></div>
       </div>
-      <div style="display:flex; gap:10px; margin-top:12px;">
-        <button class="btn-primary" id="btnAbrirModoEvento" style="background:#110B08; border:1px solid var(--wine); flex:1; justify-content:center;">
+      <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap;">
+        <button class="btn-primary" id="btnAbrirModoEvento" style="background:#150A07; border:1px solid var(--wine); flex:1; justify-content:center;">
           🔴 Abrir Modo Evento en Vivo
         </button>
         <button class="btn-secondary" id="btnAddCronoItem" style="white-space:nowrap;">
@@ -1984,23 +2095,23 @@
       </div>
     </div>
 
-    <!-- Editor rápido de paso del cronograma -->
-    <div id="cronoItemEditor" style="display:none; background:#FFF; border:1px solid var(--wine); border-radius:var(--radius-md); padding:14px; margin-bottom:16px;">
-      <h4 style="font-size:13px; color:var(--wine); margin-bottom:10px;">Nuevo paso del cronograma</h4>
-      <div style="display:grid; grid-template-columns:80px 1fr; gap:8px; margin-bottom:8px;">
+    <!-- Editor rápido de paso -->
+    <div id="cronoItemEditor" style="display:none; background:#FFF; border:1.5px solid var(--wine); border-radius:var(--radius-md); padding:16px; margin-bottom:18px;">
+      <h4 style="font-size:13.5px; color:var(--wine); margin-bottom:12px;">Nuevo paso del cronograma</h4>
+      <div style="display:grid; grid-template-columns:100px 1fr; gap:10px; margin-bottom:10px;">
         <div>
-          <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">HORA</label>
-          <input type="time" id="crInpHora" value="19:00" style="width:100%; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:700;">
+          <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary);">HORA</label>
+          <input type="time" id="crInpHora" value="19:00" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:700; background:var(--surface-secondary);">
         </div>
         <div>
-          <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">ACTIVIDAD</label>
-          <input type="text" id="crInpNombre" placeholder="Ej: Llegada del Consejo / Discurso" style="width:100%; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:600;">
+          <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary);">ACTIVIDAD</label>
+          <input type="text" id="crInpNombre" placeholder="Ej: Llegada del Consejo / Discurso" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:600; background:var(--surface-secondary);">
         </div>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:8px; margin-bottom:8px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; margin-bottom:10px;">
         <div>
-          <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">RESPONSABLE</label>
-          <select id="crInpResponsable" class="meta-select" style="width:100%; padding:6px;">
+          <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary);">RESPONSABLE</label>
+          <select id="crInpResponsable" class="meta-select" style="width:100%; padding:8px 10px;">
             <option value="Todos">👥 Todos</option>
             <option value="Presidente">👤 Presidente</option>
             <option value="Vicepresidente">👤 Vicepresidente</option>
@@ -2012,25 +2123,25 @@
           </select>
         </div>
         <div>
-          <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">DURACIÓN ESTIMADA</label>
-          <input type="text" id="crInpDuracion" placeholder="Ej: 15 min" style="width:100%; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+          <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary);">DURACIÓN ESTIMADA</label>
+          <input type="text" id="crInpDuracion" placeholder="Ej: 15 min" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
         </div>
         <div>
-          <label style="font-size:10.5px; font-weight:700; color:var(--ink-tertiary);">LUGAR</label>
-          <input type="text" id="crInpLugar" placeholder="Auditorio / Entrada..." style="width:100%; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
+          <label style="font-size:11px; font-weight:700; color:var(--ink-tertiary);">LUGAR</label>
+          <input type="text" id="crInpLugar" placeholder="Auditorio / Entrada..." style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
         </div>
       </div>
-      <div style="background:var(--surface-secondary); padding:8px 10px; border-radius:var(--radius-sm); margin-bottom:10px;">
-        <span style="font-size:11px; font-weight:700; color:var(--ink-secondary); display:block; margin-bottom:4px;">Notificaciones automáticas:</span>
-        <div style="display:flex; gap:12px; flex-wrap:wrap; font-size:11.5px;">
+      <div style="background:var(--surface-secondary); padding:10px 12px; border-radius:var(--radius-sm); margin-bottom:12px;">
+        <span style="font-size:11.5px; font-weight:700; color:var(--ink-secondary); display:block; margin-bottom:6px;">Notificaciones automáticas:</span>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; font-size:12px;">
           <label><input type="checkbox" id="crNotif15" checked> 15 min antes</label>
           <label><input type="checkbox" id="crNotif5" checked> 5 min antes</label>
           <label><input type="checkbox" id="crNotif0" checked> A la hora exacta</label>
         </div>
       </div>
-      <div style="display:flex; justify-content:flex-end; gap:8px;">
-        <button class="btn-secondary" id="btnCancelCronoItem" style="padding:4px 10px;">Cancelar</button>
-        <button class="btn-primary" id="btnSaveCronoItem" style="padding:4px 14px;">Guardar paso</button>
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button class="btn-secondary" id="btnCancelCronoItem" style="padding:6px 12px;">Cancelar</button>
+        <button class="btn-primary" id="btnSaveCronoItem" style="padding:6px 16px;">Guardar paso</button>
       </div>
     </div>
 
@@ -2043,12 +2154,12 @@
 <div class="event-mode-overlay" id="modoEventoOverlay">
   <div class="em-head">
     <div>
-      <span style="font-size:11px; font-weight:800; background:#DC2626; color:#FFF; padding:2px 8px; border-radius:999px; text-transform:uppercase;">🔴 MODO EVENTO EN VIVO</span>
-      <h2 id="emEventTitle" style="font-size:18px; margin-top:4px;">Ceremonia Senior</h2>
+      <span style="font-size:11.5px; font-weight:800; background:#DC2626; color:#FFF; padding:3px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:0.04em;">🔴 MODO EVENTO EN VIVO</span>
+      <h2 id="emEventTitle" style="font-size:19px; margin-top:6px;">Evento en Vivo</h2>
     </div>
     <div style="text-align:right;">
       <div class="em-live-clock" id="emClock">00:00:00</div>
-      <button id="btnCloseModoEvento" style="color:#FFF; background:rgba(255,255,255,0.2); padding:4px 12px; border-radius:var(--radius-full); font-size:12px; margin-top:4px;">Salir ✕</button>
+      <button id="btnCloseModoEvento" style="color:#FFF; background:rgba(255,255,255,0.22); padding:6px 14px; border-radius:var(--radius-full); font-size:12px; margin-top:6px; font-weight:700;">Minimizar ▾</button>
     </div>
   </div>
 
@@ -2058,34 +2169,34 @@
 
   <!-- ACTIVIDAD ACTUAL -->
   <div class="em-current-card">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-      <span id="emStatusBadge" style="font-size:11.5px; font-weight:800; color:#EF4444; text-transform:uppercase; letter-spacing:0.05em;">● EN CURSO</span>
-      <span id="emCountdown" style="font-size:13px; font-weight:700; color:#FCD34D;">⏱️ Tiempo real</span>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+      <span id="emStatusBadge" style="font-size:12px; font-weight:800; color:#EF4444; text-transform:uppercase; letter-spacing:0.05em;">● EN CURSO</span>
+      <span id="emCountdown" style="font-size:13.5px; font-weight:700; color:#FCD34D;">⏱️ Tiempo real</span>
     </div>
-    <div id="emCurrentTime" style="font-family:var(--font-heading); font-size:26px; font-weight:800; color:#F5EDDD;">19:00</div>
-    <h3 id="emCurrentTitle" style="font-size:20px; font-weight:700; margin:4px 0 8px;">Llegada del Consejo</h3>
-    <div style="font-size:13px; color:#D1D5DB; margin-bottom:14px;" id="emCurrentMeta">👥 Todos · 📍 Auditorio</div>
-    <button id="btnEmCompletarActual" style="width:100%; padding:12px; background:#10B981; color:#FFF; border-radius:var(--radius-md); font-weight:800; font-size:14px; box-shadow:0 4px 15px rgba(16,185,129,0.4);">
+    <div id="emCurrentTime" style="font-family:var(--font-heading); font-size:28px; font-weight:800; color:#F7F5EE;">19:00</div>
+    <h3 id="emCurrentTitle" style="font-size:21px; font-weight:700; margin:6px 0 10px;">Actividad Actual</h3>
+    <div style="font-size:13.5px; color:#D1D5DB; margin-bottom:16px;" id="emCurrentMeta">👥 Responsable</div>
+    <button id="btnEmCompletarActual" style="width:100%; padding:14px; background:#10B981; color:#FFF; border-radius:var(--radius-md); font-weight:800; font-size:15px; box-shadow:0 6px 20px rgba(16,185,129,0.45);">
       ✅ MARCAR COMO COMPLETADA
     </button>
   </div>
 
   <!-- SIGUIENTE ACTIVIDAD -->
-  <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius-lg); padding:14px 16px; margin-bottom:20px;">
-    <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:#9CA3AF; margin-bottom:4px;">PRÓXIMA ACTIVIDAD</div>
+  <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius-lg); padding:16px 18px; margin-bottom:22px;">
+    <div style="font-size:11px; font-weight:800; text-transform:uppercase; color:#9CA3AF; margin-bottom:6px; letter-spacing:0.06em;">PRÓXIMA ACTIVIDAD</div>
     <div style="display:flex; justify-content:space-between; align-items:center;">
       <div>
-        <div id="emNextTitle" style="font-size:15px; font-weight:700; color:#F3F4F6;">Subir al auditorio</div>
-        <div id="emNextMeta" style="font-size:12px; color:#9CA3AF;">👥 Todos</div>
+        <div id="emNextTitle" style="font-size:16px; font-weight:700; color:#F3F4F6;">Siguiente paso</div>
+        <div id="emNextMeta" style="font-size:12.5px; color:#9CA3AF; margin-top:2px;">👥 Responsable</div>
       </div>
-      <div id="emNextTime" style="font-family:var(--font-heading); font-size:17px; font-weight:800; color:#FBBF24;">19:15</div>
+      <div id="emNextTime" style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#FBBF24;">19:30</div>
     </div>
   </div>
 
-  <!-- LISTADO COMPLETO DEL CRONOGRAMA -->
+  <!-- LISTADO COMPLETO -->
   <div style="flex:1;">
-    <h4 style="font-size:12px; text-transform:uppercase; color:#9CA3AF; letter-spacing:0.06em; margin-bottom:10px;">Cronograma completo</h4>
-    <div id="emFullList" style="display:flex; flex-direction:column; gap:8px;"></div>
+    <h4 style="font-size:12.5px; text-transform:uppercase; color:#9CA3AF; letter-spacing:0.06em; margin-bottom:12px;">Cronograma completo</h4>
+    <div id="emFullList" style="display:flex; flex-direction:column; gap:10px;"></div>
   </div>
 </div>
 
@@ -2094,8 +2205,8 @@
   <div class="spotlight-box">
     <div class="spotlight-input-wrap">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-      <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Buscar eventos, minutas o tareas…">
-      <button id="closeSearchBtn" style="font-size:12px; font-weight:700; color:var(--ink-tertiary); padding:4px 8px;">ESC</button>
+      <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Buscar fiestas, ventas, minutas, tareas…">
+      <button id="closeSearchBtn" style="font-size:12px; font-weight:700; color:var(--ink-tertiary); padding:6px 10px;">ESC</button>
     </div>
     <div class="spotlight-results" id="spotlightResults"></div>
   </div>
@@ -2103,7 +2214,7 @@
 
 <!-- ==================== PHOTO LIGHTBOX MODAL ==================== -->
 <div class="lightbox-modal" id="photoLightbox">
-  <button class="lightbox-close" id="closeLightbox" style="position:absolute; top:20px; right:20px; background:rgba(255,255,255,0.2); color:#FFF; border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:18px;">×</button>
+  <button class="lightbox-close" id="closeLightbox" style="position:absolute; top:20px; right:20px; background:rgba(255,255,255,0.2); color:#FFF; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-size:20px;">×</button>
   <img class="lightbox-img" id="lightboxImg" src="" alt="Foto en grande" style="max-width:92vw; max-height:85vh; border-radius:var(--radius-md); object-fit:contain;">
 </div>
 
@@ -2142,6 +2253,33 @@ const docRefTareas = doc(db, "consejo-imex", "tareas");
 const docRefCronos = doc(db, "consejo-imex", "cronogramas");
 const fotosCol = collection(db, "fotos");
 
+// AUDIO SYNTHESIS FEEDBACK (Web Audio API)
+function playSound(type = 'success'){
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if(!AudioContext) return;
+    const ctx = new AudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    if(type === 'alert'){
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+      osc.frequency.setValueAtTime(880, ctx.currentTime + 0.12); // A5
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+      osc.start(); osc.stop(ctx.currentTime + 0.4);
+    } else {
+      osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+      osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1); // E5
+      gain.gain.setValueAtTime(0.18, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+      osc.start(); osc.stop(ctx.currentTime + 0.35);
+    }
+  } catch(e){}
+}
+
 function showToast(msg = "Cambios guardados"){
   const t = document.getElementById('toastBanner');
   const m = document.getElementById('toastMsg');
@@ -2174,14 +2312,16 @@ function monthOptions(selected){
 let idCounter = 1000;
 const newId = () => 'e' + (idCounter++);
 
-function debounce(fn, delay=400){
+function debounce(fn, delay=350){
   let t;
   return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn(...args), delay); };
 }
 
 const expanded = { extra: new Set([9, 10]), escolar: new Set([8, 9]), ventas: new Set([9, 10]) };
 
-// DATA BASELINE
+// =====================================================================
+// DATA BASELINE PRESERVADA
+// =====================================================================
 let eventos = [
   {id:'e1', nombre:'Back to School', categoria:'antro', mes:9, dia:11, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
   {id:'e2', nombre:'Halloween', categoria:'antro', mes:10, dia:30, aprox:false, confirmada:true, boletos:200, precio:270, gastoFijo:3000, comisionPct:10},
@@ -2281,7 +2421,6 @@ let ventas = [
 let fotos = [];
 let extras = [];
 
-// MINUTAS, TAREAS Y CRONOGRAMAS BASE
 let minutas = [
   {
     id: 'm1',
@@ -2329,9 +2468,12 @@ let cronogramas = {
   ]
 };
 
-// NOTIFICACIONES WEB & IN-APP
+// =====================================================================
+// NOTIFICACIONES & SISTEMA INTERACTIVO (LOCK SCREEN & WAKE LOCK)
+// =====================================================================
 let notifPermission = ("Notification" in window) ? Notification.permission : "default";
 let firedNotifs = new Set();
+let wakeLockSentinel = null;
 
 function updateNotifBtnUI(){
   const btn = document.getElementById('btnReqNotifs');
@@ -2355,18 +2497,85 @@ async function requestNotifPermission(){
   notifPermission = res;
   updateNotifBtnUI();
   if(res === 'granted'){
-    showToast("¡Notificaciones y recordatorios activados!");
+    playSound('success');
+    showToast("¡Notificaciones y recordatorios interactivos activados!");
     try {
       new Notification("27MEX Seniors", {
-        body: "Notificaciones del Consejo activadas correctamente.",
+        body: "Alertas interactivas activadas. Podrás marcar pasos desde tu pantalla bloqueada.",
         icon: "icon-192.png"
       });
     } catch(e){}
-  } else {
-    showToast("Permiso de notificaciones denegado.");
   }
 }
 document.getElementById('btnReqNotifs').addEventListener('click', requestNotifPermission);
+
+// ACTIVAR WAKE LOCK (Mantiene la pantalla encendida en Modo Evento)
+async function requestWakeLock(){
+  try {
+    if('wakeLock' in navigator){
+      wakeLockSentinel = await navigator.wakeLock.request('screen');
+    }
+  } catch(e){}
+}
+
+function releaseWakeLock(){
+  if(wakeLockSentinel){
+    wakeLockSentinel.release().catch(()=>{});
+    wakeLockSentinel = null;
+  }
+}
+
+// SINCRONIZAR CON MEDIASESSION API (Pantalla bloqueada, smartwatch, auto)
+function updateMediaSession(step, eventName, pct){
+  if(!('mediaSession' in navigator) || !step) return;
+  try {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: `⏱️ [${step.hora}] ${step.nombre}`,
+      artist: `👤 ${step.responsable} · 📍 ${step.lugar || 'IMEX'}`,
+      album: `${eventName} · (${pct}% completado)`,
+      artwork: [
+        { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
+        { src: 'icon-512.png', sizes: '512x512', type: 'image/png' }
+      ]
+    });
+    navigator.mediaSession.setActionHandler('nexttrack', ()=> advanceCurrentStep());
+  } catch(e){}
+}
+
+// NOTIFICACIÓN INTERACTIVA DE PANTALLA BLOQUEADA
+function updateLockScreenNotification(step, eventName, eventId){
+  if(Notification.permission !== 'granted' || !step) return;
+  try {
+    if('serviceWorker' in navigator && navigator.serviceWorker.controller){
+      navigator.serviceWorker.ready.then(reg => {
+        reg.showNotification(`🔴 ${eventName} · [${step.hora}]`, {
+          body: `${step.nombre} — 👤 ${step.responsable} ${step.lugar ? '· 📍 ' + step.lugar : ''}`,
+          icon: 'icon-192.png',
+          badge: 'icon-192.png',
+          tag: 'live-event-step',
+          renotify: true,
+          data: { eventId, stepId: step.id },
+          actions: [
+            { action: 'complete_step', title: '✅ Marcar Hecho' },
+            { action: 'open_app', title: '📱 Abrir App' }
+          ]
+        });
+      });
+    }
+  } catch(e){}
+}
+
+// ESCUCHAR ACCIONES ENVIADAS DESDE EL SERVICE WORKER
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.addEventListener('message', event => {
+    if(event.data && event.data.type === 'CRONO_ACTION'){
+      if(event.data.action === 'complete_step'){
+        advanceCurrentStep();
+        playSound('success');
+      }
+    }
+  });
+}
 
 function checkCronogramasAndTaskReminders(){
   const now = new Date();
@@ -2384,7 +2593,7 @@ function checkCronogramasAndTaskReminders(){
 
       if(diff === 0 && step.notif0 && !firedNotifs.has(step.id + '_0')){
         firedNotifs.add(step.id + '_0');
-        fireAlert(`🔴 AHORA: ${step.nombre}`, `Responsable: ${step.responsable} · Lugar: ${step.lugar || 'Sede'}`);
+        fireAlert(`🔴 AHORA: ${step.nombre}`, `Responsable: ${step.responsable} · Hora: ${step.hora}`);
       }
       else if(diff === 5 && step.notif5 && !firedNotifs.has(step.id + '_5')){
         firedNotifs.add(step.id + '_5');
@@ -2399,22 +2608,19 @@ function checkCronogramasAndTaskReminders(){
 }
 
 function fireAlert(title, body){
+  playSound('alert');
   showToast(`${title} — ${body}`);
   if(Notification.permission === 'granted'){
     try {
-      navigator.serviceWorker.ready.then(reg => {
-        reg.showNotification(title, { body, icon: 'icon-192.png', badge: 'icon-192.png' });
-      }).catch(()=>{
-        new Notification(title, { body, icon: 'icon-192.png' });
-      });
-    } catch(e){
-      try { new Notification(title, { body, icon: 'icon-192.png' }); } catch(err){}
-    }
+      new Notification(title, { body, icon: 'icon-192.png' });
+    } catch(e){}
   }
 }
-setInterval(checkCronogramasAndTaskReminders, 15000);
+setInterval(checkCronogramasAndTaskReminders, 12000);
 
+// =====================================================================
 // ACORDEÓN GENÉRICO
+// =====================================================================
 function renderAccordion(containerId, sectionKey, items, cardFn, emptyElId, monthBalanceFn=null){
   const timeline = document.getElementById(containerId);
   if(!timeline) return;
@@ -2460,7 +2666,9 @@ function renderAccordion(containerId, sectionKey, items, cardFn, emptyElId, mont
   });
 }
 
-// EXTRACURRICULAR
+// =====================================================================
+// EXTRACURRICULAR (FIESTAS)
+// =====================================================================
 function ingresoBruto(e){ return (e.boletos||0) * (e.precio||0); }
 function comisionMonto(e){ return ingresoBruto(e) * ((e.comisionPct||0)/100); }
 function gastoTotal(e){ return (e.gastoFijo||0) + comisionMonto(e); }
@@ -2538,7 +2746,9 @@ function updateSummaryExtra(){
   updateDashboard();
 }
 
+// =====================================================================
 // ESCOLAR
+// =====================================================================
 function renderEscolar(){
   renderAccordion('timelineEscolar', 'escolar', escolares, eventCardHtmlEscolar, 'emptyEscolar');
   document.getElementById('statCountEscPill').textContent = escolares.length + (escolares.length===1?' actividad':' actividades');
@@ -2575,7 +2785,9 @@ function eventCardHtmlEscolar(e){
   </div>`;
 }
 
+// =====================================================================
 // VENTAS
+// =====================================================================
 function ingV(v){ return (v.cantidad||0)*(v.precio||0); }
 function balV(v){ return ingV(v) - (v.gasto||0); }
 function renderVentas(){
@@ -2643,7 +2855,9 @@ function updateSummaryVentas(){
   updateDashboard();
 }
 
+// =====================================================================
 // MINUTAS (LÓGICA Y RENDER)
+// =====================================================================
 let activeMinutaEditId = null;
 let currentMinutaTemas = [];
 let currentMinutaAcuerdos = [];
@@ -2665,9 +2879,9 @@ function renderMinutas(){
           <div class="minuta-num">📝 ${esc(m.titulo || ('Reunión #' + m.numero))}</div>
           <div class="minuta-meta">📅 ${m.fecha || 'Sin fecha'} · ⏰ ${m.horaInicio || '--:--'} a ${m.horaFin || '--:--'} · 📍 ${esc(m.lugar || 'IMEX')}</div>
         </div>
-        <div style="display:flex; gap:6px;">
-          <button class="btn-secondary" data-type="share-minuta" data-id="${m.id}" title="Copiar para WhatsApp" style="padding:5px 10px; font-size:11.5px;">📋 Compartir</button>
-          <button class="btn-secondary" data-type="edit-minuta" data-id="${m.id}" style="padding:5px 10px; font-size:11.5px;">✏️ Editar</button>
+        <div style="display:flex; gap:8px;">
+          <button class="btn-secondary" data-type="share-minuta" data-id="${m.id}" title="Copiar para WhatsApp" style="padding:6px 12px; font-size:12px;">📋 Compartir</button>
+          <button class="btn-secondary" data-type="edit-minuta" data-id="${m.id}" style="padding:6px 12px; font-size:12px;">✏️ Editar</button>
           <button class="btn-icon-del" data-type="del-minuta" data-id="${m.id}">×</button>
         </div>
       </div>
@@ -2676,7 +2890,7 @@ function renderMinutas(){
         <span class="tag-badge" style="background:var(--surface-secondary);">Secretario: ${esc(m.secretario || 'Sofia Brito')}</span>
         <span class="tag-badge" style="background:var(--green-bg); color:var(--green);">${(m.acuerdos||[]).length} Acuerdos</span>
       </div>
-      <div style="font-size:12.5px; color:var(--ink-secondary); line-height:1.5;">
+      <div style="font-size:13px; color:var(--ink-secondary); line-height:1.55;">
         <strong>Objetivo:</strong> ${esc(m.objetivo || 'Revisión general')}
       </div>
       ${(m.temas && m.temas.length) ? `
@@ -2688,7 +2902,7 @@ function renderMinutas(){
       ${(m.acuerdos && m.acuerdos.length) ? `
         <div class="minuta-section-block">
           <h4>Acuerdos y Compromisos (${m.acuerdos.length})</h4>
-          ${m.acuerdos.map(a => `<div class="minuta-dyn-item" style="border-left:3px solid var(--green);"><strong>${esc(a.desc)}</strong><div style="font-size:11px; color:var(--ink-tertiary); margin-top:2px;">👤 ${esc(a.responsable)} · 📅 Límite: ${a.fechaLimite || 'Por definir'} · Prioridad: ${esc(a.prioridad || 'media')}</div></div>`).join('')}
+          ${m.acuerdos.map(a => `<div class="minuta-dyn-item" style="border-left:3.5px solid var(--green);"><strong>${esc(a.desc)}</strong><div style="font-size:11.5px; color:var(--ink-tertiary); margin-top:3px;">👤 ${esc(a.responsable)} · 📅 Límite: ${a.fechaLimite || 'Por definir'} · Prioridad: ${esc(a.prioridad || 'media')}</div></div>`).join('')}
         </div>
       ` : ''}
     `;
@@ -2745,29 +2959,29 @@ function openMinutaEditor(m = null){
 function renderMinutaEditorDynamics(){
   const tList = document.getElementById('mTemasList');
   tList.innerHTML = currentMinutaTemas.map((t, idx) => `
-    <div style="display:flex; gap:6px; margin-bottom:6px;">
-      <input type="text" placeholder="Título tema..." value="${esc(t.titulo)}" oninput="window.__updateTema(${idx}, 'titulo', this.value)" style="width:160px; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:700;">
-      <input type="text" placeholder="Discusión / puntos tratados..." value="${esc(t.desc)}" oninput="window.__updateTema(${idx}, 'desc', this.value)" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
-      <button class="btn-icon-del" onclick="window.__delTema(${idx})" style="width:24px; height:24px;">×</button>
+    <div style="display:flex; gap:8px; margin-bottom:8px;">
+      <input type="text" placeholder="Título tema..." value="${esc(t.titulo)}" oninput="window.__updateTema(${idx}, 'titulo', this.value)" style="width:180px; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:700; background:var(--surface-secondary);">
+      <input type="text" placeholder="Discusión / puntos tratados..." value="${esc(t.desc)}" oninput="window.__updateTema(${idx}, 'desc', this.value)" style="flex:1; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
+      <button class="btn-icon-del" onclick="window.__delTema(${idx})" style="width:30px; height:30px;">×</button>
     </div>
   `).join('');
 
   const aList = document.getElementById('mAcuerdosList');
   aList.innerHTML = currentMinutaAcuerdos.map((a, idx) => `
-    <div style="background:var(--surface-secondary); padding:8px 10px; border-radius:var(--radius-sm); margin-bottom:6px; border-left:3px solid var(--wine);">
-      <div style="display:flex; gap:6px; margin-bottom:6px;">
-        <input type="text" placeholder="Descripción del acuerdo..." value="${esc(a.desc)}" oninput="window.__updateAcuerdo(${idx}, 'desc', this.value)" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:600;">
-        <button class="btn-icon-del" onclick="window.__delAcuerdo(${idx})" style="width:24px; height:24px;">×</button>
+    <div style="background:var(--surface-secondary); padding:12px 14px; border-radius:var(--radius-sm); margin-bottom:8px; border-left:3.5px solid var(--wine);">
+      <div style="display:flex; gap:8px; margin-bottom:8px;">
+        <input type="text" placeholder="Descripción del acuerdo..." value="${esc(a.desc)}" oninput="window.__updateAcuerdo(${idx}, 'desc', this.value)" style="flex:1; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); font-weight:600; background:#FFF;">
+        <button class="btn-icon-del" onclick="window.__delAcuerdo(${idx})" style="width:28px; height:28px;">×</button>
       </div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-        <input type="text" placeholder="Responsable" value="${esc(a.responsable)}" oninput="window.__updateAcuerdo(${idx}, 'responsable', this.value)" style="width:130px; padding:4px 6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:11.5px;">
-        <input type="date" value="${a.fechaLimite || ''}" oninput="window.__updateAcuerdo(${idx}, 'fechaLimite', this.value)" style="padding:4px 6px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:11.5px;">
-        <select onchange="window.__updateAcuerdo(${idx}, 'prioridad', this.value)" class="meta-select">
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <input type="text" placeholder="Responsable" value="${esc(a.responsable)}" oninput="window.__updateAcuerdo(${idx}, 'responsable', this.value)" style="width:140px; padding:6px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:12px; background:#FFF;">
+        <input type="date" value="${a.fechaLimite || ''}" oninput="window.__updateAcuerdo(${idx}, 'fechaLimite', this.value)" style="padding:6px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:12px; background:#FFF;">
+        <select onchange="window.__updateAcuerdo(${idx}, 'prioridad', this.value)" class="meta-select" style="background:#FFF;">
           <option value="alta" ${a.prioridad==='alta'?'selected':''}>🔴 Alta</option>
           <option value="media" ${a.prioridad==='media'?'selected':''}>🟡 Media</option>
           <option value="baja" ${a.prioridad==='baja'?'selected':''}>🟢 Baja</option>
         </select>
-        <label style="font-size:11px; font-weight:700; color:var(--green); display:inline-flex; align-items:center; gap:4px;">
+        <label style="font-size:11.5px; font-weight:700; color:var(--green); display:inline-flex; align-items:center; gap:6px;">
           <input type="checkbox" ${a.esTarea?'checked':''} onchange="window.__updateAcuerdo(${idx}, 'esTarea', this.checked)"> ☑ Convertir en tarea
         </label>
       </div>
@@ -2776,18 +2990,18 @@ function renderMinutaEditorDynamics(){
 
   const pList = document.getElementById('mPendientesList');
   pList.innerHTML = currentMinutaPendientes.map((p, idx) => `
-    <div style="display:flex; gap:6px; margin-bottom:4px;">
-      <input type="text" placeholder="Pendiente..." value="${esc(p.texto)}" oninput="window.__updatePendiente(${idx}, this.value)" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
-      <button class="btn-icon-del" onclick="window.__delPendiente(${idx})" style="width:24px; height:24px;">×</button>
+    <div style="display:flex; gap:8px; margin-bottom:6px;">
+      <input type="text" placeholder="Pendiente..." value="${esc(p.texto)}" oninput="window.__updatePendiente(${idx}, this.value)" style="flex:1; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
+      <button class="btn-icon-del" onclick="window.__delPendiente(${idx})" style="width:30px; height:30px;">×</button>
     </div>
   `).join('');
 
   const prList = document.getElementById('mPropuestasList');
   prList.innerHTML = currentMinutaPropuestas.map((pr, idx) => `
-    <div style="display:flex; gap:6px; margin-bottom:4px;">
-      <input type="text" placeholder="Proponente (Nombre)" value="${esc(pr.proponente)}" oninput="window.__updatePropuesta(${idx}, 'proponente', this.value)" style="width:130px; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
-      <input type="text" placeholder="Propuesta..." value="${esc(pr.texto)}" oninput="window.__updatePropuesta(${idx}, 'texto', this.value)" style="flex:1; padding:6px; border:1px solid var(--border); border-radius:var(--radius-sm);">
-      <button class="btn-icon-del" onclick="window.__delPropuesta(${idx})" style="width:24px; height:24px;">×</button>
+    <div style="display:flex; gap:8px; margin-bottom:6px;">
+      <input type="text" placeholder="Proponente (Nombre)" value="${esc(pr.proponente)}" oninput="window.__updatePropuesta(${idx}, 'proponente', this.value)" style="width:150px; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
+      <input type="text" placeholder="Propuesta..." value="${esc(pr.texto)}" oninput="window.__updatePropuesta(${idx}, 'texto', this.value)" style="flex:1; padding:8px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--surface-secondary);">
+      <button class="btn-icon-del" onclick="window.__delPropuesta(${idx})" style="width:30px; height:30px;">×</button>
     </div>
   `).join('');
 }
@@ -2851,6 +3065,7 @@ function saveMinutaData(finalizar = false){
   if(existingIdx >= 0) minutas[existingIdx] = minutaObj;
   else minutas.push(minutaObj);
 
+  // Convertir acuerdos en Tareas
   minutaObj.acuerdos.forEach(ac => {
     if(ac.esTarea){
       const tIdx = tareas.findIndex(tk => tk.origenMinutaAcuerdoId === ac.id);
@@ -2877,6 +3092,7 @@ function saveMinutaData(finalizar = false){
   saveMinutas();
   saveTareas();
   document.getElementById('minutaEditorCard').style.display = 'none';
+  playSound('success');
   showToast(finalizar ? '¡Minuta finalizada y acuerdos convertidos en tareas!' : 'Borrador de minuta guardado.');
 }
 
@@ -2912,13 +3128,16 @@ function shareMinutaWhatsApp(m){
   text += `\n_Generado automáticamente desde la App del Consejo 27MEX_`;
 
   navigator.clipboard.writeText(text).then(()=>{
+    playSound('success');
     showToast("¡Minuta copiada! Lista para pegar en WhatsApp.");
   }).catch(()=>{
     alert(text);
   });
 }
 
+// =====================================================================
 // TAREAS (LÓGICA Y RENDER)
+// =====================================================================
 let tareaFilter = 'todas';
 
 function renderTareas(){
@@ -2959,7 +3178,7 @@ function renderTareas(){
         <div class="task-meta-line">
           <span>📁 <strong>${esc(t.proyecto || 'General')}</strong></span>
           <span>👤 ${esc(t.responsable || 'Consejo')}</span>
-          <span>📅 ${t.fechaLimite || 'Sin fecha límite'}</span>
+          <span>📅 ${t.fechaLimite || 'Sin fecha'}</span>
           <span class="tag-badge ${t.prioridad === 'alta' ? 'antro' : 'ventas'}">${t.prioridad ? t.prioridad.toUpperCase() : 'NORMAL'}</span>
         </div>
       </div>
@@ -2998,6 +3217,7 @@ document.getElementById('btnGuardarTareaDirecta').addEventListener('click', ()=>
   document.getElementById('tareaEditorCard').style.display = 'none';
   renderTareas();
   saveTareas();
+  playSound('success');
   showToast('Tarea agregada exitosamente.');
 });
 
@@ -3009,8 +3229,11 @@ document.getElementById('filterTareasGroup').addEventListener('click', e=>{
   renderTareas();
 });
 
-// CRONOGRAMA MINUTO A MINUTO & MODO EVENTO
+// =====================================================================
+// CRONOGRAMA MINUTO A MINUTO & LIVE HUD & MODO EVENTO
+// =====================================================================
 let activeCronoEventId = null;
+let modoEventoTimer = null;
 
 function openCronoModal(eventId){
   activeCronoEventId = eventId;
@@ -3035,7 +3258,7 @@ function renderCronoTimeline(){
   document.getElementById('cronoProgressBar').style.width = `${pct}%`;
 
   if(!items.length){
-    container.innerHTML = '<div class="empty-state-box" style="padding:20px;">No hay actividades registradas en el cronograma aún. Usa "+ Agregar paso".</div>';
+    container.innerHTML = '<div class="empty-state-box" style="padding:24px;">No hay actividades registradas en el cronograma aún. Usa "+ Agregar paso".</div>';
     return;
   }
 
@@ -3050,18 +3273,18 @@ function renderCronoTimeline(){
       <div class="timeline-time-col">${step.hora || '--:--'}</div>
       <div class="timeline-node"></div>
       <div class="timeline-card-body">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
           <div>
-            <div style="font-size:14px; font-weight:700; color:var(--ink-primary);">${esc(step.nombre)}</div>
-            <div style="font-size:11.5px; color:var(--ink-tertiary); margin-top:2px;">
+            <div style="font-size:14.5px; font-weight:700; color:var(--ink-primary);">${esc(step.nombre)}</div>
+            <div style="font-size:12px; color:var(--ink-tertiary); margin-top:3px;">
               👤 <strong>${esc(step.responsable)}</strong> ${step.duracion ? '· ⏱️ ' + esc(step.duracion) : ''} ${step.lugar ? '· 📍 ' + esc(step.lugar) : ''}
             </div>
           </div>
           <div style="display:flex; gap:6px;">
-            <button class="btn-secondary" data-type="toggle-crono-state" data-idx="${idx}" style="padding:3px 8px; font-size:11px;">
+            <button class="btn-secondary" data-type="toggle-crono-state" data-idx="${idx}" style="padding:4px 10px; font-size:11.5px;">
               ${isComp ? '✅ Hecho' : (isProc ? '🟡 En curso' : '⬜ Pendiente')}
             </button>
-            <button class="btn-icon-del" data-type="del-crono-item" data-idx="${idx}" style="width:24px; height:24px;">×</button>
+            <button class="btn-icon-del" data-type="del-crono-item" data-idx="${idx}" style="width:28px; height:28px;">×</button>
           </div>
         </div>
       </div>
@@ -3103,24 +3326,26 @@ document.getElementById('btnSaveCronoItem').addEventListener('click', ()=>{
   document.getElementById('cronoItemEditor').style.display = 'none';
   renderCronoTimeline();
   saveCronogramas();
+  playSound('success');
   showToast('Paso agregado al cronograma.');
 });
 
-// MODO EVENTO EN VIVO
-let modoEventoTimer = null;
-
+// ABRIR MODO EVENTO EN VIVO
 function openModoEvento(){
   const items = cronogramas[activeCronoEventId] || [];
   if(!items.length){ showToast('Agrega al menos una actividad al cronograma'); return; }
 
   const evObj = [...eventos, ...escolares].find(x => x.id === activeCronoEventId);
-  document.getElementById('emEventTitle').textContent = evObj ? evObj.nombre : 'Evento en Vivo';
+  const evTitle = evObj ? evObj.nombre : 'Evento en Vivo';
+  document.getElementById('emEventTitle').textContent = evTitle;
   document.getElementById('cronoModal').classList.remove('active');
   document.getElementById('modoEventoOverlay').classList.add('active');
 
+  requestWakeLock();
   updateModoEventoUI();
   clearInterval(modoEventoTimer);
-  modoEventoTimer = setInterval(updateModoEventoUI, 2000);
+  modoEventoTimer = setInterval(updateModoEventoUI, 1500);
+  playSound('success');
 }
 
 function updateModoEventoUI(){
@@ -3142,11 +3367,27 @@ function updateModoEventoUI(){
   if(curIndex === -1) curIndex = items.length - 1;
 
   const cur = items[curIndex];
+  const evObj = [...eventos, ...escolares].find(x => x.id === activeCronoEventId);
+  const evTitle = evObj ? evObj.nombre : 'Evento en Vivo';
+
   if(cur){
     document.getElementById('emCurrentTime').textContent = cur.hora;
     document.getElementById('emCurrentTitle').textContent = cur.nombre;
     document.getElementById('emCurrentMeta').textContent = `👥 ${cur.responsable} ${cur.lugar ? '· 📍 ' + cur.lugar : ''}`;
     document.getElementById('emStatusBadge').textContent = cur.estado === 'completado' ? '✅ COMPLETADA' : '● EN EJECUCIÓN';
+
+    // Actualizar barra flotante Live Activity
+    const laBar = document.getElementById('liveActivityBar');
+    if(laBar){
+      laBar.classList.add('active');
+      document.getElementById('laEventName').textContent = evTitle;
+      document.getElementById('laClock').textContent = cur.hora;
+      document.getElementById('laCurrentTitle').textContent = `${cur.nombre} (${cur.responsable})`;
+    }
+
+    // Actualizar lockscreen
+    updateMediaSession(cur, evTitle, pct);
+    updateLockScreenNotification(cur, evTitle, activeCronoEventId);
   }
 
   const next = items[curIndex + 1];
@@ -3162,23 +3403,17 @@ function updateModoEventoUI(){
 
   const listEl = document.getElementById('emFullList');
   listEl.innerHTML = items.map((st, i) => `
-    <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; border-radius:10px; background:${i === curIndex ? 'rgba(239,68,68,0.2)' : 'rgba(255,255,255,0.05)'}; border:${i === curIndex ? '1px solid #EF4444' : '1px solid transparent'};">
-      <div style="display:flex; align-items:center; gap:10px;">
-        <span style="font-family:var(--font-heading); font-size:13px; font-weight:800; color:#FCD34D;">${st.hora}</span>
-        <span style="font-size:13px; font-weight:600; ${st.estado==='completado'?'text-decoration:line-through; opacity:0.6;':''}">${esc(st.nombre)}</span>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 14px; border-radius:12px; background:${i === curIndex ? 'rgba(239,68,68,0.22)' : 'rgba(255,255,255,0.06)'}; border:${i === curIndex ? '1.5px solid #EF4444' : '1px solid transparent'};">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="font-family:var(--font-heading); font-size:14px; font-weight:800; color:#FCD34D;">${st.hora}</span>
+        <span style="font-size:13.5px; font-weight:600; ${st.estado==='completado'?'text-decoration:line-through; opacity:0.6;':''}">${esc(st.nombre)}</span>
       </div>
-      <span style="font-size:11px; font-weight:700; color:${st.estado==='completado'?'#10B981':'#D1D5DB'};">${st.estado==='completado'?'✓ Hecho':'Pendiente'}</span>
+      <span style="font-size:11.5px; font-weight:700; color:${st.estado==='completado'?'#10B981':'#D1D5DB'};">${st.estado==='completado'?'✓ Hecho':'Pendiente'}</span>
     </div>
   `).join('');
 }
 
-document.getElementById('btnAbrirModoEvento').addEventListener('click', openModoEvento);
-document.getElementById('btnCloseModoEvento').addEventListener('click', ()=>{
-  document.getElementById('modoEventoOverlay').classList.remove('active');
-  clearInterval(modoEventoTimer);
-});
-
-document.getElementById('btnEmCompletarActual').addEventListener('click', ()=>{
+function advanceCurrentStep(){
   const items = cronogramas[activeCronoEventId] || [];
   let curIndex = items.findIndex(x => x.estado === 'en_proceso');
   if(curIndex === -1) curIndex = items.findIndex(x => x.estado !== 'completado');
@@ -3187,11 +3422,35 @@ document.getElementById('btnEmCompletarActual').addEventListener('click', ()=>{
     if(items[curIndex + 1]) items[curIndex + 1].estado = 'en_proceso';
     saveCronogramas();
     updateModoEventoUI();
-    showToast('¡Actividad completada!');
+    playSound('success');
+    showToast('¡Paso completado!');
   }
+}
+
+document.getElementById('btnAbrirModoEvento').addEventListener('click', openModoEvento);
+document.getElementById('btnCloseModoEvento').addEventListener('click', ()=>{
+  document.getElementById('modoEventoOverlay').classList.remove('active');
 });
 
+document.getElementById('btnEmCompletarActual').addEventListener('click', advanceCurrentStep);
+
+// INTERACCIÓN CON LA BARRA FLOTANTE LIVE ACTIVITY
+document.getElementById('laBtnCheck').addEventListener('click', (e)=>{
+  e.stopPropagation();
+  advanceCurrentStep();
+});
+document.getElementById('laBtnClose').addEventListener('click', (e)=>{
+  e.stopPropagation();
+  document.getElementById('liveActivityBar').classList.remove('active');
+  releaseWakeLock();
+});
+document.getElementById('liveActivityBar').addEventListener('click', ()=>{
+  document.getElementById('modoEventoOverlay').classList.add('active');
+});
+
+// =====================================================================
 // FINANZAS Y DASHBOARD
+// =====================================================================
 function totalEscolarGastos(){ return escolares.reduce((s,e)=>s+(e.gasto||0),0); }
 function totalExtras(tipo){ return extras.filter(x=>x.tipo===tipo).reduce((s,x)=>s+(x.monto||0),0); }
 
@@ -3242,7 +3501,7 @@ function updateFinanzas(){
               const bal = r.ing - r.gas;
               return `<tr>
                 <td>
-                  <span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:${r.color}; margin-right:8px;"></span>
+                  <span style="display:inline-block; width:9px; height:9px; border-radius:3px; background:${r.color}; margin-right:10px;"></span>
                   <strong>${esc(r.nombre)}</strong>
                 </td>
                 <td style="color:var(--green); font-weight:600;">${money(r.ing)}</td>
@@ -3256,7 +3515,7 @@ function updateFinanzas(){
               <td>Total neto proyectado</td>
               <td style="color:var(--green);">${money(totalIng)}</td>
               <td style="color:var(--red);">${totalGas > 0 ? '-' + money(totalGas) : '$0'}</td>
-              <td style="color:${balanceTotal>=0?'var(--green)':'var(--red)'}; font-size:14.5px;">${money(balanceTotal)}</td>
+              <td style="color:${balanceTotal>=0?'var(--green)':'var(--red)'}; font-size:15px;">${money(balanceTotal)}</td>
             </tr>
           </tfoot>
         </table>
@@ -3300,17 +3559,17 @@ function updateDashboard(){
     upcomingDiv.innerHTML = all.map(item => {
       const hasCrono = (cronogramas[item.id] || []).length > 0;
       return `
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 12px; background:var(--surface-secondary); border-radius:var(--radius-md); gap:10px;">
-        <div style="display:flex; align-items:center; gap:10px; min-width:0;">
-          <span style="font-size:10px; font-weight:800; padding:3px 7px; border-radius:6px; background:#FFF; border:1px solid var(--border); color:var(--wine); white-space:nowrap;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 14px; background:var(--surface-secondary); border-radius:var(--radius-md); gap:12px;">
+        <div style="display:flex; align-items:center; gap:12px; min-width:0;">
+          <span style="font-size:11px; font-weight:800; padding:4px 8px; border-radius:8px; background:#FFF; border:1px solid var(--border); color:var(--wine); white-space:nowrap;">
             ${item.dia ? item.dia + ' ' : ''}${monthLabel(item.mes).split(' ')[0]}
           </span>
           <div style="min-width:0;">
-            <div style="font-size:13px; font-weight:700; color:var(--ink-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${esc(item.nombre)}</div>
-            <div style="font-size:10.5px; color:var(--ink-tertiary);">${esc(item.type)}</div>
+            <div style="font-size:14px; font-weight:700; color:var(--ink-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${esc(item.nombre)}</div>
+            <div style="font-size:11px; color:var(--ink-tertiary); margin-top:2px;">${esc(item.type)}</div>
           </div>
         </div>
-        ${hasCrono ? `<button class="btn-secondary" data-type="open-crono" data-id="${item.id}" style="padding:3px 8px; font-size:11px; white-space:nowrap;">⏱️ Cronograma</button>` : ''}
+        ${hasCrono ? `<button class="btn-secondary" data-type="open-crono" data-id="${item.id}" style="padding:4px 10px; font-size:11.5px; white-space:nowrap;">⏱️ Cronograma</button>` : ''}
       </div>
     `}).join('');
   }
@@ -3334,7 +3593,7 @@ function renderExtras(){
               <option value="ingreso" ${x.tipo==='ingreso'?'selected':''}>Ingreso (+)</option>
               <option value="gasto" ${x.tipo==='gasto'?'selected':''}>Gasto (-)</option>
             </select>
-            <input type="number" min="0" value="${x.monto||0}" data-type="ex-monto" data-id="${x.id}" style="width:100px; padding:4px 8px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:12px; font-weight:700;">
+            <input type="number" min="0" value="${x.monto||0}" data-type="ex-monto" data-id="${x.id}" style="width:110px; padding:6px 10px; border:1px solid var(--border); border-radius:var(--radius-sm); font-size:12.5px; font-weight:700;">
           </div>
           <input type="text" class="item-notes-input" maxlength="150" value="${esc(x.nota||'')}" data-type="ex-nota" data-id="${x.id}" placeholder="Observaciones / comprobante…">
         </div>
@@ -3413,6 +3672,7 @@ document.getElementById('photoInput').addEventListener('change', async (e)=>{
       if(!data.success) throw new Error('ImgBB error');
       const url = data.data.url;
       await addDoc(fotosCol, { url, fecha: new Date().toISOString() });
+      playSound('success');
       showToast('¡Foto agregada al álbum!');
     }catch(err){
       showToast('Error al subir imagen.');
@@ -3447,7 +3707,7 @@ spotlightInput.addEventListener('input', e=>{
 
 function renderSearchResults(query){
   if(!query){
-    spotlightResults.innerHTML = '<div style="padding:16px; text-align:center; color:var(--ink-tertiary); font-size:12.5px;">Escribe para buscar entre fiestas, ventas, minutas, tareas y calendario escolar…</div>';
+    spotlightResults.innerHTML = '<div style="padding:18px; text-align:center; color:var(--ink-tertiary); font-size:13px;">Escribe para buscar entre fiestas, ventas, minutas, tareas y calendario escolar…</div>';
     return;
   }
   const all = [
@@ -3460,15 +3720,15 @@ function renderSearchResults(query){
   const matched = all.filter(x => (x.nombre||'').toLowerCase().includes(query) || (x.nota||'').toLowerCase().includes(query) || (x.desc||'').toLowerCase().includes(query));
 
   if(!matched.length){
-    spotlightResults.innerHTML = '<div style="padding:20px; text-align:center; color:var(--ink-tertiary); font-size:12.5px;">No se encontraron resultados para "'+esc(query)+'"</div>';
+    spotlightResults.innerHTML = '<div style="padding:22px; text-align:center; color:var(--ink-tertiary); font-size:13px;">No se encontraron resultados para "'+esc(query)+'"</div>';
     return;
   }
 
   spotlightResults.innerHTML = matched.slice(0, 10).map(item => `
     <div class="spotlight-item" data-goto="${item.targetView}" data-month="${item.mes || ''}">
       <div>
-        <div style="font-size:13.5px; font-weight:700; color:var(--ink-primary);">${esc(item.nombre)}</div>
-        <div style="font-size:11px; color:var(--ink-tertiary);">${esc(item.kind)} ${item.mes ? '· ' + monthLabel(item.mes) : ''}</div>
+        <div style="font-size:14px; font-weight:700; color:var(--ink-primary);">${esc(item.nombre)}</div>
+        <div style="font-size:11.5px; color:var(--ink-tertiary); margin-top:2px;">${esc(item.kind)} ${item.mes ? '· ' + monthLabel(item.mes) : ''}</div>
       </div>
       <svg viewBox="0 0 24 24" style="width:16px; height:16px; stroke:var(--ink-tertiary); fill:none; stroke-width:2;"><path d="M9 18l6-6-6-6"/></svg>
     </div>
@@ -3512,7 +3772,7 @@ document.addEventListener('click', e=>{
   }
 });
 
-// EVENTOS DE INTERFAZ & DELEGACIÓN
+// DELEGACIÓN DE EVENTOS DE INTERFAZ
 document.addEventListener('input', e=>{
   const t = e.target;
   const ev = eventos.find(x=>x.id===t.dataset.id);
@@ -3608,7 +3868,7 @@ document.addEventListener('click', e=>{
     renderEscolar(); saveEscolar(); showToast('Actividad agregada');
   }
 
-  // CRONOGRAMA OPEN
+  // CRONOGRAMA OPEN & TOGGLE
   if(t.dataset.type==='open-crono'){
     openCronoModal(t.dataset.id);
   }
@@ -3620,6 +3880,7 @@ document.addEventListener('click', e=>{
       items[idx].estado = cur === 'pendiente' ? 'en_proceso' : (cur === 'en_proceso' ? 'completado' : 'pendiente');
       saveCronogramas();
       renderCronoTimeline();
+      playSound('success');
     }
   }
   if(t.dataset.type==='del-crono-item'){
@@ -3650,7 +3911,9 @@ document.addEventListener('click', e=>{
     if(tk){
       tk.completada = !tk.completada;
       tk.estado = tk.completada ? 'completado' : 'pendiente';
-      renderTareas(); saveTareas(); showToast(tk.completada ? '¡Tarea completada!' : 'Tarea reactivada');
+      renderTareas(); saveTareas();
+      playSound('success');
+      showToast(tk.completada ? '¡Tarea completada!' : 'Tarea reactivada');
     }
   }
   if(t.dataset.type==='del-tarea'){
@@ -3693,7 +3956,9 @@ document.getElementById('filterSegExtra').addEventListener('click', e=>{
   renderExtra();
 });
 
+// =====================================================================
 // PERSISTENCIA EN TIEMPO REAL
+// =====================================================================
 async function saveExtra(){
   try{ await setDoc(docRefExtra, { eventos, idCounter, actualizado: new Date().toISOString() }); localStorage.setItem('c_eventos', JSON.stringify(eventos)); }catch(e){}
 }
